@@ -1,15 +1,22 @@
 {
     "type": "FeatureCollection",
     "features": [
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [[
-                    [0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0]
-                ]]
-            },
-            "properties": { "name": "Continent" }
+      {
+        "type": "Feature",
+        "properties": { "name": "Continent exemple" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [-180, -90],
+              [-180, 90],
+              [180, 90],
+              [180, -90],
+              [-180, -90]
+            ]
+          ]
         }
+      }
     ]
-}
+  }
+  

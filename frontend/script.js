@@ -6,8 +6,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-// Fonction pour charger un fichier GeoJSON
-const chargerGeoJSON = async (url) => {
+// Charger les données des escales
+const chargerJSON = async (url) => {
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
@@ -18,56 +18,80 @@ const chargerGeoJSON = async (url) => {
     }
 };
 
-// Charger et afficher les continents
-const initCarte = async () => {
-    const continentsData = await chargerGeoJSON('../data/continents.geojson');
-    if (continentsData) {
-        // Filtrer uniquement les Polygons
-        const polygons = continentsData.features.filter(feature => feature.geometry.type === 'Polygon');
+// Ajouter des points pour interpoler les longs segments
+const ajouterInterpolation = (itineraire) => {
+    const itineraireInterp = [];
+    for (let i = 0; i < itineraire.length - 1; i++) {
+        const start = itineraire[i];
+        const end = itineraire[i + 1];
+        itineraireInterp.push(start);
 
-        // Ajouter les continents sur la carte
-        L.geoJSON({ type: 'FeatureCollection', features: polygons }, {
-            style: {
-                color: '#666',
-                fillOpacity: 0.1
-            }
-        }).addTo(map);
-        console.log('Continents ajoutés avec succès !');
+        // Vérifie la distance entre deux points
+        const dist = Math.sqrt(
+            Math.pow(end[0] - start[0], 2) + Math.pow(end[1] - start[1], 2)
+        );
+
+        // Si la distance est grande, ajoute un point intermédiaire
+        if (dist > 50) { // Ajuste le seuil si nécessaire
+            const midPoint = [
+                (start[0] + end[0]) / 2,
+                (start[1] + end[1]) / 2,
+            ];
+            itineraireInterp.push(midPoint);
+        }
     }
+    itineraireInterp.push(itineraire[itineraire.length - 1]); // Ajouter le dernier point
+    return itineraireInterp;
+};
 
-    // Charger les escales et corriger l'itinéraire
-    const escalesData = await chargerGeoJSON('../data/escales_clusters.json');
-    if (escalesData && continentsData) {
-        const polygons = continentsData.features.filter(feature => feature.geometry.type === 'Polygon');
+// Initialiser la carte avec les données
+const initCarte = async () => {
+    const escalesData = await chargerJSON('../data/escales.json');
+    if (escalesData) {
+        // Extraire les coordonnées des escales dans l'ordre
+        const itineraire = escalesData.map(escale => [
+            escale.Latitude_Décimal,
+            escale.Longitude_Décimal
+        ]);
 
-        const itineraireCorrige = escalesData
-            .map(escale => [escale.Latitude_Décimal, escale.Longitude_Décimal])
-            .filter(point => {
-                return !polygons.some(polygon =>
-                    turf.booleanPointInPolygon(turf.point(point), polygon.geometry)
-                );
-            });
+        // Ajouter une interpolation pour les longs segments
+        const itineraireInterp = ajouterInterpolation(itineraire);
 
-        // Ajouter les marqueurs des escales
+        // Tracer l'itinéraire interpolé
+        L.polyline(itineraireInterp.map(coord => [coord[0], coord[1]]), {
+            color: 'blue',
+            weight: 2.5,
+            opacity: 1
+        }).addTo(map);
+
+        // Ajouter des marqueurs pour chaque escale
         escalesData.forEach(escale => {
             L.marker([escale.Latitude_Décimal, escale.Longitude_Décimal])
                 .addTo(map)
                 .bindPopup(`
                     <b>${escale['Escales du Nautilus']}</b><br>
-                    Date: ${escale.Date}<br>
-                    Océan/Mer: ${escale['Océan/Mer']}<br>
-                    Événement: ${escale.Event || 'Aucun événement spécifié'}<br>
-                    Cluster: ${escale.Cluster || 'Non classé'}
+                    Date : ${escale.Date}<br>
+                    Océan/Mer : ${escale['Océan\/Mer']}<br>
+                    Événement : ${escale.Event || 'Aucun événement spécifié'}
                 `);
         });
 
-        // Tracer l'itinéraire corrigé
-        L.polyline(itineraireCorrige, { color: 'blue', weight: 2.5, opacity: 1 }).addTo(map);
+        console.log('Itinéraire tracé avec interpolation.');
+    } else {
+        console.error("Impossible de charger les données des escales.");
     }
 };
 
-// Initialiser la carte
+// Lancer la carte
 initCarte();
+
+
+
+
+
+
+
+
 
 
 
