@@ -5,7 +5,7 @@
       "Latitude_Décimal": 33.18497,
       "Longitude_Décimal": 169.85446,
       "Océan/Mer": "Océan Pacifique Sud",
-      "Event": " Début de l'aventure -  Première chasse soumarine - Une forêt sous-marine - Une montrueuse araignée de mer"
+      "Event": " Début de l'aventure -  Première chasse soumarine - Une forêt sous-marine - Une montrueuse araignée de mer."
     },
     {
       "Escales du Nautilus": "Archipel des Pomotou",
@@ -66,8 +66,8 @@
     {
       "Escales du Nautilus": "Contour Afrique Est",
       "Date": "28 Janvier 1867",
-      "Latitude_Décimal": -5.0,
-      "Longitude_Décimal": 50.0,
+      "Latitude_Décimal": 10.998090,
+      "Longitude_Décimal": 56.614067,
       "Océan/Mer": "Océan Indien",
       "Event": "Point intermédiaire"
     },
@@ -77,7 +77,7 @@
       "Latitude_Décimal": 25.35,
       "Longitude_Décimal": 35.7167,
       "Océan/Mer": "Mer Rouge",
-      "Event": "Arabian Tunnel"
+      "Event": "Arabian Tunnel - Chasse du dugong - 5000 kilogrammes"
     },
     {
       "Escales du Nautilus": "Méditerrannée",
@@ -85,13 +85,13 @@
       "Latitude_Décimal": 39.2833,
       "Longitude_Décimal": 6.7,
       "Océan/Mer": "Mer Méditerrannée",
-      "Event": "Second bassin méditérranéen"
+      "Event": "La méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens."
     },
     {
       "Escales du Nautilus": "Contour Afrique Nord",
       "Date": "19 Février 1867",
-      "Latitude_Décimal": 24.522371,
-      "Longitude_Décimal": -36.059655,
+      "Latitude_Décimal": 32.302988,
+      "Longitude_Décimal": -24.380986,
       "Océan/Mer": "Océan Atlantique Nord",
       "Event": "Direction le pôle sud"
     },
@@ -101,7 +101,7 @@
       "Latitude_Décimal": -45.6167,
       "Longitude_Décimal": -37.8833,
       "Océan/Mer": "Océan Atlantique Sud",
-      "Event": "L'Atlantide"
+      "Event": "L'Atlantide, l'ancienne Métropide de Théopompe, l'Atlantide de Platon."
     },
     {
       "Escales du Nautilus": "Contour Amérique Sud",
@@ -117,7 +117,7 @@
       "Latitude_Décimal": -54.6,
       "Longitude_Décimal": -66.75,
       "Océan/Mer": "Mers du pacifique",
-      "Event": ""
+      "Event": "Direction la Banquise - Le Nautilus avait repris son immperturbable direction vers le sud."
     },
     {
       "Escales du Nautilus": "Pôle Sud",
@@ -133,7 +133,7 @@
       "Latitude_Décimal": -56.05,
       "Longitude_Décimal": -67.9,
       "Océan/Mer": "Océan Pacifique Sud",
-      "Event": ""
+      "Event": "Du Cap Horn à l'Amazone."
     },
     {
       "Escales du Nautilus": "Contour Amérique Sud (retour)",
@@ -141,23 +141,23 @@
       "Latitude_Décimal": -40.0,
       "Longitude_Décimal": -50.0,
       "Océan/Mer": "Océan Atlantique Sud",
-      "Event": "Point intermédiaire"
+      "Event": "Point intermédiaire -  Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord."
     },
     {
         "Escales du Nautilus": "Contour Amérique Sud centrale",
         "Date": "1 Mars 1867",
-        "Latitude_Décimal": -1.834997,
-        "Longitude_Décimal": -24.224499,
+        "Latitude_Décimal": -6.96056,
+        "Longitude_Décimal": -32.08735,
         "Océan/Mer": "Océan Atlantique Sud",
         "Event": "Point intermédiaire"
       },
     {
       "Escales du Nautilus": "Martinique et guadeloupe",
-      "Date": "16 Avril 1867",
+      "Date": "20 Avril 1867",
       "Latitude_Décimal": 15.3167,
       "Longitude_Décimal": -59.9667,
       "Océan/Mer": "Océan Atlantique Nord",
-      "Event": "Attaque du poulpe géant"
+      "Event": "Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur."
     },
     {
       "Escales du Nautilus": "Contour Amérique Nord",
@@ -173,7 +173,7 @@
       "Latitude_Décimal": 23.6833,
       "Longitude_Décimal": -75.3167,
       "Océan/Mer": "Océan Atlantique Nord",
-      "Event": ""
+      "Event": "Entrée dans le Gulf Stream."
     },
     {
       "Escales du Nautilus": "Cap Hatteras",
@@ -181,7 +181,7 @@
       "Latitude_Décimal": 35.1,
       "Longitude_Décimal": -74.8667,
       "Océan/Mer": "Océan Atlantique Nord",
-      "Event": ""
+      "Event": "Travers du Cap Hatteras, à la hauteur de la Caroline du Nord, La largeur du Golf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres."
     },
     {
       "Escales du Nautilus": "Long Island",
@@ -189,7 +189,7 @@
       "Latitude_Décimal": 41.0833,
       "Longitude_Décimal": -72.8667,
       "Océan/Mer": "Océan Atlantique Nord",
-      "Event": ""
+      "Event": "Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface."
     },
     {
       "Escales du Nautilus": "Terre Neuve",
@@ -197,15 +197,15 @@
       "Latitude_Décimal": 47.1333,
       "Longitude_Décimal": -57.9167,
       "Océan/Mer": "Océan Atlantique Nord",
-      "Event": "Extrémité méridionale du banc de Terre Neuve"
+      "Event": "Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines."
     },
     {
       "Escales du Nautilus": "Irlande",
-      "Date": "17 Mai 1867",
+      "Date": "25 Mai 1867",
       "Latitude_Décimal": 51.1,
       "Longitude_Décimal": -9.7,
       "Océan/Mer": "Mer Celtique",
-      "Event": ""
+      "Event": "La vengeance du capitaine Nemo, le vengeur, et cette horrible scène du vaisseau coulé avec son équipage."
     },
     {
       "Escales du Nautilus": "Manche",
@@ -213,6 +213,31 @@
       "Latitude_Décimal": 50.0,
       "Longitude_Décimal": -2.2,
       "Océan/Mer": "Manche",
+      "Event": "Complot d'évasion"
+    },
+    {
+      "Escales du Nautilus": "Contour Angleterre Sud",
+      "Date": "3 Juin 1867",
+      "Latitude_Décimal": 50.95780,
+      "Longitude_Décimal": 1.382884,
+      "Océan/Mer": "Mer du nord",
+      "Event": "Complot d'évasion"
+    },
+    {
+      "Escales du Nautilus": "Contour Angleterre Nord",
+      "Date": "3 Juin 1867",
+      "Latitude_Décimal": 55.59412,
+      "Longitude_Décimal": 4.136887,
+      "Océan/Mer": "Mer du nord",
+      "Event": "Complot d'évasion"
+    },
+   
+    {
+      "Escales du Nautilus": "Côtes de la Norvège",
+      "Date": "Juin 1867",
+      "Latitude_Décimal": 62.86093,
+      "Longitude_Décimal": 1.21030,
+      "Océan/Mer": "Mer du nord",
       "Event": "Fin du voyage pour le professeur Aronnax, Conseil et Ned Land"
     }
   ]
