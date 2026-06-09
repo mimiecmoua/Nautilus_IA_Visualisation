@@ -1,0 +1,74 @@
+/* Styles de base */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('under-sea.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteneur principal */
+.wrapper {
+    flex: 1; /* Prend tout l'espace disponible */
+    display: flex;
+    flex-direction: column;
+}
+
+/* En-tête */
+h1 {
+    margin: 20px 0;
+    color: #f0efef;
+    text-align: center; /* Centrer le titre */
+}
+
+/* Carte */
+#map {
+    flex: 1; /* Prend tout l'espace disponible */
+    width: 80%;
+    margin: 20px auto; /* Espacement autour de la carte */
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Fond sombre */
+    color: #fff; /* Texte blanc */
+    padding: 20px 0; /* Espacement intérieur */
+    text-align: center; /* Centrer le texte */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    flex-shrink: 0; /* Empêche le footer de rétrécir */
+}
+
+/* Liens dans le footer */
+footer a {
+    color: #fff; /* Texte blanc */
+    text-decoration: none; /* Pas de soulignement */
+    font-weight: bold; /* Texte en gras */
+    transition: color 0.3s ease; /* Animation au survol */
+}
+
+footer a:hover {
+    color: #ffcc00; /* Couleur jaune au survol */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    #map {
+        width: 95%; /* Carte plus large sur les petits écrans */
+        margin: 10px auto; /* Espacement réduit */
+    }
+
+    footer .footer-content {
+        flex-direction: column; /* Empiler les éléments verticalement */
+    }
+
+    footer p {
+        margin: 10px 0; /* Espacement entre les paragraphes */
+    }
+}
