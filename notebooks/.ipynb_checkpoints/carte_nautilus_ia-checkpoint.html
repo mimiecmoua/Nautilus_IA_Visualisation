@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_b10a49f0ad6d2daadd0cb4d3ccc95dec {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_b10a49f0ad6d2daadd0cb4d3ccc95dec" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_b10a49f0ad6d2daadd0cb4d3ccc95dec = L.map(
+                "map_b10a49f0ad6d2daadd0cb4d3ccc95dec",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c87f9db64bb8cb9e40bf247404a228ac = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c87f9db64bb8cb9e40bf247404a228ac.addTo(map_b10a49f0ad6d2daadd0cb4d3ccc95dec);
+        
+    
+            var marker_cluster_bd0e62d8218fce9c92cd957eefb29d04 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_492ba5ba496fecd6a32472f44c6117d7 = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_a1db3a531657256f79c7dc0692bd3491 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_492ba5ba496fecd6a32472f44c6117d7.setIcon(icon_a1db3a531657256f79c7dc0692bd3491);
+        
+    
+        var popup_45d4c9e3f628924643923faa61b04aba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_31ea1a2d9e16fa67bfde71479821136b = $(`<div id="html_31ea1a2d9e16fa67bfde71479821136b" style="width: 100.0%; height: 100.0%;"><b>île de Crespo</b><br>📅 Date : 1er Décembre 1866<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement :  Début de l'aventure -  Première chasse soumarine - Une forêt sous-marine - Une montrueuse araignée de mer.<br>🧠 Mots-clés IA : ['début', 'première', 'chasse']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_45d4c9e3f628924643923faa61b04aba.setContent(html_31ea1a2d9e16fa67bfde71479821136b);
+            
+        
+
+        marker_492ba5ba496fecd6a32472f44c6117d7.bindPopup(popup_45d4c9e3f628924643923faa61b04aba)
+        ;
+
+        
+    
+    
+            var marker_1e96681a83928cdbd857d530b5c000e7 = L.marker(
+                [9.48786, 177.83569],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_7556299e94bdbf155f2ff50d95f28c63 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1e96681a83928cdbd857d530b5c000e7.setIcon(icon_7556299e94bdbf155f2ff50d95f28c63);
+        
+    
+        var popup_63167495387f081535e308055e910036 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_37cf2b0c3f25b87370478a57427ca343 = $(`<div id="html_37cf2b0c3f25b87370478a57427ca343" style="width: 100.0%; height: 100.0%;"><b>Archipel des Pomotou</b><br>📅 Date : 11 Décembre 1866<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement : Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d'îles.<br>🧠 Mots-clés IA : ['cette', 'archipel', 'couvre']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_63167495387f081535e308055e910036.setContent(html_37cf2b0c3f25b87370478a57427ca343);
+            
+        
+
+        marker_1e96681a83928cdbd857d530b5c000e7.bindPopup(popup_63167495387f081535e308055e910036)
+        ;
+
+        
+    
+    
+            var marker_b063b5f2593d426afdfe21058bd21ba5 = L.marker(
+                [-16.0667, 164.5333],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_d8d870d9003220d9eea3fe9d1bffa311 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b063b5f2593d426afdfe21058bd21ba5.setIcon(icon_d8d870d9003220d9eea3fe9d1bffa311);
+        
+    
+        var popup_fa1949c583f5e585c6a2607837e55344 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ff6bb49d552b0cc112d2769bd52b4e9f = $(`<div id="html_ff6bb49d552b0cc112d2769bd52b4e9f" style="width: 100.0%; height: 100.0%;"><b>Archipel des nouvelles Hébrides</b><br>📅 Date : 25 Décembre 1866<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement : Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.<br>🧠 Mots-clés IA : ['découverte', 'quiros', 'bougainville']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_fa1949c583f5e585c6a2607837e55344.setContent(html_ff6bb49d552b0cc112d2769bd52b4e9f);
+            
+        
+
+        marker_b063b5f2593d426afdfe21058bd21ba5.bindPopup(popup_fa1949c583f5e585c6a2607837e55344)
+        ;
+
+        
+    
+    
+            var marker_35c1ced83f9969b32481dab56e3a6a09 = L.marker(
+                [-0.3167, 128.3833],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_a09861c53d7c2cc3710e2825e235d5e8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_35c1ced83f9969b32481dab56e3a6a09.setIcon(icon_a09861c53d7c2cc3710e2825e235d5e8);
+        
+    
+        var popup_08c1a84929c62a7de2bf65b664ee9ac9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5f8db44b6fc3cfa850fe343607c50bd8 = $(`<div id="html_5f8db44b6fc3cfa850fe343607c50bd8" style="width: 100.0%; height: 100.0%;"><b>La Pouasie</b><br>📅 Date : 4 Janvier 1867<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement : Déecouverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfalxs - Quatres jours sur terre - Bataille avec les Papouas.<br>🧠 Mots-clés IA : ['déecouverte', 'portugais', 'francisco']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_08c1a84929c62a7de2bf65b664ee9ac9.setContent(html_5f8db44b6fc3cfa850fe343607c50bd8);
+            
+        
+
+        marker_35c1ced83f9969b32481dab56e3a6a09.bindPopup(popup_08c1a84929c62a7de2bf65b664ee9ac9)
+        ;
+
+        
+    
+    
+            var marker_5890aca3ecf6b7b938885c8320eb23c2 = L.marker(
+                [-10.7, 136.7667],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_55e1ee1ab7085ed418da0c11d6c0c535 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5890aca3ecf6b7b938885c8320eb23c2.setIcon(icon_55e1ee1ab7085ed418da0c11d6c0c535);
+        
+    
+        var popup_24052b1dfca3f8240c9d9d09ef2d8ea5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a17412379d7cb17ed198fc987057a9c = $(`<div id="html_2a17412379d7cb17ed198fc987057a9c" style="width: 100.0%; height: 100.0%;"><b>Cap Wessel</b><br>📅 Date : 11 janvier 1867<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement : Forme la pointe du golf de Carpentarie.<br>🧠 Mots-clés IA : ['forme', 'pointe', 'golf']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_24052b1dfca3f8240c9d9d09ef2d8ea5.setContent(html_2a17412379d7cb17ed198fc987057a9c);
+            
+        
+
+        marker_5890aca3ecf6b7b938885c8320eb23c2.bindPopup(popup_24052b1dfca3f8240c9d9d09ef2d8ea5)
+        ;
+
+        
+    
+    
+            var marker_0bcbcc884cf0f33d03d74c235091dffb = L.marker(
+                [-8.6833, 125.7333],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_c40825a80a79887f3d3fca63d1e2e7bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0bcbcc884cf0f33d03d74c235091dffb.setIcon(icon_c40825a80a79887f3d3fca63d1e2e7bd);
+        
+    
+        var popup_103d7aeee23d4b244389b1043c735c0e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e35c08bf064d4fb3642c971c69b964de = $(`<div id="html_e35c08bf064d4fb3642c971c69b964de" style="width: 100.0%; height: 100.0%;"><b>Mer de Timore</b><br>📅 Date : 13 janvier 1867<br>🌊 Océan/Mer : Océan Indien<br>📖 Événement : Un homme de l'équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.<br>🧠 Mots-clés IA : ['homme', 'mort', 'nuit']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_103d7aeee23d4b244389b1043c735c0e.setContent(html_e35c08bf064d4fb3642c971c69b964de);
+            
+        
+
+        marker_0bcbcc884cf0f33d03d74c235091dffb.bindPopup(popup_103d7aeee23d4b244389b1043c735c0e)
+        ;
+
+        
+    
+    
+            var marker_156b292d512fc953fe1cfdd3733438da = L.marker(
+                [-12.0833, 94.55],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_f5986c50ed8659f9cb71c6822e78874e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_156b292d512fc953fe1cfdd3733438da.setIcon(icon_f5986c50ed8659f9cb71c6822e78874e);
+        
+    
+        var popup_3ccc5f6b3637692bcc78980c1d9fff69 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e53c9b61bcf0ef667448efdeeca325a9 = $(`<div id="html_e53c9b61bcf0ef667448efdeeca325a9" style="width: 100.0%; height: 100.0%;"><b>île Keeling</b><br>📅 Date : 24 Janvier 1867<br>🌊 Océan/Mer : Océan Indien<br>📖 Événement : Visitée par Darwin et le capitaine Fitz-Roy<br>🧠 Mots-clés IA : ['visitée', 'darwin', 'capitaine']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_3ccc5f6b3637692bcc78980c1d9fff69.setContent(html_e53c9b61bcf0ef667448efdeeca325a9);
+            
+        
+
+        marker_156b292d512fc953fe1cfdd3733438da.bindPopup(popup_3ccc5f6b3637692bcc78980c1d9fff69)
+        ;
+
+        
+    
+    
+            var marker_5596415b0ff97043663135923dca2511 = L.marker(
+                [5.9167, 79.7],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_7f6279e4c84a6cbaadfede2963ee2173 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5596415b0ff97043663135923dca2511.setIcon(icon_7f6279e4c84a6cbaadfede2963ee2173);
+        
+    
+        var popup_6489c1a5c2a28d9d4441032d0b62854f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_13d5a32f85e5646a8b765476e01d8eb1 = $(`<div id="html_13d5a32f85e5646a8b765476e01d8eb1" style="width: 100.0%; height: 100.0%;"><b>Golfe du bengale</b><br>📅 Date : 27 janvier 1867<br>🌊 Océan/Mer : Océan Indien<br>📖 Événement : Spectacle sinistre! des cadavres qui flottaient à la suface des flots. C'était la mort des villes Indiennes.<br>🧠 Mots-clés IA : ['spectacle', 'sinistre', 'cadavres']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_6489c1a5c2a28d9d4441032d0b62854f.setContent(html_13d5a32f85e5646a8b765476e01d8eb1);
+            
+        
+
+        marker_5596415b0ff97043663135923dca2511.bindPopup(popup_6489c1a5c2a28d9d4441032d0b62854f)
+        ;
+
+        
+    
+    
+            var marker_483860e57fb1153e6c4f4c6518a2df7b = L.marker(
+                [10.99809, 56.614067],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_0d55fa3a25695a54a412b7a0e643fe6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_483860e57fb1153e6c4f4c6518a2df7b.setIcon(icon_0d55fa3a25695a54a412b7a0e643fe6c);
+        
+    
+        var popup_cb34c3631285052408097a75d86582d4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fd59f90b98b4ff587884443c4add19dd = $(`<div id="html_fd59f90b98b4ff587884443c4add19dd" style="width: 100.0%; height: 100.0%;"><b>Contour Afrique Est</b><br>📅 Date : 28 Janvier 1867<br>🌊 Océan/Mer : Océan Indien<br>📖 Événement : Point intermédiaire<br>🧠 Mots-clés IA : ['point', 'intermédiaire']<br>📌 Cluster géographique : 1</div>`)[0];
+                popup_cb34c3631285052408097a75d86582d4.setContent(html_fd59f90b98b4ff587884443c4add19dd);
+            
+        
+
+        marker_483860e57fb1153e6c4f4c6518a2df7b.bindPopup(popup_cb34c3631285052408097a75d86582d4)
+        ;
+
+        
+    
+    
+            var marker_5aa70e3de2141311e4226ca20337a829 = L.marker(
+                [25.35, 35.7167],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_318ad9081d41ba1b8b062b69e4a22861 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5aa70e3de2141311e4226ca20337a829.setIcon(icon_318ad9081d41ba1b8b062b69e4a22861);
+        
+    
+        var popup_3b22d881016f07b06b122e5f0411d7e7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_811bd119e39fc9c187efb0774c139da6 = $(`<div id="html_811bd119e39fc9c187efb0774c139da6" style="width: 100.0%; height: 100.0%;"><b>La mer rouge</b><br>📅 Date : 30 Janvier 1867<br>🌊 Océan/Mer : Mer Rouge<br>📖 Événement : Arabian Tunnel - Chasse du dugong<br>🧠 Mots-clés IA : ['arabian', 'tunnel', 'chasse']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_3b22d881016f07b06b122e5f0411d7e7.setContent(html_811bd119e39fc9c187efb0774c139da6);
+            
+        
+
+        marker_5aa70e3de2141311e4226ca20337a829.bindPopup(popup_3b22d881016f07b06b122e5f0411d7e7)
+        ;
+
+        
+    
+    
+            var marker_796b373a7cc971bc26d5098ee35298e6 = L.marker(
+                [39.2833, 6.7],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_7b3a3ecb8d9a1c68df00e3996b4382a9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_796b373a7cc971bc26d5098ee35298e6.setIcon(icon_7b3a3ecb8d9a1c68df00e3996b4382a9);
+        
+    
+        var popup_9792e3f60615e983651de0daa0c2d24f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e9e35c7d3524458e47633849d2cde17 = $(`<div id="html_5e9e35c7d3524458e47633849d2cde17" style="width: 100.0%; height: 100.0%;"><b>Méditerrannée</b><br>📅 Date : 16 Février 1867<br>🌊 Océan/Mer : Mer Méditerrannée<br>📖 Événement : La méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.<br>🧠 Mots-clés IA : ['méditerranée', 'heures', 'ned']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_9792e3f60615e983651de0daa0c2d24f.setContent(html_5e9e35c7d3524458e47633849d2cde17);
+            
+        
+
+        marker_796b373a7cc971bc26d5098ee35298e6.bindPopup(popup_9792e3f60615e983651de0daa0c2d24f)
+        ;
+
+        
+    
+    
+            var marker_fbd45bf07912e0b217d4979987a96ed7 = L.marker(
+                [32.302988, -24.380986],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_3f615b2aec1fe5b001740907e5a48548 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fbd45bf07912e0b217d4979987a96ed7.setIcon(icon_3f615b2aec1fe5b001740907e5a48548);
+        
+    
+        var popup_e582a01c51ed908900f18128b2a9b167 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_307ffd64fbc44405ce9b1597f3612da2 = $(`<div id="html_307ffd64fbc44405ce9b1597f3612da2" style="width: 100.0%; height: 100.0%;"><b>Contour Afrique Nord</b><br>📅 Date : 19 Février 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Direction le pôle sud<br>🧠 Mots-clés IA : ['direction', 'pôle', 'sud']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_e582a01c51ed908900f18128b2a9b167.setContent(html_307ffd64fbc44405ce9b1597f3612da2);
+            
+        
+
+        marker_fbd45bf07912e0b217d4979987a96ed7.bindPopup(popup_e582a01c51ed908900f18128b2a9b167)
+        ;
+
+        
+    
+    
+            var marker_1b7f2632ec8ac3e0d3f3bd8f67c887fa = L.marker(
+                [-45.6167, -37.8833],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_55200c3e582b41229271e3c1690c9088 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1b7f2632ec8ac3e0d3f3bd8f67c887fa.setIcon(icon_55200c3e582b41229271e3c1690c9088);
+        
+    
+        var popup_1327aed37c8c4fd2f333e997bd9ef4bd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0531cd0efbe5e6c89ee112bd584fb9ff = $(`<div id="html_0531cd0efbe5e6c89ee112bd584fb9ff" style="width: 100.0%; height: 100.0%;"><b>La mer de Sargasses</b><br>📅 Date : 13 Mars 1867<br>🌊 Océan/Mer : Océan Atlantique Sud<br>📖 Événement : L'Atlantide, l'ancienne Métropide de Théopompe, l'Atlantide de Platon.<br>🧠 Mots-clés IA : ['métropide', 'théopompe', 'platon']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_1327aed37c8c4fd2f333e997bd9ef4bd.setContent(html_0531cd0efbe5e6c89ee112bd584fb9ff);
+            
+        
+
+        marker_1b7f2632ec8ac3e0d3f3bd8f67c887fa.bindPopup(popup_1327aed37c8c4fd2f333e997bd9ef4bd)
+        ;
+
+        
+    
+    
+            var marker_5b5025e19851e1b582a1cdca172e33f9 = L.marker(
+                [-50.0, -60.0],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_e09a0b2df68a9790f82efa5966d6dafe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5b5025e19851e1b582a1cdca172e33f9.setIcon(icon_e09a0b2df68a9790f82efa5966d6dafe);
+        
+    
+        var popup_170965cd8858d335b9e9475e2e300852 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0b7e5ed4498588f586d153335fb375b2 = $(`<div id="html_0b7e5ed4498588f586d153335fb375b2" style="width: 100.0%; height: 100.0%;"><b>Contour Amérique Sud</b><br>📅 Date : 14 Mars 1867<br>🌊 Océan/Mer : Océan Atlantique Sud<br>📖 Événement : Point intermédiaire<br>🧠 Mots-clés IA : ['point', 'intermédiaire']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_170965cd8858d335b9e9475e2e300852.setContent(html_0b7e5ed4498588f586d153335fb375b2);
+            
+        
+
+        marker_5b5025e19851e1b582a1cdca172e33f9.bindPopup(popup_170965cd8858d335b9e9475e2e300852)
+        ;
+
+        
+    
+    
+            var marker_5bbe1644bf6a672ce2a3a103b001bae9 = L.marker(
+                [-54.6, -66.75],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_e15309d9981e51cff7aa761f15153c7c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5bbe1644bf6a672ce2a3a103b001bae9.setIcon(icon_e15309d9981e51cff7aa761f15153c7c);
+        
+    
+        var popup_bed2e61808024d2d56d95e1f37858669 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a8dcfc42c219a9a4329cd5e94ec3d750 = $(`<div id="html_a8dcfc42c219a9a4329cd5e94ec3d750" style="width: 100.0%; height: 100.0%;"><b>Cap Horn</b><br>📅 Date : 14 Mars 1867<br>🌊 Océan/Mer : Mers du pacifique<br>📖 Événement : Direction la Banquise - Le Nautilus avait repris son immperturbable direction vers le sud.<br>🧠 Mots-clés IA : ['direction', 'banquise', 'nautilus']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_bed2e61808024d2d56d95e1f37858669.setContent(html_a8dcfc42c219a9a4329cd5e94ec3d750);
+            
+        
+
+        marker_5bbe1644bf6a672ce2a3a103b001bae9.bindPopup(popup_bed2e61808024d2d56d95e1f37858669)
+        ;
+
+        
+    
+    
+            var marker_49b73de9d6686c746c470387d217e72c = L.marker(
+                [-73.7, -133.8333],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_8b29944db0b108bdd87bd4f36edc5de5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_49b73de9d6686c746c470387d217e72c.setIcon(icon_8b29944db0b108bdd87bd4f36edc5de5);
+        
+    
+        var popup_8945efa53f7d97b72872c84087c57c63 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_499e19b459c6cefb8c3d21cbed0f26a2 = $(`<div id="html_499e19b459c6cefb8c3d21cbed0f26a2" style="width: 100.0%; height: 100.0%;"><b>Pôle Sud</b><br>📅 Date : 19 Mars 1867<br>🌊 Océan/Mer : Mers du pacifique<br>📖 Événement : Vaisseau enrayé dans la banquise<br>🧠 Mots-clés IA : ['vaisseau', 'enrayé', 'banquise']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_8945efa53f7d97b72872c84087c57c63.setContent(html_499e19b459c6cefb8c3d21cbed0f26a2);
+            
+        
+
+        marker_49b73de9d6686c746c470387d217e72c.bindPopup(popup_8945efa53f7d97b72872c84087c57c63)
+        ;
+
+        
+    
+    
+            var marker_f0d81db8e3650135d7c4ebc2e98c1738 = L.marker(
+                [-56.05, -67.9],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_1b587447a2d31abe10126683ad84a2f1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f0d81db8e3650135d7c4ebc2e98c1738.setIcon(icon_1b587447a2d31abe10126683ad84a2f1);
+        
+    
+        var popup_7e4d03f4412e3fb95b0534f656646c44 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fe5971aa88c2c32d5cabbf5ecfc1e787 = $(`<div id="html_fe5971aa88c2c32d5cabbf5ecfc1e787" style="width: 100.0%; height: 100.0%;"><b>Cap Horn (retour)</b><br>📅 Date : 1 er Avril 1867<br>🌊 Océan/Mer : Océan Pacifique Sud<br>📖 Événement : Du Cap Horn à l'Amazone.<br>🧠 Mots-clés IA : ['cap', 'horn']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_7e4d03f4412e3fb95b0534f656646c44.setContent(html_fe5971aa88c2c32d5cabbf5ecfc1e787);
+            
+        
+
+        marker_f0d81db8e3650135d7c4ebc2e98c1738.bindPopup(popup_7e4d03f4412e3fb95b0534f656646c44)
+        ;
+
+        
+    
+    
+            var marker_66aec00607087ff179f05add209945cf = L.marker(
+                [-40.0, -50.0],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_532e0b1692ac1a185294175563e62734 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_66aec00607087ff179f05add209945cf.setIcon(icon_532e0b1692ac1a185294175563e62734);
+        
+    
+        var popup_5fc7a0b914ebbb1dae659419cae5fce8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_605f7e53260ac8f93b28e92a5f7ea24a = $(`<div id="html_605f7e53260ac8f93b28e92a5f7ea24a" style="width: 100.0%; height: 100.0%;"><b>Contour Amérique Sud (retour)</b><br>📅 Date : 5 Avril 1867<br>🌊 Océan/Mer : Océan Atlantique Sud<br>📖 Événement : Point intermédiaire -  Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.<br>🧠 Mots-clés IA : ['point', 'intermédiaire', 'patagonie']<br>📌 Cluster géographique : 2</div>`)[0];
+                popup_5fc7a0b914ebbb1dae659419cae5fce8.setContent(html_605f7e53260ac8f93b28e92a5f7ea24a);
+            
+        
+
+        marker_66aec00607087ff179f05add209945cf.bindPopup(popup_5fc7a0b914ebbb1dae659419cae5fce8)
+        ;
+
+        
+    
+    
+            var marker_265660b0eb32ddee71665da5f2a35947 = L.marker(
+                [-6.96056, -32.08735],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_9ded685110d9ff60d253c025b42a10a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_265660b0eb32ddee71665da5f2a35947.setIcon(icon_9ded685110d9ff60d253c025b42a10a4);
+        
+    
+        var popup_de1639d03ab91713948bbd05ed2d8f9c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ab1e51ab40a0fc22d41e94dabb4e270 = $(`<div id="html_6ab1e51ab40a0fc22d41e94dabb4e270" style="width: 100.0%; height: 100.0%;"><b>Contour Amérique Sud centrale</b><br>📅 Date : 1 Mars 1867<br>🌊 Océan/Mer : Océan Atlantique Sud<br>📖 Événement : Point intermédiaire<br>🧠 Mots-clés IA : ['point', 'intermédiaire']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_de1639d03ab91713948bbd05ed2d8f9c.setContent(html_6ab1e51ab40a0fc22d41e94dabb4e270);
+            
+        
+
+        marker_265660b0eb32ddee71665da5f2a35947.bindPopup(popup_de1639d03ab91713948bbd05ed2d8f9c)
+        ;
+
+        
+    
+    
+            var marker_1a38a57a2f17f651e208fb4942e42ae1 = L.marker(
+                [15.3167, -59.9667],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_2fa5315c72d0e33776c33c4769b704df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1a38a57a2f17f651e208fb4942e42ae1.setIcon(icon_2fa5315c72d0e33776c33c4769b704df);
+        
+    
+        var popup_8e571474e4d00ba277a1b3419bdff378 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_964d313925a6683ea3fe46f478c9af5b = $(`<div id="html_964d313925a6683ea3fe46f478c9af5b" style="width: 100.0%; height: 100.0%;"><b>Martinique et guadeloupe</b><br>📅 Date : 20 Avril 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.<br>🧠 Mots-clés IA : ['attaque', 'calamar', 'géant']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_8e571474e4d00ba277a1b3419bdff378.setContent(html_964d313925a6683ea3fe46f478c9af5b);
+            
+        
+
+        marker_1a38a57a2f17f651e208fb4942e42ae1.bindPopup(popup_8e571474e4d00ba277a1b3419bdff378)
+        ;
+
+        
+    
+    
+            var marker_d064d4fa7e6a97347ad96c3e5fdb109d = L.marker(
+                [20.0, -70.0],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_a1dbf2c99f9d2fc3fc8fe90738bdd619 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d064d4fa7e6a97347ad96c3e5fdb109d.setIcon(icon_a1dbf2c99f9d2fc3fc8fe90738bdd619);
+        
+    
+        var popup_b95fad61a6b324a48e1f31aa9c6a670e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_80ddd44c3ad76bd9e6fe2c94bd2ca924 = $(`<div id="html_80ddd44c3ad76bd9e6fe2c94bd2ca924" style="width: 100.0%; height: 100.0%;"><b>Contour Amérique Nord</b><br>📅 Date : 18 Avril 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Point intermédiaire<br>🧠 Mots-clés IA : ['point', 'intermédiaire']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_b95fad61a6b324a48e1f31aa9c6a670e.setContent(html_80ddd44c3ad76bd9e6fe2c94bd2ca924);
+            
+        
+
+        marker_d064d4fa7e6a97347ad96c3e5fdb109d.bindPopup(popup_b95fad61a6b324a48e1f31aa9c6a670e)
+        ;
+
+        
+    
+    
+            var marker_e7233020ac7af2e8cae3b9da51a72433 = L.marker(
+                [23.6833, -75.3167],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_c937c930cfbb800772812c3652b11319 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e7233020ac7af2e8cae3b9da51a72433.setIcon(icon_c937c930cfbb800772812c3652b11319);
+        
+    
+        var popup_94aba309117c07a23a5bb06ab7941deb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aea6b9891bcc249ccfa5295bba8985b3 = $(`<div id="html_aea6b9891bcc249ccfa5295bba8985b3" style="width: 100.0%; height: 100.0%;"><b>île Lucayes</b><br>📅 Date : 20 Avril 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Entrée dans le Gulf Stream.<br>🧠 Mots-clés IA : ['entrée', 'gulf', 'stream']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_94aba309117c07a23a5bb06ab7941deb.setContent(html_aea6b9891bcc249ccfa5295bba8985b3);
+            
+        
+
+        marker_e7233020ac7af2e8cae3b9da51a72433.bindPopup(popup_94aba309117c07a23a5bb06ab7941deb)
+        ;
+
+        
+    
+    
+            var marker_ed5043f71977a15f28a40ed3cce8f4ce = L.marker(
+                [35.1, -74.8667],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_9018222408c8daf72a044c6e90d225ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ed5043f71977a15f28a40ed3cce8f4ce.setIcon(icon_9018222408c8daf72a044c6e90d225ce);
+        
+    
+        var popup_0e038ece51f1e021cfc20b3480b0003f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b2d271162bdff6d22a4f2db7831f8e9f = $(`<div id="html_b2d271162bdff6d22a4f2db7831f8e9f" style="width: 100.0%; height: 100.0%;"><b>Cap Hatteras</b><br>📅 Date : 8 Mai 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Travers du Cap Hatteras, à la hauteur de la Caroline du Nord, La largeur du Golf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.<br>🧠 Mots-clés IA : ['milles', 'travers', 'cap']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_0e038ece51f1e021cfc20b3480b0003f.setContent(html_b2d271162bdff6d22a4f2db7831f8e9f);
+            
+        
+
+        marker_ed5043f71977a15f28a40ed3cce8f4ce.bindPopup(popup_0e038ece51f1e021cfc20b3480b0003f)
+        ;
+
+        
+    
+    
+            var marker_5097a1dc09ff35296c62a7f5c9a952d0 = L.marker(
+                [41.0833, -72.8667],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_a4893d1d4c2ec06f5ab17131cbc6945f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5097a1dc09ff35296c62a7f5c9a952d0.setIcon(icon_a4893d1d4c2ec06f5ab17131cbc6945f);
+        
+    
+        var popup_b9862cf9925542a7c0f88e93c861aa63 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88d9d9fb99abf26817dfd2dea03a793b = $(`<div id="html_88d9d9fb99abf26817dfd2dea03a793b" style="width: 100.0%; height: 100.0%;"><b>Long Island</b><br>📅 Date : 10 Mai 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.<br>🧠 Mots-clés IA : ['lutte', 'éléments', 'capitaine']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_b9862cf9925542a7c0f88e93c861aa63.setContent(html_88d9d9fb99abf26817dfd2dea03a793b);
+            
+        
+
+        marker_5097a1dc09ff35296c62a7f5c9a952d0.bindPopup(popup_b9862cf9925542a7c0f88e93c861aa63)
+        ;
+
+        
+    
+    
+            var marker_712dec18af84e7f1303d3f1c94a1c408 = L.marker(
+                [47.1333, -57.9167],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_9a13ad6feb99a726e901618e613b0f55 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_712dec18af84e7f1303d3f1c94a1c408.setIcon(icon_9a13ad6feb99a726e901618e613b0f55);
+        
+    
+        var popup_0b8b0f37b2833989a171da3b41d0411c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a4982a8ae75ed4fde3ad46659e277c52 = $(`<div id="html_a4982a8ae75ed4fde3ad46659e277c52" style="width: 100.0%; height: 100.0%;"><b>Terre Neuve</b><br>📅 Date : 15 Mai 1867<br>🌊 Océan/Mer : Océan Atlantique Nord<br>📖 Événement : Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.<br>🧠 Mots-clés IA : ['extrémité', 'méridionale', 'banc']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_0b8b0f37b2833989a171da3b41d0411c.setContent(html_a4982a8ae75ed4fde3ad46659e277c52);
+            
+        
+
+        marker_712dec18af84e7f1303d3f1c94a1c408.bindPopup(popup_0b8b0f37b2833989a171da3b41d0411c)
+        ;
+
+        
+    
+    
+            var marker_716825dbb156fe25463ed076fc0c9cd7 = L.marker(
+                [51.1, -9.7],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_4dcd3219dce0e23be21c00a2de1b15d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_716825dbb156fe25463ed076fc0c9cd7.setIcon(icon_4dcd3219dce0e23be21c00a2de1b15d5);
+        
+    
+        var popup_c77e746c90d4ded7affdd1032ffedefc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_472f8906c8449f07507f1ab36c65ff80 = $(`<div id="html_472f8906c8449f07507f1ab36c65ff80" style="width: 100.0%; height: 100.0%;"><b>Irlande</b><br>📅 Date : 25 Mai 1867<br>🌊 Océan/Mer : Mer Celtique<br>📖 Événement : La vengeance du capitaine Nemo, le vengeur, et cette horrible scène du vaisseau coulé avec son équipage.<br>🧠 Mots-clés IA : ['vengeance', 'capitaine', 'nemo']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_c77e746c90d4ded7affdd1032ffedefc.setContent(html_472f8906c8449f07507f1ab36c65ff80);
+            
+        
+
+        marker_716825dbb156fe25463ed076fc0c9cd7.bindPopup(popup_c77e746c90d4ded7affdd1032ffedefc)
+        ;
+
+        
+    
+    
+            var marker_48db7697eaaf109b75ea84a44877c53a = L.marker(
+                [50.0, -2.2],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_5d091aa1b8153c2e9356768c07a46682 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_48db7697eaaf109b75ea84a44877c53a.setIcon(icon_5d091aa1b8153c2e9356768c07a46682);
+        
+    
+        var popup_d72305d8b5f6a8795d68ed0cfd0906d4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f639f0120942000837530b3473188056 = $(`<div id="html_f639f0120942000837530b3473188056" style="width: 100.0%; height: 100.0%;"><b>Manche</b><br>📅 Date : 2 Juin 1867<br>🌊 Océan/Mer : Manche<br>📖 Événement : Complot d'évasion<br>🧠 Mots-clés IA : ['complot']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_d72305d8b5f6a8795d68ed0cfd0906d4.setContent(html_f639f0120942000837530b3473188056);
+            
+        
+
+        marker_48db7697eaaf109b75ea84a44877c53a.bindPopup(popup_d72305d8b5f6a8795d68ed0cfd0906d4)
+        ;
+
+        
+    
+    
+            var marker_1b8483d5e98898a38bc7109950aadf30 = L.marker(
+                [50.9578, 1.382884],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_3c89e651a6781182d258b132f4a16c56 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1b8483d5e98898a38bc7109950aadf30.setIcon(icon_3c89e651a6781182d258b132f4a16c56);
+        
+    
+        var popup_78309a3866aaa31c220632d9f42e57df = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1328e5865efb7837d89f7a80d27b1c62 = $(`<div id="html_1328e5865efb7837d89f7a80d27b1c62" style="width: 100.0%; height: 100.0%;"><b>Contour Angleterre Sud</b><br>📅 Date : 3 Juin 1867<br>🌊 Océan/Mer : Mer du nord<br>📖 Événement : Complot d'évasion<br>🧠 Mots-clés IA : ['complot']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_78309a3866aaa31c220632d9f42e57df.setContent(html_1328e5865efb7837d89f7a80d27b1c62);
+            
+        
+
+        marker_1b8483d5e98898a38bc7109950aadf30.bindPopup(popup_78309a3866aaa31c220632d9f42e57df)
+        ;
+
+        
+    
+    
+            var marker_56099208953c08c4deeebddbb029cbcd = L.marker(
+                [55.59412, 4.136887],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_9e2e753291ba3b6c9044f4dd54f67835 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_56099208953c08c4deeebddbb029cbcd.setIcon(icon_9e2e753291ba3b6c9044f4dd54f67835);
+        
+    
+        var popup_12ad95363857416bf058413f77ad0828 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b3c965b0477af867b013bf43fd76bcdb = $(`<div id="html_b3c965b0477af867b013bf43fd76bcdb" style="width: 100.0%; height: 100.0%;"><b>Contour Angleterre Nord</b><br>📅 Date : 3 Juin 1867<br>🌊 Océan/Mer : Mer du nord<br>📖 Événement : Complot d'évasion<br>🧠 Mots-clés IA : ['complot']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_12ad95363857416bf058413f77ad0828.setContent(html_b3c965b0477af867b013bf43fd76bcdb);
+            
+        
+
+        marker_56099208953c08c4deeebddbb029cbcd.bindPopup(popup_12ad95363857416bf058413f77ad0828)
+        ;
+
+        
+    
+    
+            var marker_37e755b627d27ea8fbfe4084221cb2a1 = L.marker(
+                [62.86093, 1.2103],
+                {
+}
+            ).addTo(marker_cluster_bd0e62d8218fce9c92cd957eefb29d04);
+        
+    
+            var icon_d7ad79129a29ece2a423701ca427c154 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_37e755b627d27ea8fbfe4084221cb2a1.setIcon(icon_d7ad79129a29ece2a423701ca427c154);
+        
+    
+        var popup_ee17a31e57e4b49e17a4cbd286ef5f54 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c52e5401f513d4930edb12592a7fdbe7 = $(`<div id="html_c52e5401f513d4930edb12592a7fdbe7" style="width: 100.0%; height: 100.0%;"><b>Côtes de la Norvège</b><br>📅 Date : Juin 1867<br>🌊 Océan/Mer : Mer du nord<br>📖 Événement : Fin du voyage pour le professeur Aronnax, Conseil et Ned Land<br>🧠 Mots-clés IA : ['fin', 'voyage', 'professeur']<br>📌 Cluster géographique : 0</div>`)[0];
+                popup_ee17a31e57e4b49e17a4cbd286ef5f54.setContent(html_c52e5401f513d4930edb12592a7fdbe7);
+            
+        
+
+        marker_37e755b627d27ea8fbfe4084221cb2a1.bindPopup(popup_ee17a31e57e4b49e17a4cbd286ef5f54)
+        ;
+
+        
+    
+    
+            marker_cluster_bd0e62d8218fce9c92cd957eefb29d04.addTo(map_b10a49f0ad6d2daadd0cb4d3ccc95dec);
+        
+    
+            var poly_line_c9e6f20890ade367b962776cd288cb6b = L.polyline(
+                [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667], [-8.6833, 125.7333], [-12.0833, 94.55], [5.9167, 79.7], [10.99809, 56.614067], [25.35, 35.7167], [39.2833, 6.7], [32.302988, -24.380986], [-45.6167, -37.8833], [-50.0, -60.0], [-54.6, -66.75], [-73.7, -133.8333], [-56.05, -67.9], [-40.0, -50.0], [-6.96056, -32.08735], [15.3167, -59.9667], [20.0, -70.0], [23.6833, -75.3167], [35.1, -74.8667], [41.0833, -72.8667], [47.1333, -57.9167], [51.1, -9.7], [50.0, -2.2], [50.9578, 1.382884], [55.59412, 4.136887], [62.86093, 1.2103]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_b10a49f0ad6d2daadd0cb4d3ccc95dec);
+        
+</script>
+</html>
