@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ffc0226e54945fb5dd79680339ac674a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ffc0226e54945fb5dd79680339ac674a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ffc0226e54945fb5dd79680339ac674a = L.map(
+                "map_ffc0226e54945fb5dd79680339ac674a",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6e92e96c3878ae0c218d0fcd9f40d319 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6e92e96c3878ae0c218d0fcd9f40d319.addTo(map_ffc0226e54945fb5dd79680339ac674a);
+        
+    
+            var marker_cluster_73a1f29c613ca656c11663a8d1d0f74a = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_ee4e86a810093c15876fa672c6b40ffe = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_d0dc1787c3414be748f2ddf544e5bc3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ee4e86a810093c15876fa672c6b40ffe.setIcon(icon_d0dc1787c3414be748f2ddf544e5bc3e);
+        
+    
+        var popup_3bb2bfae5873486122ebaf2bf3b87ea4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e472711fc6589c0f0cddd875ce11cf5 = $(`<div id="html_9e472711fc6589c0f0cddd875ce11cf5" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Île de Crespo<br>📅 <b>Date :</b> 1er Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Début de l'aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.<br>🧭📌 <b>Latitude :</b> 33.18497<br>🧭📌 <b>Longitude :</b> 169.85446<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_3bb2bfae5873486122ebaf2bf3b87ea4.setContent(html_9e472711fc6589c0f0cddd875ce11cf5);
+            
+        
+
+        marker_ee4e86a810093c15876fa672c6b40ffe.bindPopup(popup_3bb2bfae5873486122ebaf2bf3b87ea4)
+        ;
+
+        
+    
+    
+            var marker_113eb23b5878ed06c92ca9893b268a8b = L.marker(
+                [9.48786, 177.83569],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_2abc446679407313a76ae2ae262eb845 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_113eb23b5878ed06c92ca9893b268a8b.setIcon(icon_2abc446679407313a76ae2ae262eb845);
+        
+    
+        var popup_438cc50e77c89c77d6db78c5158b9592 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5d71d5b5dbde023d5175a7bf3e7cb8d2 = $(`<div id="html_5d71d5b5dbde023d5175a7bf3e7cb8d2" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Archipel des Pomotou<br>📅 <b>Date :</b> 11 Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d'îles.<br>🧭📌 <b>Latitude :</b> 9.48786<br>🧭📌 <b>Longitude :</b> 177.83569<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_438cc50e77c89c77d6db78c5158b9592.setContent(html_5d71d5b5dbde023d5175a7bf3e7cb8d2);
+            
+        
+
+        marker_113eb23b5878ed06c92ca9893b268a8b.bindPopup(popup_438cc50e77c89c77d6db78c5158b9592)
+        ;
+
+        
+    
+    
+            var marker_819cf4f94a3ee4976f4918dc973c1826 = L.marker(
+                [-16.0667, 164.5333],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_7249a348fc2be73f88c53d1bd452153e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_819cf4f94a3ee4976f4918dc973c1826.setIcon(icon_7249a348fc2be73f88c53d1bd452153e);
+        
+    
+        var popup_eb5a3d62884efd2201ae4dddbab55eda = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3303f33504ad972fee25a6f04db4126b = $(`<div id="html_3303f33504ad972fee25a6f04db4126b" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Archipel des nouvelles Hébrides<br>📅 <b>Date :</b> 25 Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.<br>🧭📌 <b>Latitude :</b> -16.0667<br>🧭📌 <b>Longitude :</b> 164.5333<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_eb5a3d62884efd2201ae4dddbab55eda.setContent(html_3303f33504ad972fee25a6f04db4126b);
+            
+        
+
+        marker_819cf4f94a3ee4976f4918dc973c1826.bindPopup(popup_eb5a3d62884efd2201ae4dddbab55eda)
+        ;
+
+        
+    
+    
+            var marker_f89e554fd1df1548b227f63cdf221bcb = L.marker(
+                [-0.3167, 128.3833],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_fb15a87b27124a86053d5dbdac75f5e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f89e554fd1df1548b227f63cdf221bcb.setIcon(icon_fb15a87b27124a86053d5dbdac75f5e6);
+        
+    
+        var popup_996dbbe54f145bb052972b2b824dcd4a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_29d60575f3aec72326fafe817ecfa3f5 = $(`<div id="html_29d60575f3aec72326fafe817ecfa3f5" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> La Pouasie<br>📅 <b>Date :</b> 4 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.<br>🧭📌 <b>Latitude :</b> -0.3167<br>🧭📌 <b>Longitude :</b> 128.3833<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_996dbbe54f145bb052972b2b824dcd4a.setContent(html_29d60575f3aec72326fafe817ecfa3f5);
+            
+        
+
+        marker_f89e554fd1df1548b227f63cdf221bcb.bindPopup(popup_996dbbe54f145bb052972b2b824dcd4a)
+        ;
+
+        
+    
+    
+            var marker_5da6a6cdcca5fd8cfa1f570d3a2ca6b9 = L.marker(
+                [-10.7, 136.7667],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_4c3596870f154029b623733ff6144799 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5da6a6cdcca5fd8cfa1f570d3a2ca6b9.setIcon(icon_4c3596870f154029b623733ff6144799);
+        
+    
+        var popup_3d560a3dd8588eabdaf2ceb2444a3356 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_616b20eaf050db5c6695b0fa9185936d = $(`<div id="html_616b20eaf050db5c6695b0fa9185936d" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Cap Wessel<br>📅 <b>Date :</b> 11 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Forme la pointe du golfe de Carpentarie.<br>🧭📌 <b>Latitude :</b> -10.7<br>🧭📌 <b>Longitude :</b> 136.7667<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_3d560a3dd8588eabdaf2ceb2444a3356.setContent(html_616b20eaf050db5c6695b0fa9185936d);
+            
+        
+
+        marker_5da6a6cdcca5fd8cfa1f570d3a2ca6b9.bindPopup(popup_3d560a3dd8588eabdaf2ceb2444a3356)
+        ;
+
+        
+    
+    
+            var marker_c5bc9de87c314c5ae13f4b1446ec3ebd = L.marker(
+                [-8.6833, 125.7333],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_6c98d545bf8c0ae7d57d11979bbb1e48 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c5bc9de87c314c5ae13f4b1446ec3ebd.setIcon(icon_6c98d545bf8c0ae7d57d11979bbb1e48);
+        
+    
+        var popup_a7c9cb857e39910f1d9cd911057a0000 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3b2c48220cf68d577af20c1dfc7b756 = $(`<div id="html_c3b2c48220cf68d577af20c1dfc7b756" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Mer de Timor<br>📅 <b>Date :</b> 13 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📖 <b>Événement :</b> Un homme de l'équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.<br>🧭📌 <b>Latitude :</b> -8.6833<br>🧭📌 <b>Longitude :</b> 125.7333<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_a7c9cb857e39910f1d9cd911057a0000.setContent(html_c3b2c48220cf68d577af20c1dfc7b756);
+            
+        
+
+        marker_c5bc9de87c314c5ae13f4b1446ec3ebd.bindPopup(popup_a7c9cb857e39910f1d9cd911057a0000)
+        ;
+
+        
+    
+    
+            var marker_aa6bb6755a74895e6f792ba30556df32 = L.marker(
+                [-12.0833, 94.55],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_ff36a731263318855e3098da12104d9c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_aa6bb6755a74895e6f792ba30556df32.setIcon(icon_ff36a731263318855e3098da12104d9c);
+        
+    
+        var popup_c4221a18666c98e75156199c1d4960dc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b5443bfc526a20da19838a624800ad6c = $(`<div id="html_b5443bfc526a20da19838a624800ad6c" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Île Keeling<br>📅 <b>Date :</b> 24 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📖 <b>Événement :</b> Visitée par Darwin et le capitaine Fitz-Roy.<br>🧭📌 <b>Latitude :</b> -12.0833<br>🧭📌 <b>Longitude :</b> 94.55<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_c4221a18666c98e75156199c1d4960dc.setContent(html_b5443bfc526a20da19838a624800ad6c);
+            
+        
+
+        marker_aa6bb6755a74895e6f792ba30556df32.bindPopup(popup_c4221a18666c98e75156199c1d4960dc)
+        ;
+
+        
+    
+    
+            var marker_e3db72d83cdfbd9a20c51f5a81a9b8bd = L.marker(
+                [5.9167, 79.7],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_c7817a69ba878b1991a6d78d626d33ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e3db72d83cdfbd9a20c51f5a81a9b8bd.setIcon(icon_c7817a69ba878b1991a6d78d626d33ce);
+        
+    
+        var popup_d9ae4b176975c301483dc2e6b50e10f4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_431e2d1a9c617d971d174371007bc35f = $(`<div id="html_431e2d1a9c617d971d174371007bc35f" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Golfe du Bengale<br>📅 <b>Date :</b> 27 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📖 <b>Événement :</b> Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C'était la mort des villes indiennes.<br>🧭📌 <b>Latitude :</b> 5.9167<br>🧭📌 <b>Longitude :</b> 79.7<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_d9ae4b176975c301483dc2e6b50e10f4.setContent(html_431e2d1a9c617d971d174371007bc35f);
+            
+        
+
+        marker_e3db72d83cdfbd9a20c51f5a81a9b8bd.bindPopup(popup_d9ae4b176975c301483dc2e6b50e10f4)
+        ;
+
+        
+    
+    
+            var marker_d70f76fa44d8275b864606cf05c1ba82 = L.marker(
+                [10.99809, 56.614067],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_e6cd5569903dd0177bd7419ab7763a7b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d70f76fa44d8275b864606cf05c1ba82.setIcon(icon_e6cd5569903dd0177bd7419ab7763a7b);
+        
+    
+        var popup_bbbd2837f532732e4754ad87ee6ea8b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c4a872bd9d43e02a405bcb58037653e0 = $(`<div id="html_c4a872bd9d43e02a405bcb58037653e0" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Afrique Est<br>📅 <b>Date :</b> 28 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📖 <b>Événement :</b> Point intermédiaire.<br>🧭📌 <b>Latitude :</b> 10.99809<br>🧭📌 <b>Longitude :</b> 56.614067<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_bbbd2837f532732e4754ad87ee6ea8b8.setContent(html_c4a872bd9d43e02a405bcb58037653e0);
+            
+        
+
+        marker_d70f76fa44d8275b864606cf05c1ba82.bindPopup(popup_bbbd2837f532732e4754ad87ee6ea8b8)
+        ;
+
+        
+    
+    
+            var marker_12db636d99616bc33f4645e7b68b1839 = L.marker(
+                [25.35, 35.7167],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_1c91ebbc9f9775d7e9a46c6e2e7b1e1a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_12db636d99616bc33f4645e7b68b1839.setIcon(icon_1c91ebbc9f9775d7e9a46c6e2e7b1e1a);
+        
+    
+        var popup_377d4d5beb413a7d4a7f5d56f16a3727 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8a8a10879b1262bfcc0c8f02672f232d = $(`<div id="html_8a8a10879b1262bfcc0c8f02672f232d" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> La mer Rouge<br>📅 <b>Date :</b> 30 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Mer Rouge<br>📖 <b>Événement :</b> Arabian Tunnel - Chasse du dugong.<br>🧭📌 <b>Latitude :</b> 25.35<br>🧭📌 <b>Longitude :</b> 35.7167<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_377d4d5beb413a7d4a7f5d56f16a3727.setContent(html_8a8a10879b1262bfcc0c8f02672f232d);
+            
+        
+
+        marker_12db636d99616bc33f4645e7b68b1839.bindPopup(popup_377d4d5beb413a7d4a7f5d56f16a3727)
+        ;
+
+        
+    
+    
+            var marker_49d25a5357ee1f89c5ee15aa28bbfaf7 = L.marker(
+                [39.2833, 6.7],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_32561bbef915ae7dfc0d1a50ebbe731a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_49d25a5357ee1f89c5ee15aa28bbfaf7.setIcon(icon_32561bbef915ae7dfc0d1a50ebbe731a);
+        
+    
+        var popup_6699920e8b980aabfacb0704a84a1f5f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b991f0eb986cabd5b353d6b65390f155 = $(`<div id="html_b991f0eb986cabd5b353d6b65390f155" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Méditerranée<br>📅 <b>Date :</b> 16 Février 1867<br>🌊 <b>Océan/Mer :</b> Mer Méditerranée<br>📖 <b>Événement :</b> La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.<br>🧭📌 <b>Latitude :</b> 39.2833<br>🧭📌 <b>Longitude :</b> 6.7<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_6699920e8b980aabfacb0704a84a1f5f.setContent(html_b991f0eb986cabd5b353d6b65390f155);
+            
+        
+
+        marker_49d25a5357ee1f89c5ee15aa28bbfaf7.bindPopup(popup_6699920e8b980aabfacb0704a84a1f5f)
+        ;
+
+        
+    
+    
+            var marker_7406f1d0e36c118e539f4342e788a0fb = L.marker(
+                [32.302988, -24.380986],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_05f9abe6a580d4fd88811b03a495c894 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7406f1d0e36c118e539f4342e788a0fb.setIcon(icon_05f9abe6a580d4fd88811b03a495c894);
+        
+    
+        var popup_23039ba0c5d4d2504db3e26cadb79f31 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c86a56aeb425fad2bf8081750dc901b1 = $(`<div id="html_c86a56aeb425fad2bf8081750dc901b1" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Afrique Nord<br>📅 <b>Date :</b> 19 Février 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Direction le pôle Sud.<br>🧭📌 <b>Latitude :</b> 32.302988<br>🧭📌 <b>Longitude :</b> -24.380986<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_23039ba0c5d4d2504db3e26cadb79f31.setContent(html_c86a56aeb425fad2bf8081750dc901b1);
+            
+        
+
+        marker_7406f1d0e36c118e539f4342e788a0fb.bindPopup(popup_23039ba0c5d4d2504db3e26cadb79f31)
+        ;
+
+        
+    
+    
+            var marker_e64133ffca0a3e370474e29c6ae49ce6 = L.marker(
+                [-45.6167, -37.8833],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_0d128aa5283adb8302c14c880bd5456c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e64133ffca0a3e370474e29c6ae49ce6.setIcon(icon_0d128aa5283adb8302c14c880bd5456c);
+        
+    
+        var popup_a76b0085ac316a7634e383633aafa093 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_60eca2229fa6dab6a29dc1491c7cee1d = $(`<div id="html_60eca2229fa6dab6a29dc1491c7cee1d" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> La mer de Sargasses<br>📅 <b>Date :</b> 13 Mars 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📖 <b>Événement :</b> L'Atlantide, l'ancienne Métropide de Théopompe, l'Atlantide de Platon.<br>🧭📌 <b>Latitude :</b> -45.6167<br>🧭📌 <b>Longitude :</b> -37.8833<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_a76b0085ac316a7634e383633aafa093.setContent(html_60eca2229fa6dab6a29dc1491c7cee1d);
+            
+        
+
+        marker_e64133ffca0a3e370474e29c6ae49ce6.bindPopup(popup_a76b0085ac316a7634e383633aafa093)
+        ;
+
+        
+    
+    
+            var marker_1dda3cfa1b9fab0d6c90a09be34073ce = L.marker(
+                [-50.0, -60.0],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_44ece7e9e10839b20922ddb67f678141 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1dda3cfa1b9fab0d6c90a09be34073ce.setIcon(icon_44ece7e9e10839b20922ddb67f678141);
+        
+    
+        var popup_c8b2c7655e14b0c8db468f2b393836c9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_67aa10496747f6f435ceca24be10aea7 = $(`<div id="html_67aa10496747f6f435ceca24be10aea7" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Amérique Sud<br>📅 <b>Date :</b> 14 Mars 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📖 <b>Événement :</b> Point intermédiaire<br>🧭📌 <b>Latitude :</b> -50.0<br>🧭📌 <b>Longitude :</b> -60.0<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_c8b2c7655e14b0c8db468f2b393836c9.setContent(html_67aa10496747f6f435ceca24be10aea7);
+            
+        
+
+        marker_1dda3cfa1b9fab0d6c90a09be34073ce.bindPopup(popup_c8b2c7655e14b0c8db468f2b393836c9)
+        ;
+
+        
+    
+    
+            var marker_5974da86fc98b6b4c117194d32ccc46e = L.marker(
+                [-54.6, -66.75],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_6946e19df149933c6194a9b87c344ab7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5974da86fc98b6b4c117194d32ccc46e.setIcon(icon_6946e19df149933c6194a9b87c344ab7);
+        
+    
+        var popup_c74aceff84432d4200efd1fe9b294f15 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9bda79c8dc4ddf6e94f7c9eaae970d54 = $(`<div id="html_9bda79c8dc4ddf6e94f7c9eaae970d54" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Cap Horn<br>📅 <b>Date :</b> 14 Mars 1867<br>🌊 <b>Océan/Mer :</b> Mers du Pacifique<br>📖 <b>Événement :</b> Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.<br>🧭📌 <b>Latitude :</b> -54.6<br>🧭📌 <b>Longitude :</b> -66.75<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_c74aceff84432d4200efd1fe9b294f15.setContent(html_9bda79c8dc4ddf6e94f7c9eaae970d54);
+            
+        
+
+        marker_5974da86fc98b6b4c117194d32ccc46e.bindPopup(popup_c74aceff84432d4200efd1fe9b294f15)
+        ;
+
+        
+    
+    
+            var marker_1bc1d4956b1a93b89f2ec1ec23242377 = L.marker(
+                [-73.7, -133.8333],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_12b19a25f2f506799e375c8575c66120 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1bc1d4956b1a93b89f2ec1ec23242377.setIcon(icon_12b19a25f2f506799e375c8575c66120);
+        
+    
+        var popup_a43eb6522bd4b62639076e8eb87da367 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_85eb4498c0ccd1c8c39d3d40cd6dfb76 = $(`<div id="html_85eb4498c0ccd1c8c39d3d40cd6dfb76" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Pôle Sud<br>📅 <b>Date :</b> 19 Mars 1867<br>🌊 <b>Océan/Mer :</b> Mers du Pacifique<br>📖 <b>Événement :</b> Vaisseau enrayé dans la banquise<br>🧭📌 <b>Latitude :</b> -73.7<br>🧭📌 <b>Longitude :</b> -133.8333<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_a43eb6522bd4b62639076e8eb87da367.setContent(html_85eb4498c0ccd1c8c39d3d40cd6dfb76);
+            
+        
+
+        marker_1bc1d4956b1a93b89f2ec1ec23242377.bindPopup(popup_a43eb6522bd4b62639076e8eb87da367)
+        ;
+
+        
+    
+    
+            var marker_293f815c1c84c6e0d6760e3da99efa96 = L.marker(
+                [-56.05, -67.9],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_e8e8cef58a24d16b03fb5538a04de073 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_293f815c1c84c6e0d6760e3da99efa96.setIcon(icon_e8e8cef58a24d16b03fb5538a04de073);
+        
+    
+        var popup_d41e6b1552c61bc1c56677610eaf1e82 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f7819c0a5764387862944b6d9392ec5a = $(`<div id="html_f7819c0a5764387862944b6d9392ec5a" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Cap Horn (retour)<br>📅 <b>Date :</b> 1er Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📖 <b>Événement :</b> Du Cap Horn à l'Amazone.<br>🧭📌 <b>Latitude :</b> -56.05<br>🧭📌 <b>Longitude :</b> -67.9<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_d41e6b1552c61bc1c56677610eaf1e82.setContent(html_f7819c0a5764387862944b6d9392ec5a);
+            
+        
+
+        marker_293f815c1c84c6e0d6760e3da99efa96.bindPopup(popup_d41e6b1552c61bc1c56677610eaf1e82)
+        ;
+
+        
+    
+    
+            var marker_be361c753955d1d53d7b772784e17882 = L.marker(
+                [-40.0, -50.0],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_4444f328d32d12262e680fe78c8e540a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_be361c753955d1d53d7b772784e17882.setIcon(icon_4444f328d32d12262e680fe78c8e540a);
+        
+    
+        var popup_21e5b471e68e2fd97a1fce43b0fd3bfe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e4d8a3229e51747973a1cafb73a80664 = $(`<div id="html_e4d8a3229e51747973a1cafb73a80664" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Amérique Sud (retour)<br>📅 <b>Date :</b> 5 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📖 <b>Événement :</b> Point intermédiaire - Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.<br>🧭📌 <b>Latitude :</b> -40.0<br>🧭📌 <b>Longitude :</b> -50.0<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_21e5b471e68e2fd97a1fce43b0fd3bfe.setContent(html_e4d8a3229e51747973a1cafb73a80664);
+            
+        
+
+        marker_be361c753955d1d53d7b772784e17882.bindPopup(popup_21e5b471e68e2fd97a1fce43b0fd3bfe)
+        ;
+
+        
+    
+    
+            var marker_8783045841590ff14e916a754d2016d7 = L.marker(
+                [-6.96056, -32.08735],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_667b83f0b9f84c4d534a3f621b869b3a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8783045841590ff14e916a754d2016d7.setIcon(icon_667b83f0b9f84c4d534a3f621b869b3a);
+        
+    
+        var popup_e683abe141e31ea0c3140e50b1df5e40 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8737005f15958446b034d4600179a3c7 = $(`<div id="html_8737005f15958446b034d4600179a3c7" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Amérique Sud centrale<br>📅 <b>Date :</b> 1 Mars 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📖 <b>Événement :</b> Point intermédiaire<br>🧭📌 <b>Latitude :</b> -6.96056<br>🧭📌 <b>Longitude :</b> -32.08735<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,370,999 mètres</div>`)[0];
+                popup_e683abe141e31ea0c3140e50b1df5e40.setContent(html_8737005f15958446b034d4600179a3c7);
+            
+        
+
+        marker_8783045841590ff14e916a754d2016d7.bindPopup(popup_e683abe141e31ea0c3140e50b1df5e40)
+        ;
+
+        
+    
+    
+            var marker_35dbf380567bb13f408f3a5cdd0f5e12 = L.marker(
+                [15.3167, -59.9667],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_acd3f61d0a85fd60b8aaea9108e5ff4a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_35dbf380567bb13f408f3a5cdd0f5e12.setIcon(icon_acd3f61d0a85fd60b8aaea9108e5ff4a);
+        
+    
+        var popup_64495e205ef0cacb74229ec691f950da = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_97cbd0823973ae0889484b972e607b6b = $(`<div id="html_97cbd0823973ae0889484b972e607b6b" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Martinique et Guadeloupe<br>📅 <b>Date :</b> 20 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.<br>🧭📌 <b>Latitude :</b> 15.3167<br>🧭📌 <b>Longitude :</b> -59.9667<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_64495e205ef0cacb74229ec691f950da.setContent(html_97cbd0823973ae0889484b972e607b6b);
+            
+        
+
+        marker_35dbf380567bb13f408f3a5cdd0f5e12.bindPopup(popup_64495e205ef0cacb74229ec691f950da)
+        ;
+
+        
+    
+    
+            var marker_721126cb101ef8c95bea158d88f5d99a = L.marker(
+                [20.0, -70.0],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_98b033eb6810365be754a285319562d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_721126cb101ef8c95bea158d88f5d99a.setIcon(icon_98b033eb6810365be754a285319562d8);
+        
+    
+        var popup_87a6934140916a6159c795fdc22b378e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9a87abb436b9bfcd581699598534b90e = $(`<div id="html_9a87abb436b9bfcd581699598534b90e" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Amérique Nord<br>📅 <b>Date :</b> 18 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Point intermédiaire<br>🧭📌 <b>Latitude :</b> 20.0<br>🧭📌 <b>Longitude :</b> -70.0<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_87a6934140916a6159c795fdc22b378e.setContent(html_9a87abb436b9bfcd581699598534b90e);
+            
+        
+
+        marker_721126cb101ef8c95bea158d88f5d99a.bindPopup(popup_87a6934140916a6159c795fdc22b378e)
+        ;
+
+        
+    
+    
+            var marker_7004d49dd726e4eec0e25d15df0f9293 = L.marker(
+                [23.6833, -75.3167],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_50a81a901e522ca8814723b7b951fdf0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7004d49dd726e4eec0e25d15df0f9293.setIcon(icon_50a81a901e522ca8814723b7b951fdf0);
+        
+    
+        var popup_4f344e0a0b9b481f61c2a0a08acd95ef = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9bf935e7fca0360228cb3d023ba0196a = $(`<div id="html_9bf935e7fca0360228cb3d023ba0196a" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Île Lucayes<br>📅 <b>Date :</b> 20 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Entrée dans le Gulf Stream.<br>🧭📌 <b>Latitude :</b> 23.6833<br>🧭📌 <b>Longitude :</b> -75.3167<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_4f344e0a0b9b481f61c2a0a08acd95ef.setContent(html_9bf935e7fca0360228cb3d023ba0196a);
+            
+        
+
+        marker_7004d49dd726e4eec0e25d15df0f9293.bindPopup(popup_4f344e0a0b9b481f61c2a0a08acd95ef)
+        ;
+
+        
+    
+    
+            var marker_6a02fbe00da52a4a405a13f654965d23 = L.marker(
+                [35.1, -74.8667],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_32fc2be10fa02988a382c097ba0dc685 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_6a02fbe00da52a4a405a13f654965d23.setIcon(icon_32fc2be10fa02988a382c097ba0dc685);
+        
+    
+        var popup_2c09153a78d369f0e3932c2f29e9f3e5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_41c667ece6092374952a81af74bb68d2 = $(`<div id="html_41c667ece6092374952a81af74bb68d2" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Cap Hatteras<br>📅 <b>Date :</b> 8 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.<br>🧭📌 <b>Latitude :</b> 35.1<br>🧭📌 <b>Longitude :</b> -74.8667<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_2c09153a78d369f0e3932c2f29e9f3e5.setContent(html_41c667ece6092374952a81af74bb68d2);
+            
+        
+
+        marker_6a02fbe00da52a4a405a13f654965d23.bindPopup(popup_2c09153a78d369f0e3932c2f29e9f3e5)
+        ;
+
+        
+    
+    
+            var marker_f0b0457b6c40e2df80efac81655fb768 = L.marker(
+                [41.0833, -72.8667],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_42562e5a01e45611f2874e795fc8c4c2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f0b0457b6c40e2df80efac81655fb768.setIcon(icon_42562e5a01e45611f2874e795fc8c4c2);
+        
+    
+        var popup_21cf57b59b390520143a3121c5ef5078 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_594fb01c944cf7bba87f15c13308732a = $(`<div id="html_594fb01c944cf7bba87f15c13308732a" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Long Island<br>📅 <b>Date :</b> 10 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.<br>🧭📌 <b>Latitude :</b> 41.0833<br>🧭📌 <b>Longitude :</b> -72.8667<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_21cf57b59b390520143a3121c5ef5078.setContent(html_594fb01c944cf7bba87f15c13308732a);
+            
+        
+
+        marker_f0b0457b6c40e2df80efac81655fb768.bindPopup(popup_21cf57b59b390520143a3121c5ef5078)
+        ;
+
+        
+    
+    
+            var marker_588bce04091b49b87e4cf5c0a5442299 = L.marker(
+                [47.1333, -57.9167],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_212cf01cd791e2bf6d769d82b7d95614 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_588bce04091b49b87e4cf5c0a5442299.setIcon(icon_212cf01cd791e2bf6d769d82b7d95614);
+        
+    
+        var popup_5db8c1ef276e4787b724eb692fe787ce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fa3792396587ef21c8a396496ac24d3d = $(`<div id="html_fa3792396587ef21c8a396496ac24d3d" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Terre Neuve<br>📅 <b>Date :</b> 15 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📖 <b>Événement :</b> Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.<br>🧭📌 <b>Latitude :</b> 47.1333<br>🧭📌 <b>Longitude :</b> -57.9167<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_5db8c1ef276e4787b724eb692fe787ce.setContent(html_fa3792396587ef21c8a396496ac24d3d);
+            
+        
+
+        marker_588bce04091b49b87e4cf5c0a5442299.bindPopup(popup_5db8c1ef276e4787b724eb692fe787ce)
+        ;
+
+        
+    
+    
+            var marker_f039149105cf444a0fd7171c96728bed = L.marker(
+                [51.1, -9.7],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_81ddbf98643a00d18c289dea61104900 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f039149105cf444a0fd7171c96728bed.setIcon(icon_81ddbf98643a00d18c289dea61104900);
+        
+    
+        var popup_3795e43103c3772f884ee190c91052b0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9e5c220928cd2b11c3b9134ee2b0690c = $(`<div id="html_9e5c220928cd2b11c3b9134ee2b0690c" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Irlande<br>📅 <b>Date :</b> 25 Mai 1867<br>🌊 <b>Océan/Mer :</b> Mer Celtique<br>📖 <b>Événement :</b> La vengeance du capitaine Nemo, le vengeur, et cette horrible scène du vaisseau coulé avec son équipage.<br>🧭📌 <b>Latitude :</b> 51.1<br>🧭📌 <b>Longitude :</b> -9.7<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_3795e43103c3772f884ee190c91052b0.setContent(html_9e5c220928cd2b11c3b9134ee2b0690c);
+            
+        
+
+        marker_f039149105cf444a0fd7171c96728bed.bindPopup(popup_3795e43103c3772f884ee190c91052b0)
+        ;
+
+        
+    
+    
+            var marker_639af12d78b4b35d122c4e5bc1c11dcb = L.marker(
+                [50.0, -2.2],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_7ec0ead1ce1bf4f7f908a7a343ca377f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_639af12d78b4b35d122c4e5bc1c11dcb.setIcon(icon_7ec0ead1ce1bf4f7f908a7a343ca377f);
+        
+    
+        var popup_567a74d0df183a1d214a225374f2e801 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5c27a7b89a9d4066329fc3381569551e = $(`<div id="html_5c27a7b89a9d4066329fc3381569551e" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Manche<br>📅 <b>Date :</b> 2 Juin 1867<br>🌊 <b>Océan/Mer :</b> Manche<br>📖 <b>Événement :</b> Complot d'évasion<br>🧭📌 <b>Latitude :</b> 50.0<br>🧭📌 <b>Longitude :</b> -2.2<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_567a74d0df183a1d214a225374f2e801.setContent(html_5c27a7b89a9d4066329fc3381569551e);
+            
+        
+
+        marker_639af12d78b4b35d122c4e5bc1c11dcb.bindPopup(popup_567a74d0df183a1d214a225374f2e801)
+        ;
+
+        
+    
+    
+            var marker_e2abcf9d7f5790189c48d449586a9abd = L.marker(
+                [50.9578, 1.382884],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_7610d64cac1e52577e14e31bf2e4ee05 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e2abcf9d7f5790189c48d449586a9abd.setIcon(icon_7610d64cac1e52577e14e31bf2e4ee05);
+        
+    
+        var popup_d38210cb5452931d040443a08e7e346f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7c38261c31eb2bae58ffde655859647c = $(`<div id="html_7c38261c31eb2bae58ffde655859647c" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Angleterre Sud<br>📅 <b>Date :</b> 3 Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📖 <b>Événement :</b> Complot d'évasion<br>🧭📌 <b>Latitude :</b> 50.9578<br>🧭📌 <b>Longitude :</b> 1.382884<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_d38210cb5452931d040443a08e7e346f.setContent(html_7c38261c31eb2bae58ffde655859647c);
+            
+        
+
+        marker_e2abcf9d7f5790189c48d449586a9abd.bindPopup(popup_d38210cb5452931d040443a08e7e346f)
+        ;
+
+        
+    
+    
+            var marker_c79a307472e3c2966d77fceaa0f3f920 = L.marker(
+                [55.59412, 4.136887],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_3a39e059869c2bbfcce89cc48da12dbb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c79a307472e3c2966d77fceaa0f3f920.setIcon(icon_3a39e059869c2bbfcce89cc48da12dbb);
+        
+    
+        var popup_bf10a4b2f883a05be873e9303e252a68 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_714f6f220bd026b0db4946b751e6d12a = $(`<div id="html_714f6f220bd026b0db4946b751e6d12a" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Contour Angleterre Nord<br>📅 <b>Date :</b> 3 Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📖 <b>Événement :</b> Complot d'évasion<br>🧭📌 <b>Latitude :</b> 55.59412<br>🧭📌 <b>Longitude :</b> 4.136887<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_bf10a4b2f883a05be873e9303e252a68.setContent(html_714f6f220bd026b0db4946b751e6d12a);
+            
+        
+
+        marker_c79a307472e3c2966d77fceaa0f3f920.bindPopup(popup_bf10a4b2f883a05be873e9303e252a68)
+        ;
+
+        
+    
+    
+            var marker_7f7346889c0ebfcc0d7c7b1f3f77dfba = L.marker(
+                [62.86093, 1.2103],
+                {
+}
+            ).addTo(marker_cluster_73a1f29c613ca656c11663a8d1d0f74a);
+        
+    
+            var icon_6af8cd2062c4f8a4a53980c3000d27a7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7f7346889c0ebfcc0d7c7b1f3f77dfba.setIcon(icon_6af8cd2062c4f8a4a53980c3000d27a7);
+        
+    
+        var popup_122fde8b738c9200f78aa526209a4b80 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5d91035668af4cb9677a91eb6a75aac = $(`<div id="html_a5d91035668af4cb9677a91eb6a75aac" style="width: 100.0%; height: 100.0%;"><b>Escales du Nautilus :</b> Côtes de la Norvège<br>📅 <b>Date :</b> Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📖 <b>Événement :</b> Fin du voyage pour le professeur Aronnax, Conseil et Ned Land<br>🧭📌 <b>Latitude :</b> 62.86093<br>🧭📌 <b>Longitude :</b> 1.2103<br>🌍🧠 <b>Distance du centre de la Terre :</b> 6,371,000 mètres</div>`)[0];
+                popup_122fde8b738c9200f78aa526209a4b80.setContent(html_a5d91035668af4cb9677a91eb6a75aac);
+            
+        
+
+        marker_7f7346889c0ebfcc0d7c7b1f3f77dfba.bindPopup(popup_122fde8b738c9200f78aa526209a4b80)
+        ;
+
+        
+    
+    
+            marker_cluster_73a1f29c613ca656c11663a8d1d0f74a.addTo(map_ffc0226e54945fb5dd79680339ac674a);
+        
+    
+            var poly_line_45bfc123c1f720f27963b8d7b56fba41 = L.polyline(
+                [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667], [-8.6833, 125.7333], [-12.0833, 94.55], [5.9167, 79.7], [10.99809, 56.614067], [25.35, 35.7167], [39.2833, 6.7], [32.302988, -24.380986], [-45.6167, -37.8833], [-50.0, -60.0], [-54.6, -66.75], [-73.7, -133.8333], [-56.05, -67.9], [-40.0, -50.0], [-6.96056, -32.08735], [15.3167, -59.9667], [20.0, -70.0], [23.6833, -75.3167], [35.1, -74.8667], [41.0833, -72.8667], [47.1333, -57.9167], [51.1, -9.7], [50.0, -2.2], [50.9578, 1.382884], [55.59412, 4.136887], [62.86093, 1.2103]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_ffc0226e54945fb5dd79680339ac674a);
+        
+    
+            var marker_018343c60778f3f6c53bd23b001733a6 = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(map_ffc0226e54945fb5dd79680339ac674a);
+        
+    
+            var div_icon_342ffb769d5edc8fc7854da3e0148252 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color: green; font-weight: bold;\"\u003eD\u00e9but\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+            marker_018343c60778f3f6c53bd23b001733a6.setIcon(div_icon_342ffb769d5edc8fc7854da3e0148252);
+        
+    
+        var popup_8349997c96e26012d5b4005acec59e40 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa712ac02b85989115ba14dfd088af1b = $(`<div id="html_aa712ac02b85989115ba14dfd088af1b" style="width: 100.0%; height: 100.0%;">Début du voyage</div>`)[0];
+                popup_8349997c96e26012d5b4005acec59e40.setContent(html_aa712ac02b85989115ba14dfd088af1b);
+            
+        
+
+        marker_018343c60778f3f6c53bd23b001733a6.bindPopup(popup_8349997c96e26012d5b4005acec59e40)
+        ;
+
+        
+    
+    
+            var marker_41a6f1b8e6efe6f839bb730143aa643f = L.marker(
+                [62.86093, 1.2103],
+                {
+}
+            ).addTo(map_ffc0226e54945fb5dd79680339ac674a);
+        
+    
+            var div_icon_581022029c55a9783343d0f8e308f77e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size: 12px; color: red; font-weight: bold;\"\u003eFin\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+            marker_41a6f1b8e6efe6f839bb730143aa643f.setIcon(div_icon_581022029c55a9783343d0f8e308f77e);
+        
+    
+        var popup_4c7d5a645cc9c84db6c45d4a01a28e8a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6eec07985a0df0b2870c5278bd81d695 = $(`<div id="html_6eec07985a0df0b2870c5278bd81d695" style="width: 100.0%; height: 100.0%;">Fin du voyage</div>`)[0];
+                popup_4c7d5a645cc9c84db6c45d4a01a28e8a.setContent(html_6eec07985a0df0b2870c5278bd81d695);
+            
+        
+
+        marker_41a6f1b8e6efe6f839bb730143aa643f.bindPopup(popup_4c7d5a645cc9c84db6c45d4a01a28e8a)
+        ;
+
+        
+    
+</script>
+</html>
