@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_050c667e0ee84f1187c7117d51886d46 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_050c667e0ee84f1187c7117d51886d46" ></div>
+        
+
+<!-- Titre -->
+<div style="
+    position: fixed;
+    top: 18px;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    text-align: center;
+    pointer-events: none;
+">
+    <div style="
+        display: inline-block;
+        padding: 10px 24px;
+        font-size: 3.2rem;
+        font-family: 'Michroma', Arial, sans-serif;
+        color: #2de2d0;
+        text-shadow: 0 0 8px rgba(45,226,208,0.65), 0 0 18px rgba(45,226,208,0.35);
+        background: rgba(0,0,0,0.68);
+        border-radius: 18px;
+        letter-spacing: 1px;
+    ">
+        Nautilus Atlas tracker
+    </div>
+</div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+<!-- Loader -->
+<div id="dataLoaderOverlay" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.32);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter: blur(2px);
+">
+    <div style="
+        padding:18px 24px;
+        border-radius:14px;
+        background:rgba(12,12,16,0.94);
+        color:#27c39f;
+        font-size:16px;
+        font-weight:600;
+        box-shadow:0 8px 24px rgba(0,0,0,0.25);
+        border:1px solid rgba(39,195,159,0.22);
+        font-family:Arial, sans-serif;
+    ">
+        Traitement des données en cours<span class="loading-dots"></span>
+    </div>
+</div>
+
+<!-- Modale -->
+<div class="modal fade" id="logbookModal" tabindex="-1" aria-labelledby="logbookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px; overflow:hidden;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logbookModalLabel">Journal de bord vivant</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="logbookModalBody" style="font-size:1.05rem; line-height:1.65;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.leaflet-popup-content {
+    min-width: 500px !important;
+}
+
+.popup-submenu .btn {
+    font-size: 12px;
+}
+
+.loading-dots::after {
+    content: "";
+    display: inline-block;
+    width: 1.6em;
+    text-align: left;
+    animation: dotsSteps 1.4s steps(4, end) infinite;
+}
+
+@keyframes dotsSteps {
+    0%   { content: ""; }
+    25%  { content: "."; }
+    50%  { content: ".."; }
+    75%  { content: "..."; }
+    100% { content: ""; }
+}
+</style>
+
+<script>
+const ENRICHED_CONTENT = {"0": {"fr": "\n            <h3>Île de Crespo</h3>\n            <p><b>Lecture enrichie :</b> Cette escale ouvre véritablement l’odyssée du Nautilus. Elle installe le ton du roman : fascination scientifique, puissance du regard naturaliste et sentiment de basculement dans un monde sous-marin autonome.</p>\n            <p><b>Contexte littéraire :</b> Jules Verne fait ici sentir que l’aventure n’est pas seulement géographique ; elle est aussi intellectuelle. Le lecteur entre dans une cartographie poétique où chaque étape devient un fragment de savoir et d’imaginaire.</p>\n            <p><b>Piste d’interprétation :</b> On peut lire ce moment comme l’entrée dans un musée vivant des mers, où Aronnax devient à la fois témoin, savant et narrateur.</p>\n        ", "en": "\n            <h3>Crespo Island</h3>\n            <p><b>Enhanced reading:</b> This stop truly opens the Nautilus odyssey. It sets the tone of the novel: scientific wonder, the strength of the naturalist gaze, and the feeling of entering a self-contained underwater world.</p>\n            <p><b>Literary context:</b> Jules Verne suggests that the adventure is not only geographic but also intellectual. The reader enters a poetic cartography where each stop becomes a fragment of knowledge and imagination.</p>\n            <p><b>Interpretive path:</b> This moment can be read as the entrance into a living museum of the seas, where Aronnax becomes witness, scholar, and storyteller at once.</p>\n        "}, "1": {"fr": "\n            <h3>Archipel des Pomotou</h3>\n            <p><b>Lecture enrichie :</b> Cette étape développe l’idée d’immensité océanique. L’archipel apparaît comme une constellation insulaire qui transforme l’espace marin en réseau de repères dispersés.</p>\n            <p><b>Contexte géopoétique :</b> Verne donne à voir le Pacifique comme un ensemble de mondes minuscules mais reliés, où la mer devient un tissu d’îles, de récits et de trajectoires.</p>\n        ", "en": "\n            <h3>Pomotou Archipelago</h3>\n            <p><b>Enhanced reading:</b> This stop deepens the sense of oceanic vastness. The archipelago appears as an insular constellation, turning marine space into a network of scattered landmarks.</p>\n            <p><b>Geopoetic context:</b> Verne presents the Pacific as a set of tiny yet connected worlds, where the sea becomes a fabric of islands, stories, and trajectories.</p>\n        "}, "2": {"fr": "\n            <h3>Archipel des nouvelles Hébrides</h3>\n            <p><b>Lecture enrichie :</b> Ici, le voyage du Nautilus croise l’histoire des grandes explorations. L’escale relie le roman vernien aux récits de découverte européens et à la mémoire des navigateurs.</p>\n            <p><b>Contexte historique :</b> La mention de Quiros, Bougainville et Cook inscrit le parcours fictif dans une archive réelle de la navigation mondiale.</p>\n        ", "en": "\n            <h3>New Hebrides Archipelago</h3>\n            <p><b>Enhanced reading:</b> Here, the Nautilus journey intersects with the history of major explorations. This stop connects Verne’s fiction to European discovery narratives and the memory of navigators.</p>\n            <p><b>Historical context:</b> The mention of Quiros, Bougainville, and Cook anchors the fictional route within the real archive of global navigation.</p>\n        "}};
+const ADVANCED_CONTENT = {"0": {"fr": {"historical": "\n                <h3>Contexte historique</h3>\n                <p>Cette ouverture du voyage s’inscrit dans une culture du XIXe siècle fascinée par l’exploration, les profondeurs marines et la classification du vivant.</p>\n            ", "symbolic": "\n                <h3>Analyse symbolique</h3>\n                <p>L’escale inaugure un passage du monde connu vers un univers immergé, presque mythique, où le Nautilus devient un espace de retrait, de savoir et de puissance.</p>\n            ", "geopoetic": "\n                <h3>Lecture géopoétique</h3>\n                <p>L’île fonctionne comme un seuil narratif : elle ne vaut pas seulement pour sa position sur la carte, mais pour l’imaginaire marin qu’elle déclenche.</p>\n            ", "data_nav": "\n                <h3>Données & navigation</h3>\n                <p>Ce point marque l’un des premiers grands repères du trajet. Il articule coordonnées, récit d’exploration et mise en route de la logique cartographique du Nautilus.</p>\n            "}, "en": {"historical": "\n                <h3>Historical context</h3>\n                <p>This opening stage belongs to a nineteenth-century culture fascinated by exploration, ocean depths, and the classification of living beings.</p>\n            ", "symbolic": "\n                <h3>Symbolic analysis</h3>\n                <p>This stop marks a passage from the known world to an immersed, almost mythical universe, where the Nautilus becomes a space of retreat, knowledge, and power.</p>\n            ", "geopoetic": "\n                <h3>Geopoetic reading</h3>\n                <p>The island works as a narrative threshold: it matters not only for its location on the map, but for the marine imagination it sets in motion.</p>\n            ", "data_nav": "\n                <h3>Data & navigation</h3>\n                <p>This point marks one of the first major landmarks of the route. It connects coordinates, exploration narrative, and the cartographic logic of the Nautilus.</p>\n            "}}};
+
+function showLoader() {
+    const loader = document.getElementById("dataLoaderOverlay");
+    if (loader) loader.style.display = "flex";
+}
+
+function hideLoader() {
+    const loader = document.getElementById("dataLoaderOverlay");
+    if (loader) loader.style.display = "none";
+}
+
+function openModalWithContent(title, content) {
+    document.getElementById("logbookModalLabel").innerHTML = title;
+    document.getElementById("logbookModalBody").innerHTML = content;
+    const modal = new bootstrap.Modal(document.getElementById("logbookModal"));
+    modal.show();
+}
+
+document.addEventListener("click", function(e) {
+    const toggleBtn = e.target.closest(".submenu-toggle-btn");
+    if (toggleBtn) {
+        const menuId = toggleBtn.getAttribute("data-menu-id");
+        const menu = document.getElementById(menuId);
+        if (menu) {
+            menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "block" : "none";
+        }
+        return;
+    }
+
+    const logbookBtn = e.target.closest(".living-logbook-btn");
+    if (logbookBtn) {
+        const stop = logbookBtn.getAttribute("data-stop");
+        const lang = logbookBtn.getAttribute("data-lang") || "fr";
+
+        const title = lang === "fr" ? "Journal de bord vivant" : "Living Logbook";
+        const fallback = lang === "fr"
+            ? "<p>Contenu enrichi bientôt disponible pour cette escale.</p>"
+            : "<p>Enhanced content coming soon for this stop.</p>";
+
+        const content = (ENRICHED_CONTENT[stop] && ENRICHED_CONTENT[stop][lang])
+            ? ENRICHED_CONTENT[stop][lang]
+            : fallback;
+
+        openModalWithContent(title, content);
+        return;
+    }
+
+    const actionBtn = e.target.closest(".submenu-action");
+    if (actionBtn) {
+        const stop = actionBtn.getAttribute("data-stop");
+        const lang = actionBtn.getAttribute("data-lang") || "fr";
+        const action = actionBtn.getAttribute("data-action");
+
+        showLoader();
+
+        setTimeout(() => {
+            hideLoader();
+
+            const titles = {
+                fr: {
+                    historical: "Contexte historique",
+                    symbolic: "Analyse symbolique",
+                    geopoetic: "Lecture géopoétique",
+                    data_nav: "Données & navigation"
+                },
+                en: {
+                    historical: "Historical context",
+                    symbolic: "Symbolic analysis",
+                    geopoetic: "Geopoetic reading",
+                    data_nav: "Data & navigation"
+                }
+            };
+
+            const fallback = lang === "fr"
+                ? "<p>Traitement terminé. Le contenu détaillé pour cette rubrique sera ajouté bientôt.</p>"
+                : "<p>Processing complete. Detailed content for this section will be added soon.</p>";
+
+            let content = fallback;
+            if (ADVANCED_CONTENT[stop] && ADVANCED_CONTENT[stop][lang] && ADVANCED_CONTENT[stop][lang][action]) {
+                content = ADVANCED_CONTENT[stop][lang][action];
+            }
+
+            openModalWithContent(titles[lang][action] || "Exploration IA", content);
+        }, 1200);
+
+        return;
+    }
+});
+</script>
+
+</body>
+<script>
+    
+    
+            var map_050c667e0ee84f1187c7117d51886d46 = L.map(
+                "map_050c667e0ee84f1187c7117d51886d46",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_edebb0415040970ff072ca936de80c34 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_edebb0415040970ff072ca936de80c34.addTo(map_050c667e0ee84f1187c7117d51886d46);
+        
+    
+            var marker_cluster_0e39f566c483d2b17db1d053a3f2a430 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_e5401c8e9636f211d9e0ad13cbb8bb78 = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_2c61f62697dce83f3d75932d0217d6c5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e5401c8e9636f211d9e0ad13cbb8bb78.setIcon(icon_2c61f62697dce83f3d75932d0217d6c5);
+        
+    
+        var popup_44c5cfd47eefdac5d711be14992c2785 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_12fc8ac4202d861602e21aaf887d5c58 = $(`<div id="html_12fc8ac4202d861602e21aaf887d5c58" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Île de Crespo<br>📅 <b>Date :</b> 1er Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Début de l'aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.<br>↕️ <b>Latitude :</b> 33.18497<br>↔️ <b>Longitude :</b> 169.85446<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="0"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-0">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-0" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Crespo Island<br>📅 <b>Date :</b> December 1st, 1866<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> Beginning of the adventure - First underwater hunt - A submarine forest - A monstrous sea spider.<br>↕️ <b>Latitude :</b> 33.18497<br>↔️ <b>Longitude :</b> 169.85446<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="0"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-0">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-0" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="0" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_44c5cfd47eefdac5d711be14992c2785.setContent(html_12fc8ac4202d861602e21aaf887d5c58);
+            
+        
+
+        marker_e5401c8e9636f211d9e0ad13cbb8bb78.bindPopup(popup_44c5cfd47eefdac5d711be14992c2785)
+        ;
+
+        
+    
+    
+            var marker_36d336bbbe2696d02a539acf2b19984f = L.marker(
+                [9.48786, 177.83569],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_d9f4f6be6339251267aba5968fc14dd5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_36d336bbbe2696d02a539acf2b19984f.setIcon(icon_d9f4f6be6339251267aba5968fc14dd5);
+        
+    
+        var popup_c24c6737442736be7546a5db89303b6b = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_3530aad1aa1fe8d10bfbf25a11b4a803 = $(`<div id="html_3530aad1aa1fe8d10bfbf25a11b4a803" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Archipel des Pomotou<br>📅 <b>Date :</b> 11 Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d'îles.<br>↕️ <b>Latitude :</b> 9.48786<br>↔️ <b>Longitude :</b> 177.83569<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="1"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-1">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-1" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Pomotou Archipelago<br>📅 <b>Date :</b> December 11th, 1866<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> This archipelago covers an area of three hundred seventy square leagues, including about sixty island groups.<br>↕️ <b>Latitude :</b> 9.48786<br>↔️ <b>Longitude :</b> 177.83569<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="1"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-1">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-1" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="1" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_c24c6737442736be7546a5db89303b6b.setContent(html_3530aad1aa1fe8d10bfbf25a11b4a803);
+            
+        
+
+        marker_36d336bbbe2696d02a539acf2b19984f.bindPopup(popup_c24c6737442736be7546a5db89303b6b)
+        ;
+
+        
+    
+    
+            var marker_e567bb97a9f3351e24699a37df50ed31 = L.marker(
+                [-16.0667, 164.5333],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_cbc06676946cb2c872bfb9de6c261be0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e567bb97a9f3351e24699a37df50ed31.setIcon(icon_cbc06676946cb2c872bfb9de6c261be0);
+        
+    
+        var popup_b81cbfd763b02ce37f4d7eae8c54d0ab = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_17f0746ad33003a52bba01dedbcc91b2 = $(`<div id="html_17f0746ad33003a52bba01dedbcc91b2" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Archipel des nouvelles Hébrides<br>📅 <b>Date :</b> 25 Décembre 1866<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.<br>↕️ <b>Latitude :</b> -16.0667<br>↔️ <b>Longitude :</b> 164.5333<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,370,999 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="2"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-2">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-2" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> New Hebrides Archipelago<br>📅 <b>Date :</b> December 25th, 1866<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> Discovered by Quiros in 1606, explored by Bougainville in 1768, and named by Cook in 1773.<br>↕️ <b>Latitude :</b> -16.0667<br>↔️ <b>Longitude :</b> 164.5333<br>🌍🧲 <b>Distance from Earth's center :</b> 6,370,999 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="2"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-2">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-2" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="2" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_b81cbfd763b02ce37f4d7eae8c54d0ab.setContent(html_17f0746ad33003a52bba01dedbcc91b2);
+            
+        
+
+        marker_e567bb97a9f3351e24699a37df50ed31.bindPopup(popup_b81cbfd763b02ce37f4d7eae8c54d0ab)
+        ;
+
+        
+    
+    
+            var marker_bbeeb2f7e281374efcabac3ccec2ce78 = L.marker(
+                [-0.3167, 128.3833],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_5d54e6098665bd83f79b0d97c1565bdd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_bbeeb2f7e281374efcabac3ccec2ce78.setIcon(icon_5d54e6098665bd83f79b0d97c1565bdd);
+        
+    
+        var popup_917a1c928492d25e747ae4e0ef74df9f = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_b3376183a3f5e558435774ff61bd02f1 = $(`<div id="html_b3376183a3f5e558435774ff61bd02f1" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> La Pouasie<br>📅 <b>Date :</b> 4 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.<br>↕️ <b>Latitude :</b> -0.3167<br>↔️ <b>Longitude :</b> 128.3833<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,370,999 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="3"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-3">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-3" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Papua<br>📅 <b>Date :</b> January 4th, 1867<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> Discovered in 1511 by the Portuguese Francisco Serrano - View of the Arfak Mountains - Four days on land - Battle with the Papuans.<br>↕️ <b>Latitude :</b> -0.3167<br>↔️ <b>Longitude :</b> 128.3833<br>🌍🧲 <b>Distance from Earth's center :</b> 6,370,999 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="3"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-3">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-3" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="3" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_917a1c928492d25e747ae4e0ef74df9f.setContent(html_b3376183a3f5e558435774ff61bd02f1);
+            
+        
+
+        marker_bbeeb2f7e281374efcabac3ccec2ce78.bindPopup(popup_917a1c928492d25e747ae4e0ef74df9f)
+        ;
+
+        
+    
+    
+            var marker_aa28640387b51cace7bcf152116fdca6 = L.marker(
+                [-10.7, 136.7667],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_afd908583dbab38521a4fe8153354cf1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_aa28640387b51cace7bcf152116fdca6.setIcon(icon_afd908583dbab38521a4fe8153354cf1);
+        
+    
+        var popup_bca9c875a0bff53068ab05f74d8a3922 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_a58426703b9cc2583a9eb6926ef9fb80 = $(`<div id="html_a58426703b9cc2583a9eb6926ef9fb80" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Cap Wessel<br>📅 <b>Date :</b> 11 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Forme la pointe du golfe de Carpentarie.<br>↕️ <b>Latitude :</b> -10.7<br>↔️ <b>Longitude :</b> 136.7667<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="4"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-4">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-4" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Cape Wessel<br>📅 <b>Date :</b> January 11th, 1867<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> Forms the tip of the Gulf of Carpentaria.<br>↕️ <b>Latitude :</b> -10.7<br>↔️ <b>Longitude :</b> 136.7667<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="4"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-4">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-4" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="4" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_bca9c875a0bff53068ab05f74d8a3922.setContent(html_a58426703b9cc2583a9eb6926ef9fb80);
+            
+        
+
+        marker_aa28640387b51cace7bcf152116fdca6.bindPopup(popup_bca9c875a0bff53068ab05f74d8a3922)
+        ;
+
+        
+    
+    
+            var marker_9d4f9c9473c5dd7e67a1f258580f48aa = L.marker(
+                [-8.6833, 125.7333],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_c6e92e342d4f1175b2aa9e5c261fcb25 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9d4f9c9473c5dd7e67a1f258580f48aa.setIcon(icon_c6e92e342d4f1175b2aa9e5c261fcb25);
+        
+    
+        var popup_55819d6371fab5250ea5c61c0d5ed4d2 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_2f8be6abbfa6b8098c79cbe7d6ddea8d = $(`<div id="html_2f8be6abbfa6b8098c79cbe7d6ddea8d" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Mer de Timor<br>📅 <b>Date :</b> 13 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📜 <b>Événement :</b> Un homme de l'équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.<br>↕️ <b>Latitude :</b> -8.6833<br>↔️ <b>Longitude :</b> 125.7333<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="5"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-5">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-5" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Timor Sea<br>📅 <b>Date :</b> January 13th, 1867<br>🌊 <b>Ocean/Sea :</b> Indian Ocean<br>📜 <b>Event :</b> A crew member who died during the night was buried in the underwater cemetery. Captain Nemo and his men came to lay their companion to rest in this common grave, at the bottom of this unreachable ocean.<br>↕️ <b>Latitude :</b> -8.6833<br>↔️ <b>Longitude :</b> 125.7333<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="5"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-5">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-5" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="5" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_55819d6371fab5250ea5c61c0d5ed4d2.setContent(html_2f8be6abbfa6b8098c79cbe7d6ddea8d);
+            
+        
+
+        marker_9d4f9c9473c5dd7e67a1f258580f48aa.bindPopup(popup_55819d6371fab5250ea5c61c0d5ed4d2)
+        ;
+
+        
+    
+    
+            var marker_cf67a33c2235ecd4cf72c23d9eb0217d = L.marker(
+                [-12.0833, 94.55],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_061768c4f0936a5f6ecccd33808fde8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cf67a33c2235ecd4cf72c23d9eb0217d.setIcon(icon_061768c4f0936a5f6ecccd33808fde8a);
+        
+    
+        var popup_5a977ff9cff01ba4a3b5163b74a3a693 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_f0387df138751b4acb2d82d4c0e75ec0 = $(`<div id="html_f0387df138751b4acb2d82d4c0e75ec0" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Île Keeling<br>📅 <b>Date :</b> 24 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📜 <b>Événement :</b> Visitée par Darwin et le capitaine Fitz-Roy.<br>↕️ <b>Latitude :</b> -12.0833<br>↔️ <b>Longitude :</b> 94.55<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="6"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-6">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-6" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Keeling Island<br>📅 <b>Date :</b> January 24th, 1867<br>🌊 <b>Ocean/Sea :</b> Indian Ocean<br>📜 <b>Event :</b> Visited by Darwin and Captain Fitz-Roy.<br>↕️ <b>Latitude :</b> -12.0833<br>↔️ <b>Longitude :</b> 94.55<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="6"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-6">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-6" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="6" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_5a977ff9cff01ba4a3b5163b74a3a693.setContent(html_f0387df138751b4acb2d82d4c0e75ec0);
+            
+        
+
+        marker_cf67a33c2235ecd4cf72c23d9eb0217d.bindPopup(popup_5a977ff9cff01ba4a3b5163b74a3a693)
+        ;
+
+        
+    
+    
+            var marker_de6ec3df4e5a4bbb2577c6d85eb05cc9 = L.marker(
+                [5.9167, 79.7],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_edc35522c1ad60bf0babefee1b948a52 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_de6ec3df4e5a4bbb2577c6d85eb05cc9.setIcon(icon_edc35522c1ad60bf0babefee1b948a52);
+        
+    
+        var popup_1c6d6798103c0abfa991fb3b10b77a92 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_0b26c06141c00360b8095127d26d2fdd = $(`<div id="html_0b26c06141c00360b8095127d26d2fdd" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Golfe du Bengale<br>📅 <b>Date :</b> 27 janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📜 <b>Événement :</b> Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C'était la mort des villes indiennes.<br>↕️ <b>Latitude :</b> 5.9167<br>↔️ <b>Longitude :</b> 79.7<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,370,999 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="7"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-7">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-7" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Bay of Bengal<br>📅 <b>Date :</b> January 27th, 1867<br>🌊 <b>Ocean/Sea :</b> Indian Ocean<br>📜 <b>Event :</b> A grim spectacle! Corps were floating on the surface of the waves. It was the death of the Indian cities.<br>↕️ <b>Latitude :</b> 5.9167<br>↔️ <b>Longitude :</b> 79.7<br>🌍🧲 <b>Distance from Earth's center :</b> 6,370,999 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="7"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-7">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-7" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="7" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_1c6d6798103c0abfa991fb3b10b77a92.setContent(html_0b26c06141c00360b8095127d26d2fdd);
+            
+        
+
+        marker_de6ec3df4e5a4bbb2577c6d85eb05cc9.bindPopup(popup_1c6d6798103c0abfa991fb3b10b77a92)
+        ;
+
+        
+    
+    
+            var marker_5356cf0a627fc8769655887559352bf2 = L.marker(
+                [10.99809, 56.614067],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_30deac5b1c605b533fc39b52e2a7c1ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5356cf0a627fc8769655887559352bf2.setIcon(icon_30deac5b1c605b533fc39b52e2a7c1ce);
+        
+    
+        var popup_9c433dbcaf5f67cd01d96b2811eab208 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_fe7b5b3fcb44b0239cd76528a73f090c = $(`<div id="html_fe7b5b3fcb44b0239cd76528a73f090c" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Afrique Est<br>📅 <b>Date :</b> 28 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Océan Indien<br>📜 <b>Événement :</b> Point intermédiaire.<br>↕️ <b>Latitude :</b> 10.99809<br>↔️ <b>Longitude :</b> 56.614067<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="8"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-8">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-8" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> East Africa Coast<br>📅 <b>Date :</b> January 28th, 1867<br>🌊 <b>Ocean/Sea :</b> Indian Ocean<br>📜 <b>Event :</b> Intermediate point.<br>↕️ <b>Latitude :</b> 10.99809<br>↔️ <b>Longitude :</b> 56.614067<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="8"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-8">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-8" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="8" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_9c433dbcaf5f67cd01d96b2811eab208.setContent(html_fe7b5b3fcb44b0239cd76528a73f090c);
+            
+        
+
+        marker_5356cf0a627fc8769655887559352bf2.bindPopup(popup_9c433dbcaf5f67cd01d96b2811eab208)
+        ;
+
+        
+    
+    
+            var marker_64eaf90798ded84f7b1cafe95b9f6c33 = L.marker(
+                [29.95, 32.55],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_ffa708cfc0ac011a0668fcb881888304 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_64eaf90798ded84f7b1cafe95b9f6c33.setIcon(icon_ffa708cfc0ac011a0668fcb881888304);
+        
+    
+        var popup_61aebec82caa9115f80627987b9f5c8d = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_42ffbde81005e0e1fd9d01e0e2e0a92a = $(`<div id="html_42ffbde81005e0e1fd9d01e0e2e0a92a" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Sous l'isthme de Suez<br>📅 <b>Date :</b> 30 Janvier 1867<br>🌊 <b>Océan/Mer :</b> Mer Rouge<br>📜 <b>Événement :</b> Passage par l'Arabian Tunnel, le corridor souterrain imaginé par Nemo sous l'isthme de Suez, puis chasse du dugong.<br>↕️ <b>Latitude :</b> 29.95<br>↔️ <b>Longitude :</b> 32.55<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="9"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-9">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-9" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Beneath the Isthmus of Suez<br>📅 <b>Date :</b> January 30th, 1867<br>🌊 <b>Ocean/Sea :</b> Red Sea<br>📜 <b>Event :</b> Passage through the Arabian Tunnel, the underground corridor imagined by Nemo beneath the Isthmus of Suez, followed by the dugong hunt.<br>↕️ <b>Latitude :</b> 29.95<br>↔️ <b>Longitude :</b> 32.55<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="9"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-9">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-9" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="9" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_61aebec82caa9115f80627987b9f5c8d.setContent(html_42ffbde81005e0e1fd9d01e0e2e0a92a);
+            
+        
+
+        marker_64eaf90798ded84f7b1cafe95b9f6c33.bindPopup(popup_61aebec82caa9115f80627987b9f5c8d)
+        ;
+
+        
+    
+    
+            var marker_d500c8e4eacd3e9518572c53bf7e641c = L.marker(
+                [35.0, 24.0],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_a119e6bcd0d0f939a5ad19b3f575448c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d500c8e4eacd3e9518572c53bf7e641c.setIcon(icon_a119e6bcd0d0f939a5ad19b3f575448c);
+        
+    
+        var popup_0d40aeac55e342b729a49a3c69bca1ca = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_e9f5763356435fb6b54eacf46d8393b6 = $(`<div id="html_e9f5763356435fb6b54eacf46d8393b6" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> L'archipel grec<br>📅 <b>Date :</b> 12 Février 1867<br>🌊 <b>Océan/Mer :</b> Mer Égée<br>📜 <b>Événement :</b> Passage du Nautilus dans l'archipel grec ; Aronnax observe les poissons de ces eaux, avec une évocation de l'ancienne île de Crète.<br>↕️ <b>Latitude :</b> 35.0<br>↔️ <b>Longitude :</b> 24.0<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="10"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-10">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-10" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> The Greek Archipelago<br>📅 <b>Date :</b> February 12th, 1867<br>🌊 <b>Ocean/Sea :</b> Aegean Sea<br>📜 <b>Event :</b> The Nautilus passes through the Greek Archipelago; Aronnax observes the fish of these waters, with an evocation of the ancient island of Crete.<br>↕️ <b>Latitude :</b> 35.0<br>↔️ <b>Longitude :</b> 24.0<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="10"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-10">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-10" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="10" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_0d40aeac55e342b729a49a3c69bca1ca.setContent(html_e9f5763356435fb6b54eacf46d8393b6);
+            
+        
+
+        marker_d500c8e4eacd3e9518572c53bf7e641c.bindPopup(popup_0d40aeac55e342b729a49a3c69bca1ca)
+        ;
+
+        
+    
+    
+            var marker_96caccf6ae1ef03e50770ee4d55d1ebb = L.marker(
+                [39.2833, 6.7],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_f65a5525414e59a2b8ed17791b1e1336 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_96caccf6ae1ef03e50770ee4d55d1ebb.setIcon(icon_f65a5525414e59a2b8ed17791b1e1336);
+        
+    
+        var popup_3dedc6981d321c4cc5ad272a8d0bfaf0 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_c80c478a26790653f8caf82c3b6328bc = $(`<div id="html_c80c478a26790653f8caf82c3b6328bc" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Méditerranée<br>📅 <b>Date :</b> 16 Février 1867<br>🌊 <b>Océan/Mer :</b> Mer Méditerranée<br>📜 <b>Événement :</b> La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.<br>↕️ <b>Latitude :</b> 39.2833<br>↔️ <b>Longitude :</b> 6.7<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="11"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-11">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-11" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Mediterranean Sea<br>📅 <b>Date :</b> February 16th, 1867<br>🌊 <b>Ocean/Sea :</b> Mediterranean Sea<br>📜 <b>Event :</b> The Mediterranean in forty-eight hours - To his great annoyance, Ned Land had to abandon his escape plans - Observation of Mediterranean fish.<br>↕️ <b>Latitude :</b> 39.2833<br>↔️ <b>Longitude :</b> 6.7<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="11"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-11">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-11" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="11" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_3dedc6981d321c4cc5ad272a8d0bfaf0.setContent(html_c80c478a26790653f8caf82c3b6328bc);
+            
+        
+
+        marker_96caccf6ae1ef03e50770ee4d55d1ebb.bindPopup(popup_3dedc6981d321c4cc5ad272a8d0bfaf0)
+        ;
+
+        
+    
+    
+            var marker_205d4c158612a63a681bc3a2a947045c = L.marker(
+                [20.0, -30.0],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_6c8e47f5803a7cb90e63b1f4c9de03eb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_205d4c158612a63a681bc3a2a947045c.setIcon(icon_6c8e47f5803a7cb90e63b1f4c9de03eb);
+        
+    
+        var popup_5671d09bcdecca8ea2358f4336fb399f = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_83a6e1f7f5dc8fd7c6a9fb7a5da67cb6 = $(`<div id="html_83a6e1f7f5dc8fd7c6a9fb7a5da67cb6" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> L'Atlantide<br>📅 <b>Date :</b> 19 Février 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique<br>📜 <b>Événement :</b> Vision de l'Atlantide, localisation cartographique approximative d'après le trajet du roman.<br>↕️ <b>Latitude :</b> 20.0<br>↔️ <b>Longitude :</b> -30.0<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="12"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-12">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-12" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Atlantis<br>📅 <b>Date :</b> February 19th, 1867<br>🌊 <b>Ocean/Sea :</b> Atlantic Ocean<br>📜 <b>Event :</b> Vision of Atlantis; approximate cartographic location based on the novel's route.<br>↕️ <b>Latitude :</b> 20.0<br>↔️ <b>Longitude :</b> -30.0<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="12"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-12">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-12" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="12" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_5671d09bcdecca8ea2358f4336fb399f.setContent(html_83a6e1f7f5dc8fd7c6a9fb7a5da67cb6);
+            
+        
+
+        marker_205d4c158612a63a681bc3a2a947045c.bindPopup(popup_5671d09bcdecca8ea2358f4336fb399f)
+        ;
+
+        
+    
+    
+            var marker_1607cd3bee50719e57506e0fea0501b9 = L.marker(
+                [21.5, -31.5],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_ddaf9bbe284ebef73f972626ed3abec0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1607cd3bee50719e57506e0fea0501b9.setIcon(icon_ddaf9bbe284ebef73f972626ed3abec0);
+        
+    
+        var popup_f320b0e12802e6cb3098f7a9f556fd29 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_d4059b572eddd75b410291ab7d9bf0fe = $(`<div id="html_d4059b572eddd75b410291ab7d9bf0fe" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> La mer des Sargasses<br>📅 <b>Date :</b> 22 Février 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Traversée de la mer des Sargasses par le Nautilus.<br>↕️ <b>Latitude :</b> 21.5<br>↔️ <b>Longitude :</b> -31.5<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="13"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-13">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-13" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> The Sargasso Sea<br>📅 <b>Date :</b> February 22nd, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Crossing of the Sargasso Sea by the Nautilus.<br>↕️ <b>Latitude :</b> 21.5<br>↔️ <b>Longitude :</b> -31.5<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="13"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-13">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-13" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="13" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_f320b0e12802e6cb3098f7a9f556fd29.setContent(html_d4059b572eddd75b410291ab7d9bf0fe);
+            
+        
+
+        marker_1607cd3bee50719e57506e0fea0501b9.bindPopup(popup_f320b0e12802e6cb3098f7a9f556fd29)
+        ;
+
+        
+    
+    
+            var marker_f2bcfe16842d351365934b5550401680 = L.marker(
+                [-10.1775, -17.738],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_7a9edda2ad9ad93bad1f8b1da2ea0b62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f2bcfe16842d351365934b5550401680.setIcon(icon_7a9edda2ad9ad93bad1f8b1da2ea0b62);
+        
+    
+        var popup_508c5c4787a4f7fd3e72c50b81344f55 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_15e9a7cb67128c2fdb9ef9363821a35d = $(`<div id="html_15e9a7cb67128c2fdb9ef9363821a35d" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Afrique Nord<br>📅 <b>Date :</b> 23 Février 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Direction le pôle Sud.<br>↕️ <b>Latitude :</b> -10.1775<br>↔️ <b>Longitude :</b> -17.738<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="14"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-14">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-14" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> North Africa Coast<br>📅 <b>Date :</b> February 23th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Heading towards the South Pole.<br>↕️ <b>Latitude :</b> -10.1775<br>↔️ <b>Longitude :</b> -17.738<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="14"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-14">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-14" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="14" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_508c5c4787a4f7fd3e72c50b81344f55.setContent(html_15e9a7cb67128c2fdb9ef9363821a35d);
+            
+        
+
+        marker_f2bcfe16842d351365934b5550401680.bindPopup(popup_508c5c4787a4f7fd3e72c50b81344f55)
+        ;
+
+        
+    
+    
+            var marker_3be9b3274ef346747f3fb59226a24756 = L.marker(
+                [-54.8, -50.4],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_e887a052794ed54f1d3c432fbd501e42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3be9b3274ef346747f3fb59226a24756.setIcon(icon_e887a052794ed54f1d3c432fbd501e42);
+        
+    
+        var popup_1e00aec792a1d83e83ee6b8d10daf872 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_fbb194f0ce4b772a028b80098adacec8 = $(`<div id="html_fbb194f0ce4b772a028b80098adacec8" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Amérique Sud<br>📅 <b>Date :</b> 13 Mars 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📜 <b>Événement :</b> Point intermédiaire<br>↕️ <b>Latitude :</b> -54.8<br>↔️ <b>Longitude :</b> -50.4<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="15"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-15">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-15" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> South America Outline<br>📅 <b>Date :</b> March 13th, 1867<br>🌊 <b>Ocean/Sea :</b> South Atlantic Ocean<br>📜 <b>Event :</b> Intermediate point<br>↕️ <b>Latitude :</b> -54.8<br>↔️ <b>Longitude :</b> -50.4<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="15"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-15">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-15" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="15" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_1e00aec792a1d83e83ee6b8d10daf872.setContent(html_fbb194f0ce4b772a028b80098adacec8);
+            
+        
+
+        marker_3be9b3274ef346747f3fb59226a24756.bindPopup(popup_1e00aec792a1d83e83ee6b8d10daf872)
+        ;
+
+        
+    
+    
+            var marker_0f1e3f5451c8f315a094e88d3f25176f = L.marker(
+                [-61.6, -64.8],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_d70fc2426f5018e5a759dae0c04cbf76 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0f1e3f5451c8f315a094e88d3f25176f.setIcon(icon_d70fc2426f5018e5a759dae0c04cbf76);
+        
+    
+        var popup_a57222302b4fb8404a51b17d6bc3af6b = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_7bdd106d903e932488d6a8c3830961e5 = $(`<div id="html_7bdd106d903e932488d6a8c3830961e5" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Cap Horn<br>📅 <b>Date :</b> 14 Mars 1867<br>🌊 <b>Océan/Mer :</b> Mers du Pacifique<br>📜 <b>Événement :</b> Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.<br>↕️ <b>Latitude :</b> -61.6<br>↔️ <b>Longitude :</b> -64.8<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="16"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-16">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-16" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Cape Horn<br>📅 <b>Date :</b> March 14th, 1867<br>🌊 <b>Ocean/Sea :</b> Pacific Seas<br>📜 <b>Event :</b> Heading towards the Ice Pack - The Nautilus had resumed its unwavering course southward.<br>↕️ <b>Latitude :</b> -61.6<br>↔️ <b>Longitude :</b> -64.8<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="16"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-16">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-16" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="16" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_a57222302b4fb8404a51b17d6bc3af6b.setContent(html_7bdd106d903e932488d6a8c3830961e5);
+            
+        
+
+        marker_0f1e3f5451c8f315a094e88d3f25176f.bindPopup(popup_a57222302b4fb8404a51b17d6bc3af6b)
+        ;
+
+        
+    
+    
+            var marker_5698b1b416cc2fd7f3b9109d8dfb1d84 = L.marker(
+                [-73.7, -133.8333],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_bdf7c28375c6f32f88773503f0d8dfda = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5698b1b416cc2fd7f3b9109d8dfb1d84.setIcon(icon_bdf7c28375c6f32f88773503f0d8dfda);
+        
+    
+        var popup_75db60daaebcaf0262e42198cddfdda7 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_6e9b0f26495fe0c239eb7fefec04f030 = $(`<div id="html_6e9b0f26495fe0c239eb7fefec04f030" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Pôle Sud<br>📅 <b>Date :</b> 19 Mars 1867<br>🌊 <b>Océan/Mer :</b> Mers du Pacifique<br>📜 <b>Événement :</b> Vaisseau enrayé dans la banquise<br>↕️ <b>Latitude :</b> -73.7<br>↔️ <b>Longitude :</b> -133.8333<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="17"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-17">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-17" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> South Pole<br>📅 <b>Date :</b> March 19th, 1867<br>🌊 <b>Ocean/Sea :</b> Pacific Seas<br>📜 <b>Event :</b> Vessel stuck in the ice pack<br>↕️ <b>Latitude :</b> -73.7<br>↔️ <b>Longitude :</b> -133.8333<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="17"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-17">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-17" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="17" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_75db60daaebcaf0262e42198cddfdda7.setContent(html_6e9b0f26495fe0c239eb7fefec04f030);
+            
+        
+
+        marker_5698b1b416cc2fd7f3b9109d8dfb1d84.bindPopup(popup_75db60daaebcaf0262e42198cddfdda7)
+        ;
+
+        
+    
+    
+            var marker_ce008c6dba90719fec39d6da4be0d7dd = L.marker(
+                [-56.05, -67.9],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_33068891c847cefcc142a75a658f9eab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ce008c6dba90719fec39d6da4be0d7dd.setIcon(icon_33068891c847cefcc142a75a658f9eab);
+        
+    
+        var popup_420cf754356edef10a7d8ba2022f3a4a = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_37e60f5a19a6c87c0d78dd46f602c0f4 = $(`<div id="html_37e60f5a19a6c87c0d78dd46f602c0f4" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Cap Horn (retour)<br>📅 <b>Date :</b> 1er Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Pacifique Sud<br>📜 <b>Événement :</b> Du Cap Horn à l'Amazone.<br>↕️ <b>Latitude :</b> -56.05<br>↔️ <b>Longitude :</b> -67.9<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="18"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-18">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-18" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Cape Horn (return)<br>📅 <b>Date :</b> April 1st, 1867<br>🌊 <b>Ocean/Sea :</b> South Pacific Ocean<br>📜 <b>Event :</b> From Cape Horn to the Amazon.<br>↕️ <b>Latitude :</b> -56.05<br>↔️ <b>Longitude :</b> -67.9<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="18"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-18">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-18" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="18" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_420cf754356edef10a7d8ba2022f3a4a.setContent(html_37e60f5a19a6c87c0d78dd46f602c0f4);
+            
+        
+
+        marker_ce008c6dba90719fec39d6da4be0d7dd.bindPopup(popup_420cf754356edef10a7d8ba2022f3a4a)
+        ;
+
+        
+    
+    
+            var marker_b01266247b3c76c72c960f329890f6d8 = L.marker(
+                [-40.0, -50.0],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_9daca8eadea0dbe757e9ef1c0dfbbb6f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b01266247b3c76c72c960f329890f6d8.setIcon(icon_9daca8eadea0dbe757e9ef1c0dfbbb6f);
+        
+    
+        var popup_780e8246456af36d25292490ee81c7bd = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_691f6dff14998fd3af759c19bd7523c4 = $(`<div id="html_691f6dff14998fd3af759c19bd7523c4" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Amérique Sud (retour)<br>📅 <b>Date :</b> 5 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📜 <b>Événement :</b> Point intermédiaire - Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.<br>↕️ <b>Latitude :</b> -40.0<br>↔️ <b>Longitude :</b> -50.0<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,370,999 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="19"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-19">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-19" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> South America Coastline (return)<br>📅 <b>Date :</b> April 5th, 1867<br>🌊 <b>Ocean/Sea :</b> South Atlantic Ocean<br>📜 <b>Event :</b> Intermediate point - Patagonia, Uruguay - The Nautilus keeps heading north.<br>↕️ <b>Latitude :</b> -40.0<br>↔️ <b>Longitude :</b> -50.0<br>🌍🧲 <b>Distance from Earth's center :</b> 6,370,999 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="19"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-19">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-19" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="19" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_780e8246456af36d25292490ee81c7bd.setContent(html_691f6dff14998fd3af759c19bd7523c4);
+            
+        
+
+        marker_b01266247b3c76c72c960f329890f6d8.bindPopup(popup_780e8246456af36d25292490ee81c7bd)
+        ;
+
+        
+    
+    
+            var marker_a622b0ef343be64a9dbb22197b5a7933 = L.marker(
+                [-6.96056, -32.08735],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_b914a0ae451e5e6d3f50962618ce9515 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_a622b0ef343be64a9dbb22197b5a7933.setIcon(icon_b914a0ae451e5e6d3f50962618ce9515);
+        
+    
+        var popup_31c9773649e405dd35f027f604fcec8e = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_235a012b77c65281ad0dd23c8ae0702a = $(`<div id="html_235a012b77c65281ad0dd23c8ae0702a" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Amérique Sud centrale<br>📅 <b>Date :</b> 10 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Sud<br>📜 <b>Événement :</b> Point intermédiaire<br>↕️ <b>Latitude :</b> -6.96056<br>↔️ <b>Longitude :</b> -32.08735<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,370,999 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="20"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-20">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-20" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Central South America Coastline<br>📅 <b>Date :</b> March 1st, 1867<br>🌊 <b>Ocean/Sea :</b> South Atlantic Ocean<br>📜 <b>Event :</b> Intermediate point<br>↕️ <b>Latitude :</b> -6.96056<br>↔️ <b>Longitude :</b> -32.08735<br>🌍🧲 <b>Distance from Earth's center :</b> 6,370,999 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="20"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-20">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-20" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="20" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_31c9773649e405dd35f027f604fcec8e.setContent(html_235a012b77c65281ad0dd23c8ae0702a);
+            
+        
+
+        marker_a622b0ef343be64a9dbb22197b5a7933.bindPopup(popup_31c9773649e405dd35f027f604fcec8e)
+        ;
+
+        
+    
+    
+            var marker_df3b11a751d17fe54b36b406cf71840f = L.marker(
+                [15.3167, -59.9667],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_f35f3f245d1a968990d13e26add1787a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_df3b11a751d17fe54b36b406cf71840f.setIcon(icon_f35f3f245d1a968990d13e26add1787a);
+        
+    
+        var popup_911c436d68f93a46d5332d04ff9dc082 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_26a39e94c598b136fe9dddf148fac3fe = $(`<div id="html_26a39e94c598b136fe9dddf148fac3fe" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Martinique et Guadeloupe<br>📅 <b>Date :</b> 18 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.<br>↕️ <b>Latitude :</b> 15.3167<br>↔️ <b>Longitude :</b> -59.9667<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="21"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-21">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-21" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Martinique and Guadeloupe<br>📅 <b>Date :</b> April 20th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Attack by a colossal giant squid, eight meters long.<br>↕️ <b>Latitude :</b> 15.3167<br>↔️ <b>Longitude :</b> -59.9667<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="21"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-21">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-21" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="21" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_911c436d68f93a46d5332d04ff9dc082.setContent(html_26a39e94c598b136fe9dddf148fac3fe);
+            
+        
+
+        marker_df3b11a751d17fe54b36b406cf71840f.bindPopup(popup_911c436d68f93a46d5332d04ff9dc082)
+        ;
+
+        
+    
+    
+            var marker_8292f5cd32751c2ed6bd67553e9a6318 = L.marker(
+                [20.0, -70.0],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_9503f835ece7d3b399df48bf7afb2ea1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8292f5cd32751c2ed6bd67553e9a6318.setIcon(icon_9503f835ece7d3b399df48bf7afb2ea1);
+        
+    
+        var popup_2783077c5d3790bd08e1cd26877d6660 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_c7bb2f32b881cd3ccdf34bf00d85fee1 = $(`<div id="html_c7bb2f32b881cd3ccdf34bf00d85fee1" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Amérique Nord<br>📅 <b>Date :</b> 20 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Point intermédiaire<br>↕️ <b>Latitude :</b> 20.0<br>↔️ <b>Longitude :</b> -70.0<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="22"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-22">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-22" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> North America Contour<br>📅 <b>Date :</b> April 18th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Intermediate point<br>↕️ <b>Latitude :</b> 20.0<br>↔️ <b>Longitude :</b> -70.0<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="22"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-22">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-22" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="22" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_2783077c5d3790bd08e1cd26877d6660.setContent(html_c7bb2f32b881cd3ccdf34bf00d85fee1);
+            
+        
+
+        marker_8292f5cd32751c2ed6bd67553e9a6318.bindPopup(popup_2783077c5d3790bd08e1cd26877d6660)
+        ;
+
+        
+    
+    
+            var marker_58040c6f786e88a2d13e7cee379bc123 = L.marker(
+                [23.6833, -75.3167],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_9a05918d6578d5049d178d37f490fb6a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_58040c6f786e88a2d13e7cee379bc123.setIcon(icon_9a05918d6578d5049d178d37f490fb6a);
+        
+    
+        var popup_b06d2c353bf62dc33ab93ab551640409 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_1b666dc93f747e9591ffcc842e4baa1c = $(`<div id="html_1b666dc93f747e9591ffcc842e4baa1c" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Île Lucayes<br>📅 <b>Date :</b> 20 Avril 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Entrée dans le Gulf Stream.<br>↕️ <b>Latitude :</b> 23.6833<br>↔️ <b>Longitude :</b> -75.3167<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="23"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-23">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-23" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Lucayan Island<br>📅 <b>Date :</b> April 20th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Entering the Gulf Stream.<br>↕️ <b>Latitude :</b> 23.6833<br>↔️ <b>Longitude :</b> -75.3167<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="23"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-23">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-23" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="23" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_b06d2c353bf62dc33ab93ab551640409.setContent(html_1b666dc93f747e9591ffcc842e4baa1c);
+            
+        
+
+        marker_58040c6f786e88a2d13e7cee379bc123.bindPopup(popup_b06d2c353bf62dc33ab93ab551640409)
+        ;
+
+        
+    
+    
+            var marker_05c4d5da2d9739ef735c90c94f3035c1 = L.marker(
+                [35.1, -74.8667],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_54379a93116d8c4701b0c03ad3df22f3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_05c4d5da2d9739ef735c90c94f3035c1.setIcon(icon_54379a93116d8c4701b0c03ad3df22f3);
+        
+    
+        var popup_0cd95a9e0243ed7e37939970b2ea7b97 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_890da601d390a6bc23b4da85447fae87 = $(`<div id="html_890da601d390a6bc23b4da85447fae87" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Cap Hatteras<br>📅 <b>Date :</b> 8 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.<br>↕️ <b>Latitude :</b> 35.1<br>↔️ <b>Longitude :</b> -74.8667<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="24"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-24">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-24" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Cape Hatteras<br>📅 <b>Date :</b> May 8th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Passing by Cape Hatteras, at the height of North Carolina. The Gulf Stream here is seventy-five miles wide and two hundred and ten miles deep.<br>↕️ <b>Latitude :</b> 35.1<br>↔️ <b>Longitude :</b> -74.8667<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="24"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-24">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-24" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="24" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_0cd95a9e0243ed7e37939970b2ea7b97.setContent(html_890da601d390a6bc23b4da85447fae87);
+            
+        
+
+        marker_05c4d5da2d9739ef735c90c94f3035c1.bindPopup(popup_0cd95a9e0243ed7e37939970b2ea7b97)
+        ;
+
+        
+    
+    
+            var marker_9eb791c30d7a7afc6252c18a33dbfe61 = L.marker(
+                [41.0833, -72.8667],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_f52d3d4a08573be729abbfb62d1dd286 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9eb791c30d7a7afc6252c18a33dbfe61.setIcon(icon_f52d3d4a08573be729abbfb62d1dd286);
+        
+    
+        var popup_c2e56d4869b438782e331e51e9301223 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_95d9bfb37e285763c9f1d5690771b58c = $(`<div id="html_95d9bfb37e285763c9f1d5690771b58c" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Long Island<br>📅 <b>Date :</b> 10 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.<br>↕️ <b>Latitude :</b> 41.0833<br>↔️ <b>Longitude :</b> -72.8667<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="25"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-25">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-25" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Long Island<br>📅 <b>Date :</b> May 10th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Struggle of the elements, Captain Nemo, by an inexplicable whim, wanted to brave the storm on the surface.<br>↕️ <b>Latitude :</b> 41.0833<br>↔️ <b>Longitude :</b> -72.8667<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="25"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-25">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-25" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="25" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_c2e56d4869b438782e331e51e9301223.setContent(html_95d9bfb37e285763c9f1d5690771b58c);
+            
+        
+
+        marker_9eb791c30d7a7afc6252c18a33dbfe61.bindPopup(popup_c2e56d4869b438782e331e51e9301223)
+        ;
+
+        
+    
+    
+            var marker_ac92ba7c74ee68cbb948d381de3e080c = L.marker(
+                [47.1333, -57.9167],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_bdd7af267ab607d713133ba810f65923 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ac92ba7c74ee68cbb948d381de3e080c.setIcon(icon_bdd7af267ab607d713133ba810f65923);
+        
+    
+        var popup_b3d387af23a1444d93d7c5015fabe48f = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_ad597be08a8d9af69f2bd72a9fa1a3d6 = $(`<div id="html_ad597be08a8d9af69f2bd72a9fa1a3d6" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Terre Neuve<br>📅 <b>Date :</b> 15 Mai 1867<br>🌊 <b>Océan/Mer :</b> Océan Atlantique Nord<br>📜 <b>Événement :</b> Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.<br>↕️ <b>Latitude :</b> 47.1333<br>↔️ <b>Longitude :</b> -57.9167<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="26"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-26">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-26" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Newfoundland<br>📅 <b>Date :</b> May 15th, 1867<br>🌊 <b>Ocean/Sea :</b> North Atlantic Ocean<br>📜 <b>Event :</b> Southern tip of the Newfoundland bank - Professor Aronnax records in his journal the various marine species.<br>↕️ <b>Latitude :</b> 47.1333<br>↔️ <b>Longitude :</b> -57.9167<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="26"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-26">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-26" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="26" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_b3d387af23a1444d93d7c5015fabe48f.setContent(html_ad597be08a8d9af69f2bd72a9fa1a3d6);
+            
+        
+
+        marker_ac92ba7c74ee68cbb948d381de3e080c.bindPopup(popup_b3d387af23a1444d93d7c5015fabe48f)
+        ;
+
+        
+    
+    
+            var marker_e35c042b13dd630a029dcde29143dbda = L.marker(
+                [51.1, -9.7],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_cb2674157b9f6d58fbec74e1b3b4de2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_e35c042b13dd630a029dcde29143dbda.setIcon(icon_cb2674157b9f6d58fbec74e1b3b4de2c);
+        
+    
+        var popup_dd3d5fc2c3458a09c492269264f2d78c = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_4d74eb651670d6c21715c52f3cf39bdf = $(`<div id="html_4d74eb651670d6c21715c52f3cf39bdf" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Irlande<br>📅 <b>Date :</b> 25 Mai 1867<br>🌊 <b>Océan/Mer :</b> Mer Celtique<br>📜 <b>Événement :</b> Le Nautilus affronte un navire ennemi non identifié dans une zone située au large des côtes irlandaises.<br>↕️ <b>Latitude :</b> 51.1<br>↔️ <b>Longitude :</b> -9.7<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="27"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-27">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-27" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Ireland<br>📅 <b>Date :</b> May 25th, 1867<br>🌊 <b>Ocean/Sea :</b> Celtic Sea<br>📜 <b>Event :</b> The Nautilus confronts an unidentified enemy vessel in waters off the Irish coast.<br>↕️ <b>Latitude :</b> 51.1<br>↔️ <b>Longitude :</b> -9.7<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="27"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-27">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-27" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="27" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_dd3d5fc2c3458a09c492269264f2d78c.setContent(html_4d74eb651670d6c21715c52f3cf39bdf);
+            
+        
+
+        marker_e35c042b13dd630a029dcde29143dbda.bindPopup(popup_dd3d5fc2c3458a09c492269264f2d78c)
+        ;
+
+        
+    
+    
+            var marker_7aed5e42a995c830a88cfd91ec63c3e5 = L.marker(
+                [50.0, -2.2],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_3ae3caaeae5bd72a7c078b92272c65bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7aed5e42a995c830a88cfd91ec63c3e5.setIcon(icon_3ae3caaeae5bd72a7c078b92272c65bc);
+        
+    
+        var popup_e0686255898bbe94d9938e13f2874350 = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_53e8b1144b4e60b3f3017ad0352f77df = $(`<div id="html_53e8b1144b4e60b3f3017ad0352f77df" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Manche<br>📅 <b>Date :</b> 2 Juin 1867<br>🌊 <b>Océan/Mer :</b> Manche<br>📜 <b>Événement :</b> Complot d'évasion<br>↕️ <b>Latitude :</b> 50.0<br>↔️ <b>Longitude :</b> -2.2<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="28"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-28">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-28" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> English Channel<br>📅 <b>Date :</b> June 2nd, 1867<br>🌊 <b>Ocean/Sea :</b> English Channel<br>📜 <b>Event :</b> Escape plot<br>↕️ <b>Latitude :</b> 50.0<br>↔️ <b>Longitude :</b> -2.2<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="28"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-28">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-28" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="28" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_e0686255898bbe94d9938e13f2874350.setContent(html_53e8b1144b4e60b3f3017ad0352f77df);
+            
+        
+
+        marker_7aed5e42a995c830a88cfd91ec63c3e5.bindPopup(popup_e0686255898bbe94d9938e13f2874350)
+        ;
+
+        
+    
+    
+            var marker_ebc5a4f2d183df55137608d639ea9fbb = L.marker(
+                [50.9578, 1.382884],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_ca4c1ec47b2a1471f4d23c83b9ab1c8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ebc5a4f2d183df55137608d639ea9fbb.setIcon(icon_ca4c1ec47b2a1471f4d23c83b9ab1c8a);
+        
+    
+        var popup_7694f0ba6292a16983953c5953e8a1ab = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_88aceb0045ade01e31f14d27f6f40c61 = $(`<div id="html_88aceb0045ade01e31f14d27f6f40c61" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Angleterre Sud<br>📅 <b>Date :</b> 3 Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📜 <b>Événement :</b> Complot d'évasion<br>↕️ <b>Latitude :</b> 50.9578<br>↔️ <b>Longitude :</b> 1.382884<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="29"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-29">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-29" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> South of England Coast<br>📅 <b>Date :</b> June 3rd, 1867<br>🌊 <b>Ocean/Sea :</b> North Sea<br>📜 <b>Event :</b> Escape plot<br>↕️ <b>Latitude :</b> 50.9578<br>↔️ <b>Longitude :</b> 1.382884<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="29"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-29">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-29" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="29" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_7694f0ba6292a16983953c5953e8a1ab.setContent(html_88aceb0045ade01e31f14d27f6f40c61);
+            
+        
+
+        marker_ebc5a4f2d183df55137608d639ea9fbb.bindPopup(popup_7694f0ba6292a16983953c5953e8a1ab)
+        ;
+
+        
+    
+    
+            var marker_88c0759f141089a63ae34c65875318d8 = L.marker(
+                [61.541262, 0.513488],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_a637578a21425539af9108fd46a55040 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_88c0759f141089a63ae34c65875318d8.setIcon(icon_a637578a21425539af9108fd46a55040);
+        
+    
+        var popup_601c922fac595a63e3f3e9b0450d29de = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_686c66bb1bd3f93ca975bea0f9a69cd2 = $(`<div id="html_686c66bb1bd3f93ca975bea0f9a69cd2" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Contour Angleterre Nord<br>📅 <b>Date :</b> 3 Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📜 <b>Événement :</b> Complot d'évasion<br>↕️ <b>Latitude :</b> 61.541262<br>↔️ <b>Longitude :</b> 0.513488<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="30"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-30">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-30" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> North of England Coast<br>📅 <b>Date :</b> June 3rd, 1867<br>🌊 <b>Ocean/Sea :</b> North Sea<br>📜 <b>Event :</b> Escape plot<br>↕️ <b>Latitude :</b> 61.541262<br>↔️ <b>Longitude :</b> 0.513488<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="30"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-30">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-30" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="30" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_601c922fac595a63e3f3e9b0450d29de.setContent(html_686c66bb1bd3f93ca975bea0f9a69cd2);
+            
+        
+
+        marker_88c0759f141089a63ae34c65875318d8.bindPopup(popup_601c922fac595a63e3f3e9b0450d29de)
+        ;
+
+        
+    
+    
+            var marker_293668f8f8c9ae6ff577917163021f85 = L.marker(
+                [62.86093, 1.2103],
+                {
+}
+            ).addTo(marker_cluster_0e39f566c483d2b17db1d053a3f2a430);
+        
+    
+            var icon_031a5115b2c95b21a076cdeb56676e50 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_293668f8f8c9ae6ff577917163021f85.setIcon(icon_031a5115b2c95b21a076cdeb56676e50);
+        
+    
+        var popup_f959b5c9f85164ffdae6f1b8f8f579bc = L.popup({
+  "maxWidth": 560,
+});
+
+        
+            
+                var html_1d0b6a7f53cf5698459a9b0e0618a5c6 = $(`<div id="html_1d0b6a7f53cf5698459a9b0e0618a5c6" style="width: 100.0%; height: 100.0%;">     <div style="display:flex; gap:20px; min-width:500px;">         <div style="flex:1; border-right:1px solid #ccc; padding-right:10px;">             <h4>Français 🇫🇷</h4>             🗺️🧭<b>Escales du Nautilus :</b> Côtes de la Norvège<br>📅 <b>Date :</b> Juin 1867<br>🌊 <b>Océan/Mer :</b> Mer du Nord<br>📜 <b>Événement :</b> Fin du voyage pour le professeur Aronnax, Conseil et Ned Land<br>↕️ <b>Latitude :</b> 62.86093<br>↔️ <b>Longitude :</b> 1.2103<br>🌍🧲 <b>Distance du centre de la Terre :</b> 6,371,000 mètres             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="31"                         data-lang="fr">                     📖 Journal de bord vivant                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-fr-31">                     ✨ Explorations IA                 </button>             </div>              <div id="submenu-fr-31" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="fr" data-action="historical">                         Contexte historique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="fr" data-action="symbolic">                         Analyse symbolique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="fr" data-action="geopoetic">                         Lecture géopoétique                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="fr" data-action="data_nav">                         Données & navigation                     </button>                 </div>             </div>         </div>          <div style="flex:1; padding-left:10px;">             <h4>English 🇬🇧</h4>             🗺️🧭<b>Nautilus Stops :</b> Coast of Norway<br>📅 <b>Date :</b> June 1867<br>🌊 <b>Ocean/Sea :</b> North Sea<br>📜 <b>Event :</b> End of the journey for Professor Aronnax, Conseil, and Ned Land<br>↕️ <b>Latitude :</b> 62.86093<br>↔️ <b>Longitude :</b> 1.2103<br>🌍🧲 <b>Distance from Earth's center :</b> 6,371,000 meters             <br><br>              <div style="display:flex; gap:8px; flex-wrap:wrap;">                 <button class="living-logbook-btn btn btn-sm btn-primary"                         data-stop="31"                         data-lang="en">                     📖 Living Logbook                 </button>                  <button class="submenu-toggle-btn btn btn-sm btn-outline-secondary"                         data-menu-id="submenu-en-31">                     ✨ AI Explorations                 </button>             </div>              <div id="submenu-en-31" class="popup-submenu"                  style="display:none; margin-top:10px; padding-top:6px;">                 <div style="display:flex; gap:6px; flex-wrap:wrap;">                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="en" data-action="historical">                         Historical context                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="en" data-action="symbolic">                         Symbolic analysis                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="en" data-action="geopoetic">                         Geopoetic reading                     </button>                     <button class="submenu-action btn btn-sm btn-light"                             data-stop="31" data-lang="en" data-action="data_nav">                         Data & navigation                     </button>                 </div>             </div>         </div>     </div>     </div>`)[0];
+                popup_f959b5c9f85164ffdae6f1b8f8f579bc.setContent(html_1d0b6a7f53cf5698459a9b0e0618a5c6);
+            
+        
+
+        marker_293668f8f8c9ae6ff577917163021f85.bindPopup(popup_f959b5c9f85164ffdae6f1b8f8f579bc)
+        ;
+
+        
+    
+    
+            marker_cluster_0e39f566c483d2b17db1d053a3f2a430.addTo(map_050c667e0ee84f1187c7117d51886d46);
+        
+    
+            var poly_line_d7c1a83c2314563d8657bf099a7b1386 = L.polyline(
+                [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667], [-8.6833, 125.7333], [-12.0833, 94.55], [5.9167, 79.7], [10.99809, 56.614067], [29.95, 32.55], [35.0, 24.0], [39.2833, 6.7], [20.0, -30.0], [21.5, -31.5], [-10.1775, -17.738], [-54.8, -50.4], [-61.6, -64.8], [-73.7, -133.8333], [-56.05, -67.9], [-40.0, -50.0], [-6.96056, -32.08735], [15.3167, -59.9667], [20.0, -70.0], [23.6833, -75.3167], [35.1, -74.8667], [41.0833, -72.8667], [47.1333, -57.9167], [51.1, -9.7], [50.0, -2.2], [50.9578, 1.382884], [61.541262, 0.513488], [62.86093, 1.2103]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_050c667e0ee84f1187c7117d51886d46);
+        
+    
+            var marker_80f60d8b3965242a620210da82bb9d28 = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(map_050c667e0ee84f1187c7117d51886d46);
+        
+    
+            var div_icon_1009e43498f56bdb40b3ae269559f88d = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size: 12px; color: green; font-weight: bold;\u0027\u003eD\u00e9but / Start\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+            marker_80f60d8b3965242a620210da82bb9d28.setIcon(div_icon_1009e43498f56bdb40b3ae269559f88d);
+        
+    
+        var popup_97311c2e7eccbc2a0381ff52c006c750 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_22fe0dcd9cbbd51d5cbeb86d71415812 = $(`<div id="html_22fe0dcd9cbbd51d5cbeb86d71415812" style="width: 100.0%; height: 100.0%;"><div><b>Début du voyage / Start of the journey</b></div></div>`)[0];
+                popup_97311c2e7eccbc2a0381ff52c006c750.setContent(html_22fe0dcd9cbbd51d5cbeb86d71415812);
+            
+        
+
+        marker_80f60d8b3965242a620210da82bb9d28.bindPopup(popup_97311c2e7eccbc2a0381ff52c006c750)
+        ;
+
+        
+    
+    
+            var marker_750ebd793d04552f51511a0ebb6956c3 = L.marker(
+                [62.86093, 1.2103],
+                {
+}
+            ).addTo(map_050c667e0ee84f1187c7117d51886d46);
+        
+    
+            var div_icon_579ba7c0dc010c40ec3e1bfb9558b970 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size: 12px; color: red; font-weight: bold;\u0027\u003eFin / End\u003c/div\u003e",
+  "iconSize": [30, 30],
+  "iconAnchor": [15, 15],
+  "className": "empty",
+});
+            marker_750ebd793d04552f51511a0ebb6956c3.setIcon(div_icon_579ba7c0dc010c40ec3e1bfb9558b970);
+        
+    
+        var popup_83d184ebc3f6992b998cd77f6d4b4183 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_489023d7f56eb8b8058a97ef5165f7e9 = $(`<div id="html_489023d7f56eb8b8058a97ef5165f7e9" style="width: 100.0%; height: 100.0%;"><div><b>Fin du voyage / End of the journey</b></div></div>`)[0];
+                popup_83d184ebc3f6992b998cd77f6d4b4183.setContent(html_489023d7f56eb8b8058a97ef5165f7e9);
+            
+        
+
+        marker_750ebd793d04552f51511a0ebb6956c3.bindPopup(popup_83d184ebc3f6992b998cd77f6d4b4183)
+        ;
+
+        
+    
+</script>
+</html>
