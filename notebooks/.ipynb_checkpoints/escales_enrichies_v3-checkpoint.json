@@ -1,0 +1,1026 @@
+[
+  {
+    "Escales du Nautilus": {
+      "fr": "Île de Crespo",
+      "en": "Crespo Island"
+    },
+    "Date": {
+      "fr": "1er Décembre 1866",
+      "en": "December 1st, 1866"
+    },
+    "Latitude_Décimal": 33.18497,
+    "Longitude_Décimal": 169.85446,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Début de l'aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.",
+      "en": "Beginning of the adventure - First underwater hunt - A submarine forest - A monstrous sea spider."
+    },
+    "passage_roman": {
+      "fr": "Une douzaine d'appareils de scaphandres, suspendus à la paroi, attendaient les promeneurs. Ned Land, en les voyant, manifesta une répugnance évidente à s'en revêtir. «Mais, mon brave Ned, lui dis-je, les forêts de l'île de Crespo ne sont que des forêts sous-marines! —Bon! fit le harponneur désappointé, qui voyait s'évanouir ses rêves de viande fraîche.",
+      "en": "The note was worded as follows— 16th of November, 1867. TO PROFESSOR ARONNAX, On board the Nautilus. Captain Nemo invites Professor Aronnax to a hunting-party, which will take place to-morrow morning in the forests of the island of Crespo. He hopes that nothing will prevent the Professor from being present, and he will with pleasure see him joined by his companions. CAPTAIN NEMO, Commander of the Nautilus."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Île de Crespo",
+      "mot_en_trouve": "Crespo",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Archipel des Pomotou",
+      "en": "Pomotou Archipelago"
+    },
+    "Date": {
+      "fr": "11 Décembre 1866",
+      "en": "December 11th, 1866"
+    },
+    "Latitude_Décimal": 9.48786,
+    "Longitude_Décimal": 177.83569,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d'îles.",
+      "en": "This archipelago covers an area of three hundred seventy square leagues, including about sixty island groups."
+    },
+    "passage_roman": {
+      "fr": "Ce terrible spectacle inaugurait la série des catastrophes maritimes, que le Nautilus devait rencontrer sur sa route. Depuis qu'il suivait des mers plus fréquentées, nous apercevions souvent des coques naufragées qui achevaient de pourrir entre deux eaux, et, plus profondément, des canons, des boulets, des ancres, des chaînes, et mille autres objets de fer, que la rouille dévorait. Cependant, toujours entraînés par ce Nautilus, où nous vivions comme isolés, le 11 décembre, nous eûmes connaissance de l'archipel des Pomotou, ancien «groupe dangereux» de Bougainville, qui s'étend sur un espace de cinq cents lieues de l'est-sud-est à l'ouest-nord-ouest, entre 13° 30′ et 23° 50′ de latitude sud, et 125° 30′ et 151° 30′ de longitude ouest, depuis l'île Ducie jusqu'à l'île Lazareff. Cet archipel couvre une superficie de trois cent soixante-dix lieues carrées, et il est formé d'une soixantaine de groupes d'îles, parmi lesquels on remarque le groupe Gambier, auquel la France a imposé son protectorat. Ces îles sont coralligènes.",
+      "en": "However, the Nautilus, turning, went round the submerged vessel, and in one instant I read on the stern—“The Florida, Sunderland.” CHAPTER XVIII VANIKORO This terrible spectacle was the forerunner of the series of maritime catastrophes that the Nautilus was destined to meet with in its route. As long as it went through more frequented waters, we often saw the hulls of shipwrecked vessels that were rotting in the depths, and deeper down cannons, bullets, anchors, chains, and a thousand other iron materials eaten up by rust. However, on the 11th of December we sighted the Pomotou Islands, the old “dangerous group” of Bougainville, that extend over a space of 500 leagues at E.S.E. to W.N.W., from the Island Ducie to that of Lazareff. This group covers an area of 370 square leagues, and it is formed of sixty groups of islands, among which the Gambier group is remarkable, over which France exercises sway."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Archipel des Pomotou",
+      "mot_en_trouve": "Pomotou",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Archipel des nouvelles Hébrides",
+      "en": "New Hebrides Archipelago"
+    },
+    "Date": {
+      "fr": "25 Décembre 1866",
+      "en": "December 25th, 1866"
+    },
+    "Latitude_Décimal": -16.0667,
+    "Longitude_Décimal": 164.5333,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.",
+      "en": "Discovered by Quiros in 1606, explored by Bougainville in 1768, and named by Cook in 1773."
+    },
+    "passage_roman": {
+      "fr": "Et si maître Ned Land n'eut pas à se repentir de sa gloutonnerie en cette circonstance, c'est que l'huître est le seul mets qui ne provoque jamais d'indigestion. En effet, il ne faut pas moins de seize douzaines de ces mollusques acéphales pour fournir les trois cent quinze grammes de substance azotée, nécessaires à la nourriture quotidienne d'un seul homme. Le 25 décembre, le Nautilus naviguait au milieu de l'archipel des Nouvelles-Hébrides, que Quiros découvrit en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773. Ce groupe se compose principalement de neuf grandes îles, et forme une bande de cent vingt lieues du nord-nord-ouest au sud-sud-est, comprise entre 15° et 2° de latitude sud, et entre 164° et 168° de longitude. Nous passâmes assez près de l'île d'Aurou, qui, au moment des observations de midi, m'apparut comme une masse de bois verts, dominée par un pic d'une grande hauteur.",
+      "en": "At length an article in a well-known satirical journal by a favourite contributor, the chief of the staff, settled the monster, like Hippolytus, giving it the death-blow amidst an universal burst of laughter. Wit had conquered science. During the first months of the year 1867 the question seemed buried, never to revive, when new facts were brought before the public. It was then no longer a scientific problem to be solved, but a real danger seriously to be avoided. The question took quite another shape."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Hébrides",
+      "mot_en_trouve": "New",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "La Pouasie",
+      "en": "Papua"
+    },
+    "Date": {
+      "fr": "4 Janvier 1867",
+      "en": "January 4th, 1867"
+    },
+    "Latitude_Décimal": -0.3167,
+    "Longitude_Décimal": 128.3833,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.",
+      "en": "Discovered in 1511 by the Portuguese Francisco Serrano - View of the Arfak Mountains - Four days on land - Battle with the Papuans."
+    },
+    "passage_roman": {
+      "fr": "C'est une tranquille tombe que cette tombe de corail, et fasse le ciel que, mes compagnons et moi, nous n'en ayons jamais d'autre!» CHAPITRE XX LE DÉTROIT DE TORRÈS. Pendant la nuit du 27 au 28 décembre, le Nautilus abandonna les parages de Vanikoro avec une vitesse excessive. Sa direction était sud-ouest, et, en trois jours, il franchit les sept cent cinquante lieues qui séparent le groupe de La Pérouse de la pointe sud-est de la Papouasie. Le 1er janvier 1863, de grand matin, Conseil me rejoignit sur la plateforme. «Monsieur, me dit ce brave garçon, monsieur me permettra-t-il de lui souhaiter une bonne année?",
+      "en": "it is a fine death for a sailor!” said Captain Nemo, at last. “A coral tomb makes a quiet grave; and I trust that I and my comrades will find no other.” CHAPTER XIX TORRES STRAITS During the night of the 27th or 28th of December, the Nautilus left the shores of Vanikoro with great speed. Her course was south-westerly, and in three days she had gone over the 750 leagues that separated it from La Perouse’s group and the south-east point of Papua. Early on the 1st of January, 1863, Conseil joined me on the platform. “Master, will you permit me to wish you a happy New Year?” “What!"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Pouasie",
+      "mot_en_trouve": "Papua",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Cap Wessel",
+      "en": "Cape Wessel"
+    },
+    "Date": {
+      "fr": "11 janvier 1867",
+      "en": "January 11th, 1867"
+    },
+    "Latitude_Décimal": -10.7,
+    "Longitude_Décimal": 136.7667,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Forme la pointe du golfe de Carpentarie.",
+      "en": "Forms the tip of the Gulf of Carpentaria."
+    },
+    "passage_roman": {
+      "fr": "La rapidité de son hélice était telle que je ne pouvais ni suivre ses tours ni les compter. Quand je songeais que ce merveilleux agent électrique, après avoir donné le mouvement, la chaleur, la lumière au Nautilus, le protégeait encore contre les attaques extérieures, et le transformait en une arche sainte à laquelle nul profanateur ne touchait sans être foudroyé, mon admiration n'avait plus de bornes, et de l'appareil, elle remontait aussitôt à l'ingénieur qui l'avait créé. Nous marchions directement vers l'ouest, et, le 11 janvier, nous doublâmes ce cap Wessel, situé par 135° de longitude et 10° de latitude nord, qui forme la pointe est du golfe de Carpentarie. Les récifs étaient encore nombreux, mais plus clair-semés, et relevés sur la carte avec une extrême précision. Le Nautilus évita facilement les brisants de Money à bâbord, et les récifs Victoria à tribord, placés par 130° de longitude, et sur ce dixième parallèle que nous suivions rigoureusement.",
+      "en": "The rapidity of her screw was such that I could neither follow nor count its revolutions. When I reflected that this marvellous electric agent, after having afforded motion, heat, and light to the Nautilus, still protected her from outward attack, and transformed her into an ark of safety which no profane hand might touch without being thunderstricken, my admiration was unbounded, and from the structure it extended to the engineer who had called it into existence. Our course was directed to the west, and on the 11th of January we doubled Cape Wessel, situation in 135° long. and 10° north lat., which forms the east point of the Gulf of Carpentaria. The reefs were still numerous, but more equalised, and marked on the chart with extreme precision."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Cap Wessel",
+      "mot_en_trouve": "Cape Wessel",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Mer de Timor",
+      "en": "Timor Sea"
+    },
+    "Date": {
+      "fr": "13 janvier 1867",
+      "en": "January 13th, 1867"
+    },
+    "Latitude_Décimal": -8.6833,
+    "Longitude_Décimal": 125.7333,
+    "Océan/Mer": {
+      "fr": "Océan Indien",
+      "en": "Indian Ocean"
+    },
+    "Event": {
+      "fr": "Un homme de l'équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.",
+      "en": "A crew member who died during the night was buried in the underwater cemetery. Captain Nemo and his men came to lay their companion to rest in this common grave, at the bottom of this unreachable ocean."
+    },
+    "passage_roman": {
+      "fr": "Les récifs étaient encore nombreux, mais plus clair-semés, et relevés sur la carte avec une extrême précision. Le Nautilus évita facilement les brisants de Money à bâbord, et les récifs Victoria à tribord, placés par 130° de longitude, et sur ce dixième parallèle que nous suivions rigoureusement. Le 13 janvier, le capitaine Nemo, arrivé dans la mer de Timor, avait connaissance de l'île de ce nom par 122° de longitude. Cette île dont la superficie est de seize cent vingt-cinq lieues carrées est gouvernée par des radjahs. Ces princes se disent fils de crocodiles, c'est-à-dire issus de la plus haute origine à laquelle un être humain puisse prétendre.",
+      "en": "The Nautilus easily avoided the breakers of Money to port and the Victoria reefs to starboard, placed at 130° long. and on the 10th parallel, which we strictly followed. On the 13th of January, Captain Nemo arrived in the Sea of Timor, and recognised the island of that name in 122° long. From this point the direction of the Nautilus inclined towards the south-west. Her head was set for the Indian Ocean."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Mer de Timor",
+      "mot_en_trouve": "Timor",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Île Keeling",
+      "en": "Keeling Island"
+    },
+    "Date": {
+      "fr": "24 Janvier 1867",
+      "en": "January 24th, 1867"
+    },
+    "Latitude_Décimal": -12.0833,
+    "Longitude_Décimal": 94.55,
+    "Océan/Mer": {
+      "fr": "Océan Indien",
+      "en": "Indian Ocean"
+    },
+    "Event": {
+      "fr": "Visitée par Darwin et le capitaine Fitz-Roy.",
+      "en": "Visited by Darwin and Captain Fitz-Roy."
+    },
+    "passage_roman": {
+      "fr": "Du 21 au 23 janvier, le Nautilus marcha à raison de deux cent cinquante lieues par vingt-quatre heures, soit cinq cent quarante milles, ou vingt-deux milles à l'heure. Si nous reconnaissions au passage les diverses variétés de poissons, c'est que ceux-ci, attirés par l'éclat électrique, cherchaient à nous accompagner; la plupart, distancés par cette vitesse, restaient bientôt en arrière; quelques-uns cependant parvenaient à se maintenir pendant un certain temps dans les eaux du Nautilus. Le 24 au matin, par 12° 5′ de latitude sud et 94° 33′ de longitude, nous eûmes connaissance de l'île Keeling, soulèvement madréporique planté de magnifiques cocos, et qui fut visitée par M. Darwin et le capitaine Fitz-Roy. Le Nautilus prolongea à peu de distance les accores de cette île déserte.",
+      "en": "If we recognised so many different varieties of fish, it was because, attracted by the electric light, they tried to follow us; the greater part, however, were soon distanced by our speed, though some kept their place in the waters of the Nautilus for a time. The morning of the 24th, in 12° 5′ S. lat., and 94° 33′ long., we observed Keeling Island, a coral formation, planted with magnificent cocos, and which had been visited by Mr. Darwin and Captain Fitzroy. The Nautilus skirted the shores of this desert island for a little distance."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Île Keeling",
+      "mot_en_trouve": "Keeling Island",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Golfe du Bengale",
+      "en": "Bay of Bengal"
+    },
+    "Date": {
+      "fr": "27 janvier 1867",
+      "en": "January 27th, 1867"
+    },
+    "Latitude_Décimal": 5.9167,
+    "Longitude_Décimal": 79.7,
+    "Océan/Mer": {
+      "fr": "Océan Indien",
+      "en": "Indian Ocean"
+    },
+    "Event": {
+      "fr": "Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C'était la mort des villes indiennes.",
+      "en": "A grim spectacle! Corps were floating on the surface of the waves. It was the death of the Indian cities."
+    },
+    "passage_roman": {
+      "fr": "La science a déterminé, sur le globe, la direction de cinq courants principaux: un dans l'Atlantique nord, un second dans l'Atlantique sud, un troisième dans le Pacifique nord, un quatrième dans le Pacifique sud, et un cinquième dans l'Océan indien sud. Il est même probable qu'un sixième courant existait autrefois dans l'Océan indien nord, lorsque les mers Caspienne et d'Aral, réunies aux grands lacs de l'Asie, ne formaient qu'une seule et même étendue d'eau. Or, au point indiqué sur le planisphère, se déroulait l'un de ces courants, le Kuro-Scivo des Japonais, le Fleuve-Noir, qui, sorti du golfe du Bengale où le chauffent les rayons perpendiculaires du soleil des Tropiques, traverse le détroit de Malacca, prolonge la côte d'Asie, s'arrondit dans le Pacifique nord jusqu'aux îles Aléoutiennes, charriant des troncs de camphriers et autres produits indigènes, et tranchant par le pur indigo de ses eaux chaudes avec les flots de l'Océan. C'est ce courant que le Nautilus allait parcourir. Je le suivais du regard, je le voyais se perdre dans l'immensité du Pacifique, et je me sentais entraîner avec lui, quand Ned Land et Conseil apparurent à la porte du salon.",
+      "en": "He wanted to go to the surface and harpoon the monsters, particularly certain smooth-hound sharks, whose mouth is studded with teeth like a mosaic; and large tiger-sharks nearly six yards long, the last named of which seemed to excite him more particularly. But the Nautilus, accelerating her speed, easily left the most rapid of them behind. The 27th of January, at the entrance of the vast Bay of Bengal, we met repeatedly a forbidding spectacle, dead bodies floating on the surface of the water. They were the dead of the Indian villages, carried by the Ganges to the level of the sea, and which the vultures, the only undertakers of the country, had not been able to devour. But the sharks did not fail to help them at their funeral work."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Golfe du Bengale",
+      "mot_en_trouve": "Bay of Bengal",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Afrique Est",
+      "en": "East Africa Coast"
+    },
+    "Date": {
+      "fr": "28 Janvier 1867",
+      "en": "January 28th, 1867"
+    },
+    "Latitude_Décimal": 10.99809,
+    "Longitude_Décimal": 56.614067,
+    "Océan/Mer": {
+      "fr": "Océan Indien",
+      "en": "Indian Ocean"
+    },
+    "Event": {
+      "fr": "Point intermédiaire.",
+      "en": "Intermediate point."
+    },
+    "passage_roman": {
+      "fr": "Ce point est une escale intermédiaire de navigation, non mentionnée explicitement dans le roman.",
+      "en": "This is an intermediate navigation point, not explicitly mentioned in the novel."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "point_intermediaire",
+      "raison_en": "point_intermediaire"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Sous l'isthme de Suez",
+      "en": "Beneath the Isthmus of Suez"
+    },
+    "Date": {
+      "fr": "30 Janvier 1867",
+      "en": "January 30th, 1867"
+    },
+    "Latitude_Décimal": 29.95,
+    "Longitude_Décimal": 32.55,
+    "Océan/Mer": {
+      "fr": "Mer Rouge",
+      "en": "Red Sea"
+    },
+    "Event": {
+      "fr": "Passage par l'Arabian Tunnel, le corridor souterrain imaginé par Nemo sous l'isthme de Suez, puis chasse du dugong.",
+      "en": "Passage through the Arabian Tunnel, the underground corridor imagined by Nemo beneath the Isthmus of Suez, followed by the dugong hunt."
+    },
+    "passage_roman": {
+      "fr": "—Eh bien! nous reviendrons, maître Land, et si après le golfe Persique, le Nautilus veut visiter la mer Rouge, le détroit de Babel-Mandeb est toujours là pour lui livrer passage. —Je ne vous apprendrai pas, monsieur, répondit Ned Land, que la mer Rouge est non moins fermée que le golfe, puisque l'isthme de Suez n'est pas encore percé, et, le fût-il, un bateau mystérieux comme le nôtre ne se hasarderait pas dans ses canaux coupés d'écluses. Donc, la mer Rouge n'est pas encore le chemin qui nous ramènera en Europe. —Aussi, n'ai-je pas dit que nous reviendrions en Europe.",
+      "en": "“The great depths of the ocean are entirely unknown to us. Soundings cannot reach them. What passes in those remote depths—what beings live, or can live, twelve or fifteen miles beneath the surface of the waters—what is the organisation of these animals, we can scarcely conjecture. However, the solution of the problem submitted to me may modify the form of the dilemma. Either we do know all the varieties of beings which people our planet, or we do not."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Suez",
+      "mot_en_trouve": "Beneath",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "L'archipel grec",
+      "en": "The Greek Archipelago"
+    },
+    "Date": {
+      "fr": "12 Février 1867",
+      "en": "February 12th, 1867"
+    },
+    "Latitude_Décimal": 35.0,
+    "Longitude_Décimal": 24.0,
+    "Océan/Mer": {
+      "fr": "Mer Égée",
+      "en": "Aegean Sea"
+    },
+    "Event": {
+      "fr": "Passage du Nautilus dans l'archipel grec ; Aronnax observe les poissons de ces eaux, avec une évocation de l'ancienne île de Crète.",
+      "en": "The Nautilus passes through the Greek Archipelago; Aronnax observes the fish of these waters, with an evocation of the ancient island of Crete."
+    },
+    "passage_roman": {
+      "fr": "Pour les uns, c'est un polypier, et pour d'autres tels que M. Milne Edwards, c'est un individu isolé et unique. La classe des spongiaires contient environ trois cents espèces qui se rencontrent dans un grand nombre de mers, et même dans certains cours d'eau où elles ont reçu le nom de «fluviatiles.» Mais leurs eaux de prédilection sont celles de la Méditerranée, de l'archipel grec, de la côte de Syrie et de la mer Rouge. Là se reproduisent et se développent ces éponges fines-douces dont la valeur s'élève jusqu'à cent cinquante francs, l'éponge blonde de Syrie, l'éponge dure de Barbarie, etc. Mais puisque je ne pouvais espérer d'étudier ces zoophytes dans les échelles du Levant, dont nous étions séparés par l'infranchissable isthme de Suez, je me contentai de les observer dans les eaux de la mer Rouge.",
+      "en": "CHAPTER VI\nTHE GRECIAN ARCHIPELAGO\n\n\nThe next day, the 12th of February, at the dawn of day, the _Nautilus_\nrose to the surface. I hastened on to the platform. Three miles to the\nsouth the dim outline of Pelusium was to be seen. A torrent had carried\nus from one sea to another. About seven o’clock Ned and Conseil joined\nme."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "L'archipel grec",
+      "mot_en_trouve": null,
+      "fr_valide": true,
+      "en_valide": false,
+      "raison_fr": "ok",
+      "raison_en": "aucun_mot_trouve"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Méditerranée",
+      "en": "Mediterranean Sea"
+    },
+    "Date": {
+      "fr": "16 Février 1867",
+      "en": "February 16th, 1867"
+    },
+    "Latitude_Décimal": 39.2833,
+    "Longitude_Décimal": 6.7,
+    "Océan/Mer": {
+      "fr": "Mer Méditerranée",
+      "en": "Mediterranean Sea"
+    },
+    "Event": {
+      "fr": "La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.",
+      "en": "The Mediterranean in forty-eight hours - To his great annoyance, Ned Land had to abandon his escape plans - Observation of Mediterranean fish."
+    },
+    "passage_roman": {
+      "fr": "Voici une conserve d'holoturies qu'un Malais déclarerait sans rivale au monde, voilà une crème dont le lait a été fourni par la mamelle des cétacés, et le sucre par les grands fucus de la mer du Nord, et enfin, permettez-moi de vous offrir des confitures d'anémones qui valent celles des fruits les plus savoureux.» Et je goûtais, plutôt en curieux qu'en gourmet, tandis que le capitaine Nemo m'enchantait par ses invraisemblables récits. «Mais cette mer, monsieur Aronnax, me dit-il, cette nourrice prodigieuse, inépuisable, elle ne me nourrit pas seulement; elle me vêtit encore. Ces étoffes qui vous couvrent sont tissées avec le byssus de certains coquillages; elles sont teintes avec la pourpre des anciens et nuancées de couleurs violettes que j'extrais des aplysis de la Méditerranée. Les parfums que vous trouverez sur la toilette de votre cabine sont le produit de la distillation des plantes marines. Votre lit est fait du plus doux zostère de l'Océan.",
+      "en": "CHAPTER VII\nTHE MEDITERRANEAN IN FORTY-EIGHT HOURS\n\n\nThe Mediterranean, the blue sea par excellence, “the great sea” of the\nHebrews, “the sea” of the Greeks, the “mare nostrum” of the Romans,\nbordered by orange-trees, aloes, cacti, and sea-pines; embalmed with\nthe perfume of the myrtle, surrounded by rude mountains, saturated with\npure and transparent air, but incessantly worked by underground fires;\na perfect battlefield in which Neptune and Pluto still dispute the\nempire of the world!"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Méditerranée",
+      "mot_en_trouve": "Mediterranean",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "L'Atlantide",
+      "en": "Atlantis"
+    },
+    "Date": {
+      "fr": "19 Février 1867",
+      "en": "February 19th, 1867"
+    },
+    "Latitude_Décimal": 20.0,
+    "Longitude_Décimal": -30.0,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique",
+      "en": "Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Vision de l'Atlantide, localisation cartographique approximative d'après le trajet du roman.",
+      "en": "Vision of Atlantis; approximate cartographic location based on the novel's route."
+    },
+    "passage_roman": {
+      "fr": "Puis, ramassant un morceau de pierre crayeuse, il s'avança vers un roc de basalte noire et traça ce seul mot: ATLANTIDE. Quel éclair traversa mon esprit! L'Atlantide, l'ancienne Méropide de Théopompe, l'Atlantide de Platon, ce continent nié par Origène, Porphyre, Jamblique, D'Anville, Malte-Brun, Humboldt, qui mettaient sa disparition au compte des récits légendaires, admis par Possidonius, Pline, Ammien-Marcellin, Tertullien, Engel, Sherer, Tournefort, Buffon, d'Avezac, je l'avais là sous les yeux, portant encore les irrécusables témoignages de sa catastrophe! C'était donc cette région engloutie qui existait en dehors de l'Europe, de l'Asie, de la Libye, au-delà des colonnes d'Hercule, où vivait ce peuple puissant des Atlantes, contre lequel se firent les premières guerres de l'ancienne Grèce! L'historien qui a consigné dans ses écrits les hauts faits de ces temps héroïques, c'est Platon lui-même.",
+      "en": "Where was I? I must know at any cost. I tried to speak, but Captain Nemo stopped me by a gesture, and, picking up a piece of chalk-stone, advanced to a rock of black basalt, and traced the one word: ATLANTIS What a light shot through my mind! Atlantis! the Atlantis of Plato, that continent denied by Origen and Humbolt, who placed its disappearance amongst the legendary tales."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "L'Atlantide",
+      "mot_en_trouve": "Atlantis",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "La mer des Sargasses",
+      "en": "The Sargasso Sea"
+    },
+    "Date": {
+      "fr": "22 Février 1867",
+      "en": "February 22nd, 1867"
+    },
+    "Latitude_Décimal": 21.5,
+    "Longitude_Décimal": -31.5,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Traversée de la mer des Sargasses par le Nautilus.",
+      "en": "Crossing of the Sargasso Sea by the Nautilus."
+    },
+    "passage_roman": {
+      "fr": "Peut-être. Quoi qu'il en soit, le lendemain, le Nautilus, ayant quitté son port d'attache, naviguait au large de toute terre, et à quelques mètres au-dessous des flots de l'Atlantique. CHAPITRE XI LA MER DE SARGASSES. La direction du Nautilus ne s'était pas modifiée. Tout espoir de revenir vers les mers européennes devait donc être momentanément rejeté.",
+      "en": "CHAPTER XI\nTHE SARGASSO SEA"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Sargasses",
+      "mot_en_trouve": "The Sargasso Sea",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Afrique Nord",
+      "en": "North Africa Coast"
+    },
+    "Date": {
+      "fr": "23 Février 1867",
+      "en": "February 23th, 1867"
+    },
+    "Latitude_Décimal": -10.1775,
+    "Longitude_Décimal": -17.738,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Direction le pôle Sud.",
+      "en": "Heading towards the South Pole."
+    },
+    "passage_roman": {
+      "fr": "Pareil fait fut également observé le 23 juillet de la même année, dans les mers du Pacifique, par le Cristobal-Colon, de _West India and Pacific steam navigation Company_. Donc, ce cétacé extraordinaire pouvait se transporter d'un endroit à un autre avec une vélocité surprenante, puisque à trois jours d'intervalle, le Governor-Higginson et le Cristobal-Colon l'avaient observé en deux points de la carte séparés par une distance de plus de sept cents lieues marines. Quinze jours plus tard, à deux mille lieues de là, l'Helvetia, de la Compagnie Nationale, et le Shannon, du Royal-Mail, marchant à contrebord dans cette portion de l'Atlantique comprise entre les États-Unis et l'Europe, se signalèrent respectivement le monstre par 42° 15′ de latitude nord, et 60° 35′ de longitude à l'ouest du méridien de Greenwich. Dans cette observation simultanée, on crut pouvoir évaluer la longueur minimum du mammifère à plus de trois cent cinquante pieds anglais[1], puisque le Shannon et l'Helvetia étaient de dimension inférieure à lui, bien qu'ils mesurassent cent mètres de l'étrave à l'étambot. Or, les plus vastes baleines, celles qui fréquentent les parages des îles Aléoutiennes, le Kulammak et l'Umgullick, n'ont jamais dépassé la longueur de cinquante-six mètres,—si même elles l'atteignent.",
+      "en": "It had been so much talked of, even through the Atlantic cable, that jesters pretended that this slender fly had stopped a telegram on its passage and was making the most of it. So when the frigate had been armed for a long campaign, and provided with formidable fishing apparatus, no one could tell what course to pursue. Impatience grew apace, when, on the 2nd of July, they learned that a steamer of the line of San Francisco, from California to Shanghai, had seen the animal three weeks before in the North Pacific Ocean. The excitement caused by this news was extreme. The ship was revictualled and well stocked with coal."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Nord",
+      "mot_en_trouve": "North",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Amérique Sud",
+      "en": "South America Outline"
+    },
+    "Date": {
+      "fr": "13 Mars 1867",
+      "en": "March 13th, 1867"
+    },
+    "Latitude_Décimal": -54.8,
+    "Longitude_Décimal": -50.4,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Sud",
+      "en": "South Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Point intermédiaire",
+      "en": "Intermediate point"
+    },
+    "passage_roman": {
+      "fr": "Ce point est une escale intermédiaire de navigation, non mentionnée explicitement dans le roman.",
+      "en": "This is an intermediate navigation point, not explicitly mentioned in the novel."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "point_intermediaire",
+      "raison_en": "point_intermediaire"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Cap Horn",
+      "en": "Cape Horn"
+    },
+    "Date": {
+      "fr": "14 Mars 1867",
+      "en": "March 14th, 1867"
+    },
+    "Latitude_Décimal": -61.6,
+    "Longitude_Décimal": -64.8,
+    "Océan/Mer": {
+      "fr": "Mers du Pacifique",
+      "en": "Pacific Seas"
+    },
+    "Event": {
+      "fr": "Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.",
+      "en": "Heading towards the Ice Pack - The Nautilus had resumed its unwavering course southward."
+    },
+    "passage_roman": {
+      "fr": "La frégate prolongea la côte sud-est de l'Amérique avec une rapidité prodigieuse. Le 3 juillet, nous étions à l'ouvert du détroit de Magellan, à la hauteur du cap des Vierges. Mais le commandant Farragut ne voulut pas prendre ce sinueux passage, et manœuvra de manière à doubler le cap Horn. L'équipage lui donna raison à l'unanimité. Et en effet, était-il probable que l'on pût rencontrer le narwal dans ce détroit resserré?",
+      "en": "The frigate skirted the south-east coast of America with great\nrapidity. The 3rd of July we were at the opening of the Straits of\nMagellan, level with Cape Vierges. But Commander Farragut would not\ntake a tortuous passage, but doubled Cape Horn.\n\nThe ship’s crew agreed with him. And certainly it was possible that\nthey might meet the narwhal in this narrow pass. Many of the sailors\naffirmed that the monster could not pass there, “that he was too big\nfor that!”"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Cap Horn",
+      "mot_en_trouve": "Cape Horn",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Pôle Sud",
+      "en": "South Pole"
+    },
+    "Date": {
+      "fr": "19 Mars 1867",
+      "en": "March 19th, 1867"
+    },
+    "Latitude_Décimal": -73.7,
+    "Longitude_Décimal": -133.8333,
+    "Océan/Mer": {
+      "fr": "Mers du Pacifique",
+      "en": "Pacific Seas"
+    },
+    "Event": {
+      "fr": "Vaisseau enrayé dans la banquise",
+      "en": "Vessel stuck in the ice pack"
+    },
+    "passage_roman": {
+      "fr": "C'est votre capitaine Cook, à vous autres, Français. Infortuné savant! Avoir bravé les banquises du pôle Sud, les coraux de l'Océanie, les cannibales du Pacifique, pour périr misérablement dans un train de chemin de fer! Si cet homme énergique a pu réfléchir pendant les dernières secondes de son existence, vous figurez-vous quelles ont dû être ses suprêmes pensées!» En parlant ainsi, le capitaine Nemo semblait ému, et je porte cette émotion à son actif. Puis, la carte à la main, nous revîmes les travaux du navigateur français, ses voyages de circumnavigation, sa double tentative au pôle Sud qui amena la découverte des terres Adélie et Louis-Philippe, enfin ses levés hydrographiques des principales îles de l'Océanie.",
+      "en": "“This D’Urville was one of your great sailors,” said the Captain to me,\n“one of your most intelligent navigators. He is the Captain Cook of you\nFrenchmen. Unfortunate man of science, after having braved the icebergs\nof the South Pole, the coral reefs of Oceania, the cannibals of the\nPacific, to perish miserably in a railway train! If this energetic man\ncould have reflected during the last moments of his life, what must\nhave been uppermost in his last thoughts, do you suppose?”\n\nSo speaking, Captain Nemo seemed moved, and his emotion gave me a\nbetter opinion of him. Then, chart in hand, we reviewed the travels of\nthe French navigator, his voyages of circumnavigation, his double\ndetention at the South Pole, which led to the discovery of Adela"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Pôle Sud",
+      "mot_en_trouve": "South Pole",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Cap Horn (retour)",
+      "en": "Cape Horn (return)"
+    },
+    "Date": {
+      "fr": "1er Avril 1867",
+      "en": "April 1st, 1867"
+    },
+    "Latitude_Décimal": -56.05,
+    "Longitude_Décimal": -67.9,
+    "Océan/Mer": {
+      "fr": "Océan Pacifique Sud",
+      "en": "South Pacific Ocean"
+    },
+    "Event": {
+      "fr": "Du Cap Horn à l'Amazone.",
+      "en": "From Cape Horn to the Amazon."
+    },
+    "passage_roman": {
+      "fr": "L'Atlantique! vaste étendue d'eau dont la superficie couvre vingt-cinq\nmillions de milles carrés, longue de neuf mille milles sur une\nlargeur moyenne de deux mille sept cents. Importante mer presque\nignorée des anciens, sauf peut-être des Carthaginois, ces Hollandais\nde l'antiquité, qui dans leurs pérégrinations commerciales suivaient\nles côtes ouest de l'Europe et de l'Afrique! Océan dont les rivages\naux sinuosités parallèles embrassent un périmètre immense, arrosé par\nles plus grands fleuves du monde, le Saint-Laurent, le Mississipi,\nl'Amazone, la Plata, l'Orénoque, le Niger, le Sénégal, l'Elbe, la\nLoire, le Rhin, qui lui apportent les eaux des pays les plus civilisés\net des contrées les plus sauvages! Magnifique plaine, incessamment\nsill",
+      "en": "The Atlantic! a vast sheet of water whose superficial area covers\ntwenty-five millions of square miles, the length of which is nine\nthousand miles, with a mean breadth of two thousand seven hundred—an\nocean whose parallel winding shores embrace an immense circumference,\nwatered by the largest rivers of the world, the St. Lawrence, the\nMississippi, the Amazon, the Plata, the Orinoco, the Niger, the\nSenegal, the Elbe, the Loire, and the Rhine, which carry water from the\nmost civilised, as well as from the most savage, countries! Magnificent\nfield of water, incessantly ploughed by vessels of every nation,\nsheltered by the flags of every nation, and which terminates in those\ntwo terrible points so dreaded by mariners, Cape Horn and the Cape of"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "aucun_mot_trouve",
+      "raison_en": "aucun_mot_trouve"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Amérique Sud (retour)",
+      "en": "South America Coastline (return)"
+    },
+    "Date": {
+      "fr": "5 Avril 1867",
+      "en": "April 5th, 1867"
+    },
+    "Latitude_Décimal": -40.0,
+    "Longitude_Décimal": -50.0,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Sud",
+      "en": "South Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Point intermédiaire - Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.",
+      "en": "Intermediate point - Patagonia, Uruguay - The Nautilus keeps heading north."
+    },
+    "passage_roman": {
+      "fr": "Ce point est une escale intermédiaire de navigation, non mentionnée explicitement dans le roman.",
+      "en": "This is an intermediate navigation point, not explicitly mentioned in the novel."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "point_intermediaire",
+      "raison_en": "point_intermediaire"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Amérique Sud centrale",
+      "en": "Central South America Coastline"
+    },
+    "Date": {
+      "fr": "10 Avril 1867",
+      "en": "March 1st, 1867"
+    },
+    "Latitude_Décimal": -6.96056,
+    "Longitude_Décimal": -32.08735,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Sud",
+      "en": "South Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Point intermédiaire",
+      "en": "Intermediate point"
+    },
+    "passage_roman": {
+      "fr": "Ce point est une escale intermédiaire de navigation, non mentionnée explicitement dans le roman.",
+      "en": "This is an intermediate navigation point, not explicitly mentioned in the novel."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "point_intermediaire",
+      "raison_en": "point_intermediaire"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Martinique et Guadeloupe",
+      "en": "Martinique and Guadeloupe"
+    },
+    "Date": {
+      "fr": "18 Avril 1867",
+      "en": "April 20th, 1867"
+    },
+    "Latitude_Décimal": 15.3167,
+    "Longitude_Décimal": -59.9667,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.",
+      "en": "Attack by a colossal giant squid, eight meters long."
+    },
+    "passage_roman": {
+      "fr": "Il ne voulait pas, évidemment, fréquenter les flots du golfe du Mexique ou de la mer des Antilles. Cependant, l'eau n'eût pas manqué sous sa quille, puisque la profondeur moyenne de ces mers est de dix huit cents mètres; mais, probablement ces parages, semés d'îles et sillonnés de steamers, ne convenaient pas au capitaine Nemo. Le 16 avril, nous eûmes connaissance de la Martinique et de la Guadeloupe, à une distance de trente milles environ. J'aperçus un instant leurs pitons élevés. Le Canadien, qui comptait mettre ses projets à exécution dans le golfe, soit en gagnant une terre, soit en accostant un des nombreux bateaux qui font le cabotage d'une île à l'autre, fut très-décontenancé.",
+      "en": "Then, infested with poulps, medusæ, and cuttle-fish, they would become immense centres of infection, since their waves would not possess ‘these vast stomachs that God had charged to infest the surface of the seas.’” CHAPTER XVIII THE POULPS For several days the Nautilus kept off from the American coast. Evidently it did not wish to risk the tides of the Gulf of Mexico or of the sea of the Antilles. April 16th, we sighted Martinique and Guadaloupe from a distance of about thirty miles. I saw their tall peaks for an instant. The Canadian, who counted on carrying out his projects in the Gulf, by either landing or hailing one of the numerous boats that coast from one island to another, was quite disheartened."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Guadeloupe",
+      "mot_en_trouve": "Martinique",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Amérique Nord",
+      "en": "North America Contour"
+    },
+    "Date": {
+      "fr": "20 Avril 1867",
+      "en": "April 18th, 1867"
+    },
+    "Latitude_Décimal": 20.0,
+    "Longitude_Décimal": -70.0,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Point intermédiaire",
+      "en": "Intermediate point"
+    },
+    "passage_roman": {
+      "fr": "Ce point est une escale intermédiaire de navigation, non mentionnée explicitement dans le roman.",
+      "en": "This is an intermediate navigation point, not explicitly mentioned in the novel."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": null,
+      "fr_valide": false,
+      "en_valide": false,
+      "raison_fr": "point_intermediaire",
+      "raison_en": "point_intermediaire"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Île Lucayes",
+      "en": "Lucayan Island"
+    },
+    "Date": {
+      "fr": "20 Avril 1867",
+      "en": "April 20th, 1867"
+    },
+    "Latitude_Décimal": 23.6833,
+    "Longitude_Décimal": -75.3167,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Entrée dans le Gulf Stream.",
+      "en": "Entering the Gulf Stream."
+    },
+    "passage_roman": {
+      "fr": "Alors la vie animale n'était plus représentée que par des encrines, des étoiles de mer, de charmantes pentacrines tête de méduse, dont la tige droite supportait un petit calice, des troques, des quenottes sanglantes et des fissurelles, mollusques littoraux de grande espèce. Le 20 avril, nous étions remontés à une hauteur moyenne de quinze cents mètres. La terre la plus rapprochée était alors cet archipel des îles Lucayes, disséminées comme un tas de pavés à la surface des eaux. Là s'élevaient de hautes falaises sous-marines, murailles droites faites de blocs frustes disposés par larges assises, entre lesquels se creusaient des trous noirs que nos rayons électriques n'éclairaient pas jusqu'au fond. Ces roches étaient tapissées de grandes herbes, de laminaires géants, de fucus gigantesques, un véritable espalier d'hydrophytes digne d'un monde de Titans.",
+      "en": "For several days the _Nautilus_ kept off from the American coast.\nEvidently it did not wish to risk the tides of the Gulf of Mexico or of\nthe sea of the Antilles. April 16th, we sighted Martinique and\nGuadaloupe from a distance of about thirty miles. I saw their tall\npeaks for an instant. The Canadian, who counted on carrying out his\nprojects in the Gulf, by either landing or hailing one of the numerous\nboats that coast from one island to another, was quite disheartened.\nFlight would have been quite practicable, if Ned Land had been able to\ntake possession of the boat without the Captain’s knowledge. But in the\nopen sea it could not be thought of. The Canadian, Conseil, and I had a\nlong conversation on this subject. For six months we had be"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Lucayes",
+      "mot_en_trouve": null,
+      "fr_valide": true,
+      "en_valide": false,
+      "raison_fr": "ok",
+      "raison_en": "aucun_mot_trouve"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Cap Hatteras",
+      "en": "Cape Hatteras"
+    },
+    "Date": {
+      "fr": "8 Mai 1867",
+      "en": "May 8th, 1867"
+    },
+    "Latitude_Décimal": 35.1,
+    "Longitude_Décimal": -74.8667,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.",
+      "en": "Passing by Cape Hatteras, at the height of North Carolina. The Gulf Stream here is seventy-five miles wide and two hundred and ten miles deep."
+    },
+    "passage_roman": {
+      "fr": "Parmi les poissons osseux, je notai des labres-grisons particuliers à ces mers, des spares-synagres dont l'iris brillait comme un feu, des sciènes longues d'un mètre, à large gueule hérissée de petites dents, qui faisaient entendre un léger cri, des centronotes-nègres dont j'ai déjà parlé, des coriphènes bleus, relevés d'or et d'argent, des perroquets, vrais arcs-en-ciel de l'Océan, qui peuvent rivaliser de couleur avec les plus beaux oiseaux des tropiques, des blémies-bosquiens à tête triangulaire, des rhombes bleuâtres dépourvus d'écailles, des batrachoïdes recouverts d'une bande jaune et transversale qui figure un t grec, des fourmillements de petits gobies-bos pointillés de taches brunes, des diptérodons à tête argentée et à queue jaune, divers échantillons de salmones, des mugilomores, sveltes de taille, brillant d'un éclat doux, que Lacépède a consacrés à l'aimable compagne de sa vie, enfin un beau poisson, le chevalier-américain, qui, décoré de tous les ordres et chamarré de tous les rubans, fréquente les rivages de cette grande nation où les rubans et les ordres sont si médiocrement estimés. J'ajouterai que, pendant la nuit, les eaux phosphorescentes du Gulf-Stream rivalisaient avec l'éclat électrique de notre fanal, surtout par ces temps orageux qui nous menaçaient fréquemment. Le 8 mai, nous étions encore en travers du cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf-Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix mètres. Le Nautilus continuait d'errer à l'aventure.",
+      "en": "It was on this ocean river that the Nautilus then sailed. I must add that, during the night, the phosphorescent waters of the Gulf Stream rivalled the electric power of our watch-light, especially in the stormy weather that threatened us so frequently. May 8th, we were still crossing Cape Hatteras, at the height of North Carolina. The width of the Gulf Stream there is seventy-five miles, and its depth 210 yards. The Nautilus still went at random; all supervision seemed abandoned."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Cap Hatteras",
+      "mot_en_trouve": "Cape Hatteras",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Long Island",
+      "en": "Long Island"
+    },
+    "Date": {
+      "fr": "10 Mai 1867",
+      "en": "May 10th, 1867"
+    },
+    "Latitude_Décimal": 41.0833,
+    "Longitude_Décimal": -72.8667,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.",
+      "en": "Struggle of the elements, Captain Nemo, by an inexplicable whim, wanted to brave the storm on the surface."
+    },
+    "passage_roman": {
+      "fr": "Trois heures sonnaient alors. Le pilote descendit dans son canot, et rejoignit la petite goëlette qui l'attendait sous le vent. Les feux furent poussés; l'hélice battit plus rapidement les flots; la frégate longea la côte jaune et basse de Long-Island, et, à huit heures du soir, après avoir perdu dans le nord-ouest les feux de Fire-Island, elle courut à toute vapeur sur les sombres eaux de l'Atlantique. CHAPITRE IV NED LAND. Le commandant Farragut était un bon marin, digne de la frégate qu'il commandait.",
+      "en": "The _Abraham Lincoln_ answered by hoisting the American colours three times, whose thirty-nine stars shone resplendent from the mizzen-peak; then modifying its speed to take the narrow channel marked by buoys placed in the inner bay formed by Sandy Hook Point, it coasted the long sandy beach, where some thousands of spectators gave it one final cheer. The escort of boats and tenders still followed the frigate, and did not leave her until they came abreast of the lightship, whose two lights marked the entrance of New York Channel. Six bells struck, the pilot got into his boat, and rejoined the little schooner which was waiting under our lee, the fires were made up, the screw beat the waves more rapidly, the frigate skirted the low yellow coast of Long Island; and at eight bells, after having lost sight in the north-west of the lights of Fire Island, she ran at full steam on to the dark waters of the Atlantic. CHAPTER IV NED LAND Captain Farragut was a good seaman, worthy of the frigate he commanded. His vessel and he were one."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Island",
+      "mot_en_trouve": "Long Island",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Terre Neuve",
+      "en": "Newfoundland"
+    },
+    "Date": {
+      "fr": "15 Mai 1867",
+      "en": "May 15th, 1867"
+    },
+    "Latitude_Décimal": 47.1333,
+    "Longitude_Décimal": -57.9167,
+    "Océan/Mer": {
+      "fr": "Océan Atlantique Nord",
+      "en": "North Atlantic Ocean"
+    },
+    "Event": {
+      "fr": "Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.",
+      "en": "Southern tip of the Newfoundland bank - Professor Aronnax records in his journal the various marine species."
+    },
+    "passage_roman": {
+      "fr": "Il descend au sud, longe l'Afrique équatoriale, échauffe ses flots aux rayons de la zone torride, traverse l'Atlantique, atteint le cap San-Roque sur la côte Brésilienne, et se bifurque en deux branches dont l'une va se saturer encore des chaudes molécules de la mer des Antilles. Alors, le Gulf-Stream, chargé de rétablir l'équilibre entre les températures et de mêler les eaux des tropiques aux eaux boréales, commence son rôle de pondérateur. Chauffé à blanc dans le golfe du Mexique, il s'élève au nord sur les côtes américaines, s'avance jusqu'à Terre-Neuve, dévie sous la poussée du courant froid du détroit de Davis, reprend la route de l'Océan en suivant sur un des grands cercles du globe la ligne loxodromique, se divise en deux bras vers le quarante-troisième degré, dont l'un, aidé par l'alizé du nord-est, revient au Golfe de Gascogne et aux Açores, et dont l'autre, après avoir attiédi les rivages de l'Irlande et de la Norvége, va jusqu'au-delà du Spitzberg, où sa température tombe à quatre degrés, former la mer libre du pôle. C'est sur ce fleuve de l'Océan que le Nautilus naviguait alors. A sa sortie du canal de Bahama, sur quatorze lieues de large, et sur trois cent cinquante mètres de profondeur, le Gulf-Stream marche à raison de huit kilomètres à l'heure.",
+      "en": "What collisions between vessels, in spite of their warning lights, whistles, and alarm bells! And the bottoms of these seas look like a field of battle, where still lie all the conquered of the ocean; some old and already encrusted, others fresh and reflecting from their iron bands and copper plates the brilliancy of our lantern. On the 15th of May we were at the extreme south of the Bank of Newfoundland. This bank consists of alluvia, or large heaps of organic matter, brought either from the Equator by the Gulf Stream, or from the North Pole by the counter-current of cold water which skirts the American coast. There also are heaped up those erratic blocks which are carried along by the broken ice; and close by, a vast charnel-house of molluscs, which perish here by millions."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Neuve",
+      "mot_en_trouve": "Newfoundland",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Irlande",
+      "en": "Ireland"
+    },
+    "Date": {
+      "fr": "25 Mai 1867",
+      "en": "May 25th, 1867"
+    },
+    "Latitude_Décimal": 51.1,
+    "Longitude_Décimal": -9.7,
+    "Océan/Mer": {
+      "fr": "Mer Celtique",
+      "en": "Celtic Sea"
+    },
+    "Event": {
+      "fr": "Le Nautilus affronte un navire ennemi non identifié dans une zone située au large des côtes irlandaises.",
+      "en": "The Nautilus confronts an unidentified enemy vessel in waters off the Irish coast."
+    },
+    "passage_roman": {
+      "fr": "Le sol était presque entièrement madréporique, mais certains lits de torrents desséchés, semés de débris granitiques, démontraient que cette île était due à une formation primordiale. Tout l'horizon se cachait derrière un rideau de forêts admirables. Des arbres énormes, dont la taille atteignait parfois deux cents pieds, se reliaient l'un à l'autre par des guirlandes de lianes, vrais hamacs naturels que berçait une brise légère. C'étaient des mimosas, des ficus, des casuarinas, des teks, des hibiscus, des pendanus, des palmiers, mélangés à profusion, et sous l'abri de leur voûte verdoyante, au pied de leur stype gigantesque, croissaient des orchidées, des légumineuses et des fougères. Mais, sans remarquer tous ces beaux échantillons de la flore papouasienne, le Canadien abandonna l'agréable pour l'utile.",
+      "en": "“Faith, sir,” said Ned Land, “your Captain Nemo—the devil take him!—has just made us a very pleasant offer.” “Ah!” said I, “you know?” “If agreeable to you, sir,” interrupted Conseil, “the commander of the Nautilus has invited us to visit the magnificent Ceylon fisheries to-morrow, in your company; he did it kindly, and behaved like a real gentleman.” “He said nothing more?” “Nothing more, sir, except that he had already spoken to you of this little walk.” “Sir,” said Conseil, “would you give us some details of the pearl fishery?” “As to the fishing itself,” I asked, “or the incidents, which?” “On the fishing,” replied the Canadian; “before entering upon the ground, it is as well to know something about it.” “Very well; sit down, my friends, and I will teach you.” Ned and Conseil seated themselves on an ottoman, and the first thing the Canadian asked was: “Sir, what is a pearl?” “My worthy Ned,” I answered, “to the poet, a pearl is a tear of the sea; to the Orientals, it is a drop of dew solidified; to the ladies, it is a jewel of an oblong shape, of a brilliancy of mother-of-pearl substance, which they wear on their fingers, their necks, or their ears; for the chemist it is a mixture of phosphate and carbonate of lime, with a little gelatine; and lastly, for naturalists, it is simply a morbid secretion of the organ that produces the mother-of-pearl amongst certain bivalves.” “Branch of molluscs,” said Conseil. “Precisely so, my learned Conseil; and, amongst these testacea the earshell, the tridacnae, the turbots, in a word, all those which secrete mother-of-pearl, that is, the blue, bluish, violet, or white substance which lines the interior of their shells, are capable of producing pearls.” “Mussels too?” asked the Canadian. “Yes, mussels of certain waters in Scotland, Wales, Ireland, Saxony, Bohemia, and France.” “Good! For the future I shall pay attention,” replied the Canadian. “But,” I continued, “the particular mollusc which secretes the pearl is the pearl-oyster, the meleagrina margaritifera, that precious pintadine."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Irlande",
+      "mot_en_trouve": "Ireland",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Manche",
+      "en": "English Channel"
+    },
+    "Date": {
+      "fr": "2 Juin 1867",
+      "en": "June 2nd, 1867"
+    },
+    "Latitude_Décimal": 50.0,
+    "Longitude_Décimal": -2.2,
+    "Océan/Mer": {
+      "fr": "Manche",
+      "en": "English Channel"
+    },
+    "Event": {
+      "fr": "Complot d'évasion",
+      "en": "Escape plot"
+    },
+    "passage_roman": {
+      "fr": "Ces vêtements formaient pantalon et veste. Le pantalon se terminait par d'épaisses chaussures, garnies de lourdes semelles de plomb. Le tissu de la veste était maintenu par des lamelles de cuivre qui cuirassaient la poitrine, la défendaient contre la poussée des eaux, et laissaient les poumons fonctionner librement; ses manches finissaient en forme de gants assouplis, qui ne contrariaient aucunement les mouvements de la main. Il y avait loin, on le voit, de ces scaphandres perfectionnés aux vêtements informes, tels que les cuirasses de liége, les soubrevestes, les habits de mer, les coffres, etc., qui furent inventés et prônés dans le XVIIIe siècle. Le capitaine Nemo, un de ses compagnons,—sorte d'Hercule, qui devait être d'une force prodigieuse,—Conseil et moi, nous eûmes bientôt revêtu ces habits de scaphandres.",
+      "en": "The man with the soft calm eyes listened to me quietly, even politely, and with extreme attention; but nothing in his countenance indicated that he had understood my story. When I finished, he said not a word. There remained one resource, to speak English. Perhaps they would know this almost universal language. I knew it, as well as the German language,—well enough to read it fluently, but not to speak it correctly."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Manche",
+      "mot_en_trouve": "English",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Angleterre Sud",
+      "en": "South of England Coast"
+    },
+    "Date": {
+      "fr": "3 Juin 1867",
+      "en": "June 3rd, 1867"
+    },
+    "Latitude_Décimal": 50.9578,
+    "Longitude_Décimal": 1.382884,
+    "Océan/Mer": {
+      "fr": "Mer du Nord",
+      "en": "North Sea"
+    },
+    "Event": {
+      "fr": "Complot d'évasion",
+      "en": "Escape plot"
+    },
+    "passage_roman": {
+      "fr": "Il évitait même de traiter ce sujet, sur lequel je crus devoir l'entreprendre un jour. Par une magnifique soirée du 30 juillet, c'est-à-dire trois semaines après notre départ, la frégate se trouvait à la hauteur du cap Blanc, à trente milles sous le vent des côtes patagonnes. Nous avions dépassé le tropique du Capricorne, et le détroit de Magellan s'ouvrait à moins de sept cent milles dans le sud. Avant huit jours, l'Abraham-Lincoln sillonnerait les flots du Pacifique. Assis sur la dunette, Ned Land et moi, nous causions de choses et d'autres, regardant cette mystérieuse mer dont les profondeurs sont restées jusqu'ici inaccessibles aux regards de l'homme.",
+      "en": "Was Captain Nemo going to land on the British Isles? No. To my great\nsurprise he made for the south, once more coming back towards European\nseas. In rounding the Emerald Isle, for one instant I caught sight of\nCape Clear, and the light which guides the thousands of vessels leaving\nGlasgow or Liverpool. An important question then arose in my mind. Did\nthe _Nautilus_ dare entangle itself in the Manche? Ned Land, who had\nre-appeared since we had been nearing land, did not cease to question\nme. How could I answer? Captain Nemo remained invisible. After having\nshown the Canadian a glimpse of American shores, was he going to show\nme the coast of France?"
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Sud",
+      "mot_en_trouve": "South",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Contour Angleterre Nord",
+      "en": "North of England Coast"
+    },
+    "Date": {
+      "fr": "3 Juin 1867",
+      "en": "June 3rd, 1867"
+    },
+    "Latitude_Décimal": 61.541262,
+    "Longitude_Décimal": 0.513488,
+    "Océan/Mer": {
+      "fr": "Mer du Nord",
+      "en": "North Sea"
+    },
+    "Event": {
+      "fr": "Complot d'évasion",
+      "en": "Escape plot"
+    },
+    "passage_roman": {
+      "fr": "Pareil fait fut également observé le 23 juillet de la même année, dans les mers du Pacifique, par le Cristobal-Colon, de _West India and Pacific steam navigation Company_. Donc, ce cétacé extraordinaire pouvait se transporter d'un endroit à un autre avec une vélocité surprenante, puisque à trois jours d'intervalle, le Governor-Higginson et le Cristobal-Colon l'avaient observé en deux points de la carte séparés par une distance de plus de sept cents lieues marines. Quinze jours plus tard, à deux mille lieues de là, l'Helvetia, de la Compagnie Nationale, et le Shannon, du Royal-Mail, marchant à contrebord dans cette portion de l'Atlantique comprise entre les États-Unis et l'Europe, se signalèrent respectivement le monstre par 42° 15′ de latitude nord, et 60° 35′ de longitude à l'ouest du méridien de Greenwich. Dans cette observation simultanée, on crut pouvoir évaluer la longueur minimum du mammifère à plus de trois cent cinquante pieds anglais[1], puisque le Shannon et l'Helvetia étaient de dimension inférieure à lui, bien qu'ils mesurassent cent mètres de l'étrave à l'étambot. Or, les plus vastes baleines, celles qui fréquentent les parages des îles Aléoutiennes, le Kulammak et l'Umgullick, n'ont jamais dépassé la longueur de cinquante-six mètres,—si même elles l'atteignent.",
+      "en": "It had been so much talked of, even through the Atlantic cable, that jesters pretended that this slender fly had stopped a telegram on its passage and was making the most of it. So when the frigate had been armed for a long campaign, and provided with formidable fishing apparatus, no one could tell what course to pursue. Impatience grew apace, when, on the 2nd of July, they learned that a steamer of the line of San Francisco, from California to Shanghai, had seen the animal three weeks before in the North Pacific Ocean. The excitement caused by this news was extreme. The ship was revictualled and well stocked with coal."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": "Nord",
+      "mot_en_trouve": "North",
+      "fr_valide": true,
+      "en_valide": true,
+      "raison_fr": "ok",
+      "raison_en": "ok"
+    }
+  },
+  {
+    "Escales du Nautilus": {
+      "fr": "Côtes de la Norvège",
+      "en": "Coast of Norway"
+    },
+    "Date": {
+      "fr": "Juin 1867",
+      "en": "June 1867"
+    },
+    "Latitude_Décimal": 62.86093,
+    "Longitude_Décimal": 1.2103,
+    "Océan/Mer": {
+      "fr": "Mer du Nord",
+      "en": "North Sea"
+    },
+    "Event": {
+      "fr": "Fin du voyage pour le professeur Aronnax, Conseil et Ned Land",
+      "en": "End of the journey for Professor Aronnax, Conseil, and Ned Land"
+    },
+    "passage_roman": {
+      "fr": "«Maelstrom! Maelstrom!» s'écriait-il!\n\nLe Maelstrom! Un nom plus effrayant dans une situation plus effrayante\npouvait-il retentir à notre oreille? Nous trouvions-nous donc sur\nces dangereux parages de la côte norwégienne? Le _Nautilus_ était-il\nentraîné dans ce gouffre, au moment ou notre canot allait se détacher\nde ses flancs?",
+      "en": "“The maelstrom! the maelstrom!” Could a more dreadful word in a more dreadful situation have sounded in our ears! We were then upon the dangerous coast of Norway. Was the Nautilus being drawn into this gulf at the moment our boat was going to leave its sides? We knew that at the tide the pent-up waters between the islands of Ferroe and Loffoden rush with irresistible violence, forming a whirlpool from which no vessel ever escapes."
+    },
+    "debug_extraction": {
+      "mot_fr_trouve": null,
+      "mot_en_trouve": "Coast of Norway",
+      "fr_valide": false,
+      "en_valide": true,
+      "raison_fr": "aucun_mot_trouve",
+      "raison_en": "ok"
+    }
+  }
+]
