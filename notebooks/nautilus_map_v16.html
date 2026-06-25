@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e162bc9e0d647e83a99d48a5bff6f45d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<style>
+.leaflet-popup-content-wrapper {
+  background: rgba(5,15,25,0.96) !important;
+  border: 1px solid rgba(39,195,159,0.30) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55) !important;
+  backdrop-filter: blur(12px);
+}
+.leaflet-popup-tip { background: rgba(5,15,25,0.96) !important; }
+.leaflet-popup-content { margin:0 !important; padding:0 !important; }
+.hud-popup {
+  min-width: 360px; max-width: 420px;
+  padding: 20px 22px 16px;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+.hud-lang-label {
+  font-family: 'Michroma', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.20em;
+  text-transform: uppercase; color: #a8ffff;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(39,195,159,0.18);
+  padding-bottom: 8px;
+}
+.hud-body { display:flex; flex-direction:column; gap:8px; }
+.hud-row { font-size: 1.05rem; color:#c8dde8; line-height:1.65; }
+.hud-key { color:#27c39f; font-weight:600; margin-right:4px; }
+.hud-val { color:#e0f4ff; }
+.hud-btn {
+  margin-top:16px; width:100%;
+  padding:10px 14px; background:transparent;
+  border:1px solid rgba(39,195,159,0.5);
+  border-radius:8px; color:#27c39f;
+  font-family:'Michroma',sans-serif;
+  font-size:0.82rem; letter-spacing:0.10em;
+  cursor:pointer; transition:all 0.2s ease;
+  position:relative; overflow:hidden;
+}
+.hud-btn:hover {
+  background:rgba(39,195,159,0.12);
+  border-color:#27c39f;
+  box-shadow:0 0 14px rgba(39,195,159,0.30);
+}
+.hud-btn.loading { pointer-events:none; color:transparent; }
+.hud-btn.loading::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg,rgba(39,195,159,0) 0%,rgba(39,195,159,0.40) 50%,rgba(39,195,159,0) 100%);
+  animation:shimmer 1.1s ease-in-out infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+#hudModal {
+  display:none; position:fixed; inset:0; z-index:9999;
+  align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.65); backdrop-filter:blur(5px);
+}
+#hudModal.open { display:flex; }
+#hudModalBox {
+  width:min(820px,92vw); max-height:85vh;
+  background:linear-gradient(160deg,rgba(5,18,28,0.98),rgba(3,10,18,0.96));
+  border:1px solid rgba(168,255,255,0.22); border-radius:22px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.55);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+#hudModalHeader {
+  padding:16px 24px 14px;
+  border-bottom:1px solid rgba(39,195,159,0.18);
+  display:flex; align-items:center; justify-content:space-between;
+  flex-shrink:0;
+}
+#hudModalTitle {
+  font-family:'Michroma',sans-serif;
+  font-size:0.88rem; letter-spacing:0.16em;
+  color:#27c39f; text-transform:uppercase;
+}
+#hudModalClose {
+  background:none; border:none; color:#a8ffff;
+  font-size:1.3rem; cursor:pointer; opacity:0.6;
+  transition:opacity 0.2s; line-height:1;
+}
+#hudModalClose:hover { opacity:1; }
+#hudModalBody {
+  padding:28px 34px; overflow-y:auto;
+  color:#d5edf5;
+  font-family:'Raleway',Arial,sans-serif;
+  font-size:1.25rem; line-height:2.0;
+  scrollbar-width:thin;
+  scrollbar-color:#27c39f rgba(255,255,255,0.06);
+}
+#hudModalBody::-webkit-scrollbar { width:8px; }
+#hudModalBody::-webkit-scrollbar-track { background:rgba(255,255,255,0.04); border-radius:999px; }
+#hudModalBody::-webkit-scrollbar-thumb { background:linear-gradient(#27c39f,#195480); border-radius:999px; }
+#hudModalBody p { margin-bottom:1.5rem; }
+.esp-titre { color:#a8ffff; font-family:'Michroma',sans-serif; font-size:0.95rem; letter-spacing:0.15em; margin:1.2rem 0 0.8rem; }
+.esp-liste { list-style:none; padding:0; display:grid; gap:0.5rem; }
+.esp-liste li { font-size:1.25rem; line-height:1.7; color:#e0f4ff; padding-left:1.2rem; position:relative; }
+.esp-liste li::before { content:"•"; position:absolute; left:0; color:#27c39f; }
+.esp-vide { color:#a8b8c0 !important; font-size:1.1rem; }
+</style>
+
+<div id="hudModal">
+  <div id="hudModalBox">
+    <div id="hudModalHeader">
+      <span id="hudModalTitle">📖 Journal de bord vivant</span>
+      <button id="hudModalClose" onclick="closeHudModal()">✕</button>
+    </div>
+    <div id="hudModalBody"></div>
+  </div>
+</div>
+
+<script>
+const EXTRAITS = {"0": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce billet était libellé en ces termes:</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Monsieur le professeur Aronnax, à bord du <em>Nautilus</em>.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>»Le capitaine Nemo invite monsieur le professeur Aronnax à une     partie de chasse qui aura lieu demain matin dans ses forêts     de l'île Crespo. Il espère que rien n'empêchera monsieur le     professeur d'y assister, et il verra avec plaisir que ses     compagnons se joignent à lui.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Le commandant du <em>Nautilus</em>,                                            «Capitaine NEMO.»</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Et dans ses forêts de l'île Crespo! ajouta Conseil.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Mais il va donc à terre, ce particulier-là? reprit Ned Land.</p>", "1": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce terrible spectacle inaugurait la série des catastrophes maritimes, que le <em>Nautilus</em> devait rencontrer sur sa route. Depuis qu'il suivait des mers plus fréquentées, nous apercevions souvent des coques naufragées qui achevaient de pourrir entre deux eaux, et, plus profondément, des canons, des boulets, des ancres, des chaînes, et mille autres objets de fer, que la rouille dévorait.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cependant, toujours entraînés par ce <em>Nautilus</em>, où nous vivions comme isolés, le 11 décembre, nous eûmes connaissance de l'archipel des Pomotou, ancien «groupe dangereux» de Bougainville, qui s'étend sur un espace de cinq cents lieues de l'est-sud-est à l'ouest-nord-ouest, entre 13° 30′ et 23° 50′ de latitude sud, et 125° 30′ et 151° 30′ de longitude ouest, depuis l'île Ducie jusqu'à l'île Lazareff. Cet archipel couvre une superficie de trois cent soixante-dix lieues carrées, et il est formé d'une soixantaine de groupes d'îles, parmi lesquels on remarque le groupe Gambier, auquel la France a imposé son protectorat. Ces îles sont coralligènes. Un soulèvement lent, mais continu, provoqué par le travail des polypes, les reliera un jour entre elles. Puis, cette nouvelle île se soudera plus tard aux archipels voisins, et un cinquième continent s'étendra depuis la Nouvelle-Zélande et la Nouvelle-Calédonie jusqu'aux Marquises.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le jour où je développai cette théorie devant le capitaine Nemo, il me répondit froidement:</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Ce ne sont pas de nouveaux continents qu'il faut à la terre, mais de nouveaux hommes!»</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Les hasards de sa navigation avaient précisément conduit le <em>Nautilus</em> vers l'île Clermont-Tonnerre, l'une des plus curieuses du groupe, qui fut découvert en 1822, par le capitaine Bell, de <em>la Minerve</em>. Je pus alors étudier ce système madréporique auquel sont dues les îles de cet Océan.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Les madrépores, qu'il faut se garder de confondre avec les coraux, ont un tissu revêtu d'un encroûtement calcaire, et les modifications de sa structure ont amené M. Milne-Edwards, mon illustre maître, à les classer en cinq sections. Les petits animalcules qui sécrètent ce polypier vivent par milliards au fond de leurs cellules. Ce sont leurs dépôts calcaires qui deviennent rochers, récifs, îlots, îles. Ici, ils forment un anneau circulaire, entourant un lagon ou petit lac intérieur, que des brèches mettent en communication avec la mer. Là, ils figurent des barrières de récifs semblables à celles qui existent sur les côtes de la Nouvelle-Calédonie et de diverses îles des Pomotou. En d'autres endroits, comme à la Réunion et à Maurice, ils élèvent des récifs frangés, hautes murailles droites, près desquelles les profondeurs de l'Océan sont considérables.</p>", "2": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 25 décembre, le <em>Nautilus</em> naviguait au milieu de l'archipel des Nouvelles-Hébrides, que Quiros découvrit en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773. Ce groupe se compose principalement de neuf grandes îles, et forme une bande de cent vingt lieues du nord-nord-ouest au sud-sud-est, comprise entre 15° et 2° de latitude sud, et entre 164° et 168° de longitude. Nous passâmes assez près de l'île d'Aurou, qui, au moment des observations de midi, m'apparut comme une masse de bois verts, dominée par un pic d'une grande hauteur.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce jour-là, c'était Noël, et Ned Land me sembla regretter vivement la célébration du «Christmas», la véritable fête de la famille, dont les protestants sont fanatiques.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je n'avais pas aperçu le capitaine Nemo depuis une huitaine de jours, quand le 27, au matin, il entra dans le grand salon, ayant toujours l'air d'un homme qui vous a quitté depuis cinq minutes. J'étais occupé à reconnaître sur le planisphère la route du <em>Nautilus</em>. Le capitaine s'approcha, posa un doigt sur un point de la carte, et prononça ce seul mot:</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce nom fut magique. C'était le nom des îlots sur lesquels vinrent se perdre les vaisseaux de La Pérouse. Je me relevai subitement.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Le <em>Nautilus</em> nous porte à Vanikoro? demandai-je.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Oui, monsieur le professeur, répondit le capitaine.</p>", "3": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Deux jours après avoir traversé la mer de Corail, le 4 janvier, nous eûmes connaissance des côtes de la Papouasie. A cette occasion, le capitaine Nemo m'apprit que son intention était de gagner l'Océan Indien par le détroit de Torrès. Sa communication se borna là. Ned vit avec plaisir que cette route le rapprochait des mers européennes.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce détroit de Torrès est regardé comme non moins dangereux par les écueils qui le hérissent que par les sauvages habitants qui fréquentent ses côtes. Il sépare de la Nouvelle-Hollande la grande île de la Papouasie, nommée aussi Nouvelle-Guinée.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>La Papouasie a quatre cents lieues de long sur cent trente lieues de large, et une superficie de quarante mille lieues géographiques. Elle est située, en latitude, entre 0° 19′ et 10° 2′ sud, et en longitude, entre 128° 23′ et 146° 15′. A midi, pendant que le second prenait la hauteur du soleil, j'aperçus les sommets des monts Arfalxs, élevés par plans et terminés par des pitons aigus.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cette terre, découverte en 1511 par le Portugais Francisco Serrano, fut visitée successivement par don José de Menesès en 1526, par Grijalva en 1527, par le général espagnol Alvar de Saavedra en 1528, par Juigo Ortez en 1545, par le hollandais Schouten en 1616, par Nicolas Sruick en 1753, par Tasman, Dampier, Fumel, Carteret, Edwards, Bougainville, Cook, Forrest, Mac Cluer, par d'Entrecasteaux en 1792, par Duperrey en 1823, et par Dumont d'Urville en 1827. «C'est le foyer des noirs qui occupent toute la Malaisie,» a dit M. de Rienzi, et je ne me doutais guère que les hasards de cette navigation allaient me mettre en présence des redoutables Andamènes.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le <em>Nautilus</em> se présenta donc à l'entrée du plus dangereux détroit du globe, de celui que les plus hardis navigateurs osent à peine à franchir, détroit que Louis Paz de Torrès affronta en revenant des mers du Sud dans la Mélanésie, et dans lequel, en 1840, les corvettes échouées de Dumont d'Urville furent sur le point de se perdre corps et biens. Le <em>Nautilus</em> lui-même, supérieur à tous les dangers de la mer, allait, cependant, faire connaissance avec les récifs coralliens.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le détroit de Torrès a environ trente-quatre lieues de large, mais il est obstrué par une innombrable quantité d'îles, d'îlots, de brisants, de rochers, qui rendent sa navigation presque impraticable. En conséquence, le capitaine Nemo prit toutes les précautions voulues pour le traverser. Le <em>Nautilus</em>, flottant à fleur d'eau, s'avançait sous une allure modérée. Son hélice, comme une queue de cétacé, battait les flots avec lenteur.</p>", "4": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Nous marchions directement vers l'ouest, et, le 11 janvier, nous doublâmes ce cap Wessel, situé par 135° de longitude et 10° de latitude nord, qui forme la pointe est du golfe de Carpentarie. Les récifs étaient encore nombreux, mais plus clair-semés, et relevés sur la carte avec une extrême précision. Le <em>Nautilus</em> évita facilement les brisants de Money à bâbord, et les récifs Victoria à tribord, placés par 130° de longitude, et sur ce dixième parallèle que nous suivions rigoureusement.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 13 janvier, le capitaine Nemo, arrivé dans la mer de Timor, avait connaissance de l'île de ce nom par 122° de longitude. Cette île dont la superficie est de seize cent vingt-cinq lieues carrées est gouvernée par des radjahs. Ces princes se disent fils de crocodiles, c'est-à-dire issus de la plus haute origine à laquelle un être humain puisse prétendre. Aussi, ces ancêtres écailleux foisonnent dans les rivières de l'île, et sont l'objet d'une vénération particulière. On les protége, on les gâte, on les adule, on les nourrit, on leur offre des jeunes filles en pâture, et malheur à l'étranger qui porte la main sur ces lézards sacrés.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Mais le <em>Nautilus</em> n'eut rien à démêler avec ces vilains animaux. Timor ne fut visible qu'un instant, à midi, pendant que le second relevait sa position. Également, je ne fis qu'entrevoir cette petite île Rotti, qui fait partie du groupe, et dont les femmes ont une réputation de beauté très-établie sur les marchés malais.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>A partir de ce point, la direction du <em>Nautilus</em>, en latitude, s'infléchit vers le sud-ouest. Le cap fut mis sur l'océan Indien. Où la fantaisie du capitaine Nemo allait-elle nous entraîner? Remonterait-il vers les côtes de l'Asie? Se rapprocherait-il des rivages de l'Europe? Résolutions peu probables de la part d'un homme qui fuyait les continents habités? Descendrait-il donc vers le sud? Irait-il doubler le cap de Bonne-Espérance, puis le cap Horn, et pousser au pôle antarctique? Reviendrait-il enfin vers ses mers du Pacifique, où son <em>Nautilus</em> trouvait une navigation facile et indépendante? L'avenir devait nous l'apprendre.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Après avoir prolongé les écueils de Cartier, d'Hibernia, de Seringapatam, de Scott, derniers efforts de l'élément solide contre l'élément liquide, le 14 janvier, nous étions au delà de toutes terres. La vitesse du <em>Nautilus</em> fut singulièrement ralentie, et, très-capricieux dans ses allures, tantôt il nageait au milieu des eaux, et tantôt il flottait à leur surface.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant cette période du voyage, le capitaine Nemo fit d'intéressantes expériences sur les diverses températures de la mer à des couches différentes. Dans les conditions ordinaires, ces relevés s'obtiennent au moyen d'instruments assez compliqués, dont les rapports sont au moins douteux, que ce soient des sondes thermométriques, dont les verres se brisent souvent sous la pression des eaux, ou des appareils basés sur la variation de résistance de métaux aux courants électriques. Ces résultats ainsi obtenus ne peuvent être suffisamment contrôlés. Au contraire, le capitaine Nemo allait lui-même chercher cette température dans les profondeurs de la mer, et son thermomètre, mis en communication avec les diverses nappes liquides, lui donnait immédiatement et sûrement le degré recherché.</p>", "5": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 13 janvier, le capitaine Nemo, arrivé dans la mer de Timor, avait connaissance de l'île de ce nom par 122° de longitude. Cette île dont la superficie est de seize cent vingt-cinq lieues carrées est gouvernée par des radjahs. Ces princes se disent fils de crocodiles, c'est-à-dire issus de la plus haute origine à laquelle un être humain puisse prétendre. Aussi, ces ancêtres écailleux foisonnent dans les rivières de l'île, et sont l'objet d'une vénération particulière. On les protége, on les gâte, on les adule, on les nourrit, on leur offre des jeunes filles en pâture, et malheur à l'étranger qui porte la main sur ces lézards sacrés.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Mais le <em>Nautilus</em> n'eut rien à démêler avec ces vilains animaux. Timor ne fut visible qu'un instant, à midi, pendant que le second relevait sa position. Également, je ne fis qu'entrevoir cette petite île Rotti, qui fait partie du groupe, et dont les femmes ont une réputation de beauté très-établie sur les marchés malais.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>A partir de ce point, la direction du <em>Nautilus</em>, en latitude, s'infléchit vers le sud-ouest. Le cap fut mis sur l'océan Indien. Où la fantaisie du capitaine Nemo allait-elle nous entraîner? Remonterait-il vers les côtes de l'Asie? Se rapprocherait-il des rivages de l'Europe? Résolutions peu probables de la part d'un homme qui fuyait les continents habités? Descendrait-il donc vers le sud? Irait-il doubler le cap de Bonne-Espérance, puis le cap Horn, et pousser au pôle antarctique? Reviendrait-il enfin vers ses mers du Pacifique, où son <em>Nautilus</em> trouvait une navigation facile et indépendante? L'avenir devait nous l'apprendre.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Après avoir prolongé les écueils de Cartier, d'Hibernia, de Seringapatam, de Scott, derniers efforts de l'élément solide contre l'élément liquide, le 14 janvier, nous étions au delà de toutes terres. La vitesse du <em>Nautilus</em> fut singulièrement ralentie, et, très-capricieux dans ses allures, tantôt il nageait au milieu des eaux, et tantôt il flottait à leur surface.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant cette période du voyage, le capitaine Nemo fit d'intéressantes expériences sur les diverses températures de la mer à des couches différentes. Dans les conditions ordinaires, ces relevés s'obtiennent au moyen d'instruments assez compliqués, dont les rapports sont au moins douteux, que ce soient des sondes thermométriques, dont les verres se brisent souvent sous la pression des eaux, ou des appareils basés sur la variation de résistance de métaux aux courants électriques. Ces résultats ainsi obtenus ne peuvent être suffisamment contrôlés. Au contraire, le capitaine Nemo allait lui-même chercher cette température dans les profondeurs de la mer, et son thermomètre, mis en communication avec les diverses nappes liquides, lui donnait immédiatement et sûrement le degré recherché.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>[Illustration: Son œil restait fixé sur l'horizon. (Page 189.)]</p>", "6": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 24 au matin, par 12° 5′ de latitude sud et 94° 33′ de longitude, nous eûmes connaissance de l'île Keeling, soulèvement madréporique planté de magnifiques cocos, et qui fut visitée par M. Darwin et le capitaine Fitz-Roy. Le <em>Nautilus</em> prolongea à peu de distance les accores de cette île déserte. Ses dragues rapportèrent de nombreux échantillons de polypes et d'échinodermes, et des tests curieux de l'embranchement des mollusques. Quelques précieux produits de l'espèce des dauphinules accrurent les trésors du capitaine Nemo, auquel je joignis une astrée punctifère, sorte de polypier parasite souvent fixé sur une coquille.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Bientôt l'île Keeling disparut sous l'horizon, et la route fut donnée au nord-ouest vers la pointe de la péninsule indienne.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Des terres civilisées, me dit ce jour-là Ned Land. Cela vaudra mieux que ces îles de la Papouasie, où l'on rencontre plus de sauvages que de chevreuils! Sur cette terre indienne, monsieur le professeur, il y a des routes, des chemins de fer, des villes anglaises, françaises et indoues. On ne ferait pas cinq milles sans y rencontrer un compatriote. Hein! est-ce que le moment n'est pas venu de brûler la politesse au capitaine Nemo?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Non, Ned, non, répondis-je d'un ton très-déterminé. Laissons courir, comme vous dites, vous autres marins. Le <em>Nautilus</em> se rapproche des continents habités. Il revient vers l'Europe, qu'il nous y conduise. Une fois arrivés dans nos mers, nous verrons ce que la prudence nous conseillera de tenter. D'ailleurs, je ne suppose pas que le capitaine Nemo nous permette d'aller chasser sur les côtes du Malabar ou de Coromandel comme dans les forêts de la Nouvelle-Guinée.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Eh bien! monsieur, ne peut-on se passer de sa permission?»</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je ne répondis pas au Canadien. Je ne voulais pas discuter. Au fond, j'avais à cœur d'épuiser jusqu'au bout les hasards de la destinée qui m'avait jeté à bord du <em>Nautilus</em>.</p>", "7": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 27 janvier, à l'ouvert du vaste golfe du Bengale, nous rencontrâmes à plusieurs reprises, spectacle sinistre! des cadavres qui flottaient à la surface des flots. C'étaient les morts des villes indiennes, charriés par le Gange jusqu'à la haute mer, et que les vautours, les seuls ensevelisseurs du pays, n'avaient pas achevé de dévorer. Mais les squales ne manquaient pas pour les aider dans leur funèbre besogne.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Vers sept heures du soir, le <em>Nautilus</em> à demi-immergé navigua au milieu d'une mer de lait. A perte de vue l'Océan semblait être lactifié. Était-ce l'effet des rayons lunaires? Non, car la lune, ayant deux jours à peine, était encore perdue au-dessous de l'horizon dans les rayons du soleil. Tout le ciel, quoique éclairé par le rayonnement sidéral, semblait noir par contraste avec la blancheur des eaux.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Conseil ne pouvait en croire ses yeux, et il m'interrogeait sur les causes de ce singulier phénomène. Heureusement, j'étais en mesure de lui répondre.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«C'est ce qu'on appelle une mer de lait, lui dis-je, vaste étendue de flots blancs qui se voit fréquemment sur les côtes d'Amboine et dans ces parages.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Mais, demanda Conseil, monsieur peut-il m'apprendre quelle cause produit un pareil effet, car cette eau ne s'est pas changée en lait, je suppose!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Non, mon garçon, et cette blancheur qui te surprend n'est due qu'à la présence de myriades de bestioles infusoires, sortes de petits vers lumineux, d'un aspect gélatineux et incolore, de l'épaisseur d'un cheveu, et dont la longueur ne dépasse pas un cinquième de millimètre. Quelques-unes de ces bestioles adhèrent entre elles pendant l'espace de plusieurs lieues.</p>", "8": "<p><em>Point de navigation intermédiaire — aucun chapitre spécifique dans le roman.</em></p>", "9": "<p><em>Ancre non trouvée pour cette escale.</em></p>", "10": "<p><em>Ancre non trouvée pour cette escale.</em></p>", "11": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>La Méditerranée, la mer bleue par excellence, «la grande mer» des Hébreux, la «mer» des Grecs, le «mare nostrum» des Romains, bordée d'orangers, d'aloës, de cactus, de pins maritimes, embaumée du parfum des myrtes, encadrée de rudes montagnes, saturée d'un air pur et transparent, mais incessamment travaillée par les feux de la terre, est un véritable champ de bataille où Neptune et Pluton se disputent encore l'empire du monde. C'est là, sur ses rivages et sur ses eaux, dit Michelet, que l'homme se retrempe dans l'un des plus puissants climats du globe.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Mais si beau qu'il soit, je n'ai pu prendre qu'un aperçu rapide de ce bassin, dont la superficie couvre deux millions de kilomètres carrés. Les connaissances personnelles du capitaine Nemo me firent même défaut, car l'énigmatique personnage ne parut pas une seule fois pendant cette traversée à grande vitesse. J'estime à six cents lieues environ le chemin que le <em>Nautilus</em> parcourut sous les flots de cette mer, et ce voyage, il l'accomplit en deux fois vingt-quatre heures. Partis le matin du 16 février des parages de la Grèce, le 18, au soleil levant, nous avions franchi le détroit de Gibraltar.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Il fut évident pour moi que cette Méditerranée, resserrée au milieu de ces terres qu'il voulait fuir, déplaisait au capitaine Nemo. Ses flots et ses brises lui rapportaient trop de souvenirs, sinon trop de regrets. Il n'avait plus ici cette liberté d'allures, cette indépendance de manœuvres que lui laissaient les océans, et son <em>Nautilus</em> se sentait à l'étroit entre ces rivages rapprochés de l'Afrique et de l'Europe.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Aussi, notre vitesse fut-elle de vingt-cinq milles à l'heure, soit douze lieues de quatre kilomètres. Il va sans dire que Ned Land, à son grand ennui, dut renoncer à ses projets de fuite. Il ne pouvait se servir du canot entraîné à raison de douze à treize mètres par seconde. Quitter le <em>Nautilus</em> dans ces conditions, c'eût été sauter d'un train marchant avec cette rapidité, manœuvre imprudente s'il en fut. D'ailleurs, notre appareil ne remontait que la nuit à la surface des flots, afin de renouveler sa provision d'air, et il se dirigeait seulement suivant les indications de la boussole et les relèvements du loch.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je ne vis donc de l'intérieur de cette Méditerranée que ce que le voyageur d'un express aperçoit du paysage qui fuit devant ses yeux, c'est-à-dire les horizons lointains, et non les premiers plans qui passent comme un éclair. Cependant, Conseil et moi, nous pûmes observer quelques-uns de ces poissons méditerranéens, que la puissance de leurs nageoires maintenait quelques instants dans les eaux du <em>Nautilus</em>. Nous restions à l'affût devant les vitres du salon, et nos notes me permettent de refaire en quelques mots l'ichtyologie de cette mer.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Des divers poissons qui l'habitent, j'ai vu les uns, entrevu les autres, sans parler de ceux que la vitesse du <em>Nautilus</em> déroba à mes yeux. Qu'il me soit donc permis de les classer d'après cette classification fantaisiste. Elle rendra mieux mes rapides observations.</p>", "12": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le soir, vers onze heures, je reçus la visite très-inattendue du capitaine Nemo. Il me demanda fort gracieusement si je me sentais fatigué d'avoir veillé la nuit précédente. Je répondis négativement.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Alors, monsieur Aronnax, je vous proposerai une curieuse excursion.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Vous n'avez encore visité les fonds sous-marins que le jour et sous la clarté du soleil. Vous conviendrait-il de les voir par une nuit obscure?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Cette promenade sera fatigante, je vous en préviens. Il faudra marcher longtemps et gravir une montagne. Les chemins ne sont pas très bien entretenus.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Ce que vous me dites là, capitaine, redouble ma curiosité. Je suis prêt à vous suivre.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Venez donc, monsieur le professeur, nous allons revêtir nos scaphandres.»</p>", "13": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Toute cette journée du 22 février se passa dans la mer de Sargasses, où les poissons, amateurs de plantes marines et de crustacés, trouvent une abondante nourriture. Le lendemain, l'Océan avait repris son aspect accoutumé.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Depuis ce moment, pendant dix-neuf jours, du 23 février au 12 mars, le <em>Nautilus</em>, tenant le milieu de l'Atlantique, nous emporta avec une vitesse constante de cent lieues par vingt-quatre heures. Le capitaine Nemo voulait évidemment accomplir son programme sous-marin, et je ne doutais pas qu'il ne songeât, après avoir doublé le cap Horn, à revenir vers les mers australes du Pacifique.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ned Land avait donc eu raison de craindre. Dans ces larges mers, privées d'îles, il ne fallait plus tenter de quitter le bord. Nul moyen non plus de s'opposer aux volontés du capitaine Nemo. Le seul parti était de se soumettre; mais ce qu'on ne devait plus attendre de la force ou de la ruse, j'aimais à penser qu'on pourrait l'obtenir par la persuasion. Ce voyage terminé, le capitaine Nemo ne consentirait-il pas à nous rendre la liberté sous serment de ne jamais révéler son existence? Serment d'honneur que nous aurions tenu. Mais il fallait traiter cette délicate question avec le capitaine. Or, serais-je bien venu à réclamer cette liberté? Lui-même n'avait-il pas déclaré, dès le début et d'une façon formelle, que le secret de sa vie exigeait notre emprisonnement perpétuel à bord du <em>Nautilus</em>? Mon silence, depuis quatre mois, ne devait-il pas lui paraître une acceptation tacite de cette situation? Revenir sur ce sujet n'aurait-il pas pour résultat de donner des soupçons qui pourraient nuire à nos projets, si quelque circonstance favorable se présentait plus tard de les reprendre? Toutes ces raisons, je les pesais, je les retournais dans mon esprit, je les soumettais à Conseil qui n'était pas moins embarrassé que moi. En somme, bien que je ne fusse pas facile à décourager, je comprenais que les chances de jamais revoir mes semblables diminuaient de jour en jour, surtout en ce moment où le capitaine Nemo courait en téméraire vers le sud de l'Atlantique!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant les dix-neuf jours que j'ai mentionnés plus haut, aucun incident particulier ne signala notre voyage. Je vis peu le capitaine. Il travaillait. Dans la bibliothèque je trouvais souvent des livres qu'il laissait entr'ouverts, et surtout des livres d'histoire naturelle. Mon ouvrage sur les fonds sous-marins, feuilleté par lui, était couvert de notes en marge, qui contredisaient parfois mes théories et mes systèmes. Mais le capitaine se contentait d'épurer ainsi mon travail, et il était rare qu'il discutât avec moi. Quelquefois, j'entendais résonner les sons mélancoliques de son orgue, dont il jouait avec beaucoup d'expression, mais la nuit seulement, au milieu de la plus secrète obscurité, lorsque le <em>Nautilus</em> s'endormait dans les déserts de l'Océan.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant cette partie du voyage, nous naviguâmes des journées entières à la surface des flots. La mer était comme abandonnée. A peine quelques navires à voiles, en charge pour les Indes, se dirigeant vers le cap de Bonne-Espérance. Un jour nous fûmes poursuivis par les embarcations d'un baleinier qui nous prenait sans doute pour quelque énorme baleine d'un haut prix. Mais le capitaine Nemo ne voulut pas faire perdre à ces braves gens leur temps et leurs peines, et il termina la chasse en plongeant sous les eaux. Cet incident avait paru vivement intéresser Ned Land. Je ne crois pas me tromper en disant que le Canadien avait dû regretter que notre cétacé de tôle ne pût être frappé à mort par le harpon de ces pêcheurs.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Les poissons observés par Conseil et par moi, pendant cette période, différaient peu de ceux que nous avions déjà étudiés sous d'autres latitudes. Les principaux furent quelques échantillons de ce terrible genre de cartilagineux, divisé en trois sous-genres qui ne comptent pas moins de trente-deux espèces: des squales-galonnés, longs de cinq mètres, à tête déprimée et plus large que le corps, à nageoire caudale arrondie, et dont le dos porte sept grandes bandes noires parallèles et longitudinales; puis des squales-perlons, gris-cendrés, percés de sept ouvertures branchiales et pourvus d'une seule nageoire dorsale placée à peu près vers le milieu du corps.</p>", "14": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je demandai au capitaine Nemo s'il avait observé des poissons à des profondeurs plus considérables.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Des poissons? me répondit-il, rarement. Mais dans l'état actuel de la science, que présume-t-on, que sait-on?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Le voici, capitaine. On sait que en allant vers les basses couches de l'Océan, la vie végétale disparaît plus vite que la vie animale. On sait que, là où se rencontrent encore des êtres animés, ne végète plus une seule hydrophyte. On sait que les pèlerines, les huîtres vivent par deux mille mètres d'eau, et que Mac Clintock, le héros des mers polaires, a retiré une étoile vivante d'une profondeur de deux mille cinq cent mètres. On sait que l'équipage du <em>Bull-Dog</em>, de la Marine Royale, a pêché une astérie par deux mille six cent vingt brasses, soit plus d'une lieue de profondeur. Mais, capitaine Nemo, peut-être me direz vous qu'on ne sait rien?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Non, monsieur le professeur, répondit le capitaine, je n'aurai pas cette impolitesse. Toutefois, je vous demanderai comment vous expliquez que des êtres puissent vivre à de telles profondeurs?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Je l'explique par deux raisons, répondis-je. D'abord, parce que les courants verticaux, déterminés par les différences de salure et de densité des eaux, produisent un mouvement qui suffit à entretenir la vie rudimentaire des encrines et des astéries.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Ensuite, parce que, si l'oxygène est la base de la vie, on sait que la quantité d'oxygène dissous dans l'eau de mer augmente avec la profondeur au lieu de diminuer, et que la pression des couches basses contribue à l'y comprimer.</p>", "15": "<p><em>Point de navigation intermédiaire — aucun chapitre spécifique dans le roman.</em></p>", "16": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant la nuit du 13 au 14 mars, le <em>Nautilus</em> reprit sa direction vers le sud. Je pensais qu'à la hauteur du cap Horn, il mettrait le cap à l'ouest afin de rallier les mers du Pacifique et d'achever son tour du monde. Il n'en fit rien et continua de remonter vers les régions australes. Où voulait-il donc aller? Au pôle? C'était insensé. Je commençai à croire que les témérités du capitaine justifiaient suffisamment les appréhensions de Ned Land.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>[Illustration: Quand Ned rencontrait le capitaine..... (Page 321.)]</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le Canadien, depuis quelque temps, ne me parlait plus de ses projets de fuite. Il était devenu moins communicatif, presque silencieux. Je voyais combien cet emprisonnement prolongé lui pesait. Je sentais ce qui s'amassait de colère en lui. Lorsqu'il rencontrait le capitaine, ses yeux s'allumaient d'un feu sombre, et je craignais toujours que sa violence naturelle ne le portât à quelque extrémité.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ce jour-là, 14 mars, Conseil et lui vinrent me trouver dans ma chambre. Je leur demandai la raison de leur visite.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Une simple question à vous poser, monsieur, me répondit le Canadien.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Combien d'hommes croyez-vous qu'il y ait à bord du <em>Nautilus</em>?</p>", "17": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le lendemain 19 mars, à cinq heures du matin, je repris mon poste dans le salon. Le loch électrique m'indiqua que la vitesse du <em>Nautilus</em> avait été modérée. Il remontait alors vers la surface, mais prudemment, en vidant lentement ses réservoirs.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Mon cœur battait. Allions-nous émerger et retrouver l'atmosphère libre du pôle?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Non. Un choc m'apprit que le <em>Nautilus</em> avait heurté la surface inférieure de la banquise, très-épaisse encore, à en juger par la matité du bruit. En effet, nous avions «touché» pour employer l'expression marine, mais en sens inverse et par mille pieds de profondeur. Ce qui donnait deux mille pieds de glaces au-dessus de nous, dont mille émergeaient. La banquise présentait alors une hauteur supérieure à celle que nous avions relevée sur ses bords. Circonstance peu rassurante.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant cette journée, le <em>Nautilus</em> recommença plusieurs fois cette même expérience, et toujours il vint se heurter contre la muraille qui plafonnait au-dessus de lui. A de certains instants, il la rencontra par neuf cents mètres, ce qui accusait douze cents mètres d'épaisseur dont deux cents mètres s'élevaient au-dessus de la surface de l'Océan. C'était le double de sa hauteur au moment où le <em>Nautilus</em> s'était enfoncé sous les flots.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je notai soigneusement ces diverses profondeurs, et j'obtins ainsi le profil sous-marin de cette chaîne qui se développait sous les eaux.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le soir, aucun changement n'était survenu dans notre situation. Toujours la glace entre quatre cents et cinq cents mètres de profondeur. Diminution évidente, mais quelle épaisseur encore entre nous et la surface de l'Océan!</p>", "18": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le lendemain, premier avril, lorsque le <em>Nautilus</em> remonta à la surface des flots, quelques minutes avant midi, nous eûmes connaissance d'une côte à l'ouest. C'était la Terre du Feu, à laquelle les premiers navigateurs donnèrent ce nom en voyant les fumées nombreuses qui s'élevaient des huttes indigènes. Cette Terre du Feu forme une vaste agglomération d'îles qui s'étend sur trente lieues de long et quatre-vingts lieues de large, entre 53° et 56° de latitude australe, et 67° 50′ et 77° 15′ de longitude ouest. La côte me parut basse, mais au loin se dressaient de hautes montagnes. Je crus même entrevoir le mont Sarmiento, élevé de deux mille soixante-dix mètres au-dessus du niveau de la mer, bloc pyramidal de schiste, à sommet très-aigu, qui, suivant qu'il est voilé ou dégagé de vapeurs, «annonce le beau ou le mauvais temps,» me dit Ned Land.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Un fameux baromètre, mon ami.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Oui, monsieur, un baromètre naturel, qui ne m'a jamais trompé quand je naviguais dans les passes du détroit de Magellan.»</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>En ce moment, ce pic nous parut nettement découpé sur le fond du ciel. C'était un présage de beau temps. Il se réalisa.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le <em>Nautilus</em>, rentré sous les eaux, se rapprocha de la côte qu'il prolongea à quelques milles seulement. Par les vitres du salon, je vis de longues lianes, et des fucus gigantesques, ces varechs porte-poires, dont la mer libre du pôle renfermait quelques échantillons; avec leurs filaments visqueux et polis, ils mesuraient jusqu'à trois cents mètres de longueur; véritables câbles, plus gros que le pouce, très-résistants, ils servent souvent d'amarres aux navires. Une autre herbe, connue sous le nom de velp, à feuilles longues de quatre pieds, empâtées dans les concrétions coralligènes, tapissait les fonds. Elle servait de nid et de nourriture à des myriades de crustacés et de mollusques, des crabes, des seiches. Là, les phoques et les loutres se livraient à de splendides repas, mélangeant la chair du poisson et les légumes de la mer, suivant la méthode anglaise.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Sur ces fonds gras et luxuriants, le <em>Nautilus</em> passait avec une extrême rapidité. Vers le soir, il se rapprocha de l'archipel des Malouines, dont je pus, le lendemain, reconnaître les âpres sommets. La profondeur de la mer était médiocre. Je pensai donc, non sans raison, que ces deux îles, entourées d'un grand nombre d'îlots, faisaient autrefois partie des terres magellaniques. Les Malouines furent probablement découvertes par le célèbre John Davis, qui leur imposa le nom de Davis-Southern Islands. Plus tard, Richard Hawkins les appela Maiden-Islands, îles de la Vierge. Elles furent ensuite nommée Malouines, au commencement du dix-huitième siècle, par des pêcheurs de Saint-Malo, et enfin Falkland par les Anglais auxquels elles appartiennent aujourd'hui.</p>", "19": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Jusqu'au 3 avril, nous ne quittâmes pas les parages de la Patagonie, tantôt sous l'Océan, tantôt à sa surface. Le <em>Nautilus</em> dépassa le large estuaire formé par l'embouchure de la Plata, et se trouva, le 4 avril, par le travers de l'Uruguay, mais à cinquante milles au large. Sa direction se maintenait au nord, et il suivait les longues sinuosités de l'Amérique méridionale. Nous avions fait alors seize mille lieues depuis notre embarquement dans les mers du Japon.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Vers onze heures du matin, le tropique du Capricorne fut coupé sur le trente-septième méridien, et nous passâmes au large du cap Frio. Le capitaine Nemo, au grand déplaisir de Ned Land, n'aimait pas le voisinage de ces côtes habitées du Brésil, car il marchait avec une vitesse vertigineuse. Pas un poisson, pas un oiseau, des plus rapides qui soient, ne pouvaient nous suivre, et les curiosités naturelles de ces mers échappèrent à toute observation.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cette rapidité se soutint pendant plusieurs jours, et le 9 avril, au soir, nous avions connaissance de la pointe la plus orientale de l'Amérique du Sud qui forme le cap San-Roque. Mais alors le <em>Nautilus</em> s'écarta de nouveau, et il alla chercher à de plus grandes profondeurs une vallée sous-marine qui se creuse entre ce cap et Sierra Leone sur la côte africaine. Cette vallée se bifurque à la hauteur des Antilles et se termine au nord par une énorme dépression de neuf mille mètres. En cet endroit, la coupe géologique de l'Océan figure jusqu'aux petites Antilles une falaise de six kilomètres, taillée à pic, et, à la hauteur des îles du cap Vert, une autre muraille non moins considérable, qui enferment ainsi tout le continent immergé de l'Atlantide. Le fond de cette immense vallée est accidenté de quelques montagnes qui ménagent de pittoresques aspects à ces fonds sous-marins. J'en parle surtout d'après les cartes manuscrites que contenait la bibliothèque du <em>Nautilus</em>, cartes évidemment dues à la main du capitaine Nemo et levées sur ses observations personnelles.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant deux jours, ces eaux désertes et profondes furent visitées au moyen des plans inclinés. Le <em>Nautilus</em> fournissait de longues bordées diagonales qui le portaient à toutes les hauteurs. Mais, le 11 avril, il se releva subitement, et la terre nous réapparut à l'ouvert du fleuve des Amazones, vaste estuaire dont le débit est si considérable qu'il dessale la mer sur un espace de plusieurs lieues.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>L'Équateur était coupé. A vingt milles dans l'ouest restaient les Guyanes, une terre française sur laquelle nous eussions trouvé un facile refuge. Mais le vent soufflait en grande brise, et les lames furieuses n'auraient pas permis à un simple canot de les affronter. Ned Land le comprit sans doute, car il ne me parla de rien. De mon côté, je ne fis aucune allusion à ses projets de fuite, car je ne voulais pas le pousser à quelque tentative qui eût infailliblement avorté.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je me dédommageai facilement de ce retard par d'intéressantes études. Pendant ces deux journées des 11 et 12 avril, le <em>Nautilus</em> ne quitta pas la surface de la mer, et son chalut lui ramena toute une pêche miraculeuse en zoophytes, en poissons et en reptiles.</p>", "20": "<p><em>Point de navigation intermédiaire — aucun chapitre spécifique dans le roman.</em></p>", "21": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 20 avril, nous étions remontés à une hauteur moyenne de quinze cents mètres. La terre la plus rapprochée était alors cet archipel des îles Lucayes, disséminées comme un tas de pavés à la surface des eaux. Là s'élevaient de hautes falaises sous-marines, murailles droites faites de blocs frustes disposés par larges assises, entre lesquels se creusaient des trous noirs que nos rayons électriques n'éclairaient pas jusqu'au fond.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Ces roches étaient tapissées de grandes herbes, de laminaires géants, de fucus gigantesques, un véritable espalier d'hydrophytes digne d'un monde de Titans.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>De ces plantes colossales dont nous parlions, Conseil, Ned et moi, nous fûmes naturellement amenés à citer les animaux gigantesques de la mer. Les unes sont évidemment destinées à la nourriture des autres. Cependant, par les vitres du <em>Nautilus</em> presque immobile, je n'apercevais encore sur ces longs filaments que les principaux articulés de la division des brachioures, des lambres à longues pattes, des crabes violacés, des clios particuliers aux mers des Antilles.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Il était environ onze heures, quand Ned Land attira mon attention sur un formidable fourmillement qui se produisait à travers les grandes algues.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Eh bien, dis-je, ce sont-là de véritables cavernes à poulpes, et je ne serais pas étonné d'y voir quelques-uns de ces monstres.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Quoi! fit Conseil, des calmars, de simples calmars, de la classe des céphalopodes?</p>", "22": "<p><em>Point de navigation intermédiaire — aucun chapitre spécifique dans le roman.</em></p>", "23": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cette terrible scène du 20 avril, aucun de nous ne pourra jamais l'oublier. Je l'ai écrite sous l'impression d'une émotion violente. Depuis, j'en ai revu le récit. Je l'ai lu à Conseil et au Canadien. Ils l'ont trouvé exact comme fait, mais insuffisant comme effet. Pour peindre de pareils tableaux, il faudrait la plume du plus illustre de nos poëtes, l'auteur des <em>Travailleurs de la Mer</em>.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>J'ai dit que le capitaine Nemo pleurait en regardant les flots. Sa douleur fut immense. C'était le second compagnon qu'il perdait depuis notre arrivée à bord. Et quelle mort! Cet ami, écrasé, étouffé, brisé par le formidable bras d'un poulpe, broyé sous ses mandibules de fer, ne devait pas reposer avec ses compagnons dans les paisibles eaux du cimetière de corail!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pour moi, au milieu de cette lutte, c'était ce cri de désespoir poussé par l'infortuné qui m'avait déchiré le cœur. Ce pauvre Français, oubliant son langage de convention, s'était repris à parler la langue de son pays et de sa mère, pour jeter un suprême appel! Parmi cet équipage du <em>Nautilus</em>, associé de corps et d'âme au capitaine Nemo, fuyant comme lui le contact des hommes, j'avais donc un compatriote! Était-il seul à représenter la France dans cette mystérieuse association, évidemment composée d'individus de nationalités diverses? C'était encore un de ces insolubles problèmes qui se dressaient sans cesse devant mon esprit!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le capitaine Nemo rentra dans sa chambre, et je ne le vis plus pendant quelque temps. Mais qu'il devait être triste, désespéré, irrésolu, si j'en jugeais par ce navire dont il était l'âme et qui recevait toutes ses impressions! Le <em>Nautilus</em> ne gardait plus de direction déterminée. Il allait, venait, flottait comme un cadavre au gré des lames. Son hélice avait été dégagée, et cependant, il s'en servait à peine. Il naviguait au hasard. Il ne pouvait s'arracher du théâtre de sa dernière lutte, de cette mer qui avait dévoré l'un des siens!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Dix jours se passèrent ainsi. Ce fut le 1er mai seulement que le <em>Nautilus</em> reprit franchement sa route au nord, après avoir eu connaissance des Lucayes à l'ouvert du canal de Bahama. Nous suivions alors le courant du plus grand fleuve de la mer, qui a ses rives, ses poissons et sa température propres. J'ai nommé le Gulf-Stream.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>C'est un fleuve, en effet, qui coule librement au milieu de l'Atlantique, et dont les eaux ne se mélangent pas aux eaux océaniennes. C'est un fleuve salé, plus salé que la mer ambiante. Sa profondeur moyenne est de trois mille pieds, sa largeur moyenne de soixante milles. En de certains endroits, son courant marche avec une vitesse de quatre kilomètres à l'heure. L'invariable volume de ses eaux est plus considérable que celui de tous les fleuves du globe.</p>", "24": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 8 mai, nous étions encore en travers du cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf-Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix mètres. Le <em>Nautilus</em> continuait d'errer à l'aventure. Toute surveillance semblait bannie du bord. Je conviendrai que dans ces conditions, une évasion pouvait réussir. En effet, les rivages habités offraient partout de faciles refuges. La mer était incessamment sillonnée de nombreux steamers qui font le service entre New-York ou Boston et le golfe du Mexique, et nuit et jour parcourue par ces petites goëlettes chargées du cabotage sur les divers points de la côte américaine. On pouvait espérer d'être recueilli. C'était donc une occasion favorable, malgré les trente milles qui séparaient le <em>Nautilus</em> des côtes de l'Union.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>[Illustration: Un grand navire capéyait à petite vapeur. (Page 406.)]</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Mais une circonstance fâcheuse contrariait absolument les projets du Canadien. Le temps était fort mauvais. Nous approchions de ces parages où les tempêtes sont fréquentes, de cette patrie des trombes et des cyclones, précisément engendrés par le courant du Gulf-Stream. Affronter une mer souvent démontée sur un frêle canot, c'était courir à une perte certaine. Ned Land en convenait lui-même. Aussi rongeait-il son frein, pris d'une furieuse nostalgie que la fuite seule eût pu guérir.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Monsieur, me dit-il ce jour-là, il faut que cela finisse. Je veux en avoir le cœur net. Votre Nemo s'écarte des terres et remonte vers le nord. Mais je vous le déclare, j'ai assez du pôle Sud, et je ne le suivrai pas au pôle Nord.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—Que faire, Ned, puisqu'une évasion est impraticable en ce moment?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>—J'en reviens à mon idée. Il faut parler au capitaine. Vous n'avez rien dit, quand nous étions dans les mers de votre pays. Je veux parler, maintenant que nous sommes dans les mers du mien. Quand je songe qu'avant quelques jours, le <em>Nautilus</em> va se trouver à la hauteur de la Nouvelle-Écosse, et que là, vers Terre-Neuve, s'ouvre une large baie, que dans cette baie se jette le Saint-Laurent, et que le Saint-Laurent, c'est mon fleuve à moi, le fleuve de Québec, ma ville natale; quand je songe à cela, la fureur me monte au visage, mes cheveux se hérissent. Tenez, monsieur, je me jetterai plutôt à la mer! Je ne resterai pas ici! J'y étouffe!»</p>", "25": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>La tempête éclata dans la journée du 18 mai, précisément lorsque le <em>Nautilus</em> flottait à la hauteur de Long-Island, à quelques milles des passes de New-York. Je puis décrire cette lutte des éléments, car au lieu de la fuir dans les profondeurs de la mer, le capitaine Nemo, par un inexplicable caprice, voulut la braver à sa surface.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le vent soufflait du sud-ouest, d'abord en grand frais, c'est-à-dire avec une vitesse de quinze mètres à la seconde, qui fut portée à vingt-cinq mètres vers trois heures du soir. C'est le chiffre des tempêtes.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le capitaine Nemo, inébranlable sous les rafales, avait pris place sur la plate-forme. Il s'était amarré à mi-corps pour résister aux vagues monstrueuses qui déferlaient. Je m'y étais hissé et attaché aussi, partageant mon admiration entre cette tempête et cet homme incomparable qui lui tenait tête.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>La mer démontée était balayée par de grandes loques de nuages qui trempaient dans ses flots. Je ne voyais plus aucune de ces petites lames intermédiaires qui se forment au fond des grands creux. Rien que de longues ondulations fuligineuses, dont la crête ne déferle pas, tant elles sont compactes. Leur hauteur s'accroissait. Elles s'excitaient entre elles. Le <em>Nautilus</em>, tantôt couché sur le côté, tantôt dressé comme un mât, roulait et tanguait épouvantablement.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Vers cinq heures, une pluie torrentielle tomba, qui n'abattit ni le vent ni la mer. L'ouragan se déchaîna avec une vitesse de quarante-cinq mètres à la seconde, soit près de quarante lieues à l'heure. C'est dans ces conditions qu'il renverse des maisons, qu'il enfonce des tuiles de toits dans des portes, qu'il rompt des grilles de fer, qu'il déplace des canons de vingt-quatre. Et pourtant le <em>Nautilus</em>, au milieu de la tourmente, justifiait cette parole d'un savant ingénieur: «Il n'y a pas de coque bien construite qui ne puisse défier à la mer!» Ce n'était pas un roc résistant, que ces lames eussent démoli, c'était un fuseau d'acier, obéissant et mobile, sans gréement, sans mâture, qui bravait impunément leur fureur.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cependant j'examinais attentivement ces vagues déchaînées. Elles mesuraient jusqu'à quinze mètres de hauteur sur une longueur de cent cinquante à cent soixante quinze mètres, et leur vitesse de propagation, moitié de celle du vent, était de quinze mètres à la seconde. Leur volume et leur puissance s'accroissaient avec la profondeur des eaux. Je compris alors le rôle de ces lames qui emprisonnent l'air dans leurs flancs et le refoulent au fond des mers où elles portent la vie avec l'oxygène. Leur extrême force de pression,—on l'a calculée,—peut s'élever jusqu'à trois mille kilogrammes par pied carré de la surface qu'elles contrebattent. Ce sont de telles lames qui, aux Hébrides, ont déplacé un bloc pesant quatre-vingt-quatre mille livres. Ce sont elles qui, dans la tempête du 23 décembre 1864, après avoir renversé une partie de la ville de Yéddo, au Japon, faisant sept cents kilomètres à l'heure, allèrent se briser le même jour sur les rivages de l'Amérique.</p>", "26": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 15 mai, nous étions sur l'extrémité méridionale du banc de Terre-Neuve. Ce banc est un produit des alluvions marines, un amas considérable de ces détritus organiques, amenés soit de l'Équateur par le courant du Gulf-Stream, soit du pôle boréal, par ce contre-courant d'eau froide qui longe la côte américaine. Là aussi s'amoncellent les blocs erratiques charriés par la débâcle des glaces. Là s'est formé un vaste ossuaire de poissons, de mollusques ou de zoophytes qui y périssent par milliards.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>La profondeur de la mer n'est pas considérable au banc de Terre-Neuve. Quelques centaines de brasses au plus. Mais vers le sud se creuse subitement une dépression profonde, un trou de trois mille mètres. Là s'élargit le Gulf-Stream. C'est un épanouissement de ses eaux. Il perd de sa vitesse et de sa température, mais il devient une mer.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Parmi les poissons que le <em>Nautilus</em> effaroucha à son passage, je citerai le cycloptère d'un mètre, à dos noirâtre, à ventre orange, qui donne à ses congénères un exemple peu suivi de fidélité conjugale, un unernack de grande taille, sorte de murène émeraude, d'un goût excellent, des karraks à gros yeux, dont la tête a quelque ressemblance avec celle du chien, des blennies, ovovivipares comme les serpents, des gobies-boulerots ou goujons noirs de deux décimètres, des macroures à longue queue, brillant d'un éclat argenté, poissons rapides, aventurés loin des mers hyperboréennes.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Les filets ramassèrent aussi un poisson hardi, audacieux, vigoureux, bien musclé, armé de piquants à la tête et d'aiguillons aux nageoires, véritable scorpion de deux à trois mètres, ennemi acharné des blennies, des gades et des saumons; c'était le cotte des mers septentrionales, au corps tuberculeux, brun de couleur, rouge aux nageoires. Les pêcheurs du <em>Nautilus</em> eurent quelque peine à s'emparer de cet animal, qui, grâce à la conformation de ses opercules, préserve ses organes respiratoires du contact desséchant de l'atmosphère et peut vivre quelque temps hors de l'eau.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je cite maintenant,—pour mémoire,—des bosquiens, petits poissons qui accompagnent longtemps les navires dans les mers boréales, des ables-oxyrhinques, spéciaux à l'Atlantique septentrional, des rascasses, et j'arrive aux gades, principalement à l'espèce morue, que je surpris dans ses eaux de prédilection, sur cet inépuisable banc de Terre-Neuve.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>On peut dire que ces morues sont des poissons de montagnes, car Terre-Neuve n'est qu'une montagne sous-marine. Lorsque le <em>Nautilus</em> s'ouvrit un chemin à travers leurs phalanges pressées, Conseil ne put retenir cette observation:</p>", "27": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Or, le 25 mai, le <em>Nautilus</em>, immergé par trois mille huit cent trente-six mètres de profondeur, se trouvait précisément en cet endroit où se produisit la rupture qui ruina l'entreprise. C'était à six cent trente huit milles de la côte d'Irlande. On s'aperçut, à deux heures après-midi, que les communications avec l'Europe venaient de s'interrompre. Les électriciens du bord résolurent de couper le câble avant de le repêcher, et à onze heures du soir, ils avaient ramené la partie avariée. On refit un joint et une épissure; puis le câble fut immergé de nouveau. Mais, quelques jours plus tard, il se rompit et ne put être ressaisi dans les profondeurs de l'Océan.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Les Américains ne se découragèrent pas. L'audacieux Cyrus Field, le promoteur de l'entreprise, qui y risquait toute sa fortune, provoqua une nouvelle souscription. Elle fut immédiatement couverte. Un autre câble fut établi dans de meilleures conditions. Le faisceau de fils conducteurs isolés dans une enveloppe de gutta-percha, était protégé par un matelas de matières textiles contenu dans une armature métallique. Le <em>Great-Eastern</em> reprit la mer le 13 juillet 1866.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>L'opération marcha bien. Cependant un incident arriva. Plusieurs fois, en déroulant le câble, les électriciens observèrent que des clous y avaient été récemment enfoncés dans le but d'en détériorer l'âme. Le capitaine Anderson, ses officiers, ses ingénieurs, se réunirent, délibérèrent, et firent afficher que si le coupable était surpris à bord, il serait jeté à la mer sans autre jugement. Depuis lors, la criminelle tentative ne se reproduisit plus.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le 23 juillet, le <em>Great-Eastern</em> n'était plus qu'à huit cents kilomètres de Terre-Neuve, lorsqu'on lui télégraphia d'Irlande la nouvelle de l'armistice conclu entre la Prusse et l'Autriche après Sadowa. Le 27, il relevait au milieu des brumes le port de Heart's Content. L'entreprise était heureusement terminée, et par sa première dépêche, la jeune Amérique adressait à la vieille Europe ces sages paroles si rarement comprises: «Gloire à Dieu dans le ciel, et paix aux hommes de bonne volonté sur la terre.»</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je ne m'attendais pas à trouver le câble électrique dans son état primitif, tel qu'il était en sortant des ateliers de fabrication. Le long serpent, recouvert de débris de coquilles, hérissé de foraminifères, était encroûté dans un empâtement pierreux qui le protégeait contre les mollusques perforants. Il reposait tranquillement, à l'abri des mouvements de la mer, et sous une pression favorable à la transmission de l'étincelle électrique qui passe de l'Amérique à l'Europe en trente-deux centièmes de seconde. La durée de ce câble sera infinie sans doute, car on a observé que l'enveloppe de gutta-percha s'améliore par son séjour dans l'eau de mer.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>D'ailleurs, sur ce plateau si heureusement choisi, le câble n'est jamais immergé à des profondeurs telles qu'il puisse se rompre. Le <em>Nautilus</em> le suivit jusqu'à son fond le plus bas, situé par quatre mille quatre cent trente et un mètres, et là, il reposait encore sans aucun effort de traction. Puis, nous nous rapprochâmes de l'endroit où avait eu lieu l'accident de 1863.</p>", "28": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>S'il voulait entrer en Manche, il lui fallait prendre franchement à l'est. Il ne le fit pas.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Pendant toute la journée du 31 mai, le <em>Nautilus</em> décrivit sur la mer une série de cercles qui m'intriguèrent vivement. Il semblait chercher un endroit qu'il avait quelque peine à trouver. A midi, le capitaine Nemo vint faire son point lui-même. Il ne m'adressa pas la parole. Il me parut plus sombre que jamais. Qui pouvait l'attrister ainsi? Était-ce sa proximité des rivages européens? Sentait-il quelque ressouvenir de son pays abandonné? Qu'éprouvait-il alors? des remords ou des regrets? Longtemps cette pensée occupa mon esprit, et j'eus comme un pressentiment que le hasard trahirait avant peu les secrets du capitaine.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le lendemain, 31 juin, le <em>Nautilus</em> conserva les mêmes allures. Il était évident qu'il cherchait à reconnaître un point précis de l'Océan. Le capitaine Nemo vint prendre la hauteur du soleil, ainsi qu'il avait fait la veille. La mer était belle, le ciel pur. A huit milles dans l'est, un grand navire à vapeur se dessinait sur la ligne de l'horizon. Aucun pavillon ne battait à sa corne, et je ne pus reconnaître sa nationalité.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le capitaine Nemo, quelques minutes avant que le soleil passât au méridien, prit son sextant et observa avec une précision extrême. Le calme absolu des flots facilitait son opération. Le <em>Nautilus</em> immobile ne ressentait ni roulis ni tangage.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>J'étais en ce moment sur la plate-forme. Lorsque son relèvement fut terminé, le capitaine prononça ces seuls mots:</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Il redescendit par le panneau. Avait-il vu le bâtiment qui modifiait sa marche et semblait se rapprocher de nous? Je ne saurais le dire.</p>", "29": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je revins au salon. Le panneau se ferma, et j'entendis les sifflements de l'eau dans les réservoirs. Le <em>Nautilus</em> commença de s'enfoncer, suivant une ligne verticale, car son hélice entravée ne lui communiquait plus aucun mouvement.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Quelques minutes plus tard, il s'arrêtait à une profondeur de huit cent trente-trois mètres et reposait sur le sol.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le plafond lumineux du salon s'éteignit alors, les panneaux s'ouvrirent, et à travers les vitres, j'aperçus la mer vivement illuminée par les rayons du fanal dans un rayon d'un demi-mille.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je regardai à bâbord et je ne vis rien que l'immensité des eaux tranquilles.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Par tribord, sur le fond, apparaissait une forte extumescence qui attira mon attention. On eût dit des ruines ensevelies sous un empâtement de coquilles blanchâtres comme sous un manteau de neige. En examinant attentivement cette masse, je crus reconnaître les formes épaissies d'un navire, rasé de ses mâts, qui devait avoir coulé par l'avant. Ce sinistre datait certainement d'une époque reculée. Cette épave, pour être ainsi encroûtée dans le calcaire des eaux, comptait déjà bien des années passées sur ce fond de l'Océan.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Quel était ce navire? Pourquoi le <em>Nautilus</em> venait-il visiter sa tombe? N'était-ce donc pas un naufrage qui avait entraîné ce bâtiment sous les eaux?</p>", "30": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Puis, une pensée soudaine me terrifia. Le capitaine Nemo avait quitté sa chambre. Il était dans ce salon que je devais traverser pour fuir. Là, je le rencontrerais une dernière fois. Il me verrait, il me parlerait peut-être! Un geste de lui pouvait m'anéantir, un seul mot, m'enchaîner à son bord!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Cependant, dix heures allaient sonner. Le moment était venu de quitter ma chambre et de rejoindre mes compagnons.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Il n'y avait pas à hésiter, dût le capitaine Nemo se dresser devant moi. J'ouvris ma porte avec précaution, et cependant, il me sembla qu'en tournant sur ses gonds, elle faisait un bruit effrayant. Peut-être ce bruit n'existait-il que dans mon imagination!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je m'avançai en rampant à travers les coursives obscures du <em>Nautilus</em>, m'arrêtant à chaque pas pour comprimer les battements de mon cœur.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>J'arrivai à la porte angulaire du salon. Je l'ouvris doucement. Le salon était plongé dans une obscurité profonde. Les accords de l'orgue résonnaient faiblement. Le capitaine Nemo était là. Il ne me voyait pas. Je crois même qu'en pleine lumière, il ne m'eût pas aperçu, tant son extase l'absorbait tout entier.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Je me traînai sur le tapis, évitant le moindre heurt dont le bruit eût pu trahir ma présence. Il me fallut cinq minutes pour gagner la porte du fond qui donnait sur la bibliothèque.</p>", "31": "<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Le Maelstrom! Un nom plus effrayant dans une situation plus effrayante pouvait-il retentir à notre oreille? Nous trouvions-nous donc sur ces dangereux parages de la côte norwégienne? Le <em>Nautilus</em> était-il entraîné dans ce gouffre, au moment ou notre canot allait se détacher de ses flancs?</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>On sait qu'au moment du flux, les eaux resserrées entre les îles Féroë et Loffoden sont précipitées avec une irrésistible violence. Elles forment un tourbillon dont aucun navire n'a jamais pu sortir. De tous les points de l'horizon accourent des lames monstrueuses. Elles forment ce gouffre justement appelé le «Nombril de l'Océan,» dont la puissance d'attraction s'étend jusqu'à une distance de quinze kilomètres. Là sont aspirés non-seulement les navires, mais les baleines, mais aussi les ours blancs des régions boréales.</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>C'est là que le <em>Nautilus</em>,—involontairement ou volontairement peut-être,—avait été engagé par son capitaine. Il décrivait une spirale dont le rayon diminuait de plus en plus. Ainsi que lui, le canot, encore accroché à son flanc, était emporté avec une vitesse vertigineuse. Je le sentais. J'éprouvais ce tournoiement maladif qui succède à un mouvement de giration trop prolongé. Nous étions dans l'épouvante, dans l'horreur portée à son comble, la circulation suspendue, l'influence nerveuse annihilée, traversés de sueurs froides comme les sueurs de l'agonie! Et quel bruit autour de notre frêle canot! Quels mugissements que l'écho répétait à une distance de plusieurs milles! Quel fracas que celui de ces eaux brisées sur les roches aiguës du fond, là où les corps les plus durs se brisent, là où les troncs d'arbres s'usent et se font «une fourrure de poils,» selon l'expression norvégienne!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>[Illustration: Le canot lancé au milieu du tourbillon. (Page 432.)]</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>Quelle situation! Nous étions ballottés affreusement. Le <em>Nautilus</em> se défendait comme un être humain. Ses muscles d'acier craquaient. Parfois il se dressait, et nous avec lui!</p>\n<p style='margin-bottom:1.5rem;line-height:2.0;font-size:1.25rem;'>«Il faut tenir bon, dit Ned, et revisser les écrous! En restant attachés au <em>Nautilus</em>, nous pouvons nous sauver encore...!»</p>"};
+function openHudModal(content) {
+  document.getElementById("hudModalBody").innerHTML = content;
+  document.getElementById("hudModal").classList.add("open");
+}
+function closeHudModal() {
+  document.getElementById("hudModal").classList.remove("open");
+}
+document.getElementById("hudModal").addEventListener("click", function(e) {
+  if (e.target === this) closeHudModal();
+});
+const ESPECES = {"0": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Jambonneaux</li><li>Holoturies</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Cladostèphes verticillées</li><li>Padines-paon</li><li>Caulerpes à feuilles de vigne</li><li>Callithamnes granifères</li><li>Céramies à teintes écarlates</li><li>Agares</li><li>Acétabules</li><li>Varechs</li><li>Zostère marine</li><li>Porphyria laciniata</li><li>Laurentia primafetida</li><li>Rhodoménie palmée</li></ul>", "1": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Polypes (madrépores)</li><li>Madrépores</li><li>Millepores</li><li>Porites</li><li>Astrées</li><li>Méandrines</li><li>Maquereaux</li><li>Bonites</li><li>Albicores</li><li>Munérophis (serpent de mer)</li><li>Huîtres (Ostrea lamellosa)</li><li>Fongies</li><li>Syphonules</li><li>Alcyons</li><li>Cariophyllées</li><li>Girelles</li><li>Glyphisidons</li><li>Pomphérides</li><li>Diacopes</li><li>Holocentres</li></ul>", "2": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Polypes (madrépores)</li><li>Madrépores</li><li>Millepores</li><li>Porites</li><li>Astrées</li><li>Méandrines</li><li>Maquereaux</li><li>Bonites</li><li>Albicores</li><li>Munérophis (serpent de mer)</li><li>Huîtres (Ostrea lamellosa)</li><li>Fongies</li><li>Syphonules</li><li>Alcyons</li><li>Cariophyllées</li><li>Girelles</li><li>Glyphisidons</li><li>Pomphérides</li><li>Diacopes</li><li>Holocentres</li></ul>", "3": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Germons</li><li>Spares vertors</li><li>Pyrapèdes volants</li><li>Alcyonnaires</li><li>Oursins</li><li>Marteaux (mollusques)</li><li>Éperons (mollusques)</li><li>Cadrans (mollusques)</li><li>Cérites (mollusques)</li><li>Hyalles (mollusques)</li><li>Polypes coralliens</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Algues flottantes</li><li>Laminaires</li><li>Macrocystes</li><li>Nemastoma Geliniaroïde</li></ul>", "4": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Animalcules lumineux (infusoires pélagiens)</li><li>Noctiluques miliaires</li><li>Méduses</li><li>Astéries</li><li>Aurélies</li><li>Pholades-dattes</li><li>Marsouins</li><li>Istiophores</li><li>Balistes</li><li>Scomberoïdes-sauteurs</li><li>Nasons-loups</li></ul>", "5": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Animalcules lumineux (infusoires pélagiens)</li><li>Noctiluques miliaires</li><li>Méduses</li><li>Astéries</li><li>Aurélies</li><li>Pholades-dattes</li><li>Marsouins</li><li>Istiophores</li><li>Balistes</li><li>Scomberoïdes-sauteurs</li><li>Nasons-loups</li></ul>", "6": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Dendrophyllée</li><li>Tortues marines (carets)</li><li>Ostracions triangulaires</li><li>Ostracions quadrangulaires</li><li>Trigones</li><li>Dromadaires (poissons)</li><li>Tétrodons</li><li>Électriques (poissons)</li><li>Ovoïdes</li><li>Diodons</li><li>Hippocampes</li><li>Pégases volants</li><li>Pigeons spatulés</li><li>Macrognathes</li><li>Calliomores livides</li><li>Blennies-sauteurs</li><li>Vélifères</li><li>Kurtes</li><li>Trichoptères</li><li>Cottes</li><li>Trygles</li><li>Bodians</li><li>Soufflets</li><li>Scorpènes</li><li>Dydactyles</li><li>Crapauds de mer</li><li>Polypes</li><li>Échinodermes</li><li>Dauphinules</li><li>Astrée punctifère</li><li>Argonautes tuberculés</li><li>Squales philipps</li><li>Squales œillés</li><li>Squales isabelle</li><li>Squales émissoles</li><li>Squales tigrés</li><li>Infusoires pélagiens</li></ul>", "7": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Dendrophyllée</li><li>Tortues marines (carets)</li><li>Ostracions triangulaires</li><li>Ostracions quadrangulaires</li><li>Trigones</li><li>Dromadaires (poissons)</li><li>Tétrodons</li><li>Électriques (poissons)</li><li>Ovoïdes</li><li>Diodons</li><li>Hippocampes</li><li>Pégases volants</li><li>Pigeons spatulés</li><li>Macrognathes</li><li>Calliomores livides</li><li>Blennies-sauteurs</li><li>Vélifères</li><li>Kurtes</li><li>Trichoptères</li><li>Cottes</li><li>Trygles</li><li>Bodians</li><li>Soufflets</li><li>Scorpènes</li><li>Dydactyles</li><li>Crapauds de mer</li><li>Polypes</li><li>Échinodermes</li><li>Dauphinules</li><li>Astrée punctifère</li><li>Argonautes tuberculés</li><li>Squales philipps</li><li>Squales œillés</li><li>Squales isabelle</li><li>Squales émissoles</li><li>Squales tigrés</li><li>Infusoires pélagiens</li></ul>", "8": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "9": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "10": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "11": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Lamproies</li><li>Oxyrhynques</li><li>Raies</li><li>Squales-milandres</li><li>Renards marins</li><li>Dorades (genre spare)</li><li>Esturgeons</li><li>Scombres-thons</li><li>Gymnotes-fierasfers blanchâtres</li><li>Murènes-congres</li><li>Gades-merlus</li><li>Cœpoles-ténias</li><li>Trygles</li><li>Trygles-hirondelles</li><li>Holocentres-mérons</li><li>Aloses</li><li>Turbots</li><li>Mulles-rougets</li><li>Cachalots (genre physétères)</li><li>Dauphins (globicéphales)</li><li>Phoques (moines)</li><li>Tortue luth</li><li>Cacouannes</li><li>Galéolaire orangée</li><li>Éponges</li><li>Holoturies</li><li>Cydippes hyalines</li><li>Beroës (concombres de mer)</li><li>Comatules</li><li>Euryales arborescentes</li><li>Oursins comestibles</li><li>Actinies</li><li>Pétoncles pectiniformes</li><li>Spondyles pieds-d'âne</li><li>Donaces triangulaires</li><li>Hyalles tridentées</li><li>Pleurobranches orangés</li><li>Aplysies (lièvres de mer)</li><li>Dolabelles</li><li>Acères charnus</li><li>Ombrelles</li><li>Oreilles de mer</li><li>Pétoncles flammulés</li><li>Anomies</li><li>Clovis</li><li>Praïres</li><li>Clams</li><li>Peignes operculaires</li><li>Lithodonces</li><li>Vénéricardes</li><li>Cynthies</li><li>Carniaires</li><li>Féroles</li><li>Atlantes</li><li>Thétys</li><li>Éolides</li><li>Cavolines</li><li>Auricules (auricule myosotis)</li><li>Scalaires</li><li>Littorines</li><li>Janthures</li><li>Cinéraires</li><li>Pétricoles</li><li>Lamellaires</li><li>Cabochons</li><li>Pandores</li><li>Amathies</li><li>Inachus scorpion</li><li>Lambres-masséna</li><li>Lambres-spinimanes</li><li>Xhantes</li><li>Pilumnes</li><li>Rhomboïdes</li><li>Calappiens granuleux</li><li>Corystes édentés</li><li>Ébalies</li><li>Cymopolies</li><li>Dorripes laineuses</li><li>Langoustes communes</li><li>Scyllares-ours (cigales de mer)</li><li>Gébies riveraines</li><li>Drocines communes</li><li>Homoles à front épineux</li><li>Bernard-l'hermite</li><li>Porcellanes</li><li>Cyclopes</li><li>Argules</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Pavonacées</li></ul>", "12": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Méduses</li><li>Crustacés microscopiques</li><li>Pennatules</li><li>Zoophytes</li><li>Homards géants</li><li>Crabes titanesques</li><li>Poulpes</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Algues</li><li>Fucus</li><li>Varech</li><li>Lianes de mer</li></ul>", "13": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Alcyons stellés</li><li>Actinies</li><li>Méduses (vertes, rouges, bleues)</li><li>Rhizostomes de Cuvier</li><li>Squales-galonnés</li><li>Squales-perlons</li><li>Chiens de mer</li><li>Dauphins (delphinorinques)</li><li>Épaulards</li><li>Marsouins</li><li>Phoques</li><li>Poissons volants (pirapèdes)</li><li>Trigles-milans</li><li>Hexanche</li><li>Télescope</li><li>Malarmat-cuirassé</li><li>Grenadier</li><li>Pèlerines</li><li>Huîtres</li><li>Étoile de mer (Mac Clintock)</li><li>Astéries</li><li>Encrines</li><li>Coquilles</li><li>Serpula</li><li>Spinorbis</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Sargasses (varech-nageur / porte-baie)</li><li>Algues</li><li>Fucus natans</li><li>Herbes marines</li></ul>", "14": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Alcyons stellés</li><li>Actinies</li><li>Méduses (vertes, rouges, bleues)</li><li>Rhizostomes de Cuvier</li><li>Squales-galonnés</li><li>Squales-perlons</li><li>Chiens de mer</li><li>Dauphins (delphinorinques)</li><li>Épaulards</li><li>Marsouins</li><li>Phoques</li><li>Poissons volants (pirapèdes)</li><li>Trigles-milans</li><li>Hexanche</li><li>Télescope</li><li>Malarmat-cuirassé</li><li>Grenadier</li><li>Pèlerines</li><li>Huîtres</li><li>Étoile de mer (Mac Clintock)</li><li>Astéries</li><li>Encrines</li><li>Coquilles</li><li>Serpula</li><li>Spinorbis</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Sargasses (varech-nageur / porte-baie)</li><li>Algues</li><li>Fucus natans</li><li>Herbes marines</li></ul>", "15": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "16": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Baleines australes</li><li>Baleines franches</li><li>Baleines blanches</li><li>Nord-Caper</li><li>Baleinoptères</li><li>Cachalots (macrocéphales)</li><li>Dugongs</li><li>Espadons</li><li>Scies (poissons)</li></ul>", "17": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Phoques</li><li>Ours marins</li></ul>", "18": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Phoques</li><li>Loutres marines</li><li>Crabes</li><li>Seiches</li><li>Boulerots (gobies)</li><li>Méduses chrysaores</li><li>Phyctallines (actinidiens)</li><li>Turritelles</li><li>Olives-porphyres</li><li>Ptérocères</li><li>Hyales</li><li>Argonautes</li><li>Calmars</li><li>Pétromizons-pricka</li><li>Raies tuberculées</li><li>Squales (pantouffliers)</li><li>Lophies-vespertillions (licornes de mer)</li><li>Batistes (curassavien)</li><li>Batiste caprisque</li><li>Passans (aptéronotes)</li><li>Odontagnathes</li><li>Scombres-guares</li><li>Centronotes-nègres</li><li>Labres demi-rouges</li><li>Chrysoptères</li><li>Spares-queues-d'or</li><li>Spares-pobs</li><li>Sciènes-coro</li><li>Acanthures-noirauds</li><li>Anableps de Surinam</li><li>Torpille cumana</li><li>Lamantins (manates)</li><li>Échénéïdes ostéochères</li><li>Tortues marines (cacouannes)</li><li>Moules</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Fucus gigantesques (varechs porte-poires)</li><li>Velp (herbe marine)</li><li>Algues</li><li>Herbes sous-marines</li></ul>", "19": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Phoques</li><li>Loutres marines</li><li>Crabes</li><li>Seiches</li><li>Boulerots (gobies)</li><li>Méduses chrysaores</li><li>Phyctallines (actinidiens)</li><li>Turritelles</li><li>Olives-porphyres</li><li>Ptérocères</li><li>Hyales</li><li>Argonautes</li><li>Calmars</li><li>Pétromizons-pricka</li><li>Raies tuberculées</li><li>Squales (pantouffliers)</li><li>Lophies-vespertillions (licornes de mer)</li><li>Batistes (curassavien)</li><li>Batiste caprisque</li><li>Passans (aptéronotes)</li><li>Odontagnathes</li><li>Scombres-guares</li><li>Centronotes-nègres</li><li>Labres demi-rouges</li><li>Chrysoptères</li><li>Spares-queues-d'or</li><li>Spares-pobs</li><li>Sciènes-coro</li><li>Acanthures-noirauds</li><li>Anableps de Surinam</li><li>Torpille cumana</li><li>Lamantins (manates)</li><li>Échénéïdes ostéochères</li><li>Tortues marines (cacouannes)</li><li>Moules</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Fucus gigantesques (varechs porte-poires)</li><li>Velp (herbe marine)</li><li>Algues</li><li>Herbes sous-marines</li></ul>", "20": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "21": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Physalies pélagiques (méduses)</li><li>Annélides</li><li>Raies-molubars</li><li>Balistes-américains</li><li>Gobies plumiers</li><li>Scombres (albicores)</li><li>Surmulets</li><li>Pomacanthes-dorés</li><li>Spares-éperonnés</li><li>Clupanodons</li><li>Muges</li><li>Corégones rouges</li><li>Sélènes argentées</li><li>Encrines</li><li>Étoiles de mer</li><li>Pentacrines</li><li>Troques</li><li>Quenottes sanglantes</li><li>Fissurelles</li><li>Lambres (crabes à longues pattes)</li><li>Crabes violacés</li><li>Clios</li><li>Calmars géants (calmar de Bouguer)</li><li>Poulpes géants</li></ul><p class='esp-titre'>━━ FLORE MARITIME ━━</p><ul class='esp-liste'><li>Laminaires géants</li><li>Fucus gigantesques</li><li>Grandes herbes marines</li></ul>", "22": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "23": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Argonautes</li><li>Raies</li><li>Squales</li><li>Labres-grisons</li><li>Spares-synagres</li><li>Sciènes</li><li>Centronotes-nègres</li><li>Coriphènes</li><li>Perroquets (poissons)</li><li>Blémies-bosquiens</li><li>Rhombes bleuâtres</li><li>Batrachoïdes</li><li>Gobies-bos</li><li>Diptérodons</li><li>Salmones</li><li>Mugilomores</li><li>Chevalier-américain</li></ul>", "24": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Argonautes</li><li>Raies</li><li>Squales</li><li>Labres-grisons</li><li>Spares-synagres</li><li>Sciènes</li><li>Centronotes-nègres</li><li>Coriphènes</li><li>Perroquets (poissons)</li><li>Blémies-bosquiens</li><li>Rhombes bleuâtres</li><li>Batrachoïdes</li><li>Gobies-bos</li><li>Diptérodons</li><li>Salmones</li><li>Mugilomores</li><li>Chevalier-américain</li></ul>", "25": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Argonautes</li><li>Raies</li><li>Squales</li><li>Labres-grisons</li><li>Spares-synagres</li><li>Sciènes</li><li>Centronotes-nègres</li><li>Coriphènes</li><li>Perroquets (poissons)</li><li>Blémies-bosquiens</li><li>Rhombes bleuâtres</li><li>Batrachoïdes</li><li>Gobies-bos</li><li>Diptérodons</li><li>Salmones</li><li>Mugilomores</li><li>Chevalier-américain</li></ul>", "26": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Cycloptères</li><li>Unernacks (murènes émeraude)</li><li>Karraks</li><li>Blennies</li><li>Gobies-boulerots</li><li>Macroures</li><li>Cottes des mers septentrionales</li><li>Bosquiens</li><li>Ables-oxyrhinques</li><li>Rascasses</li><li>Morues</li><li>Foraminifères</li><li>Mollusques perforants</li></ul>", "27": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Cycloptères</li><li>Unernacks (murènes émeraude)</li><li>Karraks</li><li>Blennies</li><li>Gobies-boulerots</li><li>Macroures</li><li>Cottes des mers septentrionales</li><li>Bosquiens</li><li>Ables-oxyrhinques</li><li>Rascasses</li><li>Morues</li><li>Foraminifères</li><li>Mollusques perforants</li></ul>", "28": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "29": "<p class='esp-vide'><em>Aucune espèce maritime identifiée dans ce passage.</em></p>", "30": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Squales au long nez</li><li>Squales-marteaux</li><li>Roussettes</li><li>Aigles de mer</li><li>Hippocampes</li><li>Anguilles</li><li>Crabes</li><li>Marsouins</li><li>Baleines</li><li>Ours blancs (marins, des régions boréales)</li></ul>", "31": "<p class='esp-titre'>━━ FAUNE MARITIME ━━</p><ul class='esp-liste'><li>Squales au long nez</li><li>Squales-marteaux</li><li>Roussettes</li><li>Aigles de mer</li><li>Hippocampes</li><li>Anguilles</li><li>Crabes</li><li>Marsouins</li><li>Baleines</li><li>Ours blancs (marins, des régions boréales)</li></ul>"};
+
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest(".hud-btn");
+  if (!btn) return;
+  const stop = btn.getAttribute("data-stop");
+  const action = btn.getAttribute("data-action");
+  btn.classList.add("loading");
+  setTimeout(function() {
+    btn.classList.remove("loading");
+    let content = "<p><em>Contenu disponible bientôt.</em></p>";
+    let titre = "Journal de bord";
+    if (action === "book_excerpt") {
+      content = EXTRAITS[stop] || content;
+      titre = "📖 Extrait du livre";
+    } else if (action === "especes") {
+      content = ESPECES[stop] || "<p><em>Aucune espèce maritime identifiée.</em></p>";
+      titre = "🐟 Espèces maritimes du roman";
+    }
+    document.getElementById("hudModalTitle").innerHTML = titre;
+    openHudModal(content);
+  }, 1800);
+});
+</script>
+    
+            <div class="folium-map" id="map_e162bc9e0d647e83a99d48a5bff6f45d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e162bc9e0d647e83a99d48a5bff6f45d = L.map(
+                "map_e162bc9e0d647e83a99d48a5bff6f45d",
+                {
+                    center: [20.0, -30.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_e75e6d3905c92d4db56b519fdf239514 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e75e6d3905c92d4db56b519fdf239514.addTo(map_e162bc9e0d647e83a99d48a5bff6f45d);
+        
+    
+            var marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_f88a3a5407f616b84c538dc4bce863ba = L.marker(
+                [9.48786, 177.83569],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_5dcc20b63a1034a1c539a1fdb7dba5bc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f88a3a5407f616b84c538dc4bce863ba.setIcon(icon_5dcc20b63a1034a1c539a1fdb7dba5bc);
+        
+    
+        var popup_2833b185088ebbccafe954d2424a35ca = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_94d2ebea4f258e55c73617337fff535a = $(`<div id="html_94d2ebea4f258e55c73617337fff535a" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des Pomotou</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d&#x27;îles.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">9.48786</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">177.83569</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="1" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="1" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_2833b185088ebbccafe954d2424a35ca.setContent(html_94d2ebea4f258e55c73617337fff535a);
+            
+        
+
+        marker_f88a3a5407f616b84c538dc4bce863ba.bindPopup(popup_2833b185088ebbccafe954d2424a35ca)
+        ;
+
+        
+    
+    
+            marker_f88a3a5407f616b84c538dc4bce863ba.bindTooltip(
+                `<div>
+                     Archipel des Pomotou
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_45ab4303bb3cd11f0e0d9026acf1e6d2 = L.marker(
+                [-16.0667, 164.5333],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_4cbccc331cd8525ba1e1ab216b41616a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_45ab4303bb3cd11f0e0d9026acf1e6d2.setIcon(icon_4cbccc331cd8525ba1e1ab216b41616a);
+        
+    
+        var popup_4ca2d8140f7d631d5617709161413d71 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_30caac226604871ea7e620493b32fa92 = $(`<div id="html_30caac226604871ea7e620493b32fa92" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des nouvelles Hébrides</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-16.0667</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">164.5333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="2" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="2" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_4ca2d8140f7d631d5617709161413d71.setContent(html_30caac226604871ea7e620493b32fa92);
+            
+        
+
+        marker_45ab4303bb3cd11f0e0d9026acf1e6d2.bindPopup(popup_4ca2d8140f7d631d5617709161413d71)
+        ;
+
+        
+    
+    
+            marker_45ab4303bb3cd11f0e0d9026acf1e6d2.bindTooltip(
+                `<div>
+                     Archipel des nouvelles Hébrides
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8e95d785f328502d3e8e425bbf8e847f = L.marker(
+                [-0.3167, 128.3833],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_fa9888ef0fb92399f6d7c416f9ee4cbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8e95d785f328502d3e8e425bbf8e847f.setIcon(icon_fa9888ef0fb92399f6d7c416f9ee4cbd);
+        
+    
+        var popup_f3a42d868623ee1e3704cdba00ef8e08 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_f49863a2339b0d7ab9d1723fc6fdee81 = $(`<div id="html_f49863a2339b0d7ab9d1723fc6fdee81" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La Pouasie</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-0.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">128.3833</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="3" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="3" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_f3a42d868623ee1e3704cdba00ef8e08.setContent(html_f49863a2339b0d7ab9d1723fc6fdee81);
+            
+        
+
+        marker_8e95d785f328502d3e8e425bbf8e847f.bindPopup(popup_f3a42d868623ee1e3704cdba00ef8e08)
+        ;
+
+        
+    
+    
+            marker_8e95d785f328502d3e8e425bbf8e847f.bindTooltip(
+                `<div>
+                     La Pouasie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_55992d6fd0026eedc38f82d9beba23ec = L.marker(
+                [-10.7, 136.7667],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_f3ab2862e287b04bad50ada5b01633a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_55992d6fd0026eedc38f82d9beba23ec.setIcon(icon_f3ab2862e287b04bad50ada5b01633a3);
+        
+    
+        var popup_f5d2e6fb7834d006b79b498520a9a403 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_82987a18bc0e337c5e262d3c649755de = $(`<div id="html_82987a18bc0e337c5e262d3c649755de" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Wessel</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Forme la pointe du golfe de Carpentarie.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">136.7667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="4" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="4" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_f5d2e6fb7834d006b79b498520a9a403.setContent(html_82987a18bc0e337c5e262d3c649755de);
+            
+        
+
+        marker_55992d6fd0026eedc38f82d9beba23ec.bindPopup(popup_f5d2e6fb7834d006b79b498520a9a403)
+        ;
+
+        
+    
+    
+            marker_55992d6fd0026eedc38f82d9beba23ec.bindTooltip(
+                `<div>
+                     Cap Wessel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cbaed37db951d980bf6080f0ae21eeb1 = L.marker(
+                [-8.6833, 125.7333],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_e742b6530f6bc4265ee34ad4118cae53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cbaed37db951d980bf6080f0ae21eeb1.setIcon(icon_e742b6530f6bc4265ee34ad4118cae53);
+        
+    
+        var popup_6c4d742ae9c3690a3c962e6062768a11 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_a0c06fa60544bf85b80b7936dd4095f2 = $(`<div id="html_a0c06fa60544bf85b80b7936dd4095f2" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Mer de Timor</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Un homme de l&#x27;équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-8.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">125.7333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="5" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="5" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_6c4d742ae9c3690a3c962e6062768a11.setContent(html_a0c06fa60544bf85b80b7936dd4095f2);
+            
+        
+
+        marker_cbaed37db951d980bf6080f0ae21eeb1.bindPopup(popup_6c4d742ae9c3690a3c962e6062768a11)
+        ;
+
+        
+    
+    
+            marker_cbaed37db951d980bf6080f0ae21eeb1.bindTooltip(
+                `<div>
+                     Mer de Timor
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9e5d0348ffdb5058e0e644862cb1cee0 = L.marker(
+                [-12.0833, 94.55],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_f588700f4ea4936ca21c5fd94150cde3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9e5d0348ffdb5058e0e644862cb1cee0.setIcon(icon_f588700f4ea4936ca21c5fd94150cde3);
+        
+    
+        var popup_910f35e4f15520b274d48d1eb331d498 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_72f30f199943e9abe451c108498c7594 = $(`<div id="html_72f30f199943e9abe451c108498c7594" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Keeling</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">24 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Visitée par Darwin et le capitaine Fitz-Roy.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-12.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">94.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="6" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="6" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_910f35e4f15520b274d48d1eb331d498.setContent(html_72f30f199943e9abe451c108498c7594);
+            
+        
+
+        marker_9e5d0348ffdb5058e0e644862cb1cee0.bindPopup(popup_910f35e4f15520b274d48d1eb331d498)
+        ;
+
+        
+    
+    
+            marker_9e5d0348ffdb5058e0e644862cb1cee0.bindTooltip(
+                `<div>
+                     Île Keeling
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d9f6b7fec228c94196a2c16886694aed = L.marker(
+                [5.9167, 79.7],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_7eca08fdaf1d402171cde80b997395a4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d9f6b7fec228c94196a2c16886694aed.setIcon(icon_7eca08fdaf1d402171cde80b997395a4);
+        
+    
+        var popup_e9f4d6b986404d8a917bee7df1903695 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_6964db1cd185172940694bc7488b38b1 = $(`<div id="html_6964db1cd185172940694bc7488b38b1" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Golfe du Bengale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">27 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C&#x27;était la mort des villes indiennes.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">5.9167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">79.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="7" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="7" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_e9f4d6b986404d8a917bee7df1903695.setContent(html_6964db1cd185172940694bc7488b38b1);
+            
+        
+
+        marker_d9f6b7fec228c94196a2c16886694aed.bindPopup(popup_e9f4d6b986404d8a917bee7df1903695)
+        ;
+
+        
+    
+    
+            marker_d9f6b7fec228c94196a2c16886694aed.bindTooltip(
+                `<div>
+                     Golfe du Bengale
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fddc5cb6763470aeed3026f4b28743f7 = L.marker(
+                [10.99809, 56.614067],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_2ec7fe2fed62e1944001a2a2df25df14 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fddc5cb6763470aeed3026f4b28743f7.setIcon(icon_2ec7fe2fed62e1944001a2a2df25df14);
+        
+    
+        var popup_bce019bfc5f56eafd86029f618406004 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_a6786e3f864bdcad27c08f548b6adfe9 = $(`<div id="html_a6786e3f864bdcad27c08f548b6adfe9" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Est</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">28 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">10.99809</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">56.614067</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="8" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="8" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_bce019bfc5f56eafd86029f618406004.setContent(html_a6786e3f864bdcad27c08f548b6adfe9);
+            
+        
+
+        marker_fddc5cb6763470aeed3026f4b28743f7.bindPopup(popup_bce019bfc5f56eafd86029f618406004)
+        ;
+
+        
+    
+    
+            marker_fddc5cb6763470aeed3026f4b28743f7.bindTooltip(
+                `<div>
+                     Contour Afrique Est
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_02025c06f1bf72720bad34d4d40537be = L.marker(
+                [29.95, 32.55],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_549cb6d4191f3f24679a44e7bc381271 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_02025c06f1bf72720bad34d4d40537be.setIcon(icon_549cb6d4191f3f24679a44e7bc381271);
+        
+    
+        var popup_b59b432288760edb8ecfbb0361a47ef5 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4b65f963c14b0987cdcdc6bc3758217f = $(`<div id="html_4b65f963c14b0987cdcdc6bc3758217f" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Sous l&#x27;isthme de Suez</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">30 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Rouge</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage par l&#x27;Arabian Tunnel, le corridor souterrain imaginé par Nemo sous l&#x27;isthme de Suez, puis chasse du dugong.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">29.95</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">32.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="9" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="9" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_b59b432288760edb8ecfbb0361a47ef5.setContent(html_4b65f963c14b0987cdcdc6bc3758217f);
+            
+        
+
+        marker_02025c06f1bf72720bad34d4d40537be.bindPopup(popup_b59b432288760edb8ecfbb0361a47ef5)
+        ;
+
+        
+    
+    
+            marker_02025c06f1bf72720bad34d4d40537be.bindTooltip(
+                `<div>
+                     Sous l&#x27;isthme de Suez
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c579a382d7746215ef98b7be79b6ecef = L.marker(
+                [35.0, 24.0],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_61e88bc8b421560188e6d6bdb38fb424 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c579a382d7746215ef98b7be79b6ecef.setIcon(icon_61e88bc8b421560188e6d6bdb38fb424);
+        
+    
+        var popup_bd6ef4a4d05b33ea8fbb25c22992129f = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_650f1a05c40bff74b41d020aa7bb18ee = $(`<div id="html_650f1a05c40bff74b41d020aa7bb18ee" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;archipel grec</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">12 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Égée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage du Nautilus dans l&#x27;archipel grec ; Aronnax observe les poissons de ces eaux, avec une évocation de l&#x27;ancienne île de Crète.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">24.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="10" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="10" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_bd6ef4a4d05b33ea8fbb25c22992129f.setContent(html_650f1a05c40bff74b41d020aa7bb18ee);
+            
+        
+
+        marker_c579a382d7746215ef98b7be79b6ecef.bindPopup(popup_bd6ef4a4d05b33ea8fbb25c22992129f)
+        ;
+
+        
+    
+    
+            marker_c579a382d7746215ef98b7be79b6ecef.bindTooltip(
+                `<div>
+                     L&#x27;archipel grec
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ac796f8249e85a1d1dddb66a799c79ec = L.marker(
+                [39.2833, 6.7],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_8360781e76737d88319e57f9e8e8c11d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ac796f8249e85a1d1dddb66a799c79ec.setIcon(icon_8360781e76737d88319e57f9e8e8c11d);
+        
+    
+        var popup_231376c76b2557881c80c979bc2d6db9 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_9d12f663daec418274e5016cde8780e6 = $(`<div id="html_9d12f663daec418274e5016cde8780e6" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">39.2833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">6.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="11" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="11" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_231376c76b2557881c80c979bc2d6db9.setContent(html_9d12f663daec418274e5016cde8780e6);
+            
+        
+
+        marker_ac796f8249e85a1d1dddb66a799c79ec.bindPopup(popup_231376c76b2557881c80c979bc2d6db9)
+        ;
+
+        
+    
+    
+            marker_ac796f8249e85a1d1dddb66a799c79ec.bindTooltip(
+                `<div>
+                     Méditerranée
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1079a53180678a8c230edfa556b4c589 = L.marker(
+                [20.0, -30.0],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_7cb2a1b8a0196c65f4910aeed795ef67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1079a53180678a8c230edfa556b4c589.setIcon(icon_7cb2a1b8a0196c65f4910aeed795ef67);
+        
+    
+        var popup_decd46a7b62c63356e9900ac18652f4a = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_256101b6e5f2493b93d741eca9f332e4 = $(`<div id="html_256101b6e5f2493b93d741eca9f332e4" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;Atlantide</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vision de l&#x27;Atlantide, localisation cartographique approximative d&#x27;après le trajet du roman.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-30.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="12" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="12" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_decd46a7b62c63356e9900ac18652f4a.setContent(html_256101b6e5f2493b93d741eca9f332e4);
+            
+        
+
+        marker_1079a53180678a8c230edfa556b4c589.bindPopup(popup_decd46a7b62c63356e9900ac18652f4a)
+        ;
+
+        
+    
+    
+            marker_1079a53180678a8c230edfa556b4c589.bindTooltip(
+                `<div>
+                     L&#x27;Atlantide
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4cb785dfe5877e49fab4a96d60f4016e = L.marker(
+                [21.5, -31.5],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_f0dc4ef69ff56a2eabcc10a8b1c7f31d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_4cb785dfe5877e49fab4a96d60f4016e.setIcon(icon_f0dc4ef69ff56a2eabcc10a8b1c7f31d);
+        
+    
+        var popup_b622ac7d86b72323fdb9bc239d3a1aaf = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_ce154b4ca0385e0c058d4b3b8ec1df48 = $(`<div id="html_ce154b4ca0385e0c058d4b3b8ec1df48" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La mer des Sargasses</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">22 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Traversée de la mer des Sargasses par le Nautilus.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">21.5</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-31.5</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="13" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="13" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_b622ac7d86b72323fdb9bc239d3a1aaf.setContent(html_ce154b4ca0385e0c058d4b3b8ec1df48);
+            
+        
+
+        marker_4cb785dfe5877e49fab4a96d60f4016e.bindPopup(popup_b622ac7d86b72323fdb9bc239d3a1aaf)
+        ;
+
+        
+    
+    
+            marker_4cb785dfe5877e49fab4a96d60f4016e.bindTooltip(
+                `<div>
+                     La mer des Sargasses
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cc99ef6174e80278e5fd7a242a1c218a = L.marker(
+                [-10.1775, -17.738],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_c690bd6a713ab90176a87461273d0dd5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cc99ef6174e80278e5fd7a242a1c218a.setIcon(icon_c690bd6a713ab90176a87461273d0dd5);
+        
+    
+        var popup_e083c72ef36535d5c40e0e6eb3800499 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_2d2ebd524906e172d2c30d80e9d06ddc = $(`<div id="html_2d2ebd524906e172d2c30d80e9d06ddc" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">23 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction le pôle Sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.1775</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-17.738</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="14" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="14" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_e083c72ef36535d5c40e0e6eb3800499.setContent(html_2d2ebd524906e172d2c30d80e9d06ddc);
+            
+        
+
+        marker_cc99ef6174e80278e5fd7a242a1c218a.bindPopup(popup_e083c72ef36535d5c40e0e6eb3800499)
+        ;
+
+        
+    
+    
+            marker_cc99ef6174e80278e5fd7a242a1c218a.bindTooltip(
+                `<div>
+                     Contour Afrique Nord
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8ec43f73ea54fcab3b0fd6b5ec1ef857 = L.marker(
+                [-54.8, -50.4],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_6d0ecd7b59d1ef90be463c207340d8ec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8ec43f73ea54fcab3b0fd6b5ec1ef857.setIcon(icon_6d0ecd7b59d1ef90be463c207340d8ec);
+        
+    
+        var popup_3476130495322587d65dabf1bc4d1dcb = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_bac7619e2255927d5c95a71f7e838bd1 = $(`<div id="html_bac7619e2255927d5c95a71f7e838bd1" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-54.8</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.4</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="15" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="15" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_3476130495322587d65dabf1bc4d1dcb.setContent(html_bac7619e2255927d5c95a71f7e838bd1);
+            
+        
+
+        marker_8ec43f73ea54fcab3b0fd6b5ec1ef857.bindPopup(popup_3476130495322587d65dabf1bc4d1dcb)
+        ;
+
+        
+    
+    
+            marker_8ec43f73ea54fcab3b0fd6b5ec1ef857.bindTooltip(
+                `<div>
+                     Contour Amérique Sud
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ccd996a2de3699eeeef024c359c709ed = L.marker(
+                [-61.6, -64.8],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_9da7b6a11ef6de6110a05fd03acfc79a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ccd996a2de3699eeeef024c359c709ed.setIcon(icon_9da7b6a11ef6de6110a05fd03acfc79a);
+        
+    
+        var popup_43dc792ee4a0d11357b447cf872524fa = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_94d57b1d05604954073ae29f04da48c3 = $(`<div id="html_94d57b1d05604954073ae29f04da48c3" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">14 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-61.6</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-64.8</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="16" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="16" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_43dc792ee4a0d11357b447cf872524fa.setContent(html_94d57b1d05604954073ae29f04da48c3);
+            
+        
+
+        marker_ccd996a2de3699eeeef024c359c709ed.bindPopup(popup_43dc792ee4a0d11357b447cf872524fa)
+        ;
+
+        
+    
+    
+            marker_ccd996a2de3699eeeef024c359c709ed.bindTooltip(
+                `<div>
+                     Cap Horn
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_adae5a1a3efe07081bccf2b29afc1522 = L.marker(
+                [-73.7, -133.8333],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_3f931b1e6dc32dd461b9728f45672dda = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_adae5a1a3efe07081bccf2b29afc1522.setIcon(icon_3f931b1e6dc32dd461b9728f45672dda);
+        
+    
+        var popup_c9947c698eb77db69c760bc43fc33624 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_317a65cb8215186ca63f70aefb86c155 = $(`<div id="html_317a65cb8215186ca63f70aefb86c155" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Pôle Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vaisseau enrayé dans la banquise</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-73.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-133.8333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="17" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="17" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_c9947c698eb77db69c760bc43fc33624.setContent(html_317a65cb8215186ca63f70aefb86c155);
+            
+        
+
+        marker_adae5a1a3efe07081bccf2b29afc1522.bindPopup(popup_c9947c698eb77db69c760bc43fc33624)
+        ;
+
+        
+    
+    
+            marker_adae5a1a3efe07081bccf2b29afc1522.bindTooltip(
+                `<div>
+                     Pôle Sud
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3cc041e1ae8b3888048753cf2211f054 = L.marker(
+                [-56.05, -67.9],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_05a49d9f9d28372a7a8d9b9ff595285f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3cc041e1ae8b3888048753cf2211f054.setIcon(icon_05a49d9f9d28372a7a8d9b9ff595285f);
+        
+    
+        var popup_49ffa6aa1383e95f4f6530a66d8aa497 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_4ce3050149d4f075068e6f2feeb8d2af = $(`<div id="html_4ce3050149d4f075068e6f2feeb8d2af" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Du Cap Horn à l&#x27;Amazone.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-56.05</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-67.9</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="18" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="18" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_49ffa6aa1383e95f4f6530a66d8aa497.setContent(html_4ce3050149d4f075068e6f2feeb8d2af);
+            
+        
+
+        marker_3cc041e1ae8b3888048753cf2211f054.bindPopup(popup_49ffa6aa1383e95f4f6530a66d8aa497)
+        ;
+
+        
+    
+    
+            marker_3cc041e1ae8b3888048753cf2211f054.bindTooltip(
+                `<div>
+                     Cap Horn (retour)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d1945bd3f3ed6b912cc95acafcbf983c = L.marker(
+                [-40.0, -50.0],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_7315551c80630a773d4b8dd3984de40c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_d1945bd3f3ed6b912cc95acafcbf983c.setIcon(icon_7315551c80630a773d4b8dd3984de40c);
+        
+    
+        var popup_dc16599e533cce6e5af9c8d867422f1d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_f3a7343c9312f11b3a168d07522ba123 = $(`<div id="html_f3a7343c9312f11b3a168d07522ba123" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-40.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="19" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="19" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_dc16599e533cce6e5af9c8d867422f1d.setContent(html_f3a7343c9312f11b3a168d07522ba123);
+            
+        
+
+        marker_d1945bd3f3ed6b912cc95acafcbf983c.bindPopup(popup_dc16599e533cce6e5af9c8d867422f1d)
+        ;
+
+        
+    
+    
+            marker_d1945bd3f3ed6b912cc95acafcbf983c.bindTooltip(
+                `<div>
+                     Contour Amérique Sud (retour)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2471619dcf89b58725e7818b28d679f5 = L.marker(
+                [-6.96056, -32.08735],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_47bb198b1ce593f1a2913c58ac2586ce = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2471619dcf89b58725e7818b28d679f5.setIcon(icon_47bb198b1ce593f1a2913c58ac2586ce);
+        
+    
+        var popup_0501d15733076acc9ab986b0068601c5 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_636a7ebf5a7993a6dadf336fc5941cf6 = $(`<div id="html_636a7ebf5a7993a6dadf336fc5941cf6" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud centrale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">10 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-6.96056</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-32.08735</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="20" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="20" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_0501d15733076acc9ab986b0068601c5.setContent(html_636a7ebf5a7993a6dadf336fc5941cf6);
+            
+        
+
+        marker_2471619dcf89b58725e7818b28d679f5.bindPopup(popup_0501d15733076acc9ab986b0068601c5)
+        ;
+
+        
+    
+    
+            marker_2471619dcf89b58725e7818b28d679f5.bindTooltip(
+                `<div>
+                     Contour Amérique Sud centrale
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b468715d647e8d33fb9c7a0e97153d5f = L.marker(
+                [15.3167, -59.9667],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_e4d4ba935cd763df8b5aea62de69dfd4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b468715d647e8d33fb9c7a0e97153d5f.setIcon(icon_e4d4ba935cd763df8b5aea62de69dfd4);
+        
+    
+        var popup_3cc48cb1a14585d76a4c4f491eb0f51d = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_00365b11b838a3025e4b6fba9b4ef590 = $(`<div id="html_00365b11b838a3025e4b6fba9b4ef590" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Martinique et Guadeloupe</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">15.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-59.9667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="21" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="21" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_3cc48cb1a14585d76a4c4f491eb0f51d.setContent(html_00365b11b838a3025e4b6fba9b4ef590);
+            
+        
+
+        marker_b468715d647e8d33fb9c7a0e97153d5f.bindPopup(popup_3cc48cb1a14585d76a4c4f491eb0f51d)
+        ;
+
+        
+    
+    
+            marker_b468715d647e8d33fb9c7a0e97153d5f.bindTooltip(
+                `<div>
+                     Martinique et Guadeloupe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_580e363905f726a59d8fa2b3027eb425 = L.marker(
+                [20.0, -70.0],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_f2c9053009ba97fba679b22d58b86c36 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_580e363905f726a59d8fa2b3027eb425.setIcon(icon_f2c9053009ba97fba679b22d58b86c36);
+        
+    
+        var popup_57daf08827893889e0f965df0c42dbc7 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_8135166bad74783223959e2248351808 = $(`<div id="html_8135166bad74783223959e2248351808" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-70.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="22" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="22" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_57daf08827893889e0f965df0c42dbc7.setContent(html_8135166bad74783223959e2248351808);
+            
+        
+
+        marker_580e363905f726a59d8fa2b3027eb425.bindPopup(popup_57daf08827893889e0f965df0c42dbc7)
+        ;
+
+        
+    
+    
+            marker_580e363905f726a59d8fa2b3027eb425.bindTooltip(
+                `<div>
+                     Contour Amérique Nord
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_fdd8700a1427da3d8afb20171183ebd1 = L.marker(
+                [23.6833, -75.3167],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_ef073fe6ca190b254b30d4eecbaf8286 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fdd8700a1427da3d8afb20171183ebd1.setIcon(icon_ef073fe6ca190b254b30d4eecbaf8286);
+        
+    
+        var popup_5ca23d4f68a187aec73d46e25add3ad3 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_c085abfc9467f0ec1da2f96fcc043fcd = $(`<div id="html_c085abfc9467f0ec1da2f96fcc043fcd" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Lucayes</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Entrée dans le Gulf Stream.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">23.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-75.3167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="23" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="23" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_5ca23d4f68a187aec73d46e25add3ad3.setContent(html_c085abfc9467f0ec1da2f96fcc043fcd);
+            
+        
+
+        marker_fdd8700a1427da3d8afb20171183ebd1.bindPopup(popup_5ca23d4f68a187aec73d46e25add3ad3)
+        ;
+
+        
+    
+    
+            marker_fdd8700a1427da3d8afb20171183ebd1.bindTooltip(
+                `<div>
+                     Île Lucayes
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2166bdf113175153e00cd16d06174a1c = L.marker(
+                [35.1, -74.8667],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_1539e12260133d09f915c47966f239f2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_2166bdf113175153e00cd16d06174a1c.setIcon(icon_1539e12260133d09f915c47966f239f2);
+        
+    
+        var popup_da2bbe8f8ef614c726da17742711a211 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_11b15aa274f516b8549ad77724448e84 = $(`<div id="html_11b15aa274f516b8549ad77724448e84" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Hatteras</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">8 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-74.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="24" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="24" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_da2bbe8f8ef614c726da17742711a211.setContent(html_11b15aa274f516b8549ad77724448e84);
+            
+        
+
+        marker_2166bdf113175153e00cd16d06174a1c.bindPopup(popup_da2bbe8f8ef614c726da17742711a211)
+        ;
+
+        
+    
+    
+            marker_2166bdf113175153e00cd16d06174a1c.bindTooltip(
+                `<div>
+                     Cap Hatteras
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7d6de15da775510409f6c76d0fe67b1a = L.marker(
+                [41.0833, -72.8667],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_25b946f8d90a0b245a2a43f0f93902ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7d6de15da775510409f6c76d0fe67b1a.setIcon(icon_25b946f8d90a0b245a2a43f0f93902ef);
+        
+    
+        var popup_5c9fbf55535668b805befabd4bdf9d33 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_2733e1042f1662684222afbd62498a67 = $(`<div id="html_2733e1042f1662684222afbd62498a67" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Long Island</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">18 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">41.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-72.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="25" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="25" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_5c9fbf55535668b805befabd4bdf9d33.setContent(html_2733e1042f1662684222afbd62498a67);
+            
+        
+
+        marker_7d6de15da775510409f6c76d0fe67b1a.bindPopup(popup_5c9fbf55535668b805befabd4bdf9d33)
+        ;
+
+        
+    
+    
+            marker_7d6de15da775510409f6c76d0fe67b1a.bindTooltip(
+                `<div>
+                     Long Island
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_60e5bb10a89bcadccf5c8ab5d0104353 = L.marker(
+                [47.1333, -57.9167],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_ae6166fce78790405b662b6fa0a46c11 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_60e5bb10a89bcadccf5c8ab5d0104353.setIcon(icon_ae6166fce78790405b662b6fa0a46c11);
+        
+    
+        var popup_1e8977ab332193a318a0a72e2e9d9c04 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_d595dd5edd65ef90cb493cd732798b44 = $(`<div id="html_d595dd5edd65ef90cb493cd732798b44" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Terre Neuve</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">15 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">47.1333</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-57.9167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="26" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="26" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_1e8977ab332193a318a0a72e2e9d9c04.setContent(html_d595dd5edd65ef90cb493cd732798b44);
+            
+        
+
+        marker_60e5bb10a89bcadccf5c8ab5d0104353.bindPopup(popup_1e8977ab332193a318a0a72e2e9d9c04)
+        ;
+
+        
+    
+    
+            marker_60e5bb10a89bcadccf5c8ab5d0104353.bindTooltip(
+                `<div>
+                     Terre Neuve
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1be30490b7e58ff2b426c37e0fd68957 = L.marker(
+                [51.1, -9.7],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_a76bea4972f81d1fc763987d2810e1c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_1be30490b7e58ff2b426c37e0fd68957.setIcon(icon_a76bea4972f81d1fc763987d2810e1c7);
+        
+    
+        var popup_51fb452e1ef68493a1f850ef9e4ecedb = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_1a69e72358c5a14ffccd2f3c68f99566 = $(`<div id="html_1a69e72358c5a14ffccd2f3c68f99566" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Irlande</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Celtique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Le Nautilus affronte un navire ennemi non identifié dans une zone située au large des côtes irlandaises.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">51.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-9.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="27" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="27" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_51fb452e1ef68493a1f850ef9e4ecedb.setContent(html_1a69e72358c5a14ffccd2f3c68f99566);
+            
+        
+
+        marker_1be30490b7e58ff2b426c37e0fd68957.bindPopup(popup_51fb452e1ef68493a1f850ef9e4ecedb)
+        ;
+
+        
+    
+    
+            marker_1be30490b7e58ff2b426c37e0fd68957.bindTooltip(
+                `<div>
+                     Irlande
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_67aedfc0a20ae1cd23153c92f88b0a22 = L.marker(
+                [50.0, -2.2],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_f281af42713c0e664c123d3572067f98 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_67aedfc0a20ae1cd23153c92f88b0a22.setIcon(icon_f281af42713c0e664c123d3572067f98);
+        
+    
+        var popup_15bbf91c9b3b6f52db2c30cd08e3daaf = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_ef103272f57f4ecccebb771a65665f52 = $(`<div id="html_ef103272f57f4ecccebb771a65665f52" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-2.2</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="28" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="28" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_15bbf91c9b3b6f52db2c30cd08e3daaf.setContent(html_ef103272f57f4ecccebb771a65665f52);
+            
+        
+
+        marker_67aedfc0a20ae1cd23153c92f88b0a22.bindPopup(popup_15bbf91c9b3b6f52db2c30cd08e3daaf)
+        ;
+
+        
+    
+    
+            marker_67aedfc0a20ae1cd23153c92f88b0a22.bindTooltip(
+                `<div>
+                     Manche
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_71b34a637730fe5d79f00348286ada88 = L.marker(
+                [50.9578, 1.382884],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_0a8e5b5df4f9230f3d912be7d8fe72f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_71b34a637730fe5d79f00348286ada88.setIcon(icon_0a8e5b5df4f9230f3d912be7d8fe72f8);
+        
+    
+        var popup_094c15d0bc49467400e51ff5d63cd442 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_b180da5290c5559c474602b22e08516b = $(`<div id="html_b180da5290c5559c474602b22e08516b" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">2 Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.9578</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">1.382884</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="29" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="29" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_094c15d0bc49467400e51ff5d63cd442.setContent(html_b180da5290c5559c474602b22e08516b);
+            
+        
+
+        marker_71b34a637730fe5d79f00348286ada88.bindPopup(popup_094c15d0bc49467400e51ff5d63cd442)
+        ;
+
+        
+    
+    
+            marker_71b34a637730fe5d79f00348286ada88.bindTooltip(
+                `<div>
+                     Contour Angleterre Sud
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0c87170d5a6ee2bdc7da0ad5257021e4 = L.marker(
+                [61.541262, 0.513488],
+                {
+}
+            ).addTo(marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29);
+        
+    
+            var icon_9ad3739838b1b0e95c820486cd44f7d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_0c87170d5a6ee2bdc7da0ad5257021e4.setIcon(icon_9ad3739838b1b0e95c820486cd44f7d9);
+        
+    
+        var popup_b355f6dc55e5292b4ac05f3924426da5 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_876a7cc2ce1eeb555cf7337674c969dc = $(`<div id="html_876a7cc2ce1eeb555cf7337674c969dc" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">61.541262</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">0.513488</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="30" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="30" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_b355f6dc55e5292b4ac05f3924426da5.setContent(html_876a7cc2ce1eeb555cf7337674c969dc);
+            
+        
+
+        marker_0c87170d5a6ee2bdc7da0ad5257021e4.bindPopup(popup_b355f6dc55e5292b4ac05f3924426da5)
+        ;
+
+        
+    
+    
+            marker_0c87170d5a6ee2bdc7da0ad5257021e4.bindTooltip(
+                `<div>
+                     Contour Angleterre Nord
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_d2dcf35cb295aa6e6d3bf8c940e01d29.addTo(map_e162bc9e0d647e83a99d48a5bff6f45d);
+        
+    
+            var marker_b8f77f72f89af5401b07e2520d720c49 = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(map_e162bc9e0d647e83a99d48a5bff6f45d);
+        
+    
+            var icon_e4b1cd5829bf0c5e3f04448059fdfc97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b8f77f72f89af5401b07e2520d720c49.setIcon(icon_e4b1cd5829bf0c5e3f04448059fdfc97);
+        
+    
+        var popup_d371fa9eb8c0a4abb4e448be75021980 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_3bf8f296f9bf5e40cda5e89cd65cb8fd = $(`<div id="html_3bf8f296f9bf5e40cda5e89cd65cb8fd" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île de Crespo</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Novembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Début de l&#x27;aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">33.18497</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">169.85446</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="0" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="0" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_d371fa9eb8c0a4abb4e448be75021980.setContent(html_3bf8f296f9bf5e40cda5e89cd65cb8fd);
+            
+        
+
+        marker_b8f77f72f89af5401b07e2520d720c49.bindPopup(popup_d371fa9eb8c0a4abb4e448be75021980)
+        ;
+
+        
+    
+    
+            marker_b8f77f72f89af5401b07e2520d720c49.bindTooltip(
+                `<div>
+                     ⚓ Départ — Île de Crespo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_828267541cb01b4ee0afce3c151a9e8f = L.marker(
+                [67.9958, 12.9978],
+                {
+}
+            ).addTo(map_e162bc9e0d647e83a99d48a5bff6f45d);
+        
+    
+            var icon_b340a3c4f683df65772c3b9cbd73c385 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_828267541cb01b4ee0afce3c151a9e8f.setIcon(icon_b340a3c4f683df65772c3b9cbd73c385);
+        
+    
+        var popup_9951ff1a7c67f29d775f93a518398271 = L.popup({
+  "maxWidth": 420,
+});
+
+        
+            
+                var html_144be5ae33b637bff75bb8e9946785b5 = $(`<div id="html_144be5ae33b637bff75bb8e9946785b5" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Maelström</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer de Norvège</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Gouffre &quot;le nombril de l&#x27;océan&quot; - Fin du voyage pour le professeur Aronnax, Conseil et Ned Land</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">67.9958</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">12.9978</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="31" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="31" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_9951ff1a7c67f29d775f93a518398271.setContent(html_144be5ae33b637bff75bb8e9946785b5);
+            
+        
+
+        marker_828267541cb01b4ee0afce3c151a9e8f.bindPopup(popup_9951ff1a7c67f29d775f93a518398271)
+        ;
+
+        
+    
+    
+            marker_828267541cb01b4ee0afce3c151a9e8f.bindTooltip(
+                `<div>
+                     🏁 Arrivée — Maelström
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_e1b6a367bbecc3e86bded80d13bfd119 = L.polyline(
+                [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667], [-8.6833, 125.7333], [-12.0833, 94.55], [5.9167, 79.7], [10.99809, 56.614067], [29.95, 32.55], [35.0, 24.0], [39.2833, 6.7], [20.0, -30.0], [21.5, -31.5], [-10.1775, -17.738], [-54.8, -50.4], [-61.6, -64.8], [-73.7, -133.8333], [-56.05, -67.9], [-40.0, -50.0], [-6.96056, -32.08735], [15.3167, -59.9667], [20.0, -70.0], [23.6833, -75.3167], [35.1, -74.8667], [41.0833, -72.8667], [47.1333, -57.9167], [51.1, -9.7], [50.0, -2.2], [50.9578, 1.382884], [61.541262, 0.513488], [67.9958, 12.9978]],
+                {"bubblingMouseEvents": true, "color": "#27c39f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#27c39f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_e162bc9e0d647e83a99d48a5bff6f45d);
+        
+</script>
+</html>

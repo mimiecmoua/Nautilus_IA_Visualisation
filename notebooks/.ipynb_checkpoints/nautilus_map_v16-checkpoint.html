@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d744956f4806fb05884b18ca3689d4e2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+<style>
+/* ── Popup leaflet ── */
+.leaflet-popup-content-wrapper {
+  background: rgba(5, 15, 25, 0.96) !important;
+  border: 1px solid rgba(39,195,159,0.30) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55), inset 0 0 24px rgba(39,195,159,0.04) !important;
+  backdrop-filter: blur(12px);
+}
+.leaflet-popup-tip {
+  background: rgba(5,15,25,0.96) !important;
+}
+.leaflet-popup-content { margin: 0 !important; padding: 0 !important; }
+
+/* ── Layout popup ── */
+.hud-popup {
+  display: flex;
+  gap: 0;
+  min-width: 560px;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+.hud-col {
+  flex: 1;
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hud-divider {
+  width: 1px;
+  background: rgba(39,195,159,0.20);
+  margin: 14px 0;
+}
+.hud-lang-label {
+  font-family: 'Michroma', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a8ffff;
+  margin-bottom: 12px;
+}
+.hud-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.hud-row {
+  font-size: 0.82rem;
+  color: #c8dde8;
+  line-height: 1.55;
+}
+.hud-key {
+  color: #27c39f;
+  font-weight: 600;
+}
+.hud-val {
+  color: #e0f4ff;
+}
+
+/* ── Bouton HUD ── */
+.hud-btn {
+  margin-top: 14px;
+  padding: 7px 14px;
+  background: transparent;
+  border: 1px solid rgba(39,195,159,0.5);
+  border-radius: 8px;
+  color: #27c39f;
+  font-family: 'Michroma', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.10em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.hud-btn:hover {
+  background: rgba(39,195,159,0.12);
+  border-color: #27c39f;
+  box-shadow: 0 0 12px rgba(39,195,159,0.25);
+}
+/* shimmer au chargement */
+.hud-btn.loading {
+  pointer-events: none;
+  color: transparent;
+}
+.hud-btn.loading::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    rgba(39,195,159,0) 0%,
+    rgba(39,195,159,0.35) 50%,
+    rgba(39,195,159,0) 100%);
+  animation: shimmer 1.2s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ── Modal HUD ── */
+#hudModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.60);
+  backdrop-filter: blur(4px);
+}
+#hudModal.open { display: flex; }
+#hudModalBox {
+  position: relative;
+  width: min(860px, 92vw);
+  max-height: 85vh;
+  background: linear-gradient(160deg, rgba(5,18,28,0.98), rgba(3,10,18,0.96));
+  border: 1px solid rgba(168,255,255,0.22);
+  border-radius: 22px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), inset 0 0 30px rgba(39,195,159,0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#hudModalHeader {
+  padding: 16px 22px 14px;
+  border-bottom: 1px solid rgba(39,195,159,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#hudModalTitle {
+  font-family: 'Michroma', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  color: #27c39f;
+  text-transform: uppercase;
+}
+#hudModalClose {
+  background: none;
+  border: none;
+  color: #a8ffff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+#hudModalClose:hover { opacity: 1; }
+#hudModalBody {
+  padding: 24px 28px;
+  overflow-y: auto;
+  color: #d5edf5;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 0.97rem;
+  line-height: 1.85;
+  scrollbar-width: thin;
+  scrollbar-color: #27c39f rgba(255,255,255,0.06);
+}
+#hudModalBody::-webkit-scrollbar { width: 8px; }
+#hudModalBody::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 999px; }
+#hudModalBody::-webkit-scrollbar-thumb { background: linear-gradient(#27c39f,#195480); border-radius: 999px; }
+#hudModalBody p { margin-bottom: 1.3rem; }
+</style>
+
+<!-- Modal HUD -->
+<div id="hudModal">
+  <div id="hudModalBox">
+    <div id="hudModalHeader">
+      <span id="hudModalTitle">Journal de bord</span>
+      <button id="hudModalClose" onclick="closeHudModal()">✕</button>
+    </div>
+    <div id="hudModalBody"></div>
+  </div>
+</div>
+
+<script>
+const EXTRAITS = {"0": {"fr": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Le lendemain, 9 novembre, je ne me réveillai qu'après un long sommeil de douze heures. Conseil vint, suivant son habitude, savoir «comment monsieur avait passé la nuit,» et lui offrir ses services. Il avait laissé son ami le Canadien dormant comme un homme qui n'aurait fait que cela toute sa vie.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Je laissai le brave garçon babiller à sa fantaisie, sans trop lui répondre. J'étais préoccupé de l'absence du capitaine Nemo pendant notre séance de la veille, et j'espérais le revoir aujourd'hui.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Bientôt j'eus revêtu mes vêtements de byssus. Leur nature provoqua plus d'une fois les réflexions de Conseil. Je lui appris qu'ils étaient fabriqués avec les filaments lustrés et soyeux qui rattachent aux rochers les «jambonneaux,» sortes de coquilles très-abondantes sur les rivages de la Méditerranée. Autrefois, on en faisait de belles étoffes, des bas, des gants, car ils étaient à la fois très-moelleux et très-chauds. L'équipage du _Nautilus_ pouvait donc se vêtir à bon compte, sans rien demander ni aux cotonniers, ni aux moutons, ni aux vers à soie de la terre.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Lorsque je fus habillé, je me rendis au grand salon. Il était désert. Je me plongeai dans l'étude de ces trésors de conchyliologie, entassés sous les vitrines. Je fouillai aussi de vastes herbiers, emplis des plantes marines les plus rares, et qui, quoique desséchées, conservaient leurs admirables couleurs. Parmi ces précieuses hydrophytes, je remarquai des cladostèphes verticillées, des padines-paon, des caulerpes à feuilles de vigne, des callithamnes granifères, de délicates céramies à teintes écarlates, des agares disposées en éventails, des acétabules, semblables à des chapeaux de champignons très-déprimés, et qui furent longtemps classées parmi les zoophytes, enfin toute une série de varechs.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>La journée entière se passa, sans que je fusse honoré de la visite du capitaine Nemo. Les panneaux du salon ne s'ouvrirent pas. Peut-être ne voulait-on pas nous blaser sur ces belles choses.</p>\n", "en": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilus had just left Crespo Island, and we were sailing at a depth of 100 fathoms (600 feet), when Captain Nemo gave the order to descend. The submarine obeyed, and we went down rapidly. I felt myself pressed against the ceiling, and I could see the water, which seemed to be boiling around us, darken as it grew denser.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"We are going down,\" said Conseil, \"and we shall soon be walking on the bottom of the sea.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"It is not so strange,\" I answered; \"we have already seen the bottom of the sea, and we have walked upon it in the underwater sled.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"And we were not walking then,\" I replied; \"we were sitting in a vehicle, which moved us along.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Well,\" said Ned Land, \"I hope this walk will be shorter than the one we took on the island of Crespo.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilus was now going down at the rate of 10 fathoms a minute, and I could see the water growing darker and darker. The submarine had reached a depth of 300 fathoms (1800 feet) when Captain Nemo gave the order to stop.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The hatch was opened, and we found ourselves in the midst of a world that was strange and mysterious. The water had disappeared, and all around us lay a vast expanse of sand, which seemed to stretch away to infinity. Above our heads rose great rocks, some of them smooth and rounded, others sharp and jagged.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"This is indeed the bottom of the sea,\" said Ned Land. \"But how shall we breathe?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Because,\" I replied, \"the Nautilus has a supply of air which is pumped into our lungs by means of a machine.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"It is not so wonderful as you think,\" I answered; \"for Captain Nemo told me that the submarine can remain under water for several days without coming to the surface.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>And with these words, I stepped out upon the sandy bottom of the sea, and found that I could walk as easily as if I were on dry land. The others followed me, and we soon discovered that we could move about quite freely. We walked for a long time, exploring the strange world around us, and marveling at the wonders which lay hidden beneath the waves.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"This is indeed a strange and wonderful place,\" said Ned Land. \"But I do not like it.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Because,\" replied Ned Land, \"I cannot see any fish or other living creatures. This place seems to be dead.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"It may be,\" I answered, \"but we have only just begun to explore it. Who knows what wonders we may yet discover?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I hope not,\" said Ned Land. \"I want to get back to the surface as soon as possible.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Because,\" replied Ned Land, \"I am a fisherman, and I cannot live without fresh air and sunlight. This place is like a tomb to me.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"But we are not dead,\" I said. \"We are alive, and we are breathing the air which the Nautilus pumps into our lungs.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Ned Land, \"but it is not the same as fresh air. It is stale and unhealthy.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Perhaps,\" I answered, \"but we must trust Captain Nemo to provide for our needs. He knows more about this strange world than any of us.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>And with these words, we continued our walk upon the bottom of the sea, marveling at the wonders which lay hidden beneath the waves.</p>\n"}, "1": {"fr": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Ce terrible spectacle inaugurait la série des catastrophes maritimes, que le _Nautilus_ devait rencontrer sur sa route. Depuis qu'il suivait des mers plus fréquentées, nous apercevions souvent des coques naufragées qui achevaient de pourrir entre deux eaux, et, plus profondément, des canons, des boulets, des ancres, des chaînes, et mille autres objets de fer, que la rouille dévorait.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Cependant, toujours entraînés par ce _Nautilus_, où nous vivions comme isolés, le 11 décembre, nous eûmes connaissance de l'archipel des Pomotou, ancien «groupe dangereux» de Bougainville, qui s'étend sur un espace de cinq cents lieues de l'est-sud-est à l'ouest-nord-ouest, entre 13° 30′ et 23° 50′ de latitude sud, et 125° 30′ et 151° 30′ de longitude ouest, depuis l'île Ducie jusqu'à l'île Lazareff. Cet archipel couvre une superficie de trois cent soixante-dix lieues carrées, et il est formé d'une soixantaine de groupes d'îles, parmi lesquels on remarque le groupe Gambier, auquel la France a imposé son protectorat. Ces îles sont coralligènes. Un soulèvement lent, mais continu, provoqué par le travail des polypes, les reliera un jour entre elles. Puis, cette nouvelle île se soudera plus tard aux archipels voisins, et un cinquième continent s'étendra depuis la Nouvelle-Zélande et la Nouvelle-Calédonie jusqu'aux Marquises.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Le jour où je dévelopai cette théorie devant le capitaine Nemo, il me répondit froidement:</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>«Ce ne sont pas de nouveaux continents qu'il faut à la terre, mais de nouveaux hommes!»</p>\n", "en": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilus had now entered the Torres Straits, which separate New Guinea from Australia. The archipelago of Potomotou lay before us; it is a group of islands that form a sort of barrier to the straits.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Captain Nemo,\" said I one day, \"we are passing through the Torres Straits, and we have just sighted the Potomotou Archipelago. What do you think about these regions?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I know them well,\" replied Captain Nemo. \"The Potomotou Archipelago is a group of islands that form a sort of barrier to the straits. They are inhabited by a people who have preserved their primitive customs, and who live in a state of barbarism. The natives are called Papous; they are tall, muscular, and ferocious. Their language is difficult to understand, but they are not hostile to strangers.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo, \"I have often landed there. The Papous are a curious people; their customs are strange, and their superstitions are numerous. They believe in spirits, and they think that the sea is inhabited by monsters. They are skilled fishermen, and they know how to navigate in small canoes. They are also good warriors, and they have often resisted the attacks of the Dutch and English.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I have traded with them, and I have even fought against them. But I have always respected their courage and their independence. They are a free people, and they do not bow to any foreign power.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I have spent several months on one of these islands. The Papous welcomed me, and they treated me with kindness. I learned their language, and I studied their customs. I even took part in their dances and their ceremonies.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I learned a great deal about their history and their traditions. They have a rich folklore, and they have many legends and myths. They believe that the sea is inhabited by spirits, and they think that these spirits can help or harm them. They also believe in reincarnation, and they think that the soul of a dead person can return to earth in the form of an animal.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I have seen several of them. They are not visible to the naked eye, but they can be felt by sensitive people. I have felt their presence on several occasions, and I have even heard their voices.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"They spoke in a language that I could not understand,\" replied Captain Nemo. \"But I could feel their anger or their benevolence. They seemed to be watching over the Papous, and they seemed to guide them in their daily lives.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I do not know,\" replied Captain Nemo. \"I have seen and heard things that cannot be explained by science. But I prefer to leave such matters to the philosophers and the priests.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I have tried to communicate with them through meditation and prayer. But they do not seem to want to reveal their secrets to me. They are mysterious beings, and they remain hidden from our understanding.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I cannot say,\" replied Captain Nemo. \"But I have seen and heard things that make me believe that there is more in this world than we can perceive with our senses.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Yes,\" replied Captain Nemo. \"I have tried several times, but I have never succeeded. They remain hidden from us, and they do not reveal their secrets.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I do not know,\" replied Captain Nemo. \"But I believe that there is a mystery in this world that we cannot solve. We can only marvel at its beauty, and try to comprehend its depths.\"</p>\n"}, "2": {"fr": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Le 11 décembre, nous eûmes connaissance de l'archipel des Pomotou, ancien «groupe dangereux» de Bougainville, qui s'étend sur un espace de cinq cents lieues de l'est-sud-est à l'ouest-nord-ouest, entre 13° 30′ et 23° 50′ de latitude sud, et 125° 30′ et 151° 30′ de longitude ouest, depuis l'île Ducie jusqu'à l'île Lazareff. Cet archipel couvre une superficie de trois cent soixante-dix lieues carrées, et il est formé d'une soixantaine de groupes d'îles, parmi lesquels on remarque le groupe Gambier, auquel la France a imposé son protectorat. Ces îles sont coralligènes. Un soulèvement lent, mais continu, provoqué par le travail des polypes, les reliera un jour entre elles. Puis, cette nouvelle île se soudera plus tard aux archipels voisins, et un cinquième continent s'étendra depuis la Nouvelle-Zélande et la Nouvelle-Calédonie jusqu'aux Marquises.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Le jour où je développai cette théorie devant le capitaine Nemo, il me répondit froidement:</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>«Ce ne sont pas de nouveaux continents qu'il faut à la terre, mais de nouveaux hommes!»</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>En prolongeant à quelques encablures seulement les accores de l'île Clermont-Tonnerre, j'admirai l'ouvrage gigantesque, accompli par ces travailleurs microscopiques. Ces murailles étaient spécialement l'œuvre des madréporaires désignés par les noms de millepores, de porites, d'astrées et de méandrines. Ces polypes se développent particulièrement dans les couches agitées de la surface de la mer, et par conséquent, c'est par leur partie supérieure qu'ils commencent ces substructions, lesquelles s'enfoncent peu à peu avec les débris de sécrétions qui les supportent. Telle est, du moins, la théorie de M. Darwin, qui explique ainsi la formation des atolls,—théorie supérieure, selon moi, à celle qui donne pour base aux travaux madréporiques des sommets de montagnes ou de volcans, immergés à quelques pieds au-dessous du niveau de la mer.</p>\n", "en": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The next day, at six o'clock in the morning, the Nautilus left the New Hebrides Archipelago and plunged into the Pacific Ocean. The sun was just rising; it painted the eastern sky with a thousand hues of red and gold.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Captain Nemo,\" said I, \"we are leaving this archipelago where we have spent so many days. We shall never see it again.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Never!\" he replied. \"And yet, Professor Aronnax, I could stay here for a long time. These islands are like a second home to me. They remind me of my native land.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"But Captain Nemo,\" I said, \"you were born in India; you cannot have any connection with these islands.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I was born in Lalla Rookh,\" he replied, \"but my father was a sailor who frequented the Indian seas. He died when I was very young, and my mother brought me up alone. She had been married to an Englishman, Captain Smith, who had left her a small fortune. But she was a Creole, and she preferred to return to her own country. So, after her husband's death, she went back to India with me.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I spent my childhood in Calcutta, where I learned everything that could be taught at the time. Then, when I was fifteen years old, I went to England to complete my education. But I didn't stay there long; I returned to India and joined the army. I served for several years as an officer in the Bengal Fusiliers, but I soon grew tired of military life.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"One day, while on leave in Calcutta, I met a Frenchman named M. Fandin, who was the captain of a merchant ship. He told me about his voyages and the riches he had discovered in the East Indies. I was fascinated by these stories, and I decided to join him as a sailor.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I left India with M. Fandin on board the Pharaon, a French vessel that sailed from Marseilles. We went to the Spice Islands, where we stayed for several months. Then we went to the Moluccas, and finally we reached the New Hebrides Archipelago.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"There I met some Englishmen who were trading in sandalwood. They offered me a job as their agent, and I accepted. I spent several years on these islands, and I became very rich. But one day, while I was returning from a voyage to the Solomon Islands, my ship was attacked by pirates.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"They killed all the crew except for myself and two others. We were taken prisoner and brought to an island where we were kept in chains. For several months we suffered terribly, but finally we managed to escape. I swam to a nearby island, where I found some food and shelter.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I stayed there for several weeks, waiting for a chance to escape. One night, while I was sleeping on the beach, I heard footsteps approaching. I woke up and saw that it was a native who had come to steal my provisions. I seized him by the throat and threatened to kill him if he didn't help me escape. He agreed, and we swam together to another island.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"There I found some clothes and weapons, and I set out to find other inhabitants of the archipelago. I wandered for several months, living by my wits and my gun. Finally, I came across a group of natives who were friendly and offered me shelter. They told me that they had never seen a white man before, and they treated me with great respect.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I stayed with them for several weeks, learning their language and customs. Then I decided to leave and continue my search for civilization. I sailed in a canoe to the island of Espiritu Santo, where I found some English traders who gave me food and clothing. They told me that they had heard rumors of a mysterious ship that was cruising the Pacific Ocean and attacking all ships it encountered.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I decided to join this ship, and I followed it for several months. Finally, I managed to board it, and I have been its captain ever since.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"But tell me,\" I said at last, \"why do you hate the English so much? You were born in England, and you spent several years there. Why do you want to destroy their ships?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I have no personal grudge against the English,\" he replied. \"But I cannot forget the cruelty of those pirates who attacked me and my companions. They killed my friends and left me for dead. I swore then that I would never rest until I had avenged their death. And I have kept that vow ever since.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"But Captain Nemo,\" I said, \"you are not a pirate; you are a sailor who obeys the laws of war. You do not kill innocent people or plunder ships without cause. You are a man of honor, and your actions are those of a hero.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo smiled at my words, but he said nothing. He seemed lost in thought, as if he were reliving old memories. Then he turned to me and said, \"Professor Aronnax, I have told you my story. Now I want to hear yours.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>I hesitated for a moment, then I began to tell him about my life and my scientific researches. He listened attentively, asking questions now and then, and when I had finished, he said, \"Professor Aronnax, you are a man of great talent and ambition. You have devoted your life to the study of nature, and you have made many important discoveries. But tell me, what is your ultimate goal? What do you want to achieve?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"My goal,\" I replied, \"is to advance the knowledge of humanity and to contribute to its progress. I want to discover new truths about the world around us, and I want to use my knowledge to improve the lives of my fellow men.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo nodded thoughtfully. \"That is a noble ambition,\" he said. \"But tell me, Professor Aronnax, do you think that science can solve all the problems of humanity? Can it bring peace and prosperity to all nations?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that science can help to solve many of the problems of humanity,\" I replied. \"But I also know that there are some things that science cannot change. There will always be wars and injustice, because there will always be people who are willing to fight and to exploit others for their own gain.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo looked at me intently. \"You are a wise man, Professor Aronnax,\" he said. \"But tell me, what do you think of the Nautilus? Is it a weapon of destruction or a tool of discovery?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"The Nautilus is both a weapon and a tool,\" I replied. \"It can be used for good or for evil, depending on the intentions of its captain.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo smiled. \"You are right, Professor Aronnax,\" he said. \"The Nautilus is a powerful instrument, and it can be used for many purposes. But tell me, what do you think of me? Am I a monster or a man?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>I hesitated for a moment, then I said, \"Captain Nemo, you are a complex and enigmatic figure. You have done great harm to many people, but you have also saved the lives of others. You are a man of immense intelligence and courage, but you are also a man of mystery and contradictions.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo nodded thoughtfully. \"You are right, Professor Aronnax,\" he said. \"I am a complex and enigmatic figure. But tell me, what do you think of the world around us? Is it a place of beauty and wonder, or is it a place of suffering and despair?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"The world is both a place of beauty and a place of suffering,\" I replied. \"It is a vast and mysterious realm, filled with wonders beyond our imagination. But it is also a place of pain and sorrow, where many people struggle to survive and to find meaning in their lives.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo looked at me intently. \"You are a wise man, Professor Aronnax,\" he said. \"But tell me, what do you think of the future? Do you believe that humanity will eventually overcome its problems and achieve peace and prosperity?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that humanity has the potential to overcome its problems and to achieve great things,\" I replied. \"But I also know that it is a long and difficult journey, and there will be many obstacles along the way.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo nodded thoughtfully. \"You are right, Professor Aronnax,\" he said. \"The future is uncertain, and there are many challenges ahead. But tell me, what do you think of the Nautilus? Do you believe that it will continue to sail the seas and explore the mysteries of the deep?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that the Nautilus will continue to sail the seas and to explore the mysteries of the deep,\" I replied. \"But I also know that its journey will not be easy, and there will be many dangers along the way.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo smiled. \"You are a wise man, Professor Aronnax,\" he said. \"But tell me, what do you think of me? Do you believe that I am a monster or a man?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that you are both a monster and a man,\" I replied. \"You have done great harm to many people, but you have also saved the lives of others. You are a complex and enigmatic figure, and I cannot judge you easily.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo looked at me intently for a long moment, then he said, \"Professor Aronnax, I am glad that we have had this conversation. It has been a long time since I spoke to anyone about my past, and it has been good to share my story with you. But now I must ask you something. Will you continue to serve me as my companion and my friend?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I will serve you as long as you need me,\" I replied. \"I have come to respect and admire you, despite our differences. And I believe that there is much that we can learn from each other.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo smiled. \"Then I am glad,\" he said. \"But tell me, Professor Aronnax, what do you think of the Nautilus? Do you believe that it is a curse or a blessing?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that the Nautilus is both a curse and a blessing,\" I replied. \"It has brought me to many wonders and adventures, but it has also put my life in great danger. It is a powerful and mysterious instrument, and I cannot predict what the future holds for us.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Captain Nemo nodded thoughtfully. \"You are right, Professor Aronnax,\" he said. \"The Nautilus is both a curse and a blessing. But tell me, what do you think of the world around us? Do you believe that it is a place of beauty and wonder, or is it a place of suffering and despair?\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"I believe that the world is both a place of beauty and a place of suffering,\" I replied</p>\n"}, "3": {"fr": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Pendant la nuit du 27 au 28 décembre, le _Nautilus_ abandonna les\nparages de Vanikoro avec une vitesse excessive. Sa direction était\nsud-ouest, et, en trois jours, il franchit les sept cent cinquante\nlieues qui séparent le groupe de La Pérouse de la pointe sud-est de la\nPapouasie.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>«Monsieur, me dit ce brave garçon, monsieur me permettra-t-il de lui\nsouhaiter une bonne année?</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—Comment donc, Conseil, mais exactement comme si j'étais à Paris,\ndans mon cabinet du Jardin des Plantes. J'accepte tes vœux et je t'en\nremercie. Seulement, je te demanderai ce que tu entends par «une bonne\nannée,» dans les circonstances où nous nous trouvons. Est-ce l'année\nqui amènera la fin de notre emprisonnement, ou l'année qui verra se\ncontinuer cet étrange voyage?</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—Ma foi, répondit Conseil, je ne sais trop que dire à monsieur. Il est\ncertain que nous voyons de curieuses choses, et que, depuis deux mois,\nnous n'avons pas eu le temps de nous ennuyer. La dernière merveille est\ntoujours la plus étonnante, et si cette progression se maintient, je\nne sais pas comment cela finira. M'est avis que nous ne retrouverons\njamais une occasion semblable.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—En outre, monsieur Nemo, qui justifie bien son nom latin, n'est pas\nplus gênant que s'il n'existait pas.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—Je pense donc, n'en déplaise à monsieur, qu'une bonne année serait\nune année qui nous permettrait de tout voir...</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—Ned Land pense exactement le contraire de moi, répondit Conseil.\nC'est un esprit positif et un estomac impérieux. Regarder les poissons\net toujours en manger ne lui suffit pas. Le manque de vin, de pain, de\nviande, cela ne convient guère à un digne Saxon auquel les beefsteaks\nsont familiers, et que le brandy ou le gin, pris dans une proportion\nmodérée, n'effrayent guère!</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>—Pour mon compte, Conseil, ce n'est point là ce qui me tourmente, et\nje m'accommode très-bien du régime du bord.</p>\n", "en": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilus had just reached Papua, and we were to remain there for several days.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Captain Nemo,\" I said to him one morning, \"I have been thinking of the land for a long time now. I would like to go ashore.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Very well,\" he replied, \"but you must not forget that you are my prisoner and that I can always keep you on board if I wish.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"You may go,\" he answered. \"But remember that you are under my orders. If you disobey them, you will be punished.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilos descended rapidly and came to a stop on the seabed, about three hundred feet from the shore. The hatch opened, and I went out with my companions. We found ourselves in a beautiful coral grotto, where the sun's rays penetrated through the water, casting a thousand colors on the rocks.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We climbed up the slope, which was covered with ferns and flowers, and reached the top of the cliff. The view that opened before us was magnificent: we were in Papua, at the edge of the sea, and we could see the vast expanse of water stretching out to the horizon, dotted with islands and coral reefs.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>On our left, the land rose steeply towards the mountains, covered with dense forests and adorned with rivers that flowed into the ocean. On our right, a fine sandy beach extended as far as the eye could see, and we could hear the sound of waves breaking on the shore.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We walked along the beach for several hours, admiring the beauty of the landscape, when suddenly we saw a native Papuan coming towards us. He was naked, with a tattooed face and body, and he carried a spear in his hand.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>He approached us cautiously, watching us closely, and then stopped a few yards away. We greeted him politely, and he replied by making some strange noises that I did not understand.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We tried to communicate with signs, but it was difficult, as our languages were so different. However, we managed to make ourselves understood, and the Papuan seemed friendly. He showed us his hut, which was made of palm leaves, and invited us to enter. We accepted his invitation, and he led us inside.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The hut was small and dark, but it was clean and well-organized. There were mats on the floor, and a fire burning in the middle. The Papuan sat down next to us, and we spent several hours talking and exchanging gifts. He gave us some fruits and vegetables, and we gave him some tobacco and metal objects that we had with us.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>When it was time to leave, the Papuan accompanied us to the beach, and we said goodbye to him sadly. We returned to the Nautilus, feeling refreshed and happy after our day on land.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We spent several more days exploring the coast of Papua, visiting different villages and meeting many friendly natives. We saw beautiful landscapes, with mountains, forests, rivers, and beaches, and we learned a lot about their customs and way of life.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>But one day, as we were returning to the Nautilus after a long walk, we heard the sound of drums in the distance. We followed the sound, and soon came upon a group of Papuans who were dancing and singing around a fire.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>They seemed to be celebrating something, and they invited us to join them. We accepted their invitation, and we danced and sang with them for several hours, feeling a sense of joy and camaraderie that I had never experienced before.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>But as the night wore on, the atmosphere became more and more tense. The Papuans began to make threatening gestures towards us, and we could see that they were becoming agitated.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We tried to leave quietly, but they blocked our way. Suddenly, one of them attacked me with his spear, and I felt a sharp pain in my leg. I fell to the ground, and the other Papuans began to beat me mercilessly.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>I lost consciousness, and when I woke up, I found myself back on the Nautilus. Captain Nemo was standing over me, looking worried.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"You are lucky to be alive,\" said Captain Nemo. \"We must leave this place as soon as possible.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>And so, we left Papua, feeling grateful for our escape and sad for the beautiful land that had been marred by violence and hatred.</p>\n"}, "4": {"fr": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Le jour suivant, 10 janvier, le _Nautilus_ reprit sa marche entre deux eaux, mais avec une vitesse remarquable que je ne puis estimer à moins de trente-cinq milles à l'heure. La rapidité de son hélice était telle que je ne pouvais ni suivre ses tours ni les compter.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Quand je songeais que ce merveilleux agent électrique, après avoir donné le mouvement, la chaleur, la lumière au _Nautilus_, le protégeait encore contre les attaques extérieures, et le transformait en une arche sainte à laquelle nul profanateur ne touchait sans être foudroyé, mon admiration n'avait plus de bornes, et de l'appareil, elle remontait aussitôt à l'ingénieur qui l'avait créé.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Nous marchions directement vers l'ouest, et, le 11 janvier, nous doublâmes ce cap Wessel, situé par 135° de longitude et 10° de latitude nord, qui forme la pointe est du golfe de Carpentarie. Les récifs étaient encore nombreux, mais plus clair-semés, et relevés sur la carte avec une extrême précision. Le _Nautilus_ évita facilement les brisants de Money à bâbord, et les récifs Victoria à tribord, placés par 130° de longitude, et sur ce dixième parallèle que nous suivions rigoureusement.</p>\n", "en": "<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The day after our arrival at Cape Wessel, we were again on the move. The Nautilus had not remained long in that region; it was necessary to continue its voyage and penetrate further into the unknown.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>We had not gone far when the Captain gave the order to surface. The sea was calm, and the sun shone brilliantly. We could see the coast of Australia stretching out before us, covered with a dense forest that seemed to reach down to the water's edge.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Now, gentlemen,\" said Captain Nemo, \"we are entering a new world. We have left behind the realm of ice and snow; we are now approaching the coral kingdom. This vast expanse of waters is inhabited by countless species of marine animals, most of which are unknown to science. I hope that our voyage will enable us to make many discoveries.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The Nautilus continued its course along the Australian coast. The sea was shallow, and we could see a multitude of coral reefs stretching out before us like vast fields of flowers. The submarine moved slowly, skimming over the surface of the water, and sometimes it seemed as if we were sailing through a garden of precious stones.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The sun's rays penetrated the transparent waters, illuminating the coral reefs in a thousand shades of red, orange, yellow, green, and blue. The submarine moved slowly, and we could see the fish darting about among the branches of the coral trees, their scales glittering like precious stones.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Suddenly, Captain Nemo gave the order to dive. We plunged into the depths, leaving behind us a world of light and color. The Nautilus descended rapidly, and we could feel the pressure increasing around us. But soon we emerged again into the open sea, and we found ourselves in a strange and mysterious world.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>The submarine moved slowly through the darkness, its powerful lights illuminating the water around us. We could see the outlines of enormous fish, their eyes shining like stars in the blackness. The Nautilus continued its course, and we could feel the currents carrying us along at a rapid pace.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>Suddenly, Captain Nemo gave the order to surface again. We emerged into the light, and we found ourselves in a vast open sea, stretching out before us as far as the eye could see. The sun was setting, and the sky was tinged with shades of pink and gold. The Nautilus moved slowly through the water, its powerful engines barely making a sound.</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>\"Gentlemen,\" said Captain Nemo, \"we have entered a new world. This is the realm of the great fish, the whales and the sharks. We may encounter many dangers here, but I hope that our voyage will be successful.\"</p>\n<p style='margin-bottom:1.4rem; line-height:1.85; font-size:1rem;'>And with that, he gave the order to dive once more, and we plunged into the depths, leaving behind us the setting sun and the vast expanse of the coral kingdom.</p>\n"}};
+
+const MODAL_TITLES = {
+  fr: { book_excerpt: "📖 Journal de bord vivant" },
+  en: { book_excerpt: "📖 Living Logbook" }
+};
+
+function openHudModal(title, content) {
+  document.getElementById("hudModalTitle").innerHTML = title;
+  document.getElementById("hudModalBody").innerHTML  = content;
+  document.getElementById("hudModal").classList.add("open");
+}
+
+function closeHudModal() {
+  document.getElementById("hudModal").classList.remove("open");
+}
+
+// Ferme en cliquant hors de la modal
+document.getElementById("hudModal").addEventListener("click", function(e) {
+  if (e.target === this) closeHudModal();
+});
+
+// Délégation de clic sur les boutons HUD dans les popups
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest(".hud-btn");
+  if (!btn) return;
+
+  const stop   = btn.getAttribute("data-stop");
+  const lang   = btn.getAttribute("data-lang") || "fr";
+  const action = btn.getAttribute("data-action");
+
+  // Shimmer pendant le "chargement"
+  btn.classList.add("loading");
+
+  setTimeout(function() {
+    btn.classList.remove("loading");
+
+    const fallback = lang === "fr"
+      ? "<p><em>Contenu disponible bientôt.</em></p>"
+      : "<p><em>Content coming soon.</em></p>";
+
+    let content = fallback;
+    if (action === "book_excerpt" && EXTRAITS[stop]) {
+      content = EXTRAITS[stop][lang] || fallback;
+    }
+
+    const title = (MODAL_TITLES[lang] && MODAL_TITLES[lang][action])
+      ? MODAL_TITLES[lang][action]
+      : "Journal de bord";
+
+    openHudModal(title, content);
+  }, 600);  // délai shimmer 600ms
+});
+</script>
+    
+            <div class="folium-map" id="map_d744956f4806fb05884b18ca3689d4e2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d744956f4806fb05884b18ca3689d4e2 = L.map(
+                "map_d744956f4806fb05884b18ca3689d4e2",
+                {
+                    center: [20.0, -30.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a9ffa7312c3a2f1827441ddd77a6a465 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a9ffa7312c3a2f1827441ddd77a6a465.addTo(map_d744956f4806fb05884b18ca3689d4e2);
+        
+    
+            var marker_cluster_af0f48df6e2203b4baba4bd706d5ff1d = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_20047bc4a2cf130fe3508d13caee74ab = L.marker(
+                [9.48786, 177.83569],
+                {
+}
+            ).addTo(marker_cluster_af0f48df6e2203b4baba4bd706d5ff1d);
+        
+    
+            var icon_0d58bf038289b53ab5f3187a01ffb935 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_20047bc4a2cf130fe3508d13caee74ab.setIcon(icon_0d58bf038289b53ab5f3187a01ffb935);
+        
+    
+        var popup_e181ed915c31d93e7d5f0afe5195886d = L.popup({
+  "maxWidth": 660,
+});
+
+        
+            
+                var html_89c70d7b8d347bdf131a4f9badcaca95 = $(`<div id="html_89c70d7b8d347bdf131a4f9badcaca95" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">        <!-- FRANÇAIS -->       <div class="hud-col">         <div class="hud-lang-label">Français 🇫🇷</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Escale :</span> <span class="hud-val">Archipel des Pomotou</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">11 Décembre 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Océan/Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>           <div class="hud-row">📜 <span class="hud-key">Événement :</span> <span class="hud-val">Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d&#x27;îles.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">9.48786</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">177.83569</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="1" data-lang="fr" data-action="book_excerpt">           📖 Journal de bord         </button>       </div>        <div class="hud-divider"></div>        <!-- ENGLISH -->       <div class="hud-col">         <div class="hud-lang-label">English 🇬🇧</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Stop :</span> <span class="hud-val">Pomotou Archipelago</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">December 11th, 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Ocean/Sea :</span> <span class="hud-val">South Pacific Ocean</span></div>           <div class="hud-row">📜 <span class="hud-key">Event :</span> <span class="hud-val">This archipelago covers an area of three hundred seventy square leagues, including about sixty island groups.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">9.48786</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">177.83569</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance from Earth's center :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="1" data-lang="en" data-action="book_excerpt">           📖 Living Logbook         </button>       </div>      </div></div>`)[0];
+                popup_e181ed915c31d93e7d5f0afe5195886d.setContent(html_89c70d7b8d347bdf131a4f9badcaca95);
+            
+        
+
+        marker_20047bc4a2cf130fe3508d13caee74ab.bindPopup(popup_e181ed915c31d93e7d5f0afe5195886d)
+        ;
+
+        
+    
+    
+            marker_20047bc4a2cf130fe3508d13caee74ab.bindTooltip(
+                `<div>
+                     Archipel des Pomotou
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f42a6c8a183be6e815360fda9878f739 = L.marker(
+                [-16.0667, 164.5333],
+                {
+}
+            ).addTo(marker_cluster_af0f48df6e2203b4baba4bd706d5ff1d);
+        
+    
+            var icon_1085f5ce31e781ad0778efce2fcf0c85 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_f42a6c8a183be6e815360fda9878f739.setIcon(icon_1085f5ce31e781ad0778efce2fcf0c85);
+        
+    
+        var popup_b7725780328fda52627c7ceef1fc9204 = L.popup({
+  "maxWidth": 660,
+});
+
+        
+            
+                var html_73d58f6700c62aadf4460d1ebab8119e = $(`<div id="html_73d58f6700c62aadf4460d1ebab8119e" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">        <!-- FRANÇAIS -->       <div class="hud-col">         <div class="hud-lang-label">Français 🇫🇷</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Escale :</span> <span class="hud-val">Archipel des nouvelles Hébrides</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">25 Décembre 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Océan/Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>           <div class="hud-row">📜 <span class="hud-key">Événement :</span> <span class="hud-val">Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-16.0667</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">164.5333</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>         </div>         <button class="hud-btn" data-stop="2" data-lang="fr" data-action="book_excerpt">           📖 Journal de bord         </button>       </div>        <div class="hud-divider"></div>        <!-- ENGLISH -->       <div class="hud-col">         <div class="hud-lang-label">English 🇬🇧</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Stop :</span> <span class="hud-val">New Hebrides Archipelago</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">December 25th, 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Ocean/Sea :</span> <span class="hud-val">South Pacific Ocean</span></div>           <div class="hud-row">📜 <span class="hud-key">Event :</span> <span class="hud-val">Discovered by Quiros in 1606, explored by Bougainville in 1768, and named by Cook in 1773.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-16.0667</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">164.5333</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance from Earth's center :</span> <span class="hud-val">6,370,999 m</span></div>         </div>         <button class="hud-btn" data-stop="2" data-lang="en" data-action="book_excerpt">           📖 Living Logbook         </button>       </div>      </div></div>`)[0];
+                popup_b7725780328fda52627c7ceef1fc9204.setContent(html_73d58f6700c62aadf4460d1ebab8119e);
+            
+        
+
+        marker_f42a6c8a183be6e815360fda9878f739.bindPopup(popup_b7725780328fda52627c7ceef1fc9204)
+        ;
+
+        
+    
+    
+            marker_f42a6c8a183be6e815360fda9878f739.bindTooltip(
+                `<div>
+                     Archipel des nouvelles Hébrides
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_7e15ebd3547e00ad902b507ed1508c1f = L.marker(
+                [-0.3167, 128.3833],
+                {
+}
+            ).addTo(marker_cluster_af0f48df6e2203b4baba4bd706d5ff1d);
+        
+    
+            var icon_db369ae40cdc3d2319bb916942e1a500 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7e15ebd3547e00ad902b507ed1508c1f.setIcon(icon_db369ae40cdc3d2319bb916942e1a500);
+        
+    
+        var popup_6fc3f4d585bc78846c0956212f0b94b7 = L.popup({
+  "maxWidth": 660,
+});
+
+        
+            
+                var html_a85c4a1fbdf7dbcad32f1fdd9caf330e = $(`<div id="html_a85c4a1fbdf7dbcad32f1fdd9caf330e" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">        <!-- FRANÇAIS -->       <div class="hud-col">         <div class="hud-lang-label">Français 🇫🇷</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Escale :</span> <span class="hud-val">La Pouasie</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">4 Janvier 1868</span></div>           <div class="hud-row">🌊 <span class="hud-key">Océan/Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>           <div class="hud-row">📜 <span class="hud-key">Événement :</span> <span class="hud-val">Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-0.3167</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">128.3833</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>         </div>         <button class="hud-btn" data-stop="3" data-lang="fr" data-action="book_excerpt">           📖 Journal de bord         </button>       </div>        <div class="hud-divider"></div>        <!-- ENGLISH -->       <div class="hud-col">         <div class="hud-lang-label">English 🇬🇧</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Stop :</span> <span class="hud-val">Papua</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">January 4th, 1868</span></div>           <div class="hud-row">🌊 <span class="hud-key">Ocean/Sea :</span> <span class="hud-val">South Pacific Ocean</span></div>           <div class="hud-row">📜 <span class="hud-key">Event :</span> <span class="hud-val">Discovered in 1511 by the Portuguese Francisco Serrano - View of the Arfak Mountains - Four days on land - Battle with the Papuans.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-0.3167</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">128.3833</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance from Earth's center :</span> <span class="hud-val">6,370,999 m</span></div>         </div>         <button class="hud-btn" data-stop="3" data-lang="en" data-action="book_excerpt">           📖 Living Logbook         </button>       </div>      </div></div>`)[0];
+                popup_6fc3f4d585bc78846c0956212f0b94b7.setContent(html_a85c4a1fbdf7dbcad32f1fdd9caf330e);
+            
+        
+
+        marker_7e15ebd3547e00ad902b507ed1508c1f.bindPopup(popup_6fc3f4d585bc78846c0956212f0b94b7)
+        ;
+
+        
+    
+    
+            marker_7e15ebd3547e00ad902b507ed1508c1f.bindTooltip(
+                `<div>
+                     La Pouasie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_af0f48df6e2203b4baba4bd706d5ff1d.addTo(map_d744956f4806fb05884b18ca3689d4e2);
+        
+    
+            var marker_92309ed7a817c8d5bfcaef246c519f3f = L.marker(
+                [33.18497, 169.85446],
+                {
+}
+            ).addTo(map_d744956f4806fb05884b18ca3689d4e2);
+        
+    
+            var icon_c1c70d292795ab39a99e0ef76e2fc616 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "anchor",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_92309ed7a817c8d5bfcaef246c519f3f.setIcon(icon_c1c70d292795ab39a99e0ef76e2fc616);
+        
+    
+        var popup_ca74641b6ea4fcfe8d41a287c8662e20 = L.popup({
+  "maxWidth": 660,
+});
+
+        
+            
+                var html_66efcfe4da95572dbf0722f8077239b0 = $(`<div id="html_66efcfe4da95572dbf0722f8077239b0" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">        <!-- FRANÇAIS -->       <div class="hud-col">         <div class="hud-lang-label">Français 🇫🇷</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Escale :</span> <span class="hud-val">Île de Crespo</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">16 Novembre 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Océan/Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>           <div class="hud-row">📜 <span class="hud-key">Événement :</span> <span class="hud-val">Début de l&#x27;aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">33.18497</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">169.85446</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="0" data-lang="fr" data-action="book_excerpt">           📖 Journal de bord         </button>       </div>        <div class="hud-divider"></div>        <!-- ENGLISH -->       <div class="hud-col">         <div class="hud-lang-label">English 🇬🇧</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Stop :</span> <span class="hud-val">Crespo Island</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">November 16th, 1867</span></div>           <div class="hud-row">🌊 <span class="hud-key">Ocean/Sea :</span> <span class="hud-val">South Pacific Ocean</span></div>           <div class="hud-row">📜 <span class="hud-key">Event :</span> <span class="hud-val">Beginning of the adventure - First underwater hunt - A submarine forest - A monstrous sea spider.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">33.18497</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">169.85446</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance from Earth's center :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="0" data-lang="en" data-action="book_excerpt">           📖 Living Logbook         </button>       </div>      </div></div>`)[0];
+                popup_ca74641b6ea4fcfe8d41a287c8662e20.setContent(html_66efcfe4da95572dbf0722f8077239b0);
+            
+        
+
+        marker_92309ed7a817c8d5bfcaef246c519f3f.bindPopup(popup_ca74641b6ea4fcfe8d41a287c8662e20)
+        ;
+
+        
+    
+    
+            marker_92309ed7a817c8d5bfcaef246c519f3f.bindTooltip(
+                `<div>
+                     ⚓ Départ — Île de Crespo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_cac6b19a9359def16362d02694b54248 = L.marker(
+                [-10.7, 136.7667],
+                {
+}
+            ).addTo(map_d744956f4806fb05884b18ca3689d4e2);
+        
+    
+            var icon_a9534a719903cc17c81b280039ae8d80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_cac6b19a9359def16362d02694b54248.setIcon(icon_a9534a719903cc17c81b280039ae8d80);
+        
+    
+        var popup_61da24e15b6593e7f74039d0c24b6da7 = L.popup({
+  "maxWidth": 660,
+});
+
+        
+            
+                var html_baeb283bc2eb977a0efbc74aaa392efb = $(`<div id="html_baeb283bc2eb977a0efbc74aaa392efb" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">        <!-- FRANÇAIS -->       <div class="hud-col">         <div class="hud-lang-label">Français 🇫🇷</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Escale :</span> <span class="hud-val">Cap Wessel</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">11 janvier 1868</span></div>           <div class="hud-row">🌊 <span class="hud-key">Océan/Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>           <div class="hud-row">📜 <span class="hud-key">Événement :</span> <span class="hud-val">Forme la pointe du golfe de Carpentarie.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-10.7</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">136.7667</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="4" data-lang="fr" data-action="book_excerpt">           📖 Journal de bord         </button>       </div>        <div class="hud-divider"></div>        <!-- ENGLISH -->       <div class="hud-col">         <div class="hud-lang-label">English 🇬🇧</div>         <div class="hud-body">           <div class="hud-row">🗺️ <span class="hud-key">Stop :</span> <span class="hud-val">Cape Wessel</span></div>           <div class="hud-row">📅 <span class="hud-key">Date :</span> <span class="hud-val">January 11th, 1868</span></div>           <div class="hud-row">🌊 <span class="hud-key">Ocean/Sea :</span> <span class="hud-val">South Pacific Ocean</span></div>           <div class="hud-row">📜 <span class="hud-key">Event :</span> <span class="hud-val">Forms the tip of the Gulf of Carpentaria.</span></div>           <div class="hud-row">↕️ <span class="hud-key">Latitude :</span> <span class="hud-val">-10.7</span></div>           <div class="hud-row">↔️ <span class="hud-key">Longitude :</span> <span class="hud-val">136.7667</span></div>           <div class="hud-row">🌍 <span class="hud-key">Distance from Earth's center :</span> <span class="hud-val">6,371,000 m</span></div>         </div>         <button class="hud-btn" data-stop="4" data-lang="en" data-action="book_excerpt">           📖 Living Logbook         </button>       </div>      </div></div>`)[0];
+                popup_61da24e15b6593e7f74039d0c24b6da7.setContent(html_baeb283bc2eb977a0efbc74aaa392efb);
+            
+        
+
+        marker_cac6b19a9359def16362d02694b54248.bindPopup(popup_61da24e15b6593e7f74039d0c24b6da7)
+        ;
+
+        
+    
+    
+            marker_cac6b19a9359def16362d02694b54248.bindTooltip(
+                `<div>
+                     🏁 Arrivée — Cap Wessel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_de6eb289db0bfbf3fdb70d3b3d9a3a8f = L.polyline(
+                [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667]],
+                {"bubblingMouseEvents": true, "color": "#27c39f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#27c39f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_d744956f4806fb05884b18ca3689d4e2);
+        
+</script>
+</html>
