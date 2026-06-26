@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_436d4dc8aa70ab5b83c3cde1d80b0471 {
+                #map_a76980b848c7dc2748b1aeb7f0c910a3 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -256,6 +256,22 @@ document.addEventListener("click", function(e) {
   opacity: 1;
   transform: translateX(0px) scale(1);
   pointer-events: all;
+}
+@media (max-width: 600px) {
+  .leg-panel {
+    left: 8px !important;
+    bottom: 220px !important;
+    min-width: unset !important;
+    width: calc(100vw - 16px) !important;
+    max-width: 360px;
+    transform: translateY(10px) scale(0.97) !important;
+  }
+  .leg-panel.visible {
+    transform: translateY(0px) scale(1) !important;
+  }
+  #hud-buttons {
+    bottom: 140px !important;
+  }
 }
 .leg-panel-titre {
   font-family: 'Michroma', sans-serif;
@@ -504,14 +520,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
 });
 </script>
     
-            <div class="folium-map" id="map_436d4dc8aa70ab5b83c3cde1d80b0471" ></div>
+            <div class="folium-map" id="map_a76980b848c7dc2748b1aeb7f0c910a3" ></div>
         
 </body>
 <script>
     
     
-            var map_436d4dc8aa70ab5b83c3cde1d80b0471 = L.map(
-                "map_436d4dc8aa70ab5b83c3cde1d80b0471",
+            var map_a76980b848c7dc2748b1aeb7f0c910a3 = L.map(
+                "map_a76980b848c7dc2748b1aeb7f0c910a3",
                 {
                     center: [20.0, -30.0],
                     crs: L.CRS.EPSG3857,
@@ -528,7 +544,7 @@ document.getElementById("decModal").addEventListener("click", function(e) {
 
         
     
-            var tile_layer_6aec6621ea96cff76ebf855a41f3e2be = L.tileLayer(
+            var tile_layer_64f5e4e88aa47923320876e402a54e30 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -545,23 +561,23 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            tile_layer_6aec6621ea96cff76ebf855a41f3e2be.addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            tile_layer_64f5e4e88aa47923320876e402a54e30.addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var marker_cluster_374b8e54682d82cb6ae63bb0fca846ea = L.markerClusterGroup(
+            var marker_cluster_b0561b6163eba6613b758d5ffee2966f = L.markerClusterGroup(
                 {
 }
             );
         
     
-            var marker_d6411ade756c8e95590e7f145c927099 = L.marker(
+            var marker_66b8d184d26755de06b4600770bc4c66 = L.marker(
                 [9.48786, 177.83569],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_baa87bfc5a0591e8e0c52449382cda6e = L.AwesomeMarkers.icon(
+            var icon_e227bca3af7ebff81d08439a21a7bb98 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -570,27 +586,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_d6411ade756c8e95590e7f145c927099.setIcon(icon_baa87bfc5a0591e8e0c52449382cda6e);
+            marker_66b8d184d26755de06b4600770bc4c66.setIcon(icon_e227bca3af7ebff81d08439a21a7bb98);
         
     
-        var popup_5173dfe9b1c3450c2a7972efb98e1ca3 = L.popup({
+        var popup_c8cb111c621748cf156943c43119edcf = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_fe06f6e55f73393390c858fa111879bf = $(`<div id="html_fe06f6e55f73393390c858fa111879bf" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des Pomotou</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d&#x27;îles.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">9.48786</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">177.83569</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="1" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="1" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_5173dfe9b1c3450c2a7972efb98e1ca3.setContent(html_fe06f6e55f73393390c858fa111879bf);
+                var html_a125f4d8000cbc1e9bb01ab3ba4e679a = $(`<div id="html_a125f4d8000cbc1e9bb01ab3ba4e679a" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des Pomotou</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Cette archipel couvre une superficie de trois cent soixante-dix lieues carrées, dont une soixantaine de groupes d&#x27;îles.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">9.48786</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">177.83569</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="1" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="1" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_c8cb111c621748cf156943c43119edcf.setContent(html_a125f4d8000cbc1e9bb01ab3ba4e679a);
             
         
 
-        marker_d6411ade756c8e95590e7f145c927099.bindPopup(popup_5173dfe9b1c3450c2a7972efb98e1ca3)
+        marker_66b8d184d26755de06b4600770bc4c66.bindPopup(popup_c8cb111c621748cf156943c43119edcf)
         ;
 
         
     
     
-            marker_d6411ade756c8e95590e7f145c927099.bindTooltip(
+            marker_66b8d184d26755de06b4600770bc4c66.bindTooltip(
                 `<div>
                      Archipel des Pomotou
                  </div>`,
@@ -600,14 +616,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_6f9f3d63e9080d55a7c9957118413ceb = L.marker(
+            var marker_04f1f9dbb421059932c4dde258ec4b72 = L.marker(
                 [-16.0667, 164.5333],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_f229d476843a9839c0b39e5c88f77c5d = L.AwesomeMarkers.icon(
+            var icon_98b415db6b58d65280a624f38d9f3c04 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -616,27 +632,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_6f9f3d63e9080d55a7c9957118413ceb.setIcon(icon_f229d476843a9839c0b39e5c88f77c5d);
+            marker_04f1f9dbb421059932c4dde258ec4b72.setIcon(icon_98b415db6b58d65280a624f38d9f3c04);
         
     
-        var popup_01228bf78edf91e8d6adf09a124a8fad = L.popup({
+        var popup_a8767f9ff5e92f173a725d4b4a845238 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_8422cff82cba31147119572c12c53d68 = $(`<div id="html_8422cff82cba31147119572c12c53d68" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des nouvelles Hébrides</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-16.0667</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">164.5333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="2" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="2" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_01228bf78edf91e8d6adf09a124a8fad.setContent(html_8422cff82cba31147119572c12c53d68);
+                var html_dd05a94dd33b9908785670cd01ef7b2f = $(`<div id="html_dd05a94dd33b9908785670cd01ef7b2f" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Archipel des nouvelles Hébrides</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Décembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte par Quiros en 1606, que Bougainville explora en 1768, et auquel Cook donna son nom actuel en 1773.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-16.0667</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">164.5333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="2" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="2" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_a8767f9ff5e92f173a725d4b4a845238.setContent(html_dd05a94dd33b9908785670cd01ef7b2f);
             
         
 
-        marker_6f9f3d63e9080d55a7c9957118413ceb.bindPopup(popup_01228bf78edf91e8d6adf09a124a8fad)
+        marker_04f1f9dbb421059932c4dde258ec4b72.bindPopup(popup_a8767f9ff5e92f173a725d4b4a845238)
         ;
 
         
     
     
-            marker_6f9f3d63e9080d55a7c9957118413ceb.bindTooltip(
+            marker_04f1f9dbb421059932c4dde258ec4b72.bindTooltip(
                 `<div>
                      Archipel des nouvelles Hébrides
                  </div>`,
@@ -646,14 +662,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_354d2e3391904a20fa7e33a8c8e8c93e = L.marker(
+            var marker_8fe5d701814a8f1a1572a195eb51beaf = L.marker(
                 [-0.3167, 128.3833],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_8fb6f289a35f5b361c4213400fce8902 = L.AwesomeMarkers.icon(
+            var icon_b06672c2daf26fff74afe48d7f1f91d3 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -662,27 +678,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_354d2e3391904a20fa7e33a8c8e8c93e.setIcon(icon_8fb6f289a35f5b361c4213400fce8902);
+            marker_8fe5d701814a8f1a1572a195eb51beaf.setIcon(icon_b06672c2daf26fff74afe48d7f1f91d3);
         
     
-        var popup_de3e333f00943ea6a935ab47b841d5bf = L.popup({
+        var popup_7f5ae2178b14fc08312bdd4ef8f08abf = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_ce4eef56699591e124317eee84015be3 = $(`<div id="html_ce4eef56699591e124317eee84015be3" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La Pouasie</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-0.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">128.3833</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="3" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="3" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_de3e333f00943ea6a935ab47b841d5bf.setContent(html_ce4eef56699591e124317eee84015be3);
+                var html_b285e1e3945d97a33cb8075562b28175 = $(`<div id="html_b285e1e3945d97a33cb8075562b28175" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La Pouasie</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Découverte en 1511 par le Portugais Francisco Serrano - Vue sur les sommets des monts Arfak - Quatre jours sur terre - Bataille avec les Papouas.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-0.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">128.3833</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="3" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="3" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_7f5ae2178b14fc08312bdd4ef8f08abf.setContent(html_b285e1e3945d97a33cb8075562b28175);
             
         
 
-        marker_354d2e3391904a20fa7e33a8c8e8c93e.bindPopup(popup_de3e333f00943ea6a935ab47b841d5bf)
+        marker_8fe5d701814a8f1a1572a195eb51beaf.bindPopup(popup_7f5ae2178b14fc08312bdd4ef8f08abf)
         ;
 
         
     
     
-            marker_354d2e3391904a20fa7e33a8c8e8c93e.bindTooltip(
+            marker_8fe5d701814a8f1a1572a195eb51beaf.bindTooltip(
                 `<div>
                      La Pouasie
                  </div>`,
@@ -692,14 +708,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_b580a7ef031c662074e5bfa895625f3b = L.marker(
+            var marker_d444ad85ddbb275f7970db4f4b3036bb = L.marker(
                 [-10.7, 136.7667],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_dde27b6cd9f9c7023d29bd345516afaa = L.AwesomeMarkers.icon(
+            var icon_c45ccb9430981b67d198aaac6f5ec0b7 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -708,27 +724,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_b580a7ef031c662074e5bfa895625f3b.setIcon(icon_dde27b6cd9f9c7023d29bd345516afaa);
+            marker_d444ad85ddbb275f7970db4f4b3036bb.setIcon(icon_c45ccb9430981b67d198aaac6f5ec0b7);
         
     
-        var popup_1f9e2e635d2015b9e6a8edb025aff89f = L.popup({
+        var popup_466220b6df4a581111b12e75c1ba405f = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_8c403e0d7fc3fd6cd40c05a4f1acfe99 = $(`<div id="html_8c403e0d7fc3fd6cd40c05a4f1acfe99" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Wessel</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Forme la pointe du golfe de Carpentarie.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">136.7667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="4" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="4" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_1f9e2e635d2015b9e6a8edb025aff89f.setContent(html_8c403e0d7fc3fd6cd40c05a4f1acfe99);
+                var html_1fed12c11677a334f613dacd22081230 = $(`<div id="html_1fed12c11677a334f613dacd22081230" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Wessel</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">11 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Forme la pointe du golfe de Carpentarie.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">136.7667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="4" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="4" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_466220b6df4a581111b12e75c1ba405f.setContent(html_1fed12c11677a334f613dacd22081230);
             
         
 
-        marker_b580a7ef031c662074e5bfa895625f3b.bindPopup(popup_1f9e2e635d2015b9e6a8edb025aff89f)
+        marker_d444ad85ddbb275f7970db4f4b3036bb.bindPopup(popup_466220b6df4a581111b12e75c1ba405f)
         ;
 
         
     
     
-            marker_b580a7ef031c662074e5bfa895625f3b.bindTooltip(
+            marker_d444ad85ddbb275f7970db4f4b3036bb.bindTooltip(
                 `<div>
                      Cap Wessel
                  </div>`,
@@ -738,14 +754,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_dbee62f33c24e6c100f524aab36724d4 = L.marker(
+            var marker_55b3813c933d0044fd9fa16fdfca4196 = L.marker(
                 [-8.6833, 125.7333],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_d157a67a67cd854250d8779af02f1654 = L.AwesomeMarkers.icon(
+            var icon_a5a90ee04a8a2251599662a5d18a09a3 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -754,27 +770,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_dbee62f33c24e6c100f524aab36724d4.setIcon(icon_d157a67a67cd854250d8779af02f1654);
+            marker_55b3813c933d0044fd9fa16fdfca4196.setIcon(icon_a5a90ee04a8a2251599662a5d18a09a3);
         
     
-        var popup_bc199206aae7cc0fa3678b48ce653594 = L.popup({
+        var popup_a78cec8dc251f91a257266cece8f9c17 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_edb8fa95ed6ea0d2416986ca618dcda8 = $(`<div id="html_edb8fa95ed6ea0d2416986ca618dcda8" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Mer de Timor</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Un homme de l&#x27;équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-8.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">125.7333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="5" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="5" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_bc199206aae7cc0fa3678b48ce653594.setContent(html_edb8fa95ed6ea0d2416986ca618dcda8);
+                var html_a5122eb053c2de234cfd12a53bf9221c = $(`<div id="html_a5122eb053c2de234cfd12a53bf9221c" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Mer de Timor</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Un homme de l&#x27;équipage mort dans la nuit est enterré dans le cimetière sous-marin. Le capitaine Nemo et les siens venaient enterrer leur compagnon dans cette demeure commune, au fond de cet inaccessible océan.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-8.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">125.7333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="5" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="5" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_a78cec8dc251f91a257266cece8f9c17.setContent(html_a5122eb053c2de234cfd12a53bf9221c);
             
         
 
-        marker_dbee62f33c24e6c100f524aab36724d4.bindPopup(popup_bc199206aae7cc0fa3678b48ce653594)
+        marker_55b3813c933d0044fd9fa16fdfca4196.bindPopup(popup_a78cec8dc251f91a257266cece8f9c17)
         ;
 
         
     
     
-            marker_dbee62f33c24e6c100f524aab36724d4.bindTooltip(
+            marker_55b3813c933d0044fd9fa16fdfca4196.bindTooltip(
                 `<div>
                      Mer de Timor
                  </div>`,
@@ -784,14 +800,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_9c836fc307cba4e99f48a88219b84aa1 = L.marker(
+            var marker_1d395f3940f3904f9fa1bae0c944eb5e = L.marker(
                 [-12.0833, 94.55],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_4f63789968cb90da089375bfdad73a48 = L.AwesomeMarkers.icon(
+            var icon_35884111efa60e1acd252b820e320d34 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -800,27 +816,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_9c836fc307cba4e99f48a88219b84aa1.setIcon(icon_4f63789968cb90da089375bfdad73a48);
+            marker_1d395f3940f3904f9fa1bae0c944eb5e.setIcon(icon_35884111efa60e1acd252b820e320d34);
         
     
-        var popup_55d9c805c16375ff225735f6d1336857 = L.popup({
+        var popup_086f0fe38f0749abb98e81b28e5564ab = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_0383a877209160b130ad67d544343933 = $(`<div id="html_0383a877209160b130ad67d544343933" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Keeling</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">24 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Visitée par Darwin et le capitaine Fitz-Roy.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-12.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">94.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="6" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="6" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_55d9c805c16375ff225735f6d1336857.setContent(html_0383a877209160b130ad67d544343933);
+                var html_096c2af19ba75e84d836d4197b585508 = $(`<div id="html_096c2af19ba75e84d836d4197b585508" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Keeling</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">24 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Visitée par Darwin et le capitaine Fitz-Roy.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-12.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">94.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="6" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="6" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_086f0fe38f0749abb98e81b28e5564ab.setContent(html_096c2af19ba75e84d836d4197b585508);
             
         
 
-        marker_9c836fc307cba4e99f48a88219b84aa1.bindPopup(popup_55d9c805c16375ff225735f6d1336857)
+        marker_1d395f3940f3904f9fa1bae0c944eb5e.bindPopup(popup_086f0fe38f0749abb98e81b28e5564ab)
         ;
 
         
     
     
-            marker_9c836fc307cba4e99f48a88219b84aa1.bindTooltip(
+            marker_1d395f3940f3904f9fa1bae0c944eb5e.bindTooltip(
                 `<div>
                      Île Keeling
                  </div>`,
@@ -830,14 +846,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_6e02b26ce84da6291d450da336a2ebbd = L.marker(
+            var marker_ed6c3d3520af41063c34e3cb2df52a12 = L.marker(
                 [5.9167, 79.7],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_eb17b1000fa055ff787f4e90cb855a36 = L.AwesomeMarkers.icon(
+            var icon_b52ded88478a8066497b24b9fd572ce0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -846,27 +862,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_6e02b26ce84da6291d450da336a2ebbd.setIcon(icon_eb17b1000fa055ff787f4e90cb855a36);
+            marker_ed6c3d3520af41063c34e3cb2df52a12.setIcon(icon_b52ded88478a8066497b24b9fd572ce0);
         
     
-        var popup_ef98704dc6ec3bfb80d9246e9c93a122 = L.popup({
+        var popup_96612d4484c6db3ce646e5370edb8cde = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_4351e8f0e54cd6f19c4a9df5865aab31 = $(`<div id="html_4351e8f0e54cd6f19c4a9df5865aab31" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Golfe du Bengale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">27 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C&#x27;était la mort des villes indiennes.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">5.9167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">79.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="7" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="7" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_ef98704dc6ec3bfb80d9246e9c93a122.setContent(html_4351e8f0e54cd6f19c4a9df5865aab31);
+                var html_98000d4bb5db41a902458b7d9b4b2524 = $(`<div id="html_98000d4bb5db41a902458b7d9b4b2524" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Golfe du Bengale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">27 janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Spectacle sinistre ! Des cadavres flottaient à la surface des flots. C&#x27;était la mort des villes indiennes.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">5.9167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">79.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="7" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="7" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_96612d4484c6db3ce646e5370edb8cde.setContent(html_98000d4bb5db41a902458b7d9b4b2524);
             
         
 
-        marker_6e02b26ce84da6291d450da336a2ebbd.bindPopup(popup_ef98704dc6ec3bfb80d9246e9c93a122)
+        marker_ed6c3d3520af41063c34e3cb2df52a12.bindPopup(popup_96612d4484c6db3ce646e5370edb8cde)
         ;
 
         
     
     
-            marker_6e02b26ce84da6291d450da336a2ebbd.bindTooltip(
+            marker_ed6c3d3520af41063c34e3cb2df52a12.bindTooltip(
                 `<div>
                      Golfe du Bengale
                  </div>`,
@@ -876,14 +892,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_8e116a06593f0df4bc8a25a5ab070a5d = L.marker(
+            var marker_5ae07ef0ce9e01f7f6d202c98308cfeb = L.marker(
                 [10.99809, 56.614067],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_8e3f07452c7a4a7dcdd3851494317133 = L.AwesomeMarkers.icon(
+            var icon_a64cd61ae7f66f3fb1fccc3a91851d9e = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -892,27 +908,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_8e116a06593f0df4bc8a25a5ab070a5d.setIcon(icon_8e3f07452c7a4a7dcdd3851494317133);
+            marker_5ae07ef0ce9e01f7f6d202c98308cfeb.setIcon(icon_a64cd61ae7f66f3fb1fccc3a91851d9e);
         
     
-        var popup_cbe02241009322c9e2346342e3e8f47e = L.popup({
+        var popup_3910e559b189e632d419e4f3d65aab78 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_fb6c531892b30dceaab2a6192bf5e989 = $(`<div id="html_fb6c531892b30dceaab2a6192bf5e989" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Est</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">28 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">10.99809</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">56.614067</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="8" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="8" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_cbe02241009322c9e2346342e3e8f47e.setContent(html_fb6c531892b30dceaab2a6192bf5e989);
+                var html_856b3c53e3ef86b0705b4e794355c8e7 = $(`<div id="html_856b3c53e3ef86b0705b4e794355c8e7" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Est</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">28 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Indien</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">10.99809</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">56.614067</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="8" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="8" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_3910e559b189e632d419e4f3d65aab78.setContent(html_856b3c53e3ef86b0705b4e794355c8e7);
             
         
 
-        marker_8e116a06593f0df4bc8a25a5ab070a5d.bindPopup(popup_cbe02241009322c9e2346342e3e8f47e)
+        marker_5ae07ef0ce9e01f7f6d202c98308cfeb.bindPopup(popup_3910e559b189e632d419e4f3d65aab78)
         ;
 
         
     
     
-            marker_8e116a06593f0df4bc8a25a5ab070a5d.bindTooltip(
+            marker_5ae07ef0ce9e01f7f6d202c98308cfeb.bindTooltip(
                 `<div>
                      Contour Afrique Est
                  </div>`,
@@ -922,14 +938,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_c06716860a08d7145b0cb217e7ec5b2b = L.marker(
+            var marker_51ab6261ff1ae85e61606ca91a254d95 = L.marker(
                 [29.95, 32.55],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_af897faf5f81bba97413f853aa53792e = L.AwesomeMarkers.icon(
+            var icon_59b6ccf872206a2e56006301152d43f5 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -938,27 +954,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_c06716860a08d7145b0cb217e7ec5b2b.setIcon(icon_af897faf5f81bba97413f853aa53792e);
+            marker_51ab6261ff1ae85e61606ca91a254d95.setIcon(icon_59b6ccf872206a2e56006301152d43f5);
         
     
-        var popup_07098f2a80043a45100d2b55c3a3c248 = L.popup({
+        var popup_bbe6aeb22d00e7ed24b0390432ab74dc = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_05f3ef2719474f6772947372d1bcc71a = $(`<div id="html_05f3ef2719474f6772947372d1bcc71a" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Sous l&#x27;isthme de Suez</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">30 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Rouge</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage par l&#x27;Arabian Tunnel, le corridor souterrain imaginé par Nemo sous l&#x27;isthme de Suez, puis chasse du dugong.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">29.95</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">32.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="9" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="9" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_07098f2a80043a45100d2b55c3a3c248.setContent(html_05f3ef2719474f6772947372d1bcc71a);
+                var html_761fc47730b3e59e175ec66d64f8794f = $(`<div id="html_761fc47730b3e59e175ec66d64f8794f" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Sous l&#x27;isthme de Suez</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">30 Janvier 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Rouge</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage par l&#x27;Arabian Tunnel, le corridor souterrain imaginé par Nemo sous l&#x27;isthme de Suez, puis chasse du dugong.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">29.95</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">32.55</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="9" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="9" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_bbe6aeb22d00e7ed24b0390432ab74dc.setContent(html_761fc47730b3e59e175ec66d64f8794f);
             
         
 
-        marker_c06716860a08d7145b0cb217e7ec5b2b.bindPopup(popup_07098f2a80043a45100d2b55c3a3c248)
+        marker_51ab6261ff1ae85e61606ca91a254d95.bindPopup(popup_bbe6aeb22d00e7ed24b0390432ab74dc)
         ;
 
         
     
     
-            marker_c06716860a08d7145b0cb217e7ec5b2b.bindTooltip(
+            marker_51ab6261ff1ae85e61606ca91a254d95.bindTooltip(
                 `<div>
                      Sous l&#x27;isthme de Suez
                  </div>`,
@@ -968,14 +984,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_980c4ab32a7ba4f5e4b72d1968b093e7 = L.marker(
+            var marker_d35a3cf21d6bf62ab860bbc1bc8d0ebe = L.marker(
                 [35.0, 24.0],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_e7683d45f1202d7597ebe9ce1503107d = L.AwesomeMarkers.icon(
+            var icon_17710116013549edbb4ba9774998c037 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -984,27 +1000,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_980c4ab32a7ba4f5e4b72d1968b093e7.setIcon(icon_e7683d45f1202d7597ebe9ce1503107d);
+            marker_d35a3cf21d6bf62ab860bbc1bc8d0ebe.setIcon(icon_17710116013549edbb4ba9774998c037);
         
     
-        var popup_c28d9eccf98b7b52c98f58ea3bef2dd9 = L.popup({
+        var popup_2b391726ae583d4b83ac91c8cfc9680c = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_d80debd291400b858af944355b1d5951 = $(`<div id="html_d80debd291400b858af944355b1d5951" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;archipel grec</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">12 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Égée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage du Nautilus dans l&#x27;archipel grec ; Aronnax observe les poissons de ces eaux, avec une évocation de l&#x27;ancienne île de Crète.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">24.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="10" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="10" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_c28d9eccf98b7b52c98f58ea3bef2dd9.setContent(html_d80debd291400b858af944355b1d5951);
+                var html_a85eabf679bcd40fc81310ae676048b8 = $(`<div id="html_a85eabf679bcd40fc81310ae676048b8" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;archipel grec</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">12 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Égée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Passage du Nautilus dans l&#x27;archipel grec ; Aronnax observe les poissons de ces eaux, avec une évocation de l&#x27;ancienne île de Crète.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">24.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="10" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="10" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_2b391726ae583d4b83ac91c8cfc9680c.setContent(html_a85eabf679bcd40fc81310ae676048b8);
             
         
 
-        marker_980c4ab32a7ba4f5e4b72d1968b093e7.bindPopup(popup_c28d9eccf98b7b52c98f58ea3bef2dd9)
+        marker_d35a3cf21d6bf62ab860bbc1bc8d0ebe.bindPopup(popup_2b391726ae583d4b83ac91c8cfc9680c)
         ;
 
         
     
     
-            marker_980c4ab32a7ba4f5e4b72d1968b093e7.bindTooltip(
+            marker_d35a3cf21d6bf62ab860bbc1bc8d0ebe.bindTooltip(
                 `<div>
                      L&#x27;archipel grec
                  </div>`,
@@ -1014,14 +1030,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_dd99e82e99a253d350f1c74cb0dc9ffa = L.marker(
+            var marker_26e7af80810bfe429fe78f3060a00c02 = L.marker(
                 [39.2833, 6.7],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_4d86c856680122495726488fb4eda007 = L.AwesomeMarkers.icon(
+            var icon_17dcbb11e0b30de824f532dfa1e99d6a = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1030,27 +1046,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_dd99e82e99a253d350f1c74cb0dc9ffa.setIcon(icon_4d86c856680122495726488fb4eda007);
+            marker_26e7af80810bfe429fe78f3060a00c02.setIcon(icon_17dcbb11e0b30de824f532dfa1e99d6a);
         
     
-        var popup_a7c67c3629b5bad0fe96e1558258898f = L.popup({
+        var popup_32f05f48f7db1bd7da68d64046535ef7 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_c2371910bbaab266434f559046cbe5af = $(`<div id="html_c2371910bbaab266434f559046cbe5af" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">39.2833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">6.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="11" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="11" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_a7c67c3629b5bad0fe96e1558258898f.setContent(html_c2371910bbaab266434f559046cbe5af);
+                var html_b61a760191b29ef171f6a80c090e4a09 = $(`<div id="html_b61a760191b29ef171f6a80c090e4a09" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Méditerranée</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">La Méditerranée en quarante-huit heures - Ned Land, à son grand ennui, dut renoncer à ses projets de fuite - Observation des poissons méditerranéens.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">39.2833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">6.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="11" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="11" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_32f05f48f7db1bd7da68d64046535ef7.setContent(html_b61a760191b29ef171f6a80c090e4a09);
             
         
 
-        marker_dd99e82e99a253d350f1c74cb0dc9ffa.bindPopup(popup_a7c67c3629b5bad0fe96e1558258898f)
+        marker_26e7af80810bfe429fe78f3060a00c02.bindPopup(popup_32f05f48f7db1bd7da68d64046535ef7)
         ;
 
         
     
     
-            marker_dd99e82e99a253d350f1c74cb0dc9ffa.bindTooltip(
+            marker_26e7af80810bfe429fe78f3060a00c02.bindTooltip(
                 `<div>
                      Méditerranée
                  </div>`,
@@ -1060,14 +1076,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_0f895b31ea600a7f46dc8965eafd6ffc = L.marker(
+            var marker_5f13562233d8165c3c6ce1d19a96f049 = L.marker(
                 [20.0, -30.0],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_6989ddc67531131fc45b4cc306f8ffb0 = L.AwesomeMarkers.icon(
+            var icon_cecdf0ece7d5ccd78e5a4afe550a4e22 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1076,27 +1092,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_0f895b31ea600a7f46dc8965eafd6ffc.setIcon(icon_6989ddc67531131fc45b4cc306f8ffb0);
+            marker_5f13562233d8165c3c6ce1d19a96f049.setIcon(icon_cecdf0ece7d5ccd78e5a4afe550a4e22);
         
     
-        var popup_1117c7a4c32898e2e4c1d87b3da119c1 = L.popup({
+        var popup_723d60c629da90e3669d47933b56a241 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_e78792a638b222f45daf1764365fe720 = $(`<div id="html_e78792a638b222f45daf1764365fe720" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;Atlantide</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vision de l&#x27;Atlantide, localisation cartographique approximative d&#x27;après le trajet du roman.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-30.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="12" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="12" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_1117c7a4c32898e2e4c1d87b3da119c1.setContent(html_e78792a638b222f45daf1764365fe720);
+                var html_7556e914456458401b2acd8b901406a2 = $(`<div id="html_7556e914456458401b2acd8b901406a2" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">L&#x27;Atlantide</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vision de l&#x27;Atlantide, localisation cartographique approximative d&#x27;après le trajet du roman.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-30.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="12" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="12" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_723d60c629da90e3669d47933b56a241.setContent(html_7556e914456458401b2acd8b901406a2);
             
         
 
-        marker_0f895b31ea600a7f46dc8965eafd6ffc.bindPopup(popup_1117c7a4c32898e2e4c1d87b3da119c1)
+        marker_5f13562233d8165c3c6ce1d19a96f049.bindPopup(popup_723d60c629da90e3669d47933b56a241)
         ;
 
         
     
     
-            marker_0f895b31ea600a7f46dc8965eafd6ffc.bindTooltip(
+            marker_5f13562233d8165c3c6ce1d19a96f049.bindTooltip(
                 `<div>
                      L&#x27;Atlantide
                  </div>`,
@@ -1106,14 +1122,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_19d49b482d9a1f308feaf9e199ae08fd = L.marker(
+            var marker_c41eee588517a7c4fcda457625de51e3 = L.marker(
                 [21.5, -31.5],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_371feea6bd8d7a85327d16d9177cbd73 = L.AwesomeMarkers.icon(
+            var icon_a4cbb81cc9ce23f74dd38ff1b117d6d0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1122,27 +1138,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_19d49b482d9a1f308feaf9e199ae08fd.setIcon(icon_371feea6bd8d7a85327d16d9177cbd73);
+            marker_c41eee588517a7c4fcda457625de51e3.setIcon(icon_a4cbb81cc9ce23f74dd38ff1b117d6d0);
         
     
-        var popup_193e7615713a051fb9eb824629476528 = L.popup({
+        var popup_63bbe29fbffb7aa38f7c524842b0d46b = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_bd113c6649dfa39575e902cea9eebb94 = $(`<div id="html_bd113c6649dfa39575e902cea9eebb94" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La mer des Sargasses</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">22 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Traversée de la mer des Sargasses par le Nautilus.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">21.5</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-31.5</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="13" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="13" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_193e7615713a051fb9eb824629476528.setContent(html_bd113c6649dfa39575e902cea9eebb94);
+                var html_93bea2e3dac67c0f7854d257f74d0e5f = $(`<div id="html_93bea2e3dac67c0f7854d257f74d0e5f" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">La mer des Sargasses</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">22 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Traversée de la mer des Sargasses par le Nautilus.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">21.5</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-31.5</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="13" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="13" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_63bbe29fbffb7aa38f7c524842b0d46b.setContent(html_93bea2e3dac67c0f7854d257f74d0e5f);
             
         
 
-        marker_19d49b482d9a1f308feaf9e199ae08fd.bindPopup(popup_193e7615713a051fb9eb824629476528)
+        marker_c41eee588517a7c4fcda457625de51e3.bindPopup(popup_63bbe29fbffb7aa38f7c524842b0d46b)
         ;
 
         
     
     
-            marker_19d49b482d9a1f308feaf9e199ae08fd.bindTooltip(
+            marker_c41eee588517a7c4fcda457625de51e3.bindTooltip(
                 `<div>
                      La mer des Sargasses
                  </div>`,
@@ -1152,14 +1168,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_87242ecc9b4b4b73db12bdca5cfa9cf8 = L.marker(
+            var marker_3d5257170c905414252a1a75cf659f00 = L.marker(
                 [-10.1775, -17.738],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_89cda31728447857c02a7797668b3de5 = L.AwesomeMarkers.icon(
+            var icon_cb3dc6dd66575d3e2113347a4834d0cf = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1168,27 +1184,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_87242ecc9b4b4b73db12bdca5cfa9cf8.setIcon(icon_89cda31728447857c02a7797668b3de5);
+            marker_3d5257170c905414252a1a75cf659f00.setIcon(icon_cb3dc6dd66575d3e2113347a4834d0cf);
         
     
-        var popup_10d433bf255a866f1a8b43ef8096f03b = L.popup({
+        var popup_bc02bb4b4047c4a918506966556f7020 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_344908c1f00b2da4a1f11ea4e984b120 = $(`<div id="html_344908c1f00b2da4a1f11ea4e984b120" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">23 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction le pôle Sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.1775</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-17.738</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="14" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="14" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_10d433bf255a866f1a8b43ef8096f03b.setContent(html_344908c1f00b2da4a1f11ea4e984b120);
+                var html_c2710280c9176b4441b197c1b2f19458 = $(`<div id="html_c2710280c9176b4441b197c1b2f19458" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Afrique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">23 Février 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction le pôle Sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-10.1775</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-17.738</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="14" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="14" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_bc02bb4b4047c4a918506966556f7020.setContent(html_c2710280c9176b4441b197c1b2f19458);
             
         
 
-        marker_87242ecc9b4b4b73db12bdca5cfa9cf8.bindPopup(popup_10d433bf255a866f1a8b43ef8096f03b)
+        marker_3d5257170c905414252a1a75cf659f00.bindPopup(popup_bc02bb4b4047c4a918506966556f7020)
         ;
 
         
     
     
-            marker_87242ecc9b4b4b73db12bdca5cfa9cf8.bindTooltip(
+            marker_3d5257170c905414252a1a75cf659f00.bindTooltip(
                 `<div>
                      Contour Afrique Nord
                  </div>`,
@@ -1198,14 +1214,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_28bed5723483826a98ce5d4f0c0ad9c5 = L.marker(
+            var marker_7cfc9b8c0b1553ad4a919ff79cc6f163 = L.marker(
                 [-54.8, -50.4],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_1a65cf858d7445ad4dd9573f0884de14 = L.AwesomeMarkers.icon(
+            var icon_8ffc960363344dd5ebe17c7640b5795c = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1214,27 +1230,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_28bed5723483826a98ce5d4f0c0ad9c5.setIcon(icon_1a65cf858d7445ad4dd9573f0884de14);
+            marker_7cfc9b8c0b1553ad4a919ff79cc6f163.setIcon(icon_8ffc960363344dd5ebe17c7640b5795c);
         
     
-        var popup_f14d3d0d8ad309395d3818fe6f2b2da3 = L.popup({
+        var popup_45c26f42a6690df6dfe96e9e8c6e87e4 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_176fa772fed1c240d0228534060151d6 = $(`<div id="html_176fa772fed1c240d0228534060151d6" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-54.8</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.4</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="15" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="15" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_f14d3d0d8ad309395d3818fe6f2b2da3.setContent(html_176fa772fed1c240d0228534060151d6);
+                var html_d2586f93b6a9568f78d567f263f37ccc = $(`<div id="html_d2586f93b6a9568f78d567f263f37ccc" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">13 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-54.8</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.4</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="15" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="15" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_45c26f42a6690df6dfe96e9e8c6e87e4.setContent(html_d2586f93b6a9568f78d567f263f37ccc);
             
         
 
-        marker_28bed5723483826a98ce5d4f0c0ad9c5.bindPopup(popup_f14d3d0d8ad309395d3818fe6f2b2da3)
+        marker_7cfc9b8c0b1553ad4a919ff79cc6f163.bindPopup(popup_45c26f42a6690df6dfe96e9e8c6e87e4)
         ;
 
         
     
     
-            marker_28bed5723483826a98ce5d4f0c0ad9c5.bindTooltip(
+            marker_7cfc9b8c0b1553ad4a919ff79cc6f163.bindTooltip(
                 `<div>
                      Contour Amérique Sud
                  </div>`,
@@ -1244,14 +1260,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_cf72ae9dd9973ea10292aa73afa4afdf = L.marker(
+            var marker_bff8422aada6e2f1a05913267d5169d0 = L.marker(
                 [-61.6, -64.8],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_e731448d18470c0894118236f0d853fa = L.AwesomeMarkers.icon(
+            var icon_5bcffd5b33834f209759595016ddca42 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1260,27 +1276,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_cf72ae9dd9973ea10292aa73afa4afdf.setIcon(icon_e731448d18470c0894118236f0d853fa);
+            marker_bff8422aada6e2f1a05913267d5169d0.setIcon(icon_5bcffd5b33834f209759595016ddca42);
         
     
-        var popup_69dc0ab2c3d52af8a0d724042ba513d3 = L.popup({
+        var popup_dde7e05413ebcc6782c6905aacc212ff = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_6618713e6c6b5046d8a284cc2067b25a = $(`<div id="html_6618713e6c6b5046d8a284cc2067b25a" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">14 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-61.6</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-64.8</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="16" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="16" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_69dc0ab2c3d52af8a0d724042ba513d3.setContent(html_6618713e6c6b5046d8a284cc2067b25a);
+                var html_925d86e782dcc9134e626041d6f6c177 = $(`<div id="html_925d86e782dcc9134e626041d6f6c177" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">14 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Direction la Banquise - Le Nautilus avait repris son imperturbable direction vers le sud.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-61.6</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-64.8</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="16" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="16" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_dde7e05413ebcc6782c6905aacc212ff.setContent(html_925d86e782dcc9134e626041d6f6c177);
             
         
 
-        marker_cf72ae9dd9973ea10292aa73afa4afdf.bindPopup(popup_69dc0ab2c3d52af8a0d724042ba513d3)
+        marker_bff8422aada6e2f1a05913267d5169d0.bindPopup(popup_dde7e05413ebcc6782c6905aacc212ff)
         ;
 
         
     
     
-            marker_cf72ae9dd9973ea10292aa73afa4afdf.bindTooltip(
+            marker_bff8422aada6e2f1a05913267d5169d0.bindTooltip(
                 `<div>
                      Cap Horn
                  </div>`,
@@ -1290,14 +1306,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_e2f4d4ef9f46dc6d5071b2f5f4ee3197 = L.marker(
+            var marker_2c09f444f615c4bb75f8ad274c3295e3 = L.marker(
                 [-73.7, -133.8333],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_619f66a38854454d905c8359935428a1 = L.AwesomeMarkers.icon(
+            var icon_f42c19720a287aa1a21363acbd4ef1e4 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1306,27 +1322,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_e2f4d4ef9f46dc6d5071b2f5f4ee3197.setIcon(icon_619f66a38854454d905c8359935428a1);
+            marker_2c09f444f615c4bb75f8ad274c3295e3.setIcon(icon_f42c19720a287aa1a21363acbd4ef1e4);
         
     
-        var popup_ad1f7e038eebb15f35073fe29cc70de5 = L.popup({
+        var popup_705703616198f8a16255e97350de2a34 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_d9c777a8fd38b57e807c2e7ac7c7f75c = $(`<div id="html_d9c777a8fd38b57e807c2e7ac7c7f75c" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Pôle Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vaisseau enrayé dans la banquise</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-73.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-133.8333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="17" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="17" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_ad1f7e038eebb15f35073fe29cc70de5.setContent(html_d9c777a8fd38b57e807c2e7ac7c7f75c);
+                var html_12329e339b9312dc7eb2037a01455a19 = $(`<div id="html_12329e339b9312dc7eb2037a01455a19" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Pôle Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">19 Mars 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mers du Pacifique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Vaisseau enrayé dans la banquise</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-73.7</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-133.8333</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="17" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="17" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_705703616198f8a16255e97350de2a34.setContent(html_12329e339b9312dc7eb2037a01455a19);
             
         
 
-        marker_e2f4d4ef9f46dc6d5071b2f5f4ee3197.bindPopup(popup_ad1f7e038eebb15f35073fe29cc70de5)
+        marker_2c09f444f615c4bb75f8ad274c3295e3.bindPopup(popup_705703616198f8a16255e97350de2a34)
         ;
 
         
     
     
-            marker_e2f4d4ef9f46dc6d5071b2f5f4ee3197.bindTooltip(
+            marker_2c09f444f615c4bb75f8ad274c3295e3.bindTooltip(
                 `<div>
                      Pôle Sud
                  </div>`,
@@ -1336,14 +1352,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_1d5b16e29cd8c01559f73a7b7111acf6 = L.marker(
+            var marker_5e1e9ae395930733ae263e479669f2d5 = L.marker(
                 [-56.05, -67.9],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_46f97476d9407d90d3ac38c9c054eee1 = L.AwesomeMarkers.icon(
+            var icon_db6e5e559538495336e4d4f274510e87 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1352,27 +1368,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_1d5b16e29cd8c01559f73a7b7111acf6.setIcon(icon_46f97476d9407d90d3ac38c9c054eee1);
+            marker_5e1e9ae395930733ae263e479669f2d5.setIcon(icon_db6e5e559538495336e4d4f274510e87);
         
     
-        var popup_550950bbfb789852f616dfe2e06997bd = L.popup({
+        var popup_503d35ae80e02fcde3cd23bb38b1bac5 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_948b74e0d3eda2fe919207a3cb164300 = $(`<div id="html_948b74e0d3eda2fe919207a3cb164300" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Du Cap Horn à l&#x27;Amazone.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-56.05</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-67.9</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="18" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="18" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_550950bbfb789852f616dfe2e06997bd.setContent(html_948b74e0d3eda2fe919207a3cb164300);
+                var html_96d5cf999a81e5e43cf0e14a2908e763 = $(`<div id="html_96d5cf999a81e5e43cf0e14a2908e763" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Horn (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Du Cap Horn à l&#x27;Amazone.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-56.05</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-67.9</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="18" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="18" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_503d35ae80e02fcde3cd23bb38b1bac5.setContent(html_96d5cf999a81e5e43cf0e14a2908e763);
             
         
 
-        marker_1d5b16e29cd8c01559f73a7b7111acf6.bindPopup(popup_550950bbfb789852f616dfe2e06997bd)
+        marker_5e1e9ae395930733ae263e479669f2d5.bindPopup(popup_503d35ae80e02fcde3cd23bb38b1bac5)
         ;
 
         
     
     
-            marker_1d5b16e29cd8c01559f73a7b7111acf6.bindTooltip(
+            marker_5e1e9ae395930733ae263e479669f2d5.bindTooltip(
                 `<div>
                      Cap Horn (retour)
                  </div>`,
@@ -1382,14 +1398,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_b8c78cb74c33c54b31ec1a124ce7accb = L.marker(
+            var marker_28d43bc714fbd5cab631b72d284a5864 = L.marker(
                 [-40.0, -50.0],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_fba0bb7f3a95f2b294c2e3d4dc6e91b2 = L.AwesomeMarkers.icon(
+            var icon_030a1480ed6a7af18e6b479f98b01ed9 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1398,27 +1414,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_b8c78cb74c33c54b31ec1a124ce7accb.setIcon(icon_fba0bb7f3a95f2b294c2e3d4dc6e91b2);
+            marker_28d43bc714fbd5cab631b72d284a5864.setIcon(icon_030a1480ed6a7af18e6b479f98b01ed9);
         
     
-        var popup_677762b97ac8429f9bcf45a84d7524aa = L.popup({
+        var popup_c1844d1252d290679b59517d08480854 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_d84775bb8e9099ca0a6d7ed1d06fa384 = $(`<div id="html_d84775bb8e9099ca0a6d7ed1d06fa384" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-40.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="19" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="19" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_677762b97ac8429f9bcf45a84d7524aa.setContent(html_d84775bb8e9099ca0a6d7ed1d06fa384);
+                var html_2950ff1e76f44c55e3b499f966f26cc7 = $(`<div id="html_2950ff1e76f44c55e3b499f966f26cc7" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud (retour)</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">4 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Patagonie, Uruguay - Le Nautilus maintient sa direction au Nord.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-40.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-50.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="19" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="19" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_c1844d1252d290679b59517d08480854.setContent(html_2950ff1e76f44c55e3b499f966f26cc7);
             
         
 
-        marker_b8c78cb74c33c54b31ec1a124ce7accb.bindPopup(popup_677762b97ac8429f9bcf45a84d7524aa)
+        marker_28d43bc714fbd5cab631b72d284a5864.bindPopup(popup_c1844d1252d290679b59517d08480854)
         ;
 
         
     
     
-            marker_b8c78cb74c33c54b31ec1a124ce7accb.bindTooltip(
+            marker_28d43bc714fbd5cab631b72d284a5864.bindTooltip(
                 `<div>
                      Contour Amérique Sud (retour)
                  </div>`,
@@ -1428,14 +1444,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_a6f90c468380587ae565601e1adca90d = L.marker(
+            var marker_ad19f9e68f925c1f550f9a3d743504d8 = L.marker(
                 [-6.96056, -32.08735],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_576ecaabd30ca0a533e4fe660f0ffc19 = L.AwesomeMarkers.icon(
+            var icon_a1434781c3117b34b948e4e956011f5b = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1444,27 +1460,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_a6f90c468380587ae565601e1adca90d.setIcon(icon_576ecaabd30ca0a533e4fe660f0ffc19);
+            marker_ad19f9e68f925c1f550f9a3d743504d8.setIcon(icon_a1434781c3117b34b948e4e956011f5b);
         
     
-        var popup_0a86aa64b83890ee386c60e4d91c542e = L.popup({
+        var popup_5afe54ed57972a124c8420fa71e014ff = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_afd3d62420aea3f5f817c62c0670d58c = $(`<div id="html_afd3d62420aea3f5f817c62c0670d58c" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud centrale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">10 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-6.96056</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-32.08735</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="20" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="20" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_0a86aa64b83890ee386c60e4d91c542e.setContent(html_afd3d62420aea3f5f817c62c0670d58c);
+                var html_f0d16617411679f7eba746de76e14f8c = $(`<div id="html_f0d16617411679f7eba746de76e14f8c" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Sud centrale</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">10 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">-6.96056</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-32.08735</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="20" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="20" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_5afe54ed57972a124c8420fa71e014ff.setContent(html_f0d16617411679f7eba746de76e14f8c);
             
         
 
-        marker_a6f90c468380587ae565601e1adca90d.bindPopup(popup_0a86aa64b83890ee386c60e4d91c542e)
+        marker_ad19f9e68f925c1f550f9a3d743504d8.bindPopup(popup_5afe54ed57972a124c8420fa71e014ff)
         ;
 
         
     
     
-            marker_a6f90c468380587ae565601e1adca90d.bindTooltip(
+            marker_ad19f9e68f925c1f550f9a3d743504d8.bindTooltip(
                 `<div>
                      Contour Amérique Sud centrale
                  </div>`,
@@ -1474,14 +1490,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_ec4cc89bd7d19b1b0e60591013c78e7c = L.marker(
+            var marker_219888522bd1751ee2c88efb7e4c07da = L.marker(
                 [15.3167, -59.9667],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_2bb2e06db5f6bc7a62633e88d8a0f3a0 = L.AwesomeMarkers.icon(
+            var icon_466a6cd21d3715a686e6387b99c7404b = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1490,27 +1506,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_ec4cc89bd7d19b1b0e60591013c78e7c.setIcon(icon_2bb2e06db5f6bc7a62633e88d8a0f3a0);
+            marker_219888522bd1751ee2c88efb7e4c07da.setIcon(icon_466a6cd21d3715a686e6387b99c7404b);
         
     
-        var popup_8f94d75c75c6c2353164bfb1c7911da4 = L.popup({
+        var popup_3ee88fea8435675915f6d49d73365a04 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_ad1cc3c873a80971e226f1674aaeb23f = $(`<div id="html_ad1cc3c873a80971e226f1674aaeb23f" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Martinique et Guadeloupe</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">15.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-59.9667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="21" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="21" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_8f94d75c75c6c2353164bfb1c7911da4.setContent(html_ad1cc3c873a80971e226f1674aaeb23f);
+                var html_ce4109bbe32920b806c54d8828da57b8 = $(`<div id="html_ce4109bbe32920b806c54d8828da57b8" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Martinique et Guadeloupe</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Attaque du calamar géant de dimensions colossales, ayant huit mètres de longueur.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">15.3167</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-59.9667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="21" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="21" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_3ee88fea8435675915f6d49d73365a04.setContent(html_ce4109bbe32920b806c54d8828da57b8);
             
         
 
-        marker_ec4cc89bd7d19b1b0e60591013c78e7c.bindPopup(popup_8f94d75c75c6c2353164bfb1c7911da4)
+        marker_219888522bd1751ee2c88efb7e4c07da.bindPopup(popup_3ee88fea8435675915f6d49d73365a04)
         ;
 
         
     
     
-            marker_ec4cc89bd7d19b1b0e60591013c78e7c.bindTooltip(
+            marker_219888522bd1751ee2c88efb7e4c07da.bindTooltip(
                 `<div>
                      Martinique et Guadeloupe
                  </div>`,
@@ -1520,14 +1536,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_8ed610179ee3c9ab01119aced33d3ba1 = L.marker(
+            var marker_52a3a31c7d608582cfd620ffe6b1075d = L.marker(
                 [20.0, -70.0],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_c834ed707a95e93b41ae55aee9817205 = L.AwesomeMarkers.icon(
+            var icon_b746e9f10d9b24dd8460b17e4b64a9a0 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1536,27 +1552,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_8ed610179ee3c9ab01119aced33d3ba1.setIcon(icon_c834ed707a95e93b41ae55aee9817205);
+            marker_52a3a31c7d608582cfd620ffe6b1075d.setIcon(icon_b746e9f10d9b24dd8460b17e4b64a9a0);
         
     
-        var popup_e2ade121cca598fb5df4041f258a4ffa = L.popup({
+        var popup_2198d9112345a8021f612d3062c550be = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_1d28168d896cee1729da49f05bc5bd1d = $(`<div id="html_1d28168d896cee1729da49f05bc5bd1d" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-70.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="22" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="22" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_e2ade121cca598fb5df4041f258a4ffa.setContent(html_1d28168d896cee1729da49f05bc5bd1d);
+                var html_bdc0ba3fd592ef83a2a7e37e4fcbc8fb = $(`<div id="html_bdc0ba3fd592ef83a2a7e37e4fcbc8fb" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Amérique Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Point intermédiaire</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">20.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-70.0</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="22" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="22" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_2198d9112345a8021f612d3062c550be.setContent(html_bdc0ba3fd592ef83a2a7e37e4fcbc8fb);
             
         
 
-        marker_8ed610179ee3c9ab01119aced33d3ba1.bindPopup(popup_e2ade121cca598fb5df4041f258a4ffa)
+        marker_52a3a31c7d608582cfd620ffe6b1075d.bindPopup(popup_2198d9112345a8021f612d3062c550be)
         ;
 
         
     
     
-            marker_8ed610179ee3c9ab01119aced33d3ba1.bindTooltip(
+            marker_52a3a31c7d608582cfd620ffe6b1075d.bindTooltip(
                 `<div>
                      Contour Amérique Nord
                  </div>`,
@@ -1566,14 +1582,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_6dd11199641ebbcf6ca0c0776356b95a = L.marker(
+            var marker_48929f847de7f8e4e963ce200cd792b3 = L.marker(
                 [23.6833, -75.3167],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_f7a78953ae2c7ce9bfb2ac0939e8fb32 = L.AwesomeMarkers.icon(
+            var icon_7bb97e72c38ef7428964aff8c90cf841 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1582,27 +1598,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_6dd11199641ebbcf6ca0c0776356b95a.setIcon(icon_f7a78953ae2c7ce9bfb2ac0939e8fb32);
+            marker_48929f847de7f8e4e963ce200cd792b3.setIcon(icon_7bb97e72c38ef7428964aff8c90cf841);
         
     
-        var popup_da24e602f6abce58310577f7438d7fbd = L.popup({
+        var popup_1e7517bc36a6fed78498b42667817baa = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_0cb817ec309c571bc284d540dc17826b = $(`<div id="html_0cb817ec309c571bc284d540dc17826b" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Lucayes</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Entrée dans le Gulf Stream.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">23.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-75.3167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="23" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="23" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_da24e602f6abce58310577f7438d7fbd.setContent(html_0cb817ec309c571bc284d540dc17826b);
+                var html_434d8492a4e8acceb1664a0440bfbefd = $(`<div id="html_434d8492a4e8acceb1664a0440bfbefd" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île Lucayes</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">20 Avril 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Entrée dans le Gulf Stream.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">23.6833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-75.3167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="23" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="23" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_1e7517bc36a6fed78498b42667817baa.setContent(html_434d8492a4e8acceb1664a0440bfbefd);
             
         
 
-        marker_6dd11199641ebbcf6ca0c0776356b95a.bindPopup(popup_da24e602f6abce58310577f7438d7fbd)
+        marker_48929f847de7f8e4e963ce200cd792b3.bindPopup(popup_1e7517bc36a6fed78498b42667817baa)
         ;
 
         
     
     
-            marker_6dd11199641ebbcf6ca0c0776356b95a.bindTooltip(
+            marker_48929f847de7f8e4e963ce200cd792b3.bindTooltip(
                 `<div>
                      Île Lucayes
                  </div>`,
@@ -1612,14 +1628,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_70fd48a01552206443086654c68ed17f = L.marker(
+            var marker_478c0e43e20734261f78603cf9ae2953 = L.marker(
                 [35.1, -74.8667],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_c00800a66ddc593129c3757a69683ec3 = L.AwesomeMarkers.icon(
+            var icon_812c141c21bed0e8684ead299cc81f8d = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1628,27 +1644,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_70fd48a01552206443086654c68ed17f.setIcon(icon_c00800a66ddc593129c3757a69683ec3);
+            marker_478c0e43e20734261f78603cf9ae2953.setIcon(icon_812c141c21bed0e8684ead299cc81f8d);
         
     
-        var popup_a283cee7b23fcb7aab75a43190eec867 = L.popup({
+        var popup_efa3f6ed447b46a3f991f1e697daaf1e = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_4e5e492ffb3cd1eae0cf6014177cb63b = $(`<div id="html_4e5e492ffb3cd1eae0cf6014177cb63b" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Hatteras</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">8 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-74.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="24" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="24" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_a283cee7b23fcb7aab75a43190eec867.setContent(html_4e5e492ffb3cd1eae0cf6014177cb63b);
+                var html_9ec2f674e000c443518dab109c018587 = $(`<div id="html_9ec2f674e000c443518dab109c018587" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Cap Hatteras</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">8 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Travers du Cap Hatteras, à la hauteur de la Caroline du Nord. La largeur du Gulf Stream est là de soixante-quinze milles, et sa profondeur de deux cent dix milles mètres.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">35.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-74.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="24" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="24" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_efa3f6ed447b46a3f991f1e697daaf1e.setContent(html_9ec2f674e000c443518dab109c018587);
             
         
 
-        marker_70fd48a01552206443086654c68ed17f.bindPopup(popup_a283cee7b23fcb7aab75a43190eec867)
+        marker_478c0e43e20734261f78603cf9ae2953.bindPopup(popup_efa3f6ed447b46a3f991f1e697daaf1e)
         ;
 
         
     
     
-            marker_70fd48a01552206443086654c68ed17f.bindTooltip(
+            marker_478c0e43e20734261f78603cf9ae2953.bindTooltip(
                 `<div>
                      Cap Hatteras
                  </div>`,
@@ -1658,14 +1674,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_114ccd05521a3b093af0b82b8695e8a8 = L.marker(
+            var marker_d2d11901739ae1eee6459cd842570dfc = L.marker(
                 [41.0833, -72.8667],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_6e7a1eb578ba3985342f8e4189ad33a3 = L.AwesomeMarkers.icon(
+            var icon_c7a2e22d045f9c221d8342440693e625 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1674,27 +1690,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_114ccd05521a3b093af0b82b8695e8a8.setIcon(icon_6e7a1eb578ba3985342f8e4189ad33a3);
+            marker_d2d11901739ae1eee6459cd842570dfc.setIcon(icon_c7a2e22d045f9c221d8342440693e625);
         
     
-        var popup_ce2de64c3aecf849881e8d04f7022611 = L.popup({
+        var popup_56c631ebb322b98eac4438523711b8ea = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_c7539faf065869847904106cac204244 = $(`<div id="html_c7539faf065869847904106cac204244" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Long Island</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">18 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">41.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-72.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="25" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="25" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_ce2de64c3aecf849881e8d04f7022611.setContent(html_c7539faf065869847904106cac204244);
+                var html_1386ccb94ac65ad5e9a60c9fe8dfbc57 = $(`<div id="html_1386ccb94ac65ad5e9a60c9fe8dfbc57" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Long Island</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">18 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Lutte des éléments, le capitaine Nemo, par un inexplicable caprice, voulut braver la tempête à la surface.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">41.0833</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-72.8667</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="25" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="25" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_56c631ebb322b98eac4438523711b8ea.setContent(html_1386ccb94ac65ad5e9a60c9fe8dfbc57);
             
         
 
-        marker_114ccd05521a3b093af0b82b8695e8a8.bindPopup(popup_ce2de64c3aecf849881e8d04f7022611)
+        marker_d2d11901739ae1eee6459cd842570dfc.bindPopup(popup_56c631ebb322b98eac4438523711b8ea)
         ;
 
         
     
     
-            marker_114ccd05521a3b093af0b82b8695e8a8.bindTooltip(
+            marker_d2d11901739ae1eee6459cd842570dfc.bindTooltip(
                 `<div>
                      Long Island
                  </div>`,
@@ -1704,14 +1720,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_69c47dc01d3764b401f9bc2c04520029 = L.marker(
+            var marker_b0a11c38652beaf7dbc28287a64e5701 = L.marker(
                 [47.1333, -57.9167],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_6e17384bde3fd2fd366256e14c663cae = L.AwesomeMarkers.icon(
+            var icon_656fc57dbee19ee6447fc59c3739a180 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1720,27 +1736,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_69c47dc01d3764b401f9bc2c04520029.setIcon(icon_6e17384bde3fd2fd366256e14c663cae);
+            marker_b0a11c38652beaf7dbc28287a64e5701.setIcon(icon_656fc57dbee19ee6447fc59c3739a180);
         
     
-        var popup_7f91179c550ab43e90893f5a85cde7e8 = L.popup({
+        var popup_a3c6728750902ffe17fdedbb4c942f7c = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_1ac5958b1d31f6bc65624af789e34c18 = $(`<div id="html_1ac5958b1d31f6bc65624af789e34c18" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Terre Neuve</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">15 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">47.1333</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-57.9167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="26" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="26" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_7f91179c550ab43e90893f5a85cde7e8.setContent(html_1ac5958b1d31f6bc65624af789e34c18);
+                var html_71bb270567143d8f7cc9cca74bcc4e58 = $(`<div id="html_71bb270567143d8f7cc9cca74bcc4e58" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Terre Neuve</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">15 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Atlantique Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Extrémité méridionale du banc de Terre Neuve - Professeur Aronnax consigne dans son journal les différentes espèces marines.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">47.1333</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-57.9167</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="26" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="26" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_a3c6728750902ffe17fdedbb4c942f7c.setContent(html_71bb270567143d8f7cc9cca74bcc4e58);
             
         
 
-        marker_69c47dc01d3764b401f9bc2c04520029.bindPopup(popup_7f91179c550ab43e90893f5a85cde7e8)
+        marker_b0a11c38652beaf7dbc28287a64e5701.bindPopup(popup_a3c6728750902ffe17fdedbb4c942f7c)
         ;
 
         
     
     
-            marker_69c47dc01d3764b401f9bc2c04520029.bindTooltip(
+            marker_b0a11c38652beaf7dbc28287a64e5701.bindTooltip(
                 `<div>
                      Terre Neuve
                  </div>`,
@@ -1750,14 +1766,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_07d1ded28a39f46cdf37539d49fd410a = L.marker(
+            var marker_1eec1f2117c50aaba7548e11bf2fd791 = L.marker(
                 [51.1, -9.7],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_1836808c8b8227a6b06989ec908cdf5f = L.AwesomeMarkers.icon(
+            var icon_292ab56a8e9d0dee0fc9f22ae6d83060 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1766,27 +1782,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_07d1ded28a39f46cdf37539d49fd410a.setIcon(icon_1836808c8b8227a6b06989ec908cdf5f);
+            marker_1eec1f2117c50aaba7548e11bf2fd791.setIcon(icon_292ab56a8e9d0dee0fc9f22ae6d83060);
         
     
-        var popup_f886645e240c4095c927a99ceaba6601 = L.popup({
+        var popup_8b7464aa4490872779d602de61b3e2a4 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_a6a33d42c50f87c874b9a5d683287acc = $(`<div id="html_a6a33d42c50f87c874b9a5d683287acc" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Irlande</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Celtique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Le Nautilus affronte un navire ennemi non identifié dans une zone située au large des côtes irlandaises.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">51.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-9.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="27" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="27" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_f886645e240c4095c927a99ceaba6601.setContent(html_a6a33d42c50f87c874b9a5d683287acc);
+                var html_3c556717465614fb0f93d56b475da5f5 = $(`<div id="html_3c556717465614fb0f93d56b475da5f5" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Irlande</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">25 Mai 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer Celtique</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Le Nautilus affronte un navire ennemi non identifié dans une zone située au large des côtes irlandaises.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">51.1</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-9.7</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="27" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="27" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_8b7464aa4490872779d602de61b3e2a4.setContent(html_3c556717465614fb0f93d56b475da5f5);
             
         
 
-        marker_07d1ded28a39f46cdf37539d49fd410a.bindPopup(popup_f886645e240c4095c927a99ceaba6601)
+        marker_1eec1f2117c50aaba7548e11bf2fd791.bindPopup(popup_8b7464aa4490872779d602de61b3e2a4)
         ;
 
         
     
     
-            marker_07d1ded28a39f46cdf37539d49fd410a.bindTooltip(
+            marker_1eec1f2117c50aaba7548e11bf2fd791.bindTooltip(
                 `<div>
                      Irlande
                  </div>`,
@@ -1796,14 +1812,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_e4da01ba3e56ebfae700eb5eee6db59d = L.marker(
+            var marker_63d39071effb0fb25b2ce117498e3ec5 = L.marker(
                 [50.0, -2.2],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_2af80d9eb0d4500bb237e4e04332693f = L.AwesomeMarkers.icon(
+            var icon_6c8c091b059123591dc9bbcf27411045 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1812,27 +1828,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_e4da01ba3e56ebfae700eb5eee6db59d.setIcon(icon_2af80d9eb0d4500bb237e4e04332693f);
+            marker_63d39071effb0fb25b2ce117498e3ec5.setIcon(icon_6c8c091b059123591dc9bbcf27411045);
         
     
-        var popup_f376a6ca04d12cb9c453ba334a4527b2 = L.popup({
+        var popup_ef5c6a063048ac764d21880df583fd0a = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_e163db6467e26ed1ff951b9a2f5f7f1d = $(`<div id="html_e163db6467e26ed1ff951b9a2f5f7f1d" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-2.2</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="28" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="28" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_f376a6ca04d12cb9c453ba334a4527b2.setContent(html_e163db6467e26ed1ff951b9a2f5f7f1d);
+                var html_31cb957729ed5ac6fe640e3608ddb1f1 = $(`<div id="html_31cb957729ed5ac6fe640e3608ddb1f1" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">1er Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Manche</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.0</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">-2.2</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="28" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="28" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_ef5c6a063048ac764d21880df583fd0a.setContent(html_31cb957729ed5ac6fe640e3608ddb1f1);
             
         
 
-        marker_e4da01ba3e56ebfae700eb5eee6db59d.bindPopup(popup_f376a6ca04d12cb9c453ba334a4527b2)
+        marker_63d39071effb0fb25b2ce117498e3ec5.bindPopup(popup_ef5c6a063048ac764d21880df583fd0a)
         ;
 
         
     
     
-            marker_e4da01ba3e56ebfae700eb5eee6db59d.bindTooltip(
+            marker_63d39071effb0fb25b2ce117498e3ec5.bindTooltip(
                 `<div>
                      Manche
                  </div>`,
@@ -1842,14 +1858,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_534975daf3357504b30e6dc7a6ec493f = L.marker(
+            var marker_8e82a5f1dac09a286e045cd4440c4f46 = L.marker(
                 [50.9578, 1.382884],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_200f2deb0a758f2d99734cf0dbdbe461 = L.AwesomeMarkers.icon(
+            var icon_dbe8cca4823d19a8df37f80d24bff093 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1858,27 +1874,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_534975daf3357504b30e6dc7a6ec493f.setIcon(icon_200f2deb0a758f2d99734cf0dbdbe461);
+            marker_8e82a5f1dac09a286e045cd4440c4f46.setIcon(icon_dbe8cca4823d19a8df37f80d24bff093);
         
     
-        var popup_ce88ea7988f9979e94131177b7360e79 = L.popup({
+        var popup_4e2d9cdb96cb512ce427ed131e735e0d = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_46b1dee7fe7b8e0dd13fad8d7b74c2fc = $(`<div id="html_46b1dee7fe7b8e0dd13fad8d7b74c2fc" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">2 Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.9578</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">1.382884</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="29" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="29" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_ce88ea7988f9979e94131177b7360e79.setContent(html_46b1dee7fe7b8e0dd13fad8d7b74c2fc);
+                var html_e64c1f6943ffc1f8ec4824e47a4648a2 = $(`<div id="html_e64c1f6943ffc1f8ec4824e47a4648a2" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Sud</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">2 Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">50.9578</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">1.382884</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="29" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="29" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_4e2d9cdb96cb512ce427ed131e735e0d.setContent(html_e64c1f6943ffc1f8ec4824e47a4648a2);
             
         
 
-        marker_534975daf3357504b30e6dc7a6ec493f.bindPopup(popup_ce88ea7988f9979e94131177b7360e79)
+        marker_8e82a5f1dac09a286e045cd4440c4f46.bindPopup(popup_4e2d9cdb96cb512ce427ed131e735e0d)
         ;
 
         
     
     
-            marker_534975daf3357504b30e6dc7a6ec493f.bindTooltip(
+            marker_8e82a5f1dac09a286e045cd4440c4f46.bindTooltip(
                 `<div>
                      Contour Angleterre Sud
                  </div>`,
@@ -1888,14 +1904,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_d22f998ad992973e24d3ad7846c466eb = L.marker(
+            var marker_0c86fc21d3d11c0d983eeb5a20864251 = L.marker(
                 [61.541262, 0.513488],
                 {
 }
-            ).addTo(marker_cluster_374b8e54682d82cb6ae63bb0fca846ea);
+            ).addTo(marker_cluster_b0561b6163eba6613b758d5ffee2966f);
         
     
-            var icon_c2f02ac109c87d2a23fec5775d742ab5 = L.AwesomeMarkers.icon(
+            var icon_3b248b44e0c6976015a1fbc163a3a665 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "cadetblue",
   "iconColor": "white",
@@ -1904,27 +1920,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_d22f998ad992973e24d3ad7846c466eb.setIcon(icon_c2f02ac109c87d2a23fec5775d742ab5);
+            marker_0c86fc21d3d11c0d983eeb5a20864251.setIcon(icon_3b248b44e0c6976015a1fbc163a3a665);
         
     
-        var popup_4881fc5f96c2215c129e22b6d09bf195 = L.popup({
+        var popup_624146c2145c7f8d34360f9a497ac547 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_8c0b421efaf2b502aa8c33bb31d52424 = $(`<div id="html_8c0b421efaf2b502aa8c33bb31d52424" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">61.541262</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">0.513488</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="30" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="30" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_4881fc5f96c2215c129e22b6d09bf195.setContent(html_8c0b421efaf2b502aa8c33bb31d52424);
+                var html_f68dda28589fbc298848e9762a3a270d = $(`<div id="html_f68dda28589fbc298848e9762a3a270d" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Contour Angleterre Nord</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer du Nord</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Complot d&#x27;évasion</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">61.541262</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">0.513488</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="30" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="30" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_624146c2145c7f8d34360f9a497ac547.setContent(html_f68dda28589fbc298848e9762a3a270d);
             
         
 
-        marker_d22f998ad992973e24d3ad7846c466eb.bindPopup(popup_4881fc5f96c2215c129e22b6d09bf195)
+        marker_0c86fc21d3d11c0d983eeb5a20864251.bindPopup(popup_624146c2145c7f8d34360f9a497ac547)
         ;
 
         
     
     
-            marker_d22f998ad992973e24d3ad7846c466eb.bindTooltip(
+            marker_0c86fc21d3d11c0d983eeb5a20864251.bindTooltip(
                 `<div>
                      Contour Angleterre Nord
                  </div>`,
@@ -1934,17 +1950,17 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            marker_cluster_374b8e54682d82cb6ae63bb0fca846ea.addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            marker_cluster_b0561b6163eba6613b758d5ffee2966f.addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var marker_96a54e85ac2c11e69ab107efcc761c74 = L.marker(
+            var marker_87ca5dac11d12f197ff4cbbd767b7c58 = L.marker(
                 [33.18497, 169.85446],
                 {
 }
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var icon_a39ca08ebf9d986abc947d4e4b9e1622 = L.AwesomeMarkers.icon(
+            var icon_464fedee1706094a52f5908be2ec87e4 = L.AwesomeMarkers.icon(
                 {
   "markerColor": "green",
   "iconColor": "white",
@@ -1953,27 +1969,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_96a54e85ac2c11e69ab107efcc761c74.setIcon(icon_a39ca08ebf9d986abc947d4e4b9e1622);
+            marker_87ca5dac11d12f197ff4cbbd767b7c58.setIcon(icon_464fedee1706094a52f5908be2ec87e4);
         
     
-        var popup_6f3e3f46f48f21896608eb60cfe6806c = L.popup({
+        var popup_7f56dfc3577432813df7e1dee60789fc = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_021d60ff9796c68086c9ecef919c290b = $(`<div id="html_021d60ff9796c68086c9ecef919c290b" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île de Crespo</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Novembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Début de l&#x27;aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">33.18497</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">169.85446</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="0" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="0" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_6f3e3f46f48f21896608eb60cfe6806c.setContent(html_021d60ff9796c68086c9ecef919c290b);
+                var html_6ebad068fb86697b62d8e8dec32f8d25 = $(`<div id="html_6ebad068fb86697b62d8e8dec32f8d25" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Île de Crespo</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">16 Novembre 1867</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Océan Pacifique Sud</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Début de l&#x27;aventure - Première chasse sous-marine - Une forêt sous-marine - Une monstrueuse araignée de mer.</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">33.18497</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">169.85446</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,371,000 m</span></div>       </div>       <button class="hud-btn" data-stop="0" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="0" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_7f56dfc3577432813df7e1dee60789fc.setContent(html_6ebad068fb86697b62d8e8dec32f8d25);
             
         
 
-        marker_96a54e85ac2c11e69ab107efcc761c74.bindPopup(popup_6f3e3f46f48f21896608eb60cfe6806c)
+        marker_87ca5dac11d12f197ff4cbbd767b7c58.bindPopup(popup_7f56dfc3577432813df7e1dee60789fc)
         ;
 
         
     
     
-            marker_96a54e85ac2c11e69ab107efcc761c74.bindTooltip(
+            marker_87ca5dac11d12f197ff4cbbd767b7c58.bindTooltip(
                 `<div>
                      ⚓ Départ — Île de Crespo
                  </div>`,
@@ -1983,14 +1999,14 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var marker_d74d4cbae0d533a3e8fa8ab33847471d = L.marker(
+            var marker_33840f5b960e6a1c4163c64092ef2753 = L.marker(
                 [67.9958, 12.9978],
                 {
 }
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var icon_ac033a76d3ea446b1c21a1bd34e94e62 = L.AwesomeMarkers.icon(
+            var icon_837f0e3a738cd3f41089a6d15b8a817a = L.AwesomeMarkers.icon(
                 {
   "markerColor": "red",
   "iconColor": "white",
@@ -1999,27 +2015,27 @@ document.getElementById("decModal").addEventListener("click", function(e) {
   "extraClasses": "fa-rotate-0",
 }
             );
-            marker_d74d4cbae0d533a3e8fa8ab33847471d.setIcon(icon_ac033a76d3ea446b1c21a1bd34e94e62);
+            marker_33840f5b960e6a1c4163c64092ef2753.setIcon(icon_837f0e3a738cd3f41089a6d15b8a817a);
         
     
-        var popup_746998886818f4bd4ad9e55a5fce214c = L.popup({
+        var popup_f19f85da30f2c71bad900433a8027b94 = L.popup({
   "maxWidth": 420,
 });
 
         
             
-                var html_75bcfb5c8fe3d64a6482e41f634428f6 = $(`<div id="html_75bcfb5c8fe3d64a6482e41f634428f6" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Maelström</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer de Norvège</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Gouffre &quot;le nombril de l&#x27;océan&quot; - Fin du voyage pour le professeur Aronnax, Conseil et Ned Land</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">67.9958</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">12.9978</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="31" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="31" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
-                popup_746998886818f4bd4ad9e55a5fce214c.setContent(html_75bcfb5c8fe3d64a6482e41f634428f6);
+                var html_22819a95b50f49dc1a28b222d7b4b123 = $(`<div id="html_22819a95b50f49dc1a28b222d7b4b123" style="width: 100.0%; height: 100.0%;">     <div class="hud-popup">       <div class="hud-lang-label">🧭 Escale du Nautilus</div>       <div class="hud-body">         <div class="hud-row"><span class="hud-key">Escale :</span> <span class="hud-val">Maelström</span></div>         <div class="hud-row"><span class="hud-key">Date :</span> <span class="hud-val">Juin 1868</span></div>         <div class="hud-row"><span class="hud-key">Océan / Mer :</span> <span class="hud-val">Mer de Norvège</span></div>         <div class="hud-row"><span class="hud-key">Événement :</span> <span class="hud-val">Gouffre &quot;le nombril de l&#x27;océan&quot; - Fin du voyage pour le professeur Aronnax, Conseil et Ned Land</span></div>         <div class="hud-row"><span class="hud-key">Latitude :</span> <span class="hud-val">67.9958</span></div>         <div class="hud-row"><span class="hud-key">Longitude :</span> <span class="hud-val">12.9978</span></div>         <div class="hud-row"><span class="hud-key">Distance centre Terre :</span> <span class="hud-val">6,370,999 m</span></div>       </div>       <button class="hud-btn" data-stop="31" data-action="book_excerpt">         📖 Extrait du livre       </button>       <button class="hud-btn" data-stop="31" data-action="especes" style="margin-top:8px;">         🐟 Espèces maritimes du roman       </button>     </div></div>`)[0];
+                popup_f19f85da30f2c71bad900433a8027b94.setContent(html_22819a95b50f49dc1a28b222d7b4b123);
             
         
 
-        marker_d74d4cbae0d533a3e8fa8ab33847471d.bindPopup(popup_746998886818f4bd4ad9e55a5fce214c)
+        marker_33840f5b960e6a1c4163c64092ef2753.bindPopup(popup_f19f85da30f2c71bad900433a8027b94)
         ;
 
         
     
     
-            marker_d74d4cbae0d533a3e8fa8ab33847471d.bindTooltip(
+            marker_33840f5b960e6a1c4163c64092ef2753.bindTooltip(
                 `<div>
                      🏁 Arrivée — Maelström
                  </div>`,
@@ -2029,64 +2045,64 @@ document.getElementById("decModal").addEventListener("click", function(e) {
             );
         
     
-            var poly_line_1622f5cd2775e73feaf84a559a02de90 = L.polyline(
+            var poly_line_11fbcbcead28761abed5f383975ce90b = L.polyline(
                 [[33.18497, 169.85446], [9.48786, 177.83569], [-16.0667, 164.5333], [-0.3167, 128.3833], [-10.7, 136.7667], [-8.6833, 125.7333], [-12.0833, 94.55], [5.9167, 79.7], [10.99809, 56.614067], [29.95, 32.55], [35.0, 24.0], [39.2833, 6.7], [20.0, -30.0], [21.5, -31.5], [-10.1775, -17.738], [-54.8, -50.4], [-61.6, -64.8], [-73.7, -133.8333], [-56.05, -67.9], [-40.0, -50.0], [-6.96056, -32.08735], [15.3167, -59.9667], [20.0, -70.0], [23.6833, -75.3167], [35.1, -74.8667], [41.0833, -72.8667], [47.1333, -57.9167], [51.1, -9.7], [50.0, -2.2], [50.9578, 1.382884], [61.541262, 0.513488], [67.9958, 12.9978]],
                 {"bubblingMouseEvents": true, "color": "#27c39f", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#27c39f", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_3d603e07fd05718d114e782fe22ac76d = L.polygon(
+            var polygon_dfcdeff13a377c9fa74d19b8411acbe5 = L.polygon(
                 [[10.0, 120.0], [-5.0, 130.0], [-20.0, 150.0], [-30.0, 165.0], [-20.0, 175.0], [-5.0, 175.0], [5.0, 165.0], [15.0, 150.0], [10.0, 120.0]],
                 {"bubblingMouseEvents": true, "color": "#7ec8c8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#7ec8c8", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_d4ca66581fae8abca4022c0dc059f2a8 = L.polygon(
+            var polygon_020f120f7fbe4e29cfbc066c032da2e2 = L.polygon(
                 [[25.0, 55.0], [5.0, 60.0], [-15.0, 70.0], [-20.0, 90.0], [-10.0, 100.0], [10.0, 85.0], [25.0, 70.0], [25.0, 55.0]],
                 {"bubblingMouseEvents": true, "color": "#a8d8a8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8d8a8", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_077db617d5db5fae2081f438625cd0e8 = L.polygon(
+            var polygon_a3e6cc0e75c86f897a69d7839323e803 = L.polygon(
                 [[30.0, 32.0], [12.0, 43.0], [20.0, 50.0], [30.0, 45.0], [30.0, 32.0]],
                 {"bubblingMouseEvents": true, "color": "#f4c2a1", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f4c2a1", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_e326fe31dc025561029cf689800ae1dd = L.polygon(
+            var polygon_5132151cf27c3ec92b9ac16b3c98acb9 = L.polygon(
                 [[47.0, 5.0], [35.0, 5.0], [32.0, 15.0], [32.0, 36.0], [40.0, 36.0], [47.0, 20.0], [47.0, 5.0]],
                 {"bubblingMouseEvents": true, "color": "#c8a8d8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c8a8d8", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_d88e7bd4ce1bc4e73f2f3e41695fb25e = L.polygon(
+            var polygon_3a5597e9ae2f88ef979e2cefc330bb34 = L.polygon(
                 [[15.0, -80.0], [15.0, -20.0], [-30.0, -20.0], [-55.0, -65.0], [-30.0, -70.0], [15.0, -80.0]],
                 {"bubblingMouseEvents": true, "color": "#a8c8d8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8c8d8", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_773d34c6c8c12e45fd6be273fd14ca4a = L.polygon(
+            var polygon_990b9f0274177f00b6535e2b75ce938f = L.polygon(
                 [[-55.0, -80.0], [-55.0, -60.0], [-65.0, -40.0], [-75.0, -20.0], [-80.0, 0.0], [-75.0, 40.0], [-65.0, 60.0], [-55.0, 80.0], [-55.0, -80.0]],
                 {"bubblingMouseEvents": true, "color": "#d8d8f4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d8d8f4", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_112c41822353a27ec1a1d66e0d6d0125 = L.polygon(
+            var polygon_3bb6089f74985046135065942e4c0949 = L.polygon(
                 [[50.0, -70.0], [50.0, -10.0], [15.0, -10.0], [15.0, -70.0], [50.0, -70.0]],
                 {"bubblingMouseEvents": true, "color": "#b8d4f0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b8d4f0", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_86fda9d835e07ae8665725f4a85a69f8 = L.polygon(
+            var polygon_5aa63279b67940a4c88493ce915bef97 = L.polygon(
                 [[62.0, -12.0], [48.0, -6.0], [48.0, 3.0], [56.0, 3.0], [62.0, 0.0], [62.0, -12.0]],
                 {"bubblingMouseEvents": true, "color": "#f0d4a8", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f0d4a8", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
     
-            var polygon_7606c2e06a6c6847f6613313bcb45cf5 = L.polygon(
+            var polygon_9bacadb6bece661cdec7277ae3fa3ad6 = L.polygon(
                 [[72.0, -5.0], [62.0, 0.0], [62.0, 15.0], [70.0, 20.0], [72.0, 10.0], [72.0, -5.0]],
                 {"bubblingMouseEvents": true, "color": "#d4f0e0", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d4f0e0", "fillOpacity": 0.18, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
-            ).addTo(map_436d4dc8aa70ab5b83c3cde1d80b0471);
+            ).addTo(map_a76980b848c7dc2748b1aeb7f0c910a3);
         
 </script>
 </html>
