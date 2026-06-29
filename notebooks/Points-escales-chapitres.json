@@ -322,7 +322,7 @@
   },
   {
     "Escales du Nautilus": {
-      "fr": "Sous l'isthme de Suez",
+      "fr": "Isthme de Suez",
       "en": "Beneath the Isthmus of Suez"
     },
     "Date": {
@@ -358,7 +358,7 @@
   },
   {
     "Escales du Nautilus": {
-      "fr": "L'archipel grec",
+      "fr": "L'Archipel grec",
       "en": "The Greek Archipelago"
     },
     "Date": {
@@ -697,8 +697,8 @@
       "en": "Patagonia, Uruguay - The Nautilus keeps heading north."
     },
     "chapitre": {
-    "partie": 2,
-    "chapitre": 17
+      "partie": 2,
+      "chapitre": 17
     }
   },
   {
